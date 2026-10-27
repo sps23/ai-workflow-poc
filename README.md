@@ -1,6 +1,30 @@
 # ai-workflow-poc
 AI Workflow POC
 
+## PDF resources and Git LFS
+
+Install [Git LFS](https://git-lfs.com/) before cloning this repository
+(`brew install git-lfs` on macOS), then run:
+
+```sh
+git lfs install
+git clone https://github.com/sps23/ai-workflow-poc.git
+```
+
+For an existing checkout, run `git lfs install --local` followed by
+`git lfs pull` to download the actual PDFs. Git stores small LFS pointers;
+the working tree contains the original documents.
+
+Add PDF files with the usual `git add` command; `.gitattributes` routes them
+through LFS. A normal `git push` uploads the referenced LFS objects through
+the installed pre-push hook. Downloads and storage use the repository owner's
+GitHub LFS quota.
+
+The build workflow and [Copilot setup workflow](.github/workflows/copilot-setup-steps.yml)
+download LFS objects so tools can read the PDF resources. Copilot's cloud setup
+takes effect once that workflow is on the default branch. PDF text extraction
+still requires PDF tooling; an LFS pointer alone is not a readable PDF.
+
 ## Build
 
 Requires JDK 25 (a current Eclipse Temurin 25 LTS build is recommended).
