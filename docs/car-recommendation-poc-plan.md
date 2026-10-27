@@ -138,6 +138,7 @@ The ranking request should include only the user's preferences and the bounded s
 ### 3. Implement repeatable batch PDF extraction and review staging
 
 - Use the existing Tika dependency to extract each registered PDF locally; start with one document end-to-end, then batch the pilot corpus.
+- Feature matrices must map each feature row to the correct trim column and tick/dot state; Tika's plain text extraction does not compute table row or cell boundaries. For the Kotlin coordinate-aware extraction design, raw artifact contract, evaluation, and review states, see [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md).
 - Keep extracted text and page context associated with its document ID and verify page attribution on actual sample documents.
 - Produce staging records rather than writing directly to the published catalog. Track per-document state and errors so a partial batch can be resumed and reviewed.
 - Make imports idempotent: reprocessing an unchanged content hash should not create duplicate models, trims, or facts. If a source file changes, retain the revision history or explicitly mark prior extracted facts as superseded and re-review affected records.
@@ -218,8 +219,8 @@ The POC succeeds if a reviewer can follow a recommendation from user input to el
 
 ## Repository starting point
 
-The repository already declares Kotlin 2.3.21, Compose Desktop 1.7.0, Apache Tika 3.3.3, and Koog/OpenRouter 1.3.0 in `build.gradle.kts`. `README.md` documents the JDK 25 and Gradle 9.3.0 baseline and relevant dependency/runtime considerations. There is no application entry point yet. Existing tests are compatibility smoke checks; `TikaCompatibilityTest` and `JdkCompatibilityTest` are annotated with `@Ignore`, so add focused non-ignored tests for new behavior rather than assuming those smoke checks exercise the workflow.
+The repository already declares Kotlin 2.3.21, Compose Desktop 1.7.0, Apache Tika 3.3.3, and Koog/OpenRouter 1.3.0 in `build.gradle.kts`. `README.md` documents the JDK 25 and Gradle 9.3.0 baseline and relevant dependency/runtime considerations. There is no application entry point yet. The current source tree contains 22 PDFs across five makes; curate a representative subset for the recommendation catalog. See [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md) for the next extraction stage. Existing tests are compatibility smoke checks; `TikaCompatibilityTest` and `JdkCompatibilityTest` are annotated with `@Ignore`, so add focused non-ignored tests for new behavior rather than assuming those smoke checks exercise the workflow.
 
 ## Suggested first development task
 
-Implement the source-document manifest and catalog data classes, a small validated fixture, and deterministic hard-constraint filtering with unit tests. Then ingest one model PDF end to end, validate document/page provenance and trim separation, and expand to a resumable batch of about 2–3 models per brand. This proves the workflow before scaling to every model a brand publishes.
+Start with the extraction spike and batch task in [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md): verify page/table fidelity on representative PDFs, then create source-linked raw artifacts. Next, define the catalog data classes and deterministic filtering with unit tests, and promote only reviewed model/trim facts from raw artifacts into the recommendation catalog.

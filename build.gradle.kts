@@ -33,6 +33,7 @@ dependencies {
 
     implementation("org.apache.tika:tika-core:3.3.3")
     implementation("org.apache.tika:tika-parsers-standard-package:3.3.3")
+    implementation("org.apache.pdfbox:pdfbox:3.0.8")
 
     implementation("io.ktor:ktor-client-core:3.0.1")
     implementation("io.ktor:ktor-client-cio:3.0.1")
