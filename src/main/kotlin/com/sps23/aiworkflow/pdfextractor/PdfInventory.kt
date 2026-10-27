@@ -6,13 +6,16 @@ import org.apache.pdfbox.Loader
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject
 import org.apache.pdfbox.text.PDFTextStripper
+import java.nio.charset.StandardCharsets
 import java.nio.file.AtomicMoveNotSupportedException
 import java.nio.file.Files
+import java.nio.file.LinkOption
 import java.nio.file.Path
 import java.nio.file.StandardCopyOption
 import java.security.MessageDigest
 import java.util.Collections
 import java.util.IdentityHashMap
+import java.util.Locale
 import kotlin.io.path.extension
 import kotlin.io.path.name
 import kotlin.io.path.nameWithoutExtension
@@ -72,8 +75,10 @@ object PdfInventory {
         val documents =
             Files.walk(normalizedInputRoot).use { paths ->
                 paths
-                    .filter { Files.isRegularFile(it) && it.extension.equals("pdf", ignoreCase = true) }
-                    .sorted()
+                    .filter {
+                        Files.isRegularFile(it, LinkOption.NOFOLLOW_LINKS) &&
+                            it.extension.equals("pdf", ignoreCase = true)
+                    }.sorted()
                     .map { file -> inspect(normalizedInputRoot, file, outputRootName) }
                     .toList()
             }
@@ -122,7 +127,8 @@ object PdfInventory {
             file.parent
                 ?.let { inputRoot.relativize(it).toString().replace(file.fileSystem.separator, "/") }
                 .orEmpty()
-        val outputRelativePath = outputRelativePath(outputRootName, make, file)
+                .ifBlank { "unknown" }
+        val outputRelativePath = outputRelativePath(outputRootName, relativePath, make, file)
         var fileSize: Long? = null
         var sha256: String? = null
         return try {
@@ -195,23 +201,27 @@ object PdfInventory {
 
     private fun outputRelativePath(
         outputRootName: String,
+        relativePath: String,
         make: String,
         file: Path,
     ): String {
-        val safeStem =
-            file.nameWithoutExtension
-                .replace(Regex("[^A-Za-z0-9._-]+"), "-")
-                .trim('-', '.', '_')
-                .ifEmpty { "document" }
-        val relativeName = file.parent.relativize(file).toString()
-        val suffix = sha256(relativeName.toByteArray()).take(12)
-        return listOf(outputRootName, make, "$safeStem-$suffix.json").joinToString("/")
+        val safeMakeParts = make.split('/').filter(String::isNotBlank).map(::safePathSegment)
+        val safeStem = safePathSegment(file.nameWithoutExtension)
+        val suffix = sha256(relativePath.toByteArray(StandardCharsets.UTF_8)).take(12)
+        return (listOf(outputRootName) + safeMakeParts + "$safeStem-$suffix.json").joinToString("/")
     }
+
+    private fun safePathSegment(value: String): String =
+        value
+            .replace(Regex("[^A-Za-z0-9._-]+"), "-")
+            .trim('-', '.', '_')
+            .take(80)
+            .ifEmpty { "document" }
 
     private fun ensureUniqueOutputPaths(documents: List<PdfInventoryEntry>) {
         val duplicates =
             documents
-                .groupBy { it.outputRelativePath.lowercase() }
+                .groupBy { it.outputRelativePath.lowercase(Locale.ROOT) }
                 .filterValues { it.size > 1 }
         require(duplicates.isEmpty()) {
             "PDF output path collision(s): ${duplicates.keys.sorted().joinToString()}"

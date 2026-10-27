@@ -27,10 +27,10 @@ Start with a table-focused technical spike. Prototype coordinate-aware text/glyp
 The selected output location is:
 
 ```text
-src/main/resources/car-pricelists-extracted/<make>/<source-stem>.json
+src/main/resources/car-pricelists-extracted/<safe-make>/<safe-source-stem>-<relative-path-hash>.json
 ```
 
-Commit these JSON artifacts as requested. This is convenient for inspection and version history, but resources under `src/main/resources` can be bundled into the application distribution. Before packaging or distributing the app, review resource size and source-document terms; if generated raw data should not ship with the application, move it to a non-runtime data directory in a later decision.
+The inventory manifest is `manifest.json`; the batch run writes its per-document outcomes to `batch-manifest.json`. Commit generated JSON artifacts as requested only after checking source terms. This is convenient for inspection and version history, but resources under `src/main/resources` can be bundled into the application distribution. Before packaging or distributing the app, review resource size and source-document terms; if generated raw data should not ship with the application, move it to a non-runtime data directory in a later decision.
 
 ### Raw JSON contract
 
@@ -160,15 +160,16 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 4: Batch runner and change detection
 
-- Walk the configured input directory recursively and accept PDF extensions case-insensitively.
-- Derive output paths from safe relative paths; sanitize names and detect collisions instead of overwriting.
-- Compute SHA-256 before parsing. Skip a document only when its hash and output schema/parser compatibility match.
-- On changed input, re-extract to a temporary output and replace the old artifact only after successful serialization/validation.
-- Continue to the next file after a document-level error; report status and diagnostics for every source.
-- Return failure from the Gradle task if any document failed, while keeping successful outputs available for review.
-- Print a concise summary: discovered, extracted, unchanged, failed, and unsupported/scanned counts.
+- **Status: implemented.** Run `./gradlew extractPdfs` to invoke the local PDFBox batch with the source/output directories configured in `build.gradle.kts`. It writes one JSON artifact per PDF plus `batch-manifest.json`; it does not call external services. The current parser extracts ordered page text and PDF metadata only, so successful artifacts are marked `NEEDS_REVIEW` and explicitly warn that table/cell geometry is not extracted. Scanned/image-only documents also carry a review diagnostic. No production corpus artifacts were generated during implementation; check source terms before running/committing them.
+- [x] Walk the configured input directory recursively and accept PDF extensions case-insensitively.
+- [x] Derive output paths from sanitized relative-path segments, validate containment, and detect case-insensitive collisions instead of overwriting.
+- [x] Compute SHA-256 before parsing. Skip only when source hash, artifact schema, and parser name/version match.
+- [x] On changed input, write to a temporary file and replace the old artifact only after serialization and artifact validation succeed; a failed re-extraction leaves the previous artifact untouched.
+- [x] Continue to the next file after a document-level error; report status and diagnostics for every source in `batch-manifest.json`.
+- [x] Return failure from the Gradle task if any document failed, while keeping successful outputs available for review.
+- [x] Print a concise summary: discovered, extracted, unchanged, failed, and unsupported/scanned counts.
 
-**Done when:** running the batch twice is idempotent, changed inputs are detected, and partial failures are visible without losing successful results.
+**Done when:** running the batch twice is idempotent, changed inputs are detected, and partial failures are visible without losing successful results. **Met by offline fixtures and fake-parser tests.** Real-corpus output generation remains pending source-terms review; feature-matrix extraction remains unsupported and review-only.
 
 ### Stage 5: Tests and corpus review
 
