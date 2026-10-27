@@ -173,14 +173,14 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 5: Tests and corpus review
 
-- Generate small PDF fixtures in tests or use licensed, minimal fixtures checked into test resources.
-- Test text extraction, multiple pages, metadata, malformed/empty/scanned-like behavior, matrix row/column/cell serialization, text-glyph markers, blank cells, unknown symbols, legend meaning, coordinate assignment, page provenance, repeat runs, changed hashes, and partial batch failure.
-- Unit tests should use a fake parser for batch orchestration; Tika integration tests should use controlled fixtures.
-- Do not require OpenRouter, network access, production API keys, or the full real corpus in CI.
-- Create manually annotated expected output for a representative real matrix. Compare every auto-published cell's row, trim, marker state, and interpreted meaning to this reference. Include multi-line labels, merged cells, uneven spacing, rotated/cropped pages, repeated headers, and marks near cell borders where present.
-- Run the real corpus locally and inspect representative matrices from each distinct layout family. Render source-page crops for local review when useful; record extraction gaps and do not claim a supported layout without evidence.
+- **Status: complete for offline regression coverage and current evidence; layout support remains intentionally narrow.** Tests use generated PDFs and fake parsers for orchestration; they require no network, API keys, or full production corpus. The suite covers text and multipage extraction, metadata, empty/malformed/scanned-like PDFs, artifact serialization and provenance, matrix markers/legend interpretation/unknown blanks, repeat runs, changed hashes, atomic replacement, and partial failures.
+- [x] Generate small PDF fixtures in tests; keep the matrix references as manually annotated evidence under `docs/evidence/`.
+- [x] Compare reference-backed matrix artifacts to both checked-in annotations. VW Golf page 8: 96/96 cells assigned, 100% coverage and exactness. Peugeot 5008 page 17: 11/12 assigned, 91.7% coverage and 100% exactness; its visually blank cell remains unknown and review-routed.
+- [x] Run real-page probes and visually inspect representative pages: VW Golf p8, ID.7 p6, Tayron p8, Tiguan p8; Peugeot 5008 p17 and 408 p16; CUPRA Raval p3/p5; Škoda Kodiaq p3/p5; Toyota RAV4 PHEV p4; Peugeot 208 p2.
+- [x] Record layout boundaries: VW and Peugeot pages use distinct marker-table layouts; CUPRA includes version/availability badges and pricing tables; Škoda and Toyota examples use grouped equipment lists and/or technical/pricing tables; Peugeot 208 uses side-by-side trim lists. These pages are visual triage, not additional annotated support.
+- [x] Keep unsupported layouts and ambiguous cells in review. Only the Golf p8 and Peugeot 5008 p17 annotated matrix pages have measured references; no general matrix/table support is claimed, and text-only batch artifacts remain `NEEDS_REVIEW`.
 
-**Done when:** tests run offline, annotated matrix comparisons pass for supported layouts, and unsupported/ambiguous cells are explicitly routed to review.
+**Done when:** offline tests pass, annotated comparisons pass for the two measured pages, and unsupported/ambiguous content remains review-only. Broader corpus layout support requires new annotated references and measured extraction evidence.
 
 ### Stage 6: Handoff to interpretation
 
