@@ -141,13 +141,22 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 3: Define and serialize raw artifacts
 
-- Add serializable Kotlin types for source identity, parser result, pages, ordered blocks, table bounds, rows, columns, cells, marker evidence, legend references, warnings, and review states.
-- Set a schema version from the first output.
-- Store explicit provenance and geometry for every extracted cell/marker: document ID/hash, page number, coordinate bounds, row label, column header, raw symbol, and extraction method.
-- Choose stable formatting and deterministic ordering. If a generated timestamp causes needless diffs, keep it in the manifest or omit it from the per-document artifact.
-- Add validation for source path/hash, page ordering, schema version/status values, unique row/column IDs, and cell-to-row/column references.
+- **Status: complete.** The schema-v1 Kotlin contract and validator are in
+  `PdfExtractionArtifact.kt`; JSON encoding is pretty-printed, deterministic,
+  metadata keys are sorted, and generation timestamps are omitted. Matrix
+  cells keep raw marker evidence and explicit state separate from
+  legend-backed interpretation. Tests round-trip an annotated multi-trim
+  matrix and reject invalid provenance, ordering, schema versions, and cell
+  references. No extracted production-PDF artifacts are generated or checked
+  in at this stage; Stage 2's manually annotated pages are evaluation evidence,
+  not an automatic extractor.
+- [x] Add serializable Kotlin types for source identity, parser result, pages, ordered blocks, table bounds, rows, columns, cells, marker evidence, legend references, warnings, and review states.
+- [x] Set a schema version from the first output.
+- [x] Store explicit provenance and geometry for every extracted cell/marker: document ID/hash, page number, coordinate bounds, row label, column header, raw symbol, and extraction method.
+- [x] Choose stable formatting and deterministic ordering; omit generated timestamps from per-document artifacts.
+- [x] Add validation for source path/hash, page ordering, schema version/status values, unique row/column IDs, and cell-to-row/column references.
 
-**Done when:** an annotated matrix serializes with correct feature-to-trim cells and traceable source/page/geometry evidence; uncertain cells stay reviewable.
+**Done when:** an annotated matrix serializes with correct feature-to-trim cells and traceable source/page/geometry evidence; uncertain cells stay reviewable. **Met for schema and serialization tests only**; automated extraction and production artifact generation remain out of scope until later stages.
 
 ### Stage 4: Batch runner and change detection
 
