@@ -1,0 +1,131 @@
+{
+    "schemaVersion": 1,
+    "source": {
+        "documentId": "skoda/Kodiaq_MY27_PG_January_CW01_2027.pdf",
+        "relativePath": "skoda/Kodiaq_MY27_PG_January_CW01_2027.pdf",
+        "fileName": "Kodiaq_MY27_PG_January_CW01_2027.pdf",
+        "make": "skoda",
+        "modelCoverage": [],
+        "sha256": "cfa46b62684f5059d2c97915055700af96a9351bcef39e3a7855b42474a128d5",
+        "fileSizeBytes": 4208681,
+        "metadata": {
+            "author": "Pavlas, Libor (VGIE SKODA P/Sale)",
+            "creationDate": "2026-10-20T13:15:35Z",
+            "creator": "Microsoft® PowerPoint® for Microsoft 365",
+            "modificationDate": "2026-10-20T13:15:35Z",
+            "producer": "Microsoft® PowerPoint® for Microsoft 365",
+            "title": "Škoda Kodiaq Product Guide"
+        }
+    },
+    "extraction": {
+        "parserName": "Apache PDFBox",
+        "parserVersion": "3.0.8",
+        "pageCount": 16,
+        "status": "NEEDS_REVIEW",
+        "diagnostics": [
+            {
+                "severity": "WARNING",
+                "message": "General page text was extracted; table geometry and feature-matrix cells were not extracted.",
+                "pageNumber": null
+            }
+        ]
+    },
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "January 2027\nŠkoda Kodiaq\nProduct Guide\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 2,
+            "text": "Kodiaq: Engine Range\nModel \nCode\nModel \nDescription\nSeat \nConfiguration\nFuel Transmission Gears\nCO2 \nEmissions\n(g/km)\nF uel\nConsumption \n(l/100km)\nAnnual\nRoad Tax\nFrom\nSelection\nFrom\nSelection +\nFrom\nSportline \nFrom\nPS7 _DD 1.5TSI 150hp DSG mHEV 7-seats Petrol DSG (Auto) 7-speed 140 – 145 6.1 – 6.4 €210 €57,690 €61,590 €64,005\nPS7 _WC 1.5TSI 202hp DSG PHEV 5-seats Petrol/Electric DSG (Auto) 6-speed 36 - 37 1.6 – 1.7 €140 €54,235 €58,595 €58,995\nPS7 _4D 2.0TDI 150hp DSG 7-seats Diesel/HVO DSG (Auto) 7-speed 144 – 149 5.5 – 5.7 €270 €56,980 €62,475 €62,740\nPS7 _6Z 2.0TDI 190hp DSG 4x4 7-seats Diesel/HVO DSG (Auto) 7-speed 162 - 168 6.2 – 6.4 €420 €65,360 €70,830 €73,170\nPlease note, due to optional additions there is the potential that vehicles may enter higher or lower vrt bands, thus affecting the retail price of the car, please see the final slide for all relevant models. \n“Recommended Retail Prices & Annual Road Tax are calculated using the base model WLTP values and are subject to change as a result of your vehicle configuration. Škoda Ireland reserves the right to alter pricing and \nspecification without notice. Delivery & Related Charges Extra - please contact your local Škoda dealer for more information. Šk oda Ireland has made every effort to ensure the accuracy of information but does not accept \nliability for any errors or omissions. The specified fuel consumption and emission values were presented, are the official fi gures unless stated otherwise and are obtained in accordance with Worldwide Harmonized Light \nVehicle Test Procedure (WLTP) and are correct at the time of publication. WLTP values reflect the worldwide standard vehicle range excluding additional equipment such as optional extras and accessories which may have \nan effect on the fuel consumption (l/100km) and CO ₂ emissions produced. Please note WLTP values for vehicle range and consumption may not be realised in real or day to day driving conditions” \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 3,
+            "text": "FUNCTIONAL\nAdaptive cruise control \n‘Kessy Full’ – K eyless entry/go system incl. anti-\ntheft alarm & walkaway locking function \nInfotainment system incl. 10.4” touchscreen \ndisplay , Bluetooth & 9 speakers \nWireless Smartlink (Apple Carplay & Android Auto )\nDual wireless charging ring (subject to device \ncompatibility) \nClimatronic 3 -zone air conditioning \nUSB -C charging points – 2x front/2x rear/1x mirror \nDigital smart dials \nFront & rear parking sensors \nRear view camera\nElectric tailgate \nTrailer hitch preparation \nFront & rear electric windows \nAuto -dimming rear -view mirror \n10.25” digital driver dashboard display \nTraffic sign recognition \nRemote access (3-year subscription) \nSelection: Key Equipment  \nSAFETY\nAdvanced driver alert \nHill hold control \nElectrical child safety lock system \nSeatbelt warning system \nElectronic stability control (ESC ) \niSOFIX child seat anchor points (1x co -driver & 2x \nouter rear ) \nEmergency call (e-call) \nTyre pressure monitoring system (TPMS) \n7 airbags (incl. driver, co -driver, side, front, head + \ncentral airbag) \nKey safety assist systems: \n• Front assist  \n• Side assist \n• Lane assist \n• Turn assist \n• Rear cross assist \n• Emergency assist \n• Intelligent speed assist \n• Multi collision brake assist \nEXTERIOR\n18\" Soira anthracite alloy wheels \nSpare wheel, tool kit & jack \nBody coloured exterior mirrors \nElectrically adjusted/heated exterior mirrors \nLED headlights & LED daytime running lights \nLED taillights \nAll weather lights \nBlack roof rails & window surrounds\nINTERIOR\nBlack/Grey ‘Loft’ fabric upholstery \nInterior ambient lighting incl. footwell lighting \nUnique Dark Chrome (UDC) decorative inserts \n2-spoke leather heated multi -function heated \nsteering wheel with tiptronic paddles \nHeated front seats \nElectric driver seat incl. height adjustment & lumbar\nsupport \nFront & rear centre armrest incl. storage \ncompartment \nFront & rear floor mats \nLuggage compartment lighting incl. storage \ncompartments & 12 -volt socket \nSplit folding rear seat & mechanical seat release \n7 seat configuration ( PHEV only available in 5 seats ) \nImages used are for illustrative purposes only.  \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 4,
+            "text": "Selection +: Key Equipment  \nEffortlessly combining technology with practicality,  the Selection + is equipped with many of the most popular features the Kod iaq has to offer. Key \nequipment includes (in addition to Selection spec) :\nImages used are for illustrative purposes only.  \nLeather Suite upholstery (Black or Cognac)\n19\" Halti alloy wheels \nMatrix LED headlights incl. variable light distribution \nLED taillights with dynamic indicators \nIlluminated front grill incl. dark chrome front grille inserts \nDynamic welcome/leaving effect animation \n‘SUNSET’ dark tinted privacy glass \nAnodized chrome roof rails \nScuff plates in door sill \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 5,
+            "text": "INTERNAL\nSportline: Key Equipment\nWith sharp, sleek details both inside and out, the Sportline is distinctive from every angle. Packed with exclusive styling, the Sportline will ensure you can \nindulge your thirst for adventure in total comfort. Key equipment includes (in addition to Selection spec) : \n19” ‘Tirsuli Anthracite’ alloy wheels (Not standard on 4x4, see next page) \nMatrix LED headlights incl. variable light distribution \nLED tail lights with dynamic indicators \nIlluminated front grill \nPanoramic sunroof \n3-spoke sport multifunction leather heated steering wheel with \ntiptronic paddles \nPower folding exterior mirrors – driver incl. auto -dimming, memory \nfunction & blind spot illumination \nSportline exterior styling pack:\n▪ Front & rear sports bumpers \n▪ Black gloss exterior mirrors \n▪ Black gloss front grille surround\n▪ Black gloss roof rails \n▪ Black gloss rear D -pillar \nSportline interior styling pack:\n▪ Black Suedia & leatherette upholstery \n▪ Front sports seats \n▪ Dark interior headliner \n▪ Aluminium door sills & sports pedals \nImages used are for illustrative purposes only.  \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 6,
+            "text": "CODE DESCRIPTION Selection S election + Sportline\n45N 18\" Soira anthracite alloy wheels STANDARD --- ---\n53Q 19” Halti anthracite alloy wheels --- STANDARD ---\nPJ2 19” Rapeto silver alloy wheels --- €0 ---\n53R 19” Tirsuli anthracite alloy wheels --- --- STANDARD\nPJ6* 20” Rila aero alloy wheels --- €1,127 €1,127\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information. \n20“ ‘Rila’ aero alloy wheels\n(Code PJ6)\n18\" Soira anthracite alloy wheels\n(Code 45N)\n19 “ Halti anthracite alloy wheels\n(Code 53Q)\n19 “ Rapeto silver alloy wheels\n(Code PJ2) \nKodiaq: Wheels \n19 “ ‘T irsuli ’ anthracite \nalloy wheels (Code 53R)\n*Standard on 4x4 2.0TDI 190 BHP  Sportline Engine\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 7,
+            "text": "Kodiaq: Design Selection – Upholstery & Decorative trim\nIMAGE DESIGN CODE\nLINKED \nOPTIONS\nUPHOLSTERY DASHBOARD DOOR LINING ROOF LINER\n1 Loft ED --- Black & grey fabric with green & black stitching Black -grey fabric Black -grey fabric Grey \n2 Lounge EV PI1 Grey fabric & Suedia with mustard stitching Grey Suedia Grey Suedia Grey \n3 Suite Black EO PI2 Black leatherette with grey stitching Black leatherette Black leatherette Grey\n4 Suite Cognac EW PI3 Cognac leatherette with cognac stitching Cognac leatherette Cognac leatherette Grey\n5 Sportline EA --- Black suedia & leatherette with grey stitching Black Suedia Black Suedia Black\n1 2 3\n4 5\nImages used are for illustrative purposes only.  \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 8,
+            "text": "Kodiaq: Design Selections\nCODE\nLINKED \nOPTIONS\nDESIGN SELECTION Selection Selection + Sportline\nED --- Loft Design selection STANDARD --- ---\nEV PI1 Lounge Design selection € 2,500 --- ---\nEO PI2 Suite Black Design selection € 2,725 STANDARD ---\nEW PI3 Suite Cognac Design selection €2,725 €0 ---\nEA --- Sportline Design selection --- --- STANDARD\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 9,
+            "text": "Kodiaq: Optional Extras\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\nPACKAGES Selection Selection + Sportline\nPWA\nWinter pack:\n• Rear heated seats \n• Heat insulated windshield\n€596 €596 €596\nPLB\nLight & View pack:\n• Matrix LED headlights\n• LED taillights with dynamic indicator \n• Illuminated front grill incl. dark chrome front grille inserts \n€2,253 STANDARD STANDARD\nPTA\nTechnology pack : (requires YOZ)\n• 13” Display \n• Navigation \n• Display cleaner \n• Remote access + Infotainment Online (YOZ)\n€1,530 €1,530 €1,530\nPTD\nTechnology pack plus : (requires YOZ)\n• 13” Display \n• Navigation \n• Display cleaner \n• Head up display (HUD) \n• Remote access + Infotainment Online \n€2,231 €2,231 €2,231\nPXC\nOptic pack:\n• Anodized chrome roof rails \n• Unique dark chrome D pillar\n• Scuff plates in door sill \n€647 STANDARD ---\nPPP\nPerformance pack: (4x4 only) \n• Dynamic Chassis Control (DCC) \n• Progressive steering \n• Hill start assist \n€1,340 €1,340 €1,340\nPAC\nAssisted drive pack:\n• 360 -degree camera\n• Remote park assist\n• Trained parking\n€1,287 €1,287 €1,287\nWCA\nConvenience pack:\n• Power seat adjustment for both front seats, with memory feature and seat cushion depth adjustment\n• Pneumatically adjustable lumbar support on both sides\n• Canton sound system\n• Virtual pedal – foot operated sensor\n€1,584 €1,584 €1,584\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 10,
+            "text": "INTERNAL\nKodiaq: Optional Extras\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\nOPTIONS Selection Selection + Sportline\n3FU Panoramic sunroof --- €1,747 STANDARD\n4KF ‘SUNSET ’ dark tinted privacy glass €330 STANDARD STANDARD\nPK0 Tow bar – electrically retractable (PHEV only) €1,135 €1,135 €1,135\n6NW Black fabric ceiling €110 €110 STANDARD\nYOZ Remote Access & Infotainment Online  (3-year subscription) (requires PTA/PTD) €0 €0 €0\nEA9 Extended warranty (5 year / max. 150,000km) €1,123 €1,123 €1,123\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 11,
+            "text": "Smokey Diamond Silver (B3B3 – Metallic) Race Blue (8X8X – Metallic) Velvet Red (K1K1 – Exclusive)Graphite Grey  (5X5X – Metallic)\nKodiaq: Exterior Colours\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable. All the colour images on this page are matched as accurately as possible to the actual paint colours used. However, due to print processes, \nŠkoda Ireland cannot guarantee that colours shown are 100% accurate. Please contact your local Škoda dealer for more informat ion.\nEnergy Blue (K4K4 – Solid) Steel Grey (M3M3 – Solid)\nBronx Gold ( P4P4 – Metallic) Black Magic (1Z1Z – Metallic)Moon White (2Y2Y – Metallic)\nDESCRIPTION Selection Selection + Sportline\nSolid: Energy Blue €0 €0 €0\nSolid : Steel Grey €1,000 €1,000 €1,000\nMetallic €1,000 €1,000 €1,000\nExclusive: Velvet Red €1,600 €1,600 €1,600\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 12,
+            "text": "Kodiaq : Technical Data \n1.5TSI 150hp \nm-HEV DSG\n2.0TDI 150hp\nDSG\n2.0TDI 190hp\nDSG 4x4\n1.5TSI 202hp PHEV\nDSG\nFuel Type Petrol Diesel Diesel Petrol/Electric\nCylinders / Displacement (cc) 4 / 1498 4 / 1968 4 / 1968 4 / 1498\nMax. Power: kW 110 110 142\nPetrol engine : 110\nPHEV motor: 40\nMax/ Torque: Nm 250 360 400 250\nTransmission DSG (Auto) DSG (Auto) DSG (Auto) DSG (Auto)\nGears 7-speed 7-speed 7-speed 6-speed\nTraction System Front wheel drive Front wheel drive All wheel drive Front wheel drive\nLength (mm) 4758 4758 4758 4758\nWidth (mm) 1864 1864 1864 1864\nHeight (mm) 1678 1678 1676 1674\nWheelbase (mm) 2788 2788 2789 2790\nLuggage Capacity (l) (PHEV - 5 seat configuration) 340 – 845 340 – 845 340 – 845 910\nTop Speed (km/h) 205 203 217 210\n0 – 100km/h (seconds) 9.9 9.8 8.0 8.5\nTurning Circle (m) 11.2 11.2 11.2 11.2\nFuel Consumption  (l/100km) 6.1 – 6.4 5.5 – 5.7 6.2 – 6.4 1.6 – 1.7\nRange WLTP (km) --- --- --- 116 - 119 \nWLTP Emissions Combined (CO2 g/km) 140 – 145 144 – 149 162 – 168 36 – 37\nGross Vehicle Weight (kg) 2273 2411 2510 2450\nMax. Towing Capacity -Braked (kg) at 12 % 1800 2000 2500 1800\nFuel Tank Capacity (litres) 55 55 58 45\nBattery size (kWh) --- --- --- 19.7\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 13,
+            "text": "Battery & Charging\nThe new Kodiaq iV is well suited not only for home charging, but also for charging at public chargers. Plus,\nthe battery is continuously charged by regenerative braking because it processes the kinetic energy\ngenerated when braking. Fitte d with a 25kWh Lithium -ion battery which provides a WLTP range of over \n100km.  \nCharging times (approximat e data):\n*  Maximum DC charging power is dependent upon various charging conditions  and may vary as a result. \n** Typically, a public charger or home wallbox with three -phase 16 A.\n*** Typically charging from a household socket with one-phase 10 A.\nSource Charging power SoC Charging time\nDC 40 kW * 10 –80% 25 min.\nAC\n11 kW**\n2.3 kW***\n0–100%\n0–100%\n2 h 30 min.\n11 h 15 min.\nMode 3 standard\nWallbox cable\n(Type 2)\nThe cable is part\nof the AC charging \nstation\n–\nMode 4\n(CCS 2 connector)\nThe cable is part\nof the DC charging\nstation\n–\nCharging cables compatible with the Kodiaq iV:\nFrom charging from a \nwallbox\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 14,
+            "text": "Only Škoda vehicles from “Model Year 2022” (not registration in 2022) are compatible with HVO. You can identify if \nyour Škoda is HVO compatible by the lettering “XTL” detailed inside the fuel filler flap. If you are unsure of your \nvehicles model year please contact your Škoda Dealer. Biodiesel or vegetable oil should not be used in Škoda vehicles \nand these products should not be confused with HVO. Only HVO that meets standard EN 15940 should be used in \nŠkoda vehicles. \nWhat is HVO?\nFuel your new diesel Škoda with HVO and reduce emissions by up to 90%   \nHVO ( Hydrotreated Vegtable Oil)\nHVO is a fuel replacement or alternative for compatible diesel engines. HVO offers a cleaner way to fuel by providing up to 9 0% reduced \nCO2 emissions. Unlike first generation biofuels, which are made from crops such as rapeseed and soy, Hydrotreated Vegetable Oil (HVO) is \na second -generation biofuel made from pre -existing bio -waste products, primarily used cooking and vegetable oil from food indust ry \nwaste. Manufactured from renewable and sustainable waste, HVO is a paraffinic drop -in fuel designed as a direct replacement for diesel. It \nmeets the international fuel standard EN 15940. HVO can provide full lifecycle greenhouse gas (GHG) emission savings of up to 90 % when \ncompared to conventional diesel fuel. \nWhat are the benefits?\nSustainability – Made from sustainable and renewable raw materials, HVO reduces carbon emissions by as much as 90%. This enables \nhouseholds and businesses to make an immediate reduction in carbon emissions and reduce their environmental impact.\nImproved Air Quality  due to a reduction in particle and nitrogen oxide ( Nox ) emissions compared to diesel \nPerformance – Your vehicles performance will be indistinguishable from diesel with the fuel performing better under certain \ncircumstances such as cold winter conditions\nDirect Drop -In – No modifications are required to new Škoda’s in order to use HVO. HVO and diesel fuel can be interchanged and mixed in \nany ratio or concentration.\nPrice – currently many fuel suppliers in Ireland are providing HVO at a comparable or equivalent price to diesel. So there is no addi tional \ncost to  switching\nWhere can I get HVO for my Škoda?\nHVO is already available at selected Certa and Circle -K outlets in Dublin, Tipperary, Carlow, Cork and Donegal with availability improving all \nthe time.    \nHow do I know if my Škoda is compatible with HVO?\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 15,
+            "text": "Kodiaq : Safety Assist Systems \nThe Kodiaq New Generation has been designed with safety at the forefront and has therefore been fitted as standard with industry leading safety systems, \nproviding the utmost peace of mind for both drivers and passengers. Key safety system includes: \nBy recognizing road signs, the driver is \nalerted visually and acoustically when over \nthe speeding limit. This can be adjusted in \nthe infotainment system.\nThis system monitors the distance from \nthe car in front and will automatically \napply braking and pedestrian protection \nmeasures such as a visual collision warning \nor gradual braking pressure depending \nupon speed. The system also factors in \nstationary objects such as pedestrians.\nFront Assist Side Assist Intelligent Speed Assist Emergency Assist \nLane Assist Turn Assist Multi Collision Brake AssistRear Cross Assist \nThis system alerts drivers of approaching \nvehicles that are hidden in the blind spot. \nA warning light housed in the wing \nmirrors flashes to notify the driver of \napproaching objects. \nWhen the driver begins to show signs of \ninactivity, the vehicle will engage this \nsafety feature. For example, the vehicle  \napplies braking pressure, and the seatbelt \nis jerked to alarm the driver.\nThis system will use automated steering \nto bring the vehicle back into road \nposition if it begins to veer out of its lane. \nThe front camera monitors the position of \nthe vehicle within its respective lane.\nWhile performing a reversing \nmanoeuvre, the rear sensors will monitor \nthe area behind the vehicle and if a \npotential danger is sensed, the automatic \nbrakes are activated, and the vehicle is \nbrought to a halt. \nIn the event of a collision, the sensors in \nthe vehicle will react, in turn activating the \nautomatic braking system to prevent any \nfurther accidents. \nWhen the vehicle is turning at speeds \nbetween 2 -20km/h and there is another \nvehicle approaching from the opposite \ndirection, automatic brakes will be \nactivated if a predicted collision is \nimminent. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 16,
+            "text": "INTERNAL\nNext Steps\n",
+            "blocks": [],
+            "tables": []
+        }
+    ]
+}

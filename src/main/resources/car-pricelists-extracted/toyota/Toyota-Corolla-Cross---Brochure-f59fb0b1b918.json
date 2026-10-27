@@ -1,0 +1,144 @@
+{
+    "schemaVersion": 1,
+    "source": {
+        "documentId": "toyota/Toyota Corolla Cross - Brochure.pdf",
+        "relativePath": "toyota/Toyota Corolla Cross - Brochure.pdf",
+        "fileName": "Toyota Corolla Cross - Brochure.pdf",
+        "make": "toyota",
+        "modelCoverage": [],
+        "sha256": "cf27bdaeedb66bea2c181c71fc43e92e79e352889a66999cf6619ab1dbf188ad",
+        "fileSizeBytes": 9423743,
+        "metadata": {
+            "author": "Blaise Idzikowski",
+            "creationDate": "2026-02-25T13:57:58Z",
+            "creator": "Canva",
+            "keywords": "DAG98M03g1Q,BAGN79CWP4Y,0",
+            "modificationDate": "2026-07-13T12:42:08Z",
+            "producer": "Canva",
+            "title": "Corolla-Cross-PDF-Guide (MY26)"
+        }
+    },
+    "extraction": {
+        "parserName": "Apache PDFBox",
+        "parserVersion": "3.0.8",
+        "pageCount": 18,
+        "status": "NEEDS_REVIEW",
+        "diagnostics": [
+            {
+                "severity": "WARNING",
+                "message": "General page text was extracted; table geometry and feature-matrix cells were not extracted.",
+                "pageNumber": null
+            }
+        ]
+    },
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "TOYOTA \nCOROLLA CROSS\nPRODUCT GUIDE \nEffective from  February 2026\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 2,
+            "text": "COROLLA CROSS\nLife is a fast-paced adventure full of twists and turns, so you’ll need a car that makes\nnavigating you to each milestone an enjoyable ride. If the nature of family life\nregularly disrupts your best-laid plans, the all-new Toyota Corolla Cross gives you\nand your loved ones everything required to safely tackle the unpredictable journey.\nAdopting Toyota’s newly developed fifth generation hybrid system, this practical SUV\noffers outstanding fuel efficiency. Whatever life brings, cherish every moment with\nToyota Corolla Cross. \nScan the QR code to learn more about the Corolla Cross.\nALL IMAGES CONTAINED IN THIS DOCUMENT ARE FOR ILLUSTRATIVE PURPOSES ONLY. LOCAL SPECIFICATION MAY VARY.\nCOROLLA CROSS\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 3,
+            "text": " \nSPECIFICATIONS\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 4,
+            "text": "Boot Door Release with Handle  \nDual-Zone Automatic Air Conditioning  \nFront And Rear Power Windows with\nOne Touch Auto Up & Down Function  \nPower-Adjustable, Automatically\nRetractable, Heated Door Mirrors\nCOROLLA CROSS\nCOROLLA CROSS\nLUNA\nToyota Safety Sense 3 (TSS3)\nAnti-lock Braking System (ABS) with\nElectronic Brake force Distribution (EBD)\nSupplemental Restraint System (SRS)\nAirbags - 8 Airbags \nPre-Collision System with Intersection\nCollision Avoidance Support\nPre-Collision System with Pedestrian &\nDaytime Cyclist and Motorbike Detection\nFront-to-Front Oncoming Car and\nMotorbike Detection (Day) on Pre-\nCollision System\neCall Emergency Call System\nDriver Monitor Camera\nEmergency Brake-light Signal (EBS)\nEmergency Driving Stop System (EDSS) \nProactive Driving Assist (PDA) \nEmergency Steering Assist on Pre-\nCollision System\nHill-start Assist Control (HAC)\nImmobiliser\nIntelligent Adaptive Cruise Control\n(iACC)\nLane Departure Alert with Steering\nControl\nLane Trace Assist (LTA)\nRear Seat Reminder System (RSRS)\nRear-View Camera\nRoad Sign Assist (RSA)\nTyre Pressure Warning System (TPWS)\nAutomatic High Beam (AHB)\nBi-Beam LED Headlamps\nBlack Door Mirrors\nBlack Roof Rails\nDaytime Running Lights (Bulb) \nFront Fog Lamps (LED)\nManual Headlamp Levelling\nRain Sensor\nRear Combination Lamps  \nShark-Fin Antenna\n60:40 Split-Folding Rear Seats\nBlack Fabric Upholstery\nHeated Driver And Front Passenger\nSeats\nISOFIX Seat Fixing\nManually Height-Adjustable Driver Seat\nManually Sliding And Reclining Front\nPassenger And Driver Seat\nPower-Adjustable Lumbar Support On\nDriver Seat\nReclining Rear Seats\n10.5\" Toyota Smart Connect Multimedia\nSystem   \n6 Speakers  \nBluetooth® Hands-Free System  \nCloud Navigation  \nSmart Voice Assist  \nSmartphone Integration with Wireless\nApple CarPlay™ * & Android Auto™  \nUSB Ports (1 x Front - Type C, 2 x Rear -\nType C)  \n* Apple CarPlay is a trademark of Apple Inc.\nSAFETY\nCONVENIENCE\nINTERIOR & INSTRUMENTATION AUDIO & NAV\nEXTERIOR & VISIBILITY\nHP 140\nCO² Combined (WLTP) 112g/km \nFuel Consumption Combined \n       (WLTP) 4.9 l/100km\nAnnual Road Tax €190\nBraked Towing 750 kg\n17\" Silver Alloy Wheels (5-double-spoke)\nTyre Repair Kit\nWHEELS\nTECHNICAL SPECIFICATION SEATSMyToyota\nRemote Air Conditioning System\nRemote Door Lock\n3-Spoke Leather Steering Wheel\n12.3\" Coloured TFT Information Display\nScreen\nCup Holders (X2 Front, X4 Rear)\nElectro-Chromatic Rear-View Mirror\nElectronic Parking Brake\nFront 12V Power Outlet\nLeather-Like Front Door Armrests\nManual Telescopic & Tilting Steering\nWheel\nSteering Wheel Switches: Adaptive Cruise\nControl, Lane Departure Alert, Voice\nRecognition \nWireless Charger\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 5,
+            "text": "COROLLA CROSS\nSPORT\nAdds to Luna\nCOROLLA CROSS\nTECHNICAL SPECIFICATION\nChrome Window Frame\nDaytime Running Lights (LED)\nRear Privacy Glass \nHP 140\nCO² Combined (WLTP) 113g/km\nFuel Consumption Combined \n       (WLTP) 5.0 l/100km\nAnnual Road Tax €190\nBraked Towing 750 kg\nCONVENIENCE\nSmart Entry & Start System \nPower Back Door \n18\" Dark Grey Machined-Face Alloy\nWheels (6-Double-Spoke)\nEXTERIOR & VISIBILITYWHEELS\nBlind Spot Monitor (BSM) \nFront & Rear Parking Sensors\nRear Cross Traffic Alert with\nAutomatic Braking \nSafe Exit Assist \nSAFETY INTERIOR & INSTRUMENTATION\nHeated Steering Wheel\nIlluminated Entry System\nLeather Gear Shift Knob\nSlide Function in Console Box\nSoft-Touch Front Door Trim\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 6,
+            "text": "COROLLA CROSS\nSOL\nAdds to Sport\nCOROLLA CROSS\nEXTERIOR & VISIBILITY SEATS\nPartial Synthetic Leather Upholstery\nTECHNICAL SPECIFICATION\nHP 140\nCO² Combined (WLTP) 114g/km \nFuel Consumption Combined \n       (WLTP) 5.0 l/100km\nAnnual Road Tax €190\nBraked Towing 750 kg\nPanoramic Roof\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 7,
+            "text": "Synthetic Leather & Brin Naub    Suede\nGR SPORT Seats\nGR Sport Leather Steering Wheel \nCOROLLA CROSS\nGR SPORT\nAdds to Sol \nCOROLLA CROSS\nEXTERIOR & VISIBILITY\nTECHNICAL SPECIFICATION\nHP 180\nCO² Combined (WLTP) 117g/km\nFuel Consumption Combined \n       (WLTP) 5.1 l/100km\nAnnual Road Tax €190\nBraked Towing 750 kg\nMyToyota\nDigital Key\nINTERIOR & INSTRUMENTATION\nBlack Sporty Front Bumper and Grille\nFull Bi-tone Exterior\nPaddle Shifts\nSEATS WHEELS\n19\" Alloy Wheels\nAUDIO & NAV\nEmbedded Navigation\n9 JBL Speakers\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 8,
+            "text": "COROLLA CROSS\nCOROLLA CROSS\nEXTERIOR COLOURS \nPure White (040) * ^ Metal Stream (1K0 ) ** ^\nPearl Ice White (089) ***  ^ Pearl Red (3U5) *** ^\n(Not available on Luna) \nUrban Khaki (6X3) *\nBlack (209) **\nSolid* \nMetallic** \nPearlescent***\nBody Colour Shark Fin Antenna ^ \nSandstone (4Z2) ** Massive Grey (1L6) **\nMONOTONE\nLuna, Sport, Sol\nBITONE\nGR SPORT \nPearl Ice White Bi-tone (2VP) ***\nStorm Grey Bi-tone (M29) ** Pearl Red Bi-tone (2TB) *** Metal Stream Bi-tone (2NK) **\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 9,
+            "text": "COROLLA CROSS\nCOROLLA CROSS\nINTERIOR TRIMS\nBlack Fabric Upholstery\n(FA20) (Luna & Sport) \nAvailable in black fabric or partial synthetic leather with a unified black instrument\npanel that delivers a fresh image.\n \nBlack Partial Synthetic Leather Upholstery\n(LA20)  (Sol)\nSynthetic Leather & Brin Naub \nSuede (EA20) (GR SPORT)\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 10,
+            "text": "PERFORMANCE 1.8 HEV FWD 2.0 HEV FWD\nENGINE (cc) 1798 1987\nMAX SPEED (km/h) 170 180\nACCELERATION 0-100 km/h (s) 9.9 - 10 7.7\nMAX POWER (hp/kW) 140 / 103 197 / 145\nMAX TORQUE (Nm) 142 190\nBATTERY (Type/Cells) Lithium-ion / 56 Lithium-ion / 60\nEMMISSIONS & FUEL 1.8 HEV FWD 2.0 HEV FWD\nCO2 (g/km) 112 -114 117\nFUEL (l/100km combined) 4.9 - 5.0 5.2\nNITROGEN OXIDES (NOx) 2.4 2.1\nDIMENSIONS 1.8 HEV FWD 2.0 HEV FWD\nLENGTH 4460 4465\nWIDTH 1825 1825\nHEIGHT 1620 1605\nWHEELBASE 2640 2640\nMAX BOOT CAPACITY (l) 473 425\nPERFORMANCE\nAND EFFICIENCY\nCOROLLA CROSS\n4460 mm 1825 mm \n 1\n62\n0 \nm\nm\n \nCustomers can choose between 1.8 (Luna, Sport, Sol) or 2.0 versions (GR SPORT)\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 11,
+            "text": "COROLLA CROSS\nKEY ACCESSORIES\nCOROLLA CROSS\nCOROLLA CROSS PROTECTION PACK\nScan the QR Code for more information on accessories.\nBOOT LINER \nTailored to fit the boot of your vehicle and provide\nprotection against dirt and spills.\nRUBBER FLOOR MATS\nGenuine tailored rubber floor mats help protect your carpet\nagainst the very worst conditions.\nFRONT & REAR MUD GUARDS \nDesigned to minimise water, mud and stones spraying onto\nyou car’s body.\nLOCK NUTS \nReplacing one nut on each wheel with a Toyota hardened steel\nwheel lock will maximise security for your valuable alloys. \nREAR BUMPER PROTECTION PLATE \nA clear plastic film designed to protect the rear bumper\npaintwork against scratching when sliding heavy or awkward\nloads into the boot. \nCOROLLA CROSS CARE PACK\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 12,
+            "text": "DISCOVER HYBRID\nWhy Hybrid? \nRefuel as usual\nRefuelling a Hybrid car is easy. Top up your Toyota Hybrid with petrol at a\nfilling station, as you would a conventional car.\nResponsive and efficient \nToyota Hybrids seamlessly combine petrol and electric power to optimise\nefficiency and deliver smooth, responsive power. They drive much like a\nconventional car but can cover up to 42% of your driving distance and 56%\nof your driving time in electric-only EV modes.\nNo Plugging In\nToyota Hybrids charge their batteries while braking and coasting. Together\nwith their onboard combustion engine, this means you don’t need to worry\nabout electric range, and no need to plug in your car to charge.\nScan the QR Code to learn more about Toyota Hybrid!\nToyota has pioneered Hybrid technology for more than 25 years. Our Hybrid cars are\nenjoyed by millions of drivers on the road today. Toyota’s latest fifth-generation Hybrids\ncombine an electric motor and a petrol engine in one best-of-both-worlds powertrain,\ndelivering impressive performance and driving range. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 13,
+            "text": "ALWAYS ON THE GO,\nALWAYS CONNECTED\nThe intelligent cockpit keeps everything in sync between your car and smartphone.\nDesigned to make driving easier, the MyToyota App on your smartphone opens up a world\nof connectivity. Depending on the model, check your car’s battery level, schedule\ncharging and view trip data. Schedule remote A/C to cool and heat your vehicle before\ndriving.\nScan the QR code to learn more about the MyToyota App.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 14,
+            "text": "TOYOTA SAFETY SENSE\nToyota Safety Sense features a set of five active technologies with the ultimate\ngoal being to reduce traffic accidents as much as possible, helping to create a\nsafer driving environment for everyone, while supporting you in your daily\njourney.\nScan the QR Code to learn more about Toyota Safety Sense!\nAdaptive Cruise Control\nDrivers can choose their cruising speed at a pre-set distance from the\nvehicle in front. If this distance falls, the system will reduce it’s speed.\nAutomatic High Beam \nDesigned to optimise visibility during night driving by automatically\nswitching between high and low beam for oncoming vehicles and\nleading traffic\nLane Departure Alert\nThe lane-centring function will alert the driver if the vehicle starts to\ndeviate from it’s lane.\nPre-Collision System\nRecognizes a potential head-on impact and a wide range of objects in\nthe car’s path, including pedestrians, cyclists and motorcycles.\nRoad Sign Assist\nMonitors the road signs ahead, displaying useful information such as the\ncurrent speed limit.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 15,
+            "text": "MANUFACTURER’S\nWARRANTY\nFor peace of mind Toyota manufacturer’s warranty ensures that every trip runs\nsmoothly with:\n \nManufacturer Warranty\n• 3yrs/100,000km - Manufacturers Warranty\n• 5yrs/100,000km - All Hybrid Components\n• 12yrs/unlimited mileage – Corrosion Perforation\nRoadside Assistance\n3 years of roadside assistance with Toyota Eurocare in the case of: \n• Mechanical breakdown\n• Accident\n• No fuel\n• Flat battery\n• Flat Tyre\n• Key lost or locked in\nHybrid Warranty\n• 5yrs/100,000km - All Hybrid Components (Including Hybrid Battery)\n• Up to 15yrs/unlimited mileage Hybrid Battery Extended Care once\n  serviced with a Toyota Dealer\nCall Toyota Eurocare on 1800-741-700 or from abroad +353 1 6193640\nFor further warranty details or recovery services contact your local Toyota Dealer.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 16,
+            "text": "TOYOTA RELAX\nToyota Relax is a testament to the confidence we place in the quality of our vehicles. After your\nmanufacturer’s warranty finishes, you can still feel complete peace of mind, with a new 12\nmonth or 15,000km Toyota Relax warranty if you service your vehicle with us. So you can rest\nassured that your car is in safe hands with expert technicians, who only use genuine parts. So\nyour Toyota stays 100% Toyota.\n \nIf you choose to service with us, you are eligible for a new Toyota Relax warranty - up to 10 years\nvehicle age or 185,000km (whichever comes first) after the expiration of the manufacturer’s\nwarranty. See Toyota Website (www.toyota.ie/relax) for more details.\nYARIS\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 17,
+            "text": "\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 18,
+            "text": "BUILT FOR A BETTER WORLD\nTo the best of our knowledge, all information in this product guide is correct at the time of going to print. Details of specifications and equipment\nprovided in this product guide are subject to local conditions and requirements and may, therefore, vary from models available in your area. Please\nenquire with your local dealer for details on your local specifications and equipment. Vehicle body colours may differ slightly from the printed\nphotographs in this Product Guide. Toyota Ireland reserves the right to alter any details of specifications and equipment without prior notice. © 2026\nby Toyota Ireland. No part of this publication may in any way be reproduced without the prior written approval of Toyota Ireland.\n02/2026/COROLLACROSS/IRE\n",
+            "blocks": [],
+            "tables": []
+        }
+    ]
+}
