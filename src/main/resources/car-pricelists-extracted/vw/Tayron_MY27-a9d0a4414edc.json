@@ -1,0 +1,125 @@
+{
+    "schemaVersion": 1,
+    "source": {
+        "documentId": "vw/Tayron_MY27.pdf",
+        "relativePath": "vw/Tayron_MY27.pdf",
+        "fileName": "Tayron_MY27.pdf",
+        "make": "vw",
+        "modelCoverage": [],
+        "sha256": "e805c6f3d5724bb32939a33fd481c8c252497dd0ff2570cbedca10d4f8bfcbb0",
+        "fileSizeBytes": 3387728,
+        "metadata": {
+            "author": "Delahunt, Ciara (VGIE VWPC P/Sales)",
+            "creationDate": "2026-10-02T12:08:47Z",
+            "creator": "Microsoft® PowerPoint® for Microsoft 365",
+            "modificationDate": "2026-10-02T12:08:47Z",
+            "producer": "Microsoft® PowerPoint® for Microsoft 365",
+            "title": "The all new ID.7 Pro S"
+        }
+    },
+    "extraction": {
+        "parserName": "Apache PDFBox",
+        "parserVersion": "3.0.8",
+        "pageCount": 15,
+        "status": "NEEDS_REVIEW",
+        "diagnostics": [
+            {
+                "severity": "WARNING",
+                "message": "General page text was extracted; table geometry and feature-matrix cells were not extracted.",
+                "pageNumber": null
+            }
+        ]
+    },
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "Tayron\nOctober 2026\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 2,
+            "text": "Discover your Tayron. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 3,
+            "text": "Discover more at volkswagen.ie \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 4,
+            "text": "Discover the trimline for you. Discover more at volkswagen.ie \nModel Code Model Engine / Transmission CO22 VRT2 Consumption2 Annual Road Tax1 RRP3 Delivery & Service ROTR*\nR41DZY Tayron Style 1.5 eHybrid 204HP DSG 35g 7% 1.5 €140 €57,495 €2,180 €59,675\nR41EZY Tayron R-Line 1.5 eHybrid 204HP DSG 37g 7% 1.6 €140 €58,750 €2,180 €60,930\nR41EZY Tayron R-Line 75 1.5 eHybrid 204HP DSG 38g 7% 1.7 €140 €60,780 €2,180 €62,960\neHybrid (PHEV) – 5 Seats\nDiesel – 7 Seats\nModel Code Model Engine / Transmission CO22 VRT2 Consumption2 Annual Road Tax1 RRP3 Delivery & Service ROTR*\nR41C4Z Tayron Life 2.0 TDI 150HP DSG 143g 21.5% 5.5 €270 €59,650 €2,180 €61,830\nR41C4Z Tayron Edition 75 2.0 TDI 150HP DSG 143g 21.5% 5.5 €270 €59,980 €2,180 €62,160\nR41D4Z Tayron Style 2.0 TDI 150HP DSG 145g 25% 5.6 €270 €70,695 €2,180 €72,875\nR41E4Z Tayron R-Line 2.0 TDI 150HP DSG 148g 25% 5.6 €270 €69,895 €2,180 €72,075\nR41E4Z Tayron R-Line 75 2.0 TDI 150HP DSG 149g 25% 5.7 €270 €71,925 €2,180 €74,105\n(1) Prices shown are recommended retail prices by Volkswagen Ireland and include delivery and, where stated, an optional Service Plan. The Service Plan can be removed on request. Vehicle Registration Tax (VRT) and annual road tax are based on official World Harmonised Light Vehicle Test (WLTP) values and the rates applicable at the time of \npublication. The final VRT payable may change depending on vehicle specification. Please confirm final pricing and taxes with your authorised Volkswagen retailer. \n(2) Fuel consumption and CO₂ emissions shown are official WLTP values for standard production vehicles. Optional equipment and accessories may affect these values. Real world performance will vary depending on driving style, speed, weather, passengers, load and use of vehicle systems. For exact vehicle values, please configure your vehicle at \nvolkswagen.ie. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 5,
+            "text": "Discover the trimline for you. Discover more at volkswagen.ie \nLife\nEdition 75 \n• LED Headlamps (Basic)\n• Rear View Camera\n• Anti-Theft Alarm System\n• 3 Zone Climatronic\nAll below specification1 is included as highlights\n• 10-Colour Ambient Surround Lighting (dash)\n• Park Assist Plus with Park Distance Control \n• Automatic Emergency Braking Front Assist\n• 17” Venezia Alloy Wheels3\n• Metallic Paint\n• Heated Front Seats\n• Multi-Function Steering Wheel, \nHeated\n• Area View Camera\n• LED Plus Headlamps with Ambient Light Strip\n• Rear Tinted Windows\n• Electric Boot Closing\n• Memory Feature for Park Assist\n• 10-Colour Ambient Surround Lighting \n(Dash/Doors)\n \nAll below specification1 is included in addition to ‘Life’\n(1) Specifications, standard equipment and options shown are for information only and are correct at the time of publication. Volkswagen Ireland reserves the right to change specifications, prices or withdraw products without notice. Availability of features and options may vary. If a specific feature is important to you, please confirm it with your \nauthorised Volkswagen retailer before ordering. \n(2) Vehicles equipped with AI based or voice assistant features provide information and responses generated automatically. These features are for general assistance only and may be incomplete, inaccurate or out of date. AI features do not replace driver judgement, navigation systems, road signage or safe driving practices. The driver remains fully \nresponsible for always operating the vehicle safely. Availability and functionality may depend on software version, data connection and market availability and may change over time.\n(3) Tyre information is provided in accordance with EU Regulation 2020/740 and is available in the Volkswagen online configurator. Three year tyre insurance covers tyres damaged by an insured event. Exclusions and terms apply. Full details are available at volkswagen.ie. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 6,
+            "text": "Discover the trimline for you. Discover more at volkswagen.ie \nStyle\nR-line  \n• 18” Napoli Alloy Wheels3\n• 30-Colour Ambient Lighting\n• Sports Comfort Seats in Front\n• Rear View Camera\n• Adaptive Chassis Control DCC Pro\n• Front Seats with Massage Feature\n• Automatic Emergency Braking Front Assist\n• Progressive Steering\n• 19” Coventry Alloy Wheels3\n• Black Headliner\n• Bumpers in Sports Style\n• Leather Sports Steering Wheel, Heated\n• Inserts of Front Seats and Outer Rear Seats in \nFabric “R-Line”\n• R-Line Equipment\n \nAll below specification1 is included in addition to ‘Style’\n(1) Specifications, standard equipment and options shown are for information only and are correct at the time of publication. Volkswagen Ireland reserves the right to change specifications, prices or withdraw products without notice. Availability of features and options may vary. If a specific feature is important to you, please confirm it with your \nauthorised Volkswagen retailer before ordering. \n(2) Vehicles equipped with AI based or voice assistant features provide information and responses generated automatically. These features are for general assistance only and may be incomplete, inaccurate or out of date. AI features do not replace driver judgement, navigation systems, road signage or safe driving practices. The driver remains fully \nresponsible for always operating the vehicle safely. Availability and functionality may depend on software version, data connection and market availability and may change over time.\n(3) Tyre information is provided in accordance with EU Regulation 2020/740 and is available in the Volkswagen online configurator. Three year tyre insurance covers tyres damaged by an insured event. Exclusions and terms apply. Full details are available at volkswagen.ie. \nAll below specification1 is included in addition to ‘Life’\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 7,
+            "text": "Discover the trimline for you. Discover more at volkswagen.ie \nR-Line 75\n• 20” Leeds Alloy Wheels3\n• 15” Infotainment Screen\n• IQ.Light – HD Matrix Headlamps\n• Car2X\n• Head-Up Display\n• Area View Camera\n• 3 Zone Climatronic\n• Advanced High Beam Control Dynamic Light Assist\n• Park Assist Pro incl. Park Distance Control\n• 3D LED Rear Combination Lamps with Dynamic \nTurn Signal\n(1) Specifications, standard equipment and options shown are for information only and are correct at the time of publication. Volkswagen Ireland reserves the right to change specifications, prices or withdraw products without notice. Availability of features and options may vary. If a specific feature is important to you, please confirm it with your \nauthorised Volkswagen retailer before ordering. \n(2) Vehicles equipped with AI based or voice assistant features provide information and responses generated automatically. These features are for general assistance only and may be incomplete, inaccurate or out of date. AI features do not replace driver judgement, navigation systems, road signage or safe driving practices. The driver remains fully \nresponsible for always operating the vehicle safely. Availability and functionality may depend on software version, data connection and market availability and may change over time.\n(3) Tyre information is provided in accordance with EU Regulation 2020/740 and is available in the Volkswagen online configurator. Three year tyre insurance covers tyres damaged by an insured event. Exclusions and terms apply. Full details are available at volkswagen.ie. \nAll below specification1 is included in addition to ‘R-Line’\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 8,
+            "text": "Discover the trimline for you.\nLife Ed. \n75\nStyle R-\nLine \nR-\nLine \n75\nAlloy Wheels \n17” Venezia Alloy Wheels ● ● - - -\n18” Napoli Alloy Wheels ○ ○ ● - -\n18” Bologna Alloy Wheels ○ ○ ○ - -\n19” Coventry Alloy Wheels - - - ● -\n20” Leeds Alloy Wheels - - - ○ ●\nExterior Highlights\nMetallic Paint ○ ● ○ ○ ●\nLED Basic Headlamps ● - - - -\nLED Plus Headlamps with ambient light strip ○ ● ● ● -\nLED HD Matrix Headlamps ○ ○ ○ ○ ●\nIlluminated Front & Rear Logo ○ ● ● ● ●\nLED Basic Rear Taillamps ● - - - -\nLED Plus 3D Taillamps (1X Animation) ○ ● ● ● -\nLED Plus 3D Taillamps (3X Animation) ○ ○ ○ ○ ●\nPower adj. / folding / heated exterior wing mirrors ● ● ● ● ●\nBlack Roof Rails ● - - - -\nSilver Roof Rails ○ ● ● ● ●\nRear Tinted Windows ○ ● ● ● ●\nInterior Highlights\nComfort Seat Cloth Material ● ● - - -\nComfort Seat Art Velours Material - - ● - -\nR-Line Sport Seat Art Velours  Material - - - ● ●\nFront seats with manual adjustment ● ● ● ● ●\nPneumatically-adjustable lumbar support in front ● ● ● ● ●\nErgoactive seat on driver side - - ● ● ●\nFront seats with massage function - - ● ● ●\nDriving Experience Control ● ● ● ● ●\nLife Ed.\n75\nStyle R-\nLine \nR-\nLine \n75\nInterior Highlights \nHeated Front Seats ○ ● ● ● ●\nMultifunction Steering Wheel ● - - - -\nHeated Multifunction Steering Wheel ○ ● ● ● ●\nGrey Headliner ● ● ● - -\nBlack Headliner - - - ● ●\nFloor Mats ● ● ● ● ●\nCentre Armrest with storage ● ● ● ● ●\n10–Colour Ambient Surround Lighting (dash only) ● - - - -\n10-Colour Ambient Surround Lighting (dash/doors) - ● - - -\n30-Colour Ambient Surround Lighting (dash/doors) - - ● ● ●\nFunctional Equipment\n13” Infotainment Screen ● ● ● ● -\n15” Infotainment Screen ○ ○ ○ ○ ●\nDigital Cockpit Pro Screen / adjustable config. ● ● ● ● ●\nApp Connect Wireless  ● ● ● ● ●\n2 USB-C ports in front / 2 USB-C ports in rear ● ● ● ● ●\nNavigation System ● ● ● ● ●\nWireless Charging Pad for 2 smart phones ● ● ● ● ●\nIDA Voice Assistant ● ● ● ● ●\nAugmented Reality HUD - - ○ ○ ●\nVoice enhancer (for increased rear volume) ● ● ● ● ●\nKeyless Access with SAFELOCK ● ● ● ● ●\nElectric Boot Closing ○ ● ● ● ●\n3 Zone Climatronic w/ enhanced air filter ● ● ● ● ●\nRear View Camera ● ● ● ● ●\nArea View Camera ○ ● ○ ○ ●\nMode 3 Charging Cable, Type 2, 32 A  (PHEV) ● ● ● ● ●\nLife Ed.\n75\nStyle R-\nLine \nR-\nLine \n75\nSafety Features\n3 Year Warranty / max 90,000km ● ● ● ● ●\nAnti Theft Alarm ● ● ● ● ●\nProactive Passenger Protection System ● ● ● ● ●\nEmergency Call Button ● ● ● ● ●\nTyre Pressure Monitoring System ● ● ● ● ●\nTyre mobility kit / Sealant / Tool Kit ● ● ● ● ●\n3 ISOFIX points (1 front, 2 rear) ● ● ● ● ●\nFront & Passenger, Curtain & Side Airbags ● ● ● ● ●\nFront Passenger Airbag deactivation ● ● ● ● ●\nDriver Assistance Systems\nFront Assist (Pedestrian & Cyclist) ● ● ● ● ●\nPark Assist Plus with Park Distance Control ● ● ● ● ●\nMemory feature for park assist ○ ● ○ ○ ●\nLane Assist ● ● ● ● ●\nSide Assist ● ● ● ● ●\nRear Traffic Alert ● ● ● ● ●\nExit Warning System (Blind spot monitoring) ● ● ● ● ●\nTravel Assist ○ ● ○ ○ ●\nEmergency Assist ○ ● ○ ○ ●\nRain Sensor ● ● ● ● ●\nAdaptive Cruise Control ● ● ● ● ●\nDynamic Road Sign Display ● ● ● ● ●\nLight Assist ● ● ● ● -\nDynamic Light Assist ○ ○ ○ ○ ●\nPredictive Speed Limiter ● ● ● ● ●\nAdvanced Driver Attention Monitor ● ● ● ● ●\nFront Cross Traffic Assist ● ● ● ● ●\nStandard  ●        Optional  ○       Unavailable   - \n \n \nSpecifications, standard equipment and options shown are for information only and are correct at the time of publication. Volkswagen Ireland reserves the right to change specifications, prices or withdraw products without notice. Availability of features and options may vary. If a specific feature is important to you, please confirm it with \nyour authorised Volkswagen retailer before ordering. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 9,
+            "text": "Discover the optional upgrades for you. Discover more at volkswagen.ie \n \nLife Ed. 75 Style R-Line R-\nLine \n75\nAlloy Wheels \n18” Napoli Alloy Wheels ○ ○ ● - - PJC\n18” Bologna Alloy Wheels ○ ○ ○ - - PJE\n19” Catania Alloy Wheels ○ ○ ○ - - PJH\n20” Cannes Alloy Wheels - - ○ - - PJJ\n20” Leeds Alloy Wheels - - - ○ ● PJK\n20” York Alloy Wheels (Fully Black Finish) - - - ○ ○ PJI\n20” York Alloy Wheels - - - ○ ○ PJM\nStyling \nLife Design Dark Package ○ ○ - - - PS1\nVarenna Leather Package - - ○ ○ ○ PL5\nR-Line Black Styling Package - - - ○ ○ WBS\nFunctional \nFolding Trailer Hitch (1) ○ ○ ○ ○ ○ PAB\nFolding Trailer Hitch (PHEV) (1) ○ ○ ○ ○ ○ 1M9\nIQ. HD Matrix Headlights ○ ○ - - - PLB\nPanoramic Sunroof (2) ○ ○ ○ ○ ○ 3FU\nSpace & Weight Saving Spare Wheel (TDI only) ○ ○ ○ ○ ○ PRA\nCargo Package (4) ○ ○ ○ ○ ○ WCP\nHarmon Kardon Sound System (3) - - ○ ○ ○ PRB\nTechnology Package - - ○ ○ ○ PHB\nPremium Technology Package - - ○ ○ ○ PHC\nPremium Winter Package ○ ○ ○ ○ ○ PW6\nCharging Cable with 3 pin plug, Mode 2, Type 2 (PHEV) ○ ○ ○ ○ ○ 70D\nBologna Napoli Catania Cannes Leeds York\nStandard  ●        Optional  ○       Unavailable   - \n \n \n(1) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment can affect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final vehicle colour.\n(2)  Tyre information is provided in accordance with EU Regulation 2020/740 and is available in the Volkswagen online configurator. Three year tyre insurance covers tyres damaged by an insured event. Exclusions and terms apply. Full details are available at volkswagen.ie. \nFolding Trailer Hitch Harmon Kardon Sound System\nPanoramic Sunroof Cargo Package\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 10,
+            "text": "Technology Package\nArea View Camera*\nTravel Assist\nMemory Feature for Park Assist\nTravel Assist*\nDiscover the optional1 upgrades for you. Discover more at volkswagen.ie \n(1) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment can \naffect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final vehicle colour.\n             * Not included in IQ. Drive Package for ‘Life’\nMemory Feature for Park Assist*\nArea View Camera\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 11,
+            "text": "Premium Technology Package\nTravel Assist\nArea View Camera\nLED HD Matrix Headlamps\nAugmented Reality HUD\n15” Infotainment Upgrade\nDiscover the optional1 upgrades for you. Discover more at volkswagen.ie \n(1) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment can \naffect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final vehicle colour.\n             * Not included in IQ. Drive Package for ‘Life’\nLED HD Matrix Headlamps\nLED HD Matrix Headlamps\n15” Infotainment Upgrade\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 12,
+            "text": "Varenna Leather Package\nActive Climate Seats\nErgoActive Seats in Front with Memory Function & Adjustable Thigh Support\nActive Climate Seats\nDiscover the optional1 upgrades for you. Discover more at volkswagen.ie \n(1) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment can \naffect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final vehicle colour.\n             * Not included in IQ. Drive Package for ‘Life’\nErgoActive Seats in Front with Memory Function & Adjustable Thigh Support\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 13,
+            "text": "Discover the colour for you. Discover more at volkswagen.ie \n \nLife Ed. 75 Style R-Line R-\nLine \n75\nExterior Colour \nUrano Grey (Solid) ○ ○ ○ ○ ○ 5K5K\nPure White (Solid) ○ ○ ○ ○ ○ 0Q0Q\nGrenadilla Black (Metallic) ○ ○ ○ ○ ○ 0E0E\nUltraviolet (Metallic) ○ ○ ○ ○ ○ Z6Z6\nOyster Silver (Metallic) ○ ○ ○ ○ ○ F0F0\nNightshade Blue (Metallic( ○ ○ ○ ○ ○ V2V2\nDolphin Grey (Metallic) ○ ○ ○ ○ ○ B0B0\nCipressino Green (Metallic) ○ ○ ○ ○ ○ D4D4\nOryx White (Pearl) ○ ○ ○ ○ ○ 0R0R\nInterior Colour\nMelange Grey ● ● - - - AO\nSoul Black / Black Ceramique - - ● - - AP\nMistral Grey / Soul Black - - ○ - - AQ\nSoul Black - - - ● ● ZN\nUrano Grey\nPure White\nGrenadilla Black\nUltraviolet\nOyster Silver \nNightshade Blue \nDolphin Grey \nCipressino Green \nOryx White \nAO AP AQ ZN\nStandard  ●        Optional  ○       Unavailable   - \n \n \n(1) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment \ncan affect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final \nvehicle colour.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 14,
+            "text": "Discover technical data. Discover more at volkswagen.ie \n \n2.0 TDI 150HP DSG 1.5 eHybrid 204HP DSG\nWLTP Data  \nConsumption Low 7.3 – 7.5 -\nConsumption Medium 5.3 – 5.6 -\nConsumption High 4.5 – 4.9 -\nConsumption Extrahigh 5.3 – 5.9 -\nConsumption Combined 5.3 – 5.8 1.4 – 1.8\nConsumption Combined (Electric) - 13.7 – 14.1 \nCO2 Emission Combined CO2 g/km: 143 - 151 35 – 40\nElectric Range Combined km - 116 - 118\nEngine \nCubic capacity 1,968 1,498\nMax. torque 360 Nm / 1600 - 2750 1/min 250 Nm / 1500 - 4000 1/min\nFuel tank capacity 55 Litres 45 Litres\nEmission class EURO 6 EB EURO 6 EB\nNOx emissions 20.1 mg/km 6.1 mg/km\nGearbox 7 speed DSG 6 speed DSG\nPerformance\nTop speed (where the law permits) 210 km/h 210 km/h\nAcceleration, secs 0-100 KM/H 9.7 s 8.6 s\n2.0 TDI 150HP DSG 1.5 eHybrid 204HP DSG\nWeights\nUnladen weight minimum (EU standard) 1,829 kg 1,938 kg\nGross vehicle weight 2,450 kg 2,500 kg\nAxle Load Limit Front /Rear 1,220 kg / 1,280 kg 1,200 kg / 1,370 kg\nTrailer Load Limits\nBraked 12% incline 2,000 kg 1,800 kg\nUnbraked 750 kg 750 kg\nExterior Dimensions\nLength minimum 4,792 mm 4,792 mm\nWidth 1,853 mm 1,866 mm\nHeigth maximum (EU standard) 1,668 mm 1,666 mm\nWheelbase 2,788 mm 2,789 mm\nTurning Circle ca. 12.1 m ca. 12.1 m\nInterior Dimensions\nElbow width front/rear 1,501 mm / 1,484 mm 1,501 mm / 1,483 mm\nBoot capacity 850 Litres 705 Litres\nBoot capacity (rear seats folded down) 1,905 Litres 1,915 Litres\nElectrical Information \nBattery Energy Capacity - 19.7 kW·h\nCharging time: AC 2.3 kW, 100% State of Charge,hour:min - 12:00 h\nCharging time: AC 11 kW, 100% State of Charge, hour:min - 02:30 h\n(1) Fuel consumption and CO₂ emissions shown are official WLTP values for standard production vehicles. Optional equipment and accessories may affect these values. Real world performance will vary depending on driving style, speed, weather, passengers, load and use of vehicle systems. For exact vehicle values, please configure your vehicle at \nvolkswagen.ie. \n(2) Optional equipment and paint colours are subject to availability and may change without notice. Optional equipment can affect CO₂ emissions, range and VRT. Paint images are for illustration only and may not exactly match the final vehicle colour. \n(3) Tyre information is provided in accordance with EU Regulation 2020/740 and is available in the Volkswagen online configurator. Three year tyre insurance covers tyres damaged by an insured event. Exclusions and terms apply. Full details are available at volkswagen.ie. .\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 15,
+            "text": "Your Next Steps. Discover more at volkswagen.ie \nConfigure your \nTayron now\nBook a Test \nDrive\nBrowse \nAvailable Stock\nFind A Retailer \nRequest a \nQuote\n",
+            "blocks": [],
+            "tables": []
+        }
+    ]
+}

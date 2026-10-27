@@ -1,0 +1,143 @@
+{
+    "schemaVersion": 1,
+    "source": {
+        "documentId": "skoda/Superb_MY27_PG_Janury_CW01_2027.pdf",
+        "relativePath": "skoda/Superb_MY27_PG_Janury_CW01_2027.pdf",
+        "fileName": "Superb_MY27_PG_Janury_CW01_2027.pdf",
+        "make": "skoda",
+        "modelCoverage": [],
+        "sha256": "e0fddb90e318bf9ac199779e78e25d6ea50aa418fa145ada25445ac8c392580c",
+        "fileSizeBytes": 4626433,
+        "metadata": {
+            "author": "Pavlas, Libor (VGIE SKODA P/Sale)",
+            "creationDate": "2026-10-20T15:45:23Z",
+            "creator": "Microsoft® PowerPoint® for Microsoft 365",
+            "modificationDate": "2026-10-20T15:45:23Z",
+            "producer": "Microsoft® PowerPoint® for Microsoft 365",
+            "title": "Škoda Superb Product Guide"
+        }
+    },
+    "extraction": {
+        "parserName": "Apache PDFBox",
+        "parserVersion": "3.0.8",
+        "pageCount": 18,
+        "status": "NEEDS_REVIEW",
+        "diagnostics": [
+            {
+                "severity": "WARNING",
+                "message": "General page text was extracted; table geometry and feature-matrix cells were not extracted.",
+                "pageNumber": null
+            }
+        ]
+    },
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "January 2027\nŠkoda Superb\nProduct Guide\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 2,
+            "text": "Superb Range\nModel \nCode\nModel \nDescription\nFuel Transmission Gears\nCO2 \nEmissions\n(g/km)\nF uel\nConsumption\n(l/100km)\nAnnual\nRoad Tax\nFrom\nSelection \nF rom\nSelection +\nFrom\nSportline \nFrom\nL&K\nFrom\nNZ3_ED 1.5TSI 158hp DSG mHEV Petrol DSG (Auto) 7-speed 126 - 133 5.4 - 5.7 €200 €49,975 €53,545 €56,660 €60,255\nNZ3_4D 2.0TDI 150hp DSG Diesel/HVO DSG (Auto) 7-speed 128 - 135 4.9 – 5.1 €200 €50,490 €54,045 €57,000 €61,090\nNZ3_XC 1.5TSI 268hp DSG PHEV Petrol/Electric DSG (Auto) 6-speed 28 - 32 1.2 – 1.4 €140 €50,685 €54,185 €57,290 €59,845\nSuperb Combi Range\nModel \nCode\nModel \nDescription\nFuel Transmission Gears\nCO2 \nEmissions\n(g/km)\nF uel\nConsumption\n(l/100km)\nAnnual\nRoad Tax\nFrom\nSelection \nF rom\nSelection +\nFrom\nSportline \nFrom\nL&K\nFrom\nNZ5_ED 1.5TSI 158hp DSG mHEV Petrol DSG (Auto) 7-speed 126 – 133 5.5 - 5.8 €200 €51,995 €55,540 €58,500 €62,275\nNZ5_4D 2.0TDI 150hp DSG Diesel/HVO DSG (Auto) 7-speed 131 – 138 5.0 – 5.3 €210 €52,525 €56,070 €59,025 €63,120\nNZ5_YC 1.5TSI 204hp DSG PHEV Petrol/Electric DSG (Auto) 6-speed 28 - 32 1.2 – 1.4 €140 €50,900 €53,900 €56,325 €60,870\n“Recommended Retail Prices & Annual Road Tax are calculated using the base model WLTP values and are subject to change as a result of your vehicle configuration. Škoda Ireland reserves the right to alter pricing and \nspecification without notice. Delivery & Related Charges Extra - please contact your local Škoda dealer for more information. Šk oda Ireland has made every effort to ensure the accuracy of information but does not accept \nliability for any errors or omissions. The specified fuel consumption and emission values were presented, are the official fi gures unless stated otherwise and are obtained in accordance with Worldwide Harmonized Light \nVehicle Test Procedure (WLTP) and are correct at the time of publication. WLTP values reflect the worldwide standard vehicle range excluding additional equipment such as optional extras and accessories which may have \nan effect on the fuel consumption (l/100km) and CO ₂ emissions produced. Please note WLTP values for vehicle range and consumption may not be realised in real or day to day driving conditions” \nPlease note,  due to optional additions there is the potential that vehicles may enter higher or lower vrt bands, thus affecting the retail price of the car, additionally there may be models with run -out stock from a previous \nmodel year shown. Please see the final slide for all relevant models. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 3,
+            "text": "Selection: Key Equipment  \nSAFETY\nHill hold control \nDriver & front passenger front , side & curtain \nairbags incl. passenger airbag deactivation \nDriver knee airbag \nSeatbelt warning system\nElectronic stability control (ESC)\niSOFIX child seat anchor points (1x front x2 rear) \nTyre pressure monitoring system ( TPMS ) \nEmergency call ( eCall ) \nTraffic sign recognition \nSafety assist systems: \n• Front assist \n• Side assist \n• Lane assist \n• Turn assist \n• Rear cross assist \n• Emergency assist \n• Intelligent speed assist \n• Multi collision brake assist \nEXTERIOR\n17“ Alrakis silver alloy wheels \nSpare wheel, tool kit & jack \nLED headlights incl. LED daytime running lights \nLED tail lights \nHeated & electric exterior mirrors \nRear window wiper (saloon only) \n‘SUNSET’ dark tinted privacy glass\nChrome pack: \n▪ Chrome window surround\n▪ Unique dark chrome front grille inserts\n▪ Anodized chrome roof rails (Combi)\nFUNCTIONAL\nAdaptive cruise control \n‘Kessy Full’ – K eyless start/stop system incl.\nanti-theft alarm & walkaway locking function\nInfotainment system incl. 10.4” touchscreen\ndisplay , Bluetooth & 9 speakers \nWireless Smartlink (Apple Carplay & Android auto)\nWireless charging ring (subject to device\ncompatibility) \nClimatronic 3 -zone air conditioning \nUSB -C charging points – 2x front/2x rear/1x \nmirror \nDigital smart dials\nFront & rear parking sensors \nRear view camera \nVirtual pedal – electric tailgate incl. motion \nsensor\nElectrically operated boot cover (combi only) \nTrailer hitch preparation \nFront & rear electric windows\nAuto -dimming rear view mirror \n10.25” digital driver dashboard display \nSpare 3 rd key \nRemote access (3 year subscription) (YOK)\nINTERIOR\nBlack/grey ‘Loft’ fabric interior \nHeated front seats\nFront & rear centre armrest incl. storage area\nSplit folding rear seat & mechanical seat release\n2 spoke heated leather multi function steering \nwheel with tiptronic paddles \nFront & rear footwell lighting \nAluminium door sills \nNet program in boot compartment \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 4,
+            "text": "Suite Design Selection :\n▪ Leather upholstery (black or cognac) \n▪ Ergonomically certified front seats \n▪ Advanced massage functionality \n▪ Electrically operated front seats \n▪ Seat memory functionality \n▪ Heated & ventilated front seats \n▪ Interior ambient lighting \n▪ 18” Dofida silver alloy wheels\nSelection +: Key Equipment  \nCreated with those in mind who appreciate maximum comfort and practicality, the Selection + adds to the already comprehensive specification of the \nSelection with an emphasis on Interior feel. Key equipment includes: (in addition to Selection)\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 5,
+            "text": "Sportline: Key Equipment\nWith sharp, sleek details both inside and out, the Sportline is distinctive from every angle. Packed with exclusive styling, the Sportline will ensure you can \nindulge your thirst for adventure in total comfort. Key equipment includes (in addition to Selection spec) : \n19” Torcular black alloy wheels \nMatrix LED headlights \nLED tail lights incl. dynamic indicators \nElectrically operated front seats with memory functionality \nAdvanced massage functionality \nInterior ambient lighting \nDrive mode select \nSportline interior styling pack:\n▪ Black Suedia upholstery incl. front sports seats \n▪ Dark interior headliner \n▪ Leather sports steering wheel (incl. DSG paddles) \n▪ Front & rear floor mats \n▪ Aluminium sports pedals\n▪ Carbon / Black decorative inserts\nSportline exterior styling pack:\n▪ Front & rear sports bumpers \n▪ Black gloss exterior mirrors \n▪ Black gloss front grille surround\n▪ Black rear spoiler (limo only) \n▪ Black roof rails (combi only) \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 6,
+            "text": "L&K: Key Equipment\nThe L&K mixes the sharp aesthetics of the Superb with elegant styling, a sports chassis and a combination of luxury extras. A ce lebration of class, the \nSuperb L&K is designed to give an unparalled driving experience. Key equipment includes: (in addition to Selection +)\n19” Veritate anthracite alloy wheels \nMatrix LED headlights \nLED tail lights incl. dynamic indicators \n13 “Infotainment system:\n• 13” Display \n• Navigation \n• Display cleaner \n• Remote access + Infotainment Online (3-year subscription) \nL&K interior styling pack:\n▪ Leather upholstery (black or cognac) with L&K stitching \n▪ Ergonomic electric front seats with advanced massage functionality\n▪ Electrically operated front seats, heated & ventilated \nL&K exterior styling pack:\n▪ L&K chrome side moulding \n▪ L&K specific badging\n▪ Acoustic front and rear side windows \n▪ ‘SUNSET’ dark tinted privacy glass \nDynamic chassis control \nDrive mode select \nFront & rear heated seats \nCanton sound system: 12 speaker audio system incl. subwoofer \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 7,
+            "text": "19“ Torcular alloy wheels\n(Code 49K)\nSuperb: Wheels \nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\nCODE DESCRIPTION Selection Selection + Sportline L&K\nU68 17” Alrakis aero alloy wheels STANDARD --- --- ---\n41I 18” Dofida silver aero alloy wheels --- STANDARD --- ---\n49K 19” Torcular alloy wheels --- --- STANDARD ---\nPJ5 19” Aniara aero alloy wheels --- €860 €0 ---\nC5S 19” Veritate polished anthracite alloy wheels --- --- --- STANDARD\nPJ7 19” Veritate silver alloy wheels --- --- --- €0\n17” Alrakis alloy wheels \n( Code U68)\n19“ Veritate Silver alloy wheels\n(Code PJ7)\n19“ Veritate polished anthracite alloy wheels \n(Code C5S)\n19\" Aniara alloy wheels\n(Code PJ5)\n18\" Dofida alloy wheels\n(Code 41I)\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 8,
+            "text": "Superb: Design Selections – Upholstery and Decorative trim \nIMAGE DESIGN CODE\nLINKED \nOPTIONS\nUPHOLSTERY DASHBOARD DOOR LINING\nROOF \nLINER\n1 Loft HS --- Black and grey fabric with grey stitching Black – grey fabric Black – grey fabric Grey \n2 Lounge HT PI2 Grey Suedia with yellow stitching Grey Suedia Grey Suedia Grey\n3 Suite Black TK --- Black leather & leatherette with black/grey stitching Black leather & leatherette Black leatherette Grey \n4 Suite Cognac TL PI4 Cognac leather & leatherette with cognac stitching Cognac leather & leatherette Cognac leatherette Grey\n5 Sportline EA --- Black Suedia & leatherette with white stitching Black Suedia Black Suedia Black\n6 Sportline Suite GN PI6 Black leather & leatherette with white stitching Black leatherette Black leatherette Black \n7 L&K Suite Black TM --- Black leather & leatherette with black/grey stitching Black leather & leatherette Black leatherette Grey \n8 L&K Suite Cognac TN PI5 Cognac leather & leatherette with cognac stitching Cognac leather & leatherette Cognac leatherette Grey\n1\n2\n3\n4\n7\n8\n5\n6\nPlease note, images are used for illustrative purposes only\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 9,
+            "text": "Superb: Design Selections\nINTERIOR \nCODE\nLINKED \nOPTIONS\nDESIGN SELECTION Selection Selection + Sportline L&K\nHS --- Loft Design selection STANDARD --- --- ---\nHT PI2 Lounge Design selection €2,975 --- --- ---\nTK PI3 Suite Black Design selection --- STANDARD --- ---\nTL PI4 Suite Cognac Design selection --- €0 --- ---\nEA --- Sportline --- --- STANDARD ---\nGN PI6 Sportline Suite --- --- €1,135 ---\nTM --- L&K Black Design selection --- --- --- STANDARD\nTN PI5 L&K Cognac Design selection --- --- --- €0\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 10,
+            "text": "Superb: Optional Extras\nPACKAGES Selection Selection + Sportline L&K\nPW2\nClimate pack:\n• Front & rear heated seats \n• Heated windshield \n€543 €553 €553 STANDARD\nPF0\nFamily pack:  \n• Rear side airbag \n• Rear adjustable head rests incl. sleep aid functionality \n• Tablet holder in rear \n• Roller blinds for rear door windows \n€761 €776 €776 €776\nPL0\nLight and View pack: \n• Matrix LED headlights incl. variable light distribution \n• LED tail lights incl. dynamic indicators \n€2,364 €2,410 STANDARD STANDARD\nRN0\nInfotainment pack: (requires YOZ)\n• 13” Display \n• Navigation \n• Display cleaner \n• Remote access + Infotainment Online (3 -year)\n€1,320 €1,346 €1,346 STANDARD\nRN1\nInfotainment pack plus: (requires YOZ) \n• 13” Display \n• Navigation \n• Display cleaner \n• Head up display (HUD) \n• Remote access + Infotainment Online (3 -year)\n€1,923 €1,961 €1,961 €821\nPR4\nAssisted drive pack:\n• 360 -degree camera\n• Remote park assist\n• Trained park assist\n--- --- €1,129 €1,129\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 11,
+            "text": "INTERNAL\nSuperb: Optional Extras\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable – please contact your loc al Škoda dealer for more information.\nS INGLE OPTIONS Selection Selection + Sportline L&K\n3FU Panoramic Sunroof (combi only) €1,507 €1,507 €1,507 €1,550\nPD1/PD3 Dynamic chassis control --- --- €1,094 STANDARD\n9VS Canton sound system --- --- €883 STANDARD\n6NW Black fabric ceiling €110 €110 STANDARD €110\nYOZ Remote Access + Infotainment Online (3 year subscription) (requires RN0/RN1) €0 €0 €0 STANDARD\nEA9 Extended warranty (5 year / max. 150,000km) €987 €987 €987 €987\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 12,
+            "text": "Superb: Exterior Colours\nOption prices quoted are for reference only and are subject to change depending on VRT band applicable. All the colour images on this page are matched as accurately as possible to the actual paint colours used. However, due to print processes, \nŠkoda Ireland cannot guarantee that colours shown are 100% accurate. Please contact your local Škoda dealer for more informat ion.\nDESCRIPTION Selection Selection + Sportline L&K\nSolid: Energy Blue €0 €0 €0 €0\nSolid : Purity White €566 €566 €566 €566\nMetallic €868 €868 €868 €868\nCobalt Blue (0A0A – Metallic)\nEbony Black  (0E0E – Metallic)\nCarmine  Red (W0W0  – Metallic)\nPebble  Silver (F0F0 – Metallic)\nEnergy Blue (K4K4 – Solid) Purity  White  (0Q0Q – Solid)\nGraphite Grey  (5X5X – Metallic)\nIce Tea Yellow(S3S3 – Metallic)\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 13,
+            "text": "Superb Saloon: Technical Data \n1.5TSI 158hp\nDSG mHEV\n2.0TDI 150hp\nDSG\n1.5TSI 268hp \nDSG iV\nFuel Type Petrol/hybrid Diesel Petrol/Electric\nCylinders / Displacement (cc) 4 / 1498 4 / 1968 4 / 1498\nMax. Power: kW 118 110\nElectric motor:130\nPHEV motor: 85\nMax. Torque: Nm 250 360 400\nTransmission DSG (Auto) DSG (Auto) DSG (Auto)\nGears 7-speed 7-speed 6-speed\nTraction System Front wheel drive Front wheel drive Front wheel drive\nLength (mm) 4912 4912 4912\nWidth (mm) 1849 1849 1849\nHeight (mm) 1511 1511 1511\nWheelbase (mm) 2837 2837 2839\nLuggage Capacity (litres) 645 645 486\nTop Speed (km/h) 229 225 225\n0 – 100 km/h (seconds) 8.9 9.2 7.1\nTurning Circle (m) 11.1 11.1 11.1\nWLTP Fuel Consumption (litres/100km) 5.4 - 5.7 4.9 – 5.1 1.2 – 1.4\nRange WLTP (km) --- --- 130 - 140\nWLTP Emissions Combined (CO2 g/km) 126 - 133 128 - 135 28 - 32\nGross Vehicle Weight (kg) 2080 2210 2339\nMax. Towing Capacity - Braked (kg) at 12 % 1600 2000 2000\nFuel Tank (litres) 66 66 45\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 14,
+            "text": "1.5TSI 158hp\nDSG mHEV\n2.0TDI 150hp\nDSG\n1.5TSI 204hp\nDSG IV \nFuel Type Petrol/hybrid Diesel Petrol/Electric\nCylinders / Displacement (cc) 4 / 1498 4 / 1968 4 / 1498\nMax. Power: kW 118 110\nElectric motor:110\nPHEV motor: 40\nMax. Torque: Nm 250 360 350\nTransmission DSG (Auto) DSG (Auto) DSG (Auto)\nGears 7-speed 7-speed 6-speed\nTraction System Front wheel drive Front wheel drive Front wheel drive\nLength (mm) 4902 4902 4902\nWidth (mm) 1849 1849 1849\nHeight (mm) 1521 1521 1521\nWheelbase (mm) 2837 2837 2839\nLuggage Capacity (litres) 690 690 510\nTop Speed (km/h) 226 222 220\n0 – 100 km/h (seconds) 9.0 9.3 8.1\nTurning Circle (m) 11.1 11.1 11.1\nWLTP Fuel Consumption (litres/100km) 5.5 - 5.8 5.0 – 5.3 1.2 – 1.4\nRange WLTP (km) --- --- 125 – 134\nWLTP Emissions Combined (CO2 g/km) 126 – 133 131 – 138 28 - 32\nGross Vehicle Weight (kg) 2120 2240 2350\nMax. Towing Capacity - Braked (kg) at 12 % 1600 2000 1800\nFuel Tank (litres) 66 66 45\nSuperb Combi: Technical Data \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 15,
+            "text": "INTERNAL\nBattery & Charging\nThe new Superb iV is well suited not only for home charging, but also for charging at public chargers. Plus,\nthe battery is continuously charged by regenerative braking because it processes the kinetic energy\ngenerated when braking. Fitte d with a 25kWh Lithium -ion battery which provides a WLTP range of over \n100km.  \nCharging times (approximat e data):\n*  Maximum DC charging power is dependent upon various charging conditions  and may vary as a result. \n** Typically, a public charger or home wallbox with three -phase 16 A.\n*** Typically charging from a household socket with one-phase 10 A.\nSource Charging power SoC Charging time\nDC 40 kW * 10 –80% 25 min.\nAC\n11 kW**\n2.3 kW***\n0–100%\n0–100%\n2 h 30 min.\n11 h 15 min.\nMode 3 standard\nWallbox cable\n(Type 2)\nThe cable is part\nof the AC charging \nstation\n–\nMode 4\n(CCS 2 connector)\nThe cable is part\nof the DC charging\nstation\n–\nCharging cables compatible with the Superb iV:\nFrom charging from a \nwallbox\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 16,
+            "text": "INTERNAL\nOnly Škoda vehicles from “Model Year 2022” (not registration in 2022) are compatible with HVO. You can identify if \nyour Škoda is HVO compatible by the lettering “XTL” detailed inside the fuel filler flap. If you are unsure of your \nvehicles model year please contact your Škoda Dealer. Biodiesel or vegetable oil should not be used in Škoda vehicles \nand these products should not be confused with HVO. Only HVO that meets standard EN 15940 should be used in \nŠkoda vehicles. \nWhat is HVO?\nFuel your new diesel Škoda with HVO and reduce emissions by up to 90%   \nHVO ( Hydrotreated Vegtable Oil)\nHVO is a fuel replacement or alternative for compatible diesel engines. HVO offers a cleaner way to fuel by providing up to 9 0% reduced \nCO2 emissions. Unlike first generation biofuels, which are made from crops such as rapeseed and soy, Hydrotreated Vegetable Oil (HVO) is \na second -generation biofuel made from pre -existing bio -waste products, primarily used cooking and vegetable oil from food indust ry \nwaste. Manufactured from renewable and sustainable waste, HVO is a paraffinic drop -in fuel designed as a direct replacement for diesel. It \nmeets the international fuel standard EN 15940. HVO can provide full lifecycle greenhouse gas (GHG) emission savings of up to 90 % when \ncompared to conventional diesel fuel. \nWhat are the benefits?\nSustainability – Made from sustainable and renewable raw materials, HVO reduces carbon emissions by as much as 90%. This enables \nhouseholds and businesses to make an immediate reduction in carbon emissions and reduce their environmental impact.\nImproved Air Quality  due to a reduction in particle and nitrogen oxide ( Nox ) emissions compared to diesel \nPerformance – Your vehicles performance will be indistinguishable from diesel with the fuel performing better under certain \ncircumstances such as cold winter conditions\nDirect Drop -In – No modifications are required to new Škoda’s in order to use HVO. HVO and diesel fuel can be interchanged and mixed in \nany ratio or concentration.\nPrice – currently many fuel suppliers in Ireland are providing HVO at a comparable or equivalent price to diesel. So there is no addi tional \ncost to  switching\nWhere can I get HVO for my Škoda?\nHVO is already available at selected Certa and Circle -K outlets in Dublin, Tipperary, Carlow, Cork and Donegal with availability improving all \nthe time.    \nHow do I know if my Škoda is compatible with HVO?\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 17,
+            "text": "Superb Saloon: Safety Assist Systems \nThe Superb New Generation has been designed with safety at the forefront and has therefore been fitted as standard with indus try leading safety systems \nproviding the utmost peace of mind for both drivers and passengers. Key safety system includes: \nBy recognizing road signs, the driver is \nalerted visually and acoustically when over \nthe speeding limit. This can be adjusted in \nthe infotainment system.\nThis system monitors the distance from \nthe car in front and will automatically \napply braking and pedestrian protection \nmeasures such as a visual collision warning \nor gradual braking pressure depending \nupon speed. The system also factors in \nstationary objects such as pedestrians.\nFront Assist Side Assist Intelligent Speed Assist Emergency Assist \nLane Assist Turn Assist Multi Collision Brake AssistRear Cross Assist \nThis system alerts drivers of approaching \nvehicles that are hidden in the blind spot. \nA warning light housed in the wing \nmirrors flashes to notify the driver of \napproaching objects. \nWhen the driver begins to show signs of \ninactivity, the vehicle will engage this \nsafety feature. For example, the vehicle  \napplies braking pressure, and the seatbelt \nis jerked to alarm the driver.\nThis system will use automated steering \nto bring the vehicle back into road \nposition if it begins to veer out of its lane. \nThe front camera monitors the position of \nthe vehicle within its respective lane.\nWhile performing a reversing \nmanoeuvre, the rear sensors will monitor \nthe area behind the vehicle and if a \npotential danger is sensed, the automatic \nbrakes are activated, and the vehicle is \nbrought to a halt. \nIn the event of a collision, the sensors in \nthe vehicle will react, in turn activating the \nautomatic braking system to prevent any \nfurther accidents. \nWhen the vehicle is turning at speeds \nbetween 2 -20km/h and there is another \nvehicle approaching from the opposite \ndirection, automatic brakes will be \nactivated if a predicted collision is \nimminent. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 18,
+            "text": "INTERNAL\nNext Steps\n",
+            "blocks": [],
+            "tables": []
+        }
+    ]
+}

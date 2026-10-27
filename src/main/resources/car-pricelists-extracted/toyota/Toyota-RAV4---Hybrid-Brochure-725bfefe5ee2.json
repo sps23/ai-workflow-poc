@@ -1,0 +1,138 @@
+{
+    "schemaVersion": 1,
+    "source": {
+        "documentId": "toyota/Toyota RAV4 - Hybrid Brochure.pdf",
+        "relativePath": "toyota/Toyota RAV4 - Hybrid Brochure.pdf",
+        "fileName": "Toyota RAV4 - Hybrid Brochure.pdf",
+        "make": "toyota",
+        "modelCoverage": [],
+        "sha256": "fd50ccba5f2dd2339d8c24f3a08ee660356b57bbebe3c2cbebc2ba602b31090f",
+        "fileSizeBytes": 4994061,
+        "metadata": {
+            "author": "Alex Lynch",
+            "creationDate": "2026-03-30T06:18:08Z",
+            "creator": "Canva",
+            "keywords": "DAGxFjrBvpo,BAGN79CWP4Y,0",
+            "modificationDate": "2026-07-13T12:40:13Z",
+            "producer": "Canva",
+            "title": "RAV4-Hybrid-PDF-Guide"
+        }
+    },
+    "extraction": {
+        "parserName": "Apache PDFBox",
+        "parserVersion": "3.0.8",
+        "pageCount": 17,
+        "status": "NEEDS_REVIEW",
+        "diagnostics": [
+            {
+                "severity": "WARNING",
+                "message": "General page text was extracted; table geometry and feature-matrix cells were not extracted.",
+                "pageNumber": null
+            }
+        ]
+    },
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "TOYOTA\nRAV4\nPRODUCT GUIDE\nEffective from December 2025\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 2,
+            "text": "RAV4 HEV\nRAV4 HYBRID\nALL IMAGES CONTAINED IN THIS DOCUMENT ARE FOR ILLUSTRATIVE PURPOSES ONLY. LOCAL SPECIFICATION MAY VARY.\nRAV4’s powerful 2.5-litre Hybrid Dynamic Force powertrain delivers outstanding\nperformance without compromise. It gives you confidence in every driving situation,\nfrom fast-moving motorways to congested cities with emission restrictions and\nchallenging road conditions. And thanks to its self-charging Hybrid powertrain,\nyou’ll also enjoy exceptional range – giving you the benefits of electric power, such\nas a quiet drive and greater efficiency, without inconvenience. \nWith RAV4 Hybrid, you can glide through the city, embrace the open road and \nleave compromise behind.\nScan the QR code to learn more about the RAV4 Hybrid.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 3,
+            "text": "SPECIFICATION\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 4,
+            "text": "RAV4 HYBRID \nSOL\nToyota Safety Sense TSS4\nAdjustable Speed Limiter (ASL)  \nAnti-Jam Protection on Power Windows  \nAnti-Lock Braking System (ABS) with\nElectronic Brake Force Distribution (EBD)  \nBlind Spot Monitor (BSM)  \nBrake Assist (BA)  \nDriver Monitoring Camera  \neCall  \nEmergency Brake-Light Signal (EBS)  \nEmergency Driving Stop System (EDSS)    \nFull-Range Adaptive Cruise Control  \nHill-Start Assist Control (HAC)  \nImmobiliser  \nIntelligent Clearance Sonar (ICS) (Front\nand Rear, for Objects, Vehicle and\nPedestrian) \nFront & Rear Parking Sensors\nIntrusion Alarm  \nLane Trace Assist (LTA)  \nPre-Collision System  \nRear Cross Traffic Alert (RCTA)  \nRear Seat Reminder System (RSRS)  \nRear-View Camera with Dynamic Guide\nLines  \nRoad Sign Assist (RSA)  \nSafe Exit Assist (SEA)  \nToyota Safety Sense  \nTyre Pressure Warning System (TPWS)  \nVehicle Approach Notice  \n \n \nDigital Key\nRemote Air Conditioning System\nRemote Door Lock\nRemote Hazard Lights System\nRemote Open Window Notification\nAutomatically Retractable, Heated Door\nMirrors\nDual-Zone Automatic Air Conditioning\nSmart Entry, Exit and Start System\nPower Back Door\n60:40 Split-Folding 2nd Row Rear Seats\nPower-Adjustable Driver Seat\nAdjustable Lumbar Support on Driver\nSeat\nBlack Fabric Upholstery\nHeated Driver & Front Passenger Seats\nISOFIX Seat Fixing\nRear Seat Armrest\n18\" Dark Grey Machined-face Alloy\nWheels (5-Double-Spoke)\nTemporary Spare Wheel*Apple CarPlay is a trademark of Apple Inc.\nRAV4 HEV \nSAFETY\nTECHNICAL SPECIFICATION** MyToyotaCONVENIENCE\nEXTERIOR & VISIBILITY\nINTERIOR & INSTRUMENTATION\nSEATS\nWHEELS\nAUDIO & NAV\n12.9\" Multimedia Display with Embedded\nNavigation System\n6 Speakers    \nBluetooth® Hands-Free System  \nDigital Audio Broadcast (DAB)    \nSmart Voice Assist  \nSmartphone Integration (Wireless Apple\nCarPlay * and Wireless Android Auto™)\nUSB Connector (2x Front Instrument Panel,\n2 x Rear -Type C)\nVoice Recognition\nAlloy Roof Rails \nAutomatic Rear Flashing Hazard Lights (ARFHL)\nBi-Beam LED Headlamps\nBlack Door Mirrors\nBlack Resin Wheel Arch Moulding\nDaytime Running Lights (LED)\nFront Fog Lamps (LED)\nGloss Black Rear Spoiler\nLED Rear Brake Lights\nPrivacy Glass \nRain Sensor\nRear Combination Lamps (LED)\nRear Fog Lamps (LED)\nHigh-Mounted Stop Lamp (LED)\nMonotone Roof\n12.3\" Coloured TFT Information Display\n3-Spoke Leather Steering Wheel\nConsole Box 12V Power Outlet\nElectro-Chromatic Rear-View Mirror\nElectronic Parking Brake\nHeated Steering Wheel\nIlluminated Entry System\nManual Telescopic and Tilting Steering\nWheel\nLuggage 12V Power Outlet\nRear-View Camera Display in Audio Screen\nSynthetic Leather Front and Rear Door\nArmrests\nDetachable Front Centre Console Tray\nHands On/Off Sensors On Steering Wheel \nHP 183\nCO² Combined (WLTP) 112 g/km \nFuel Consumption  Combined \n       (WLTP) 5.0 l/100km\nAnnual Road Tax €190\nBraked Towing 800 kg\n**All technical specification pending final homologation\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 5,
+            "text": " \n \nRAV4 HEV \nRAV4 HYBRID \nSPORT\nTECHNICAL SPECIFICATION**\nCONVENIENCE\nEXTERIOR & VISIBILITY\nINTERIOR & INSTRUMENTATION SEATS\nWHEELS\nHP 183\nCO² Combined (WLTP) 117 g/km\nFuel Consumption  Combined \n       (WLTP)  5.2 l/100km\nAnnual Road Tax €190\nBraked Towing 800 kg\nPiano Black Front And Rear Bumper\nPiano Black Roof Rails\nBi-tone Roof\nCenter Tray And Cup Holder Illumination  \nWireless Charger \nUSB Connector -Type C (2 x Front\nInstrument Panel, 2 x Rear, 1 x Middle\nConsole)\nSynthetic & Ultra Suede Leather Upholstery\nwith Blue Stitching\nMemory Function on Driver Seat\nPower-Height-Adjustable Front Seats\nVentilated Front Seats\n20\" Black Alloy Wheels (5-Double-Spoke)\nTire Repair Kit\nPower Back Door with Kick Function\nAdds to Sol \n**All technical specification pending final homologation\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 6,
+            "text": " \n \nRAV4 HEV \nRAV4 HYBRID \nSPORT LAUNCH EDITION\nSAFETY TECHNICAL SPECIFICATION**\nEXTERIOR & VISABILITY\nINTERIOR & INSTRUMENTATION\nWHEELS\nHP 183\nCO² Combined (WLTP) 117 g/km \nFuel Consumption  Combined \n       (WLTP)  5.2 l/100km\nAnnual Road Tax €190\nBraked Towing 800 kg\n  \nHead Up Display  Front Cross Traffic Alert (FCTA)\nLane Change Assist (LCA)\nPanoramic View Monitor with 3D Effect\nSide-View Camera on Door Mirrors\nAdds to Sport \n**All technical specification pending final homologation\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 7,
+            "text": "RAV4 HEV\nRAV4 HYBRID\nEXTERIOR COLOURS \nMONOTONE (Sol only)\n \nSolid*\nMetallic**\nPearlescent***\nPure White (040)*  Pearl White (089)***Massive Grey (1L6)** \nUrban Rock (1M6)** Attitude Black (218)** Tokyo Red (3T3)***\nForest Green (6X7)** Midnight Blue (8X8)** Avantgarde Bronze (4V8)**\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 8,
+            "text": "RAV4 HEV\nRAV4 HYBRID\nEXTERIOR COLOURS \n \nSolid*\nMetallic**\nPearlescent***\nTokyo Red Bi-tone  \n(2NF)***\nBITONE (Sport and Sport Launch Edition only)\nPearl White Bi-tone\n (2VP)***\nAvantgarde Bronze Bi-tone \n(2SQ)**\nMassive Grey Bi-tone \n(M22)** \nForest Green Bi-tone\n (M39)**\nUrban Rock Bi-tone \n(M38)**\nMidnight Blue Bi-tone\n (M40)**\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 9,
+            "text": "RAV4 HEV\nRAV4 HYBRID\nINTERIOR TRIMS\n \nPartial Leather and Ultrasuede with Blue\nStitching (Sport and Sport Launch Edition)\n(FA20)\nBlack Fabric (Sol) (EC20)\nAvailable in black fabric or synthetic leather & ultrasuede. All grades feature\na unified black instrument panel, delivering a fresh and modern look.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 10,
+            "text": "PERFORMANCE 2.5 HEV FWD\nENGINE (cc) 2487\nACCELERATION 0-100 km/h (s) 8.0\nMAX SPEED (km/h) 180\nMAX POWER (hp/kW) 185 / 136\nMAX TORQUE (Nm) 221\nEMMISSIONS & FUEL 2.5 HEV FWD\nCO2 (g/km) 112 - 117\nFUEL (l/100km combined) 5.0 - 5.2\nNITROGEN OXIDES (NOx) 3.6\nDIMENSIONS 2.5 HEV FWD\nLENGTH 4600\nWIDTH 1855\nHEIGHT 1695\nWHEELBASE 2690\nMAX BOOT CAPACITY (l) 514\nPERFORMANCE\nAND EFFICIENCY\n4600 mm 1855 mm \n 1\n69\n5 \nm\nm\n \nRAV4 HEV\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 11,
+            "text": "RAV4 HEV\nRAV4 HYBRID\nKEY ACCESSORIES\nBOOT LINER \nTailored to the boot of your vehicle and\nprovides protection against dirt and spills.  \n \nFRONT & REAR MUD GUARDS \nDesigned to minimise water, mud and\nstones spraying onto your car’s body.\nRAV4 CARE PACK\nScan the QR Code for more information on accessories.\nRAV4 PROTECTION PACK \nLOCK NUTS \nReplacing one nut on each wheel with a\nToyota hardened steel wheel lock will\nmaximise security for your valuable alloys.\nRUBBER FLOOR MATS (2 FRONT & 2 REAR)\nGenuine tailored rubber floor mats help protect\nyour carpets against the very worst conditions\nREAR BUMPER PROTECTION PLATE \nA clear plastic film design to protect the\nrear bumper paintwork against scratching\nwhen sliding heavy or awkward loads into\nthe boot.\nDOOR HANDLE PROTECTION FILM\nThe door handle protection film is a tough\ntransparent self-adhesive film that helps to\nprotect paintwork against those small\nscrapes and scratches. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 12,
+            "text": "DISCOVER HYBRID\nWhy Hybrid? \nRefuel as usual\nRefuelling a Hybrid car is easy. Top up your Toyota Hybrid with petrol at a\nfilling station, as you would a conventional car.\nResponsive and efficient \nToyota Hybrids seamlessly combine petrol and electric power to optimise\nefficiency and deliver smooth, responsive power. They drive much like a\nconventional car but can cover up to 42% of your driving distance and 56%\nof your driving time in electric-only EV modes.\nNo Plugging In\nToyota Hybrids charge their batteries while braking and coasting. Together\nwith their onboard combustion engine, this means you don’t need to worry\nabout electric range, and no need to plug in your car to charge.\nScan the QR Code to learn more about Toyota Hybrid!\nToyota has pioneered Hybrid technology for more than 25 years. Our Hybrid cars are\nenjoyed by millions of drivers on the road today. Toyota’s latest fifth-generation Hybrids\ncombine an electric motor and a petrol engine in one best-of-both-worlds powertrain,\ndelivering impressive performance and driving range. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 13,
+            "text": "ALWAYS ON THE GO,\nALWAYS CONNECTED\nThe intelligent cockpit keeps everything in sync between your vehicle and\nsmartphone. The MyToyota App, designed to enhance the driving experience,\nopens up a world of connectivity. \nDepending on the model, the MyToyota App provides a suite of services that\nenable you to heat and cool your car using your smartphone, check your car’s\nbattery level, receive real-time updates, view trip history, and access to coaching\nfeatures aimed at optimizing your driving performance, ensuring you get the most\nfrom your Toyota. \n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 14,
+            "text": "TOYOTA SAFETY SENSE\n \nScan the QR Code to learn more about Toyota Safety Sense!\nAutomatic High Beam\nDesigned to optimise visibility during night driving by automatically\nswitching between high and low beam for oncoming vehicles and\nleading traffic\nLane Departure Alert\nThe lane-centring function will alert the driver if the vehicle starts to\ndeviate from it’s lane.\nAdaptive Cruise Control \nDrivers can choose their cruising speed at a pre-set distance from the\nvehicle in front. If this distance falls, the system will reduce it’s speed.\nPre-Collision System\nRecognizes a potential head-on impact and a wide range of objects in\nthe car’s path, including pedestrians, cyclists and motorcycles.\nToyota Safety Sense features a set of five active technologies with the ultimate\ngoal being to reduce traffic accidents as much as possible, helping to create a\nsafer driving environment for everyone, while supporting you in your daily\njourney.\nRoad Sign Assist\nMonitors the road signs ahead, displaying useful information such as the\ncurrent speed limit.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 15,
+            "text": "MANUFACTURER’S\nWARRANTY\n \nManufacturer Warranty\n• 3yrs/100,000km - Manufacturers Warranty\n• 3yrs/unlimited mileage - Surface Rust/Paintwork\n• 12yrs/unlimited mileage – Corrosion Perforation\nRoadside Assistance\n3 years of roadside assistance with Toyota Eurocare in the case of: \n• Mechanical breakdown\n• Accident\n• No fuel\n• Flat battery\n• Flat Tyre\n• Key lost if locked in\nFor peace of mind Toyota manufacturer’s warranty ensures that every trip runs\nsmoothly with:\nCall Toyota Eurocare on 1800-741-700 or from abroad +353 1 6193640\nFor further warranty details or recovery services contact your local Toyota Dealer.\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 16,
+            "text": "\n",
+            "blocks": [],
+            "tables": []
+        },
+        {
+            "pageNumber": 17,
+            "text": "BUILT FOR A BETTER WORLD\n12/25/RAV4/IRE\nTo the best of our knowledge, all information in this product guide is correct at the time of going to print. Details of specifications and equipment\nprovided in this product guide are subject to local conditions and requirements and may, therefore, vary from models available in your area. Please\nenquire with your local dealer for details on your local specifications and equipment. Vehicle body colours may differ slightly from the printed\nphotographs in this Product Guide. Toyota Ireland reserves the right to alter any details of specifications and equipment without prior notice. © 2025\nby Toyota Ireland. No part of this publication may in any way be reproduced without the prior written approval of Toyota Ireland.\n",
+            "blocks": [],
+            "tables": []
+        }
+    ]
+}
