@@ -37,6 +37,37 @@ Gradle 9.3.0 wrapper:
 ./gradlew dependencies --configuration runtimeClasspath
 ```
 
+## PDF corpus inventory
+
+Generate the checked-in, metadata-only inventory with:
+
+```sh
+./gradlew inventoryPdfs
+```
+
+The task writes `src/main/resources/car-pricelists-extracted/manifest.json`
+with each PDF's relative path, make, size, SHA-256, page count, detected
+text/image status, initial processing status, and collision-checked output
+path. It does not store extracted PDF text. Text-based PDFs start as `QUEUED`;
+image-only or non-extractable documents start as `NEEDS_REVIEW`; unreadable
+files remain in the manifest as `FAILED`.
+
+The initial representative samples cover four makes: Peugeot's `208-spec-sheet.pdf`,
+CUPRA's `20260618-cupra-price-list.pdf`, Toyota's `Toyota Corolla Cross - Brochure.pdf`,
+and Škoda's `Epiq_MY27_PG_September_CW48_2026.pdf` (product guide).
+
+The Stage 2 matrix spike runs with:
+
+```sh
+./gradlew probePdfMatrix
+./gradlew probePeugeot5008Matrix
+```
+
+These compare Tika's document text/metadata with PDFBox glyph coordinates on
+Volkswagen Golf MY27 page 8 and Peugeot 5008 page 17. Annotated, label-free
+references and measured limits are in
+[`docs/pdf-extractor-stage-2-spike.md`](docs/pdf-extractor-stage-2-spike.md).
+
 On Windows, use `gradlew.bat` instead of `./gradlew`.
 
 The [Gradle build and test workflow](.github/workflows/gradle.yml) runs

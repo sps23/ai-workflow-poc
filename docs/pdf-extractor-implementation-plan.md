@@ -127,15 +127,17 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 2: Feature-matrix and marker extraction spike
 
-- Select at least one real equipment matrix with multiple trim columns and tick/dot markers; annotate every target row/column cell manually as ground truth, including legend meaning.
-- Use Tika 3.3.3 for metadata/general text, then compare PDFBox coordinate extraction and, optionally, Tabula's table output on the same pages.
-- Determine whether each marker is a text glyph, vector drawing, or raster/scanned mark. Check whether text coordinates, shapes, or neither are available for the mark.
-- Verify page numbering and coordinate orientation against the visible page. Record page size, crop/rotation, and coordinate transformation if table/cell bounds are serialized.
-- Measure exact row-label, column-header, and marker-to-cell assignment against ground truth. Include false-positive marks and blank cells.
-- Identify layout families. If the 22 documents use a few stable templates, prefer a reusable extractor with explicit per-layout table regions/anchors over a universal inferred grid.
-- If marks are raster/scanned or cannot be assigned locally with confidence, emit `ambiguous`/`unknown` and require review. Do not use OpenRouter or vision APIs in this stage.
+- **Status: complete for two verified layouts.** Results, limits, and annotated references are in [`pdf-extractor-stage-2-spike.md`](pdf-extractor-stage-2-spike.md). Run `./gradlew probePdfMatrix probePeugeot5008Matrix` to reproduce both comparisons.
+- Agreed release target: 100% exactness for auto-published cells and at least 90% automatic coverage on each supported layout. Route remaining cells to review; report coverage separately from exactness.
+- [x] Annotated all 96 cells in the VW Golf MY27 page 8 matrix against the visible legend; measured marker-to-row-ordinal/trim assignment at 100% coverage and exactness.
+- [x] Annotated all 12 cells in the Peugeot 5008 page 17 options matrix; measured 91.7% coverage and 100% exactness, with one visually blank cell explicitly routed to review.
+- [x] Compared Tika 3.3.3 document text/metadata with PDFBox 3.0.8 text-glyph coordinates. Tabula was not added because its published release depends on PDFBox 2.x.
+- [x] Confirmed marker glyph encoding and checked page number, media/crop box, rotation, and rendered coordinate orientation for both selected pages.
+- [x] Scanned the 22-document corpus for matrix legend/layout signatures. Four VW guides are preliminary members of one matrix family; the other 18 had no matching text legend signature. See the spike report for limits.
+- [x] Defined review routing: unassigned/unsupported glyphs, blank or illegible cells, and untested layouts remain unknown/ambiguous. The VW matrix has no blank cells; the Peugeot reference includes one visually blank cell routed to review. Unit tests reject empty and unrelated glyphs as markers.
+- Row-label text recognition was not measured or implemented; row identity in each spike is a manually checked top-to-bottom ordinal. Verify label extraction and the remaining corpus layouts during Stage 5 before claiming support.
 
-**Done when:** a representative feature matrix has a manually checked row/column/cell map, marker encoding is known, parser choice and limitations are documented, and ambiguous cases have a defined review path.
+**Done when:** representative feature matrices have manually checked row/column/cell maps, marker encoding is known, parser choice and limitations are documented, and ambiguous cases have a defined review path. The current spike verifies only the two documented layouts; it does not claim general table extraction.
 
 ### Stage 3: Define and serialize raw artifacts
 
@@ -214,7 +216,7 @@ This separation allows raw artifacts to be regenerated without paying for or var
 - All 22 current PDFs are discovered, with unique output destinations and per-file outcomes.
 - Each successful artifact includes source relative path, SHA-256, parser identity/version, page count, ordered page text, and warnings/status.
 - For supported equipment matrices, output maps each target feature row to the correct trim/spec column and preserves each cell's marker state and evidence. Raw text without the cell mapping does not meet this criterion.
-- A manually annotated matrix evaluation set is used. Every automatically published cell on supported layouts must exactly match the reference for row, column, marker state, and legend-backed meaning; false inclusion is a release-blocking error. Agree a minimum automatic-coverage target before implementation, then report coverage separately from precision so marking every cell unknown cannot count as success.
+- A manually annotated matrix evaluation set is used. Every automatically published cell on supported layouts must exactly match the reference for row, column, marker state, and legend-backed meaning; false inclusion is a release-blocking error. Require 100% exactness and at least 90% automatic coverage on each supported layout; report both measures so marking every cell unknown cannot count as success.
 - Uncertain, blank-with-unclear-semantics, graphic, scanned, or unsupported cells retain `unknown`/`ambiguous`/`unmarked` status and are not published as negative facts.
 - Page number and coordinate mapping are verified against rendered source pages; each cell can be traced to source PDF, page, bounds, row label, column header, and raw marker evidence.
 - Tika's output is not treated as sufficient for table boundaries. Parser selection is supported by results on real matrix pages.
