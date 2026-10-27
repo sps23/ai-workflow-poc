@@ -15,6 +15,10 @@ Gradle 9.3.0 wrapper:
 
 On Windows, use `gradlew.bat` instead of `./gradlew`.
 
+The [Gradle build and test workflow](.github/workflows/gradle.yml) runs
+`./gradlew build test --no-daemon` on Ubuntu with Temurin JDK 25 for pushes and
+pull requests. It can also be started manually from the Actions tab.
+
 On macOS, after installing [Temurin 25](https://adoptium.net/temurin/releases/?version=25):
 
 ```sh
