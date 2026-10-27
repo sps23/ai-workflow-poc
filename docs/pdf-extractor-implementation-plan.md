@@ -160,7 +160,7 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 4: Batch runner and change detection
 
-- **Status: implemented.** Run `./gradlew extractPdfs` to invoke the local PDFBox batch with the source/output directories configured in `build.gradle.kts`. It writes one JSON artifact per PDF plus `batch-manifest.json`; it does not call external services. The current parser extracts ordered page text and PDF metadata only, so successful artifacts are marked `NEEDS_REVIEW` and explicitly warn that table/cell geometry is not extracted. Scanned/image-only documents also carry a review diagnostic. No production corpus artifacts were generated during implementation; check source terms before running/committing them.
+- **Status: implemented.** Run `./gradlew extractPdfs` to invoke the local PDFBox batch with the source/output directories configured in `build.gradle.kts`. It writes one JSON artifact per PDF plus `batch-manifest.json`; it does not call external services. The current parser extracts ordered page text and PDF metadata only, so successful artifacts are marked `NEEDS_REVIEW` and explicitly warn that table/cell geometry is not extracted. Scanned/image-only documents also carry a review diagnostic. Generated corpus artifacts are present under `src/main/resources/car-pricelists-extracted/`; check source terms before distributing or packaging them.
 - [x] Walk the configured input directory recursively and accept PDF extensions case-insensitively.
 - [x] Derive output paths from sanitized relative-path segments, validate containment, and detect case-insensitive collisions instead of overwriting.
 - [x] Compute SHA-256 before parsing. Skip only when source hash, artifact schema, and parser name/version match.
@@ -184,12 +184,14 @@ Tabula is deferred: the published `technology.tabula:tabula:1.0.5` depends on PD
 
 ### Stage 6: Handoff to interpretation
 
-- Update `docs/car-recommendation-poc-plan.md` to link here and record the implemented command, artifact schema, and known parser limitations.
-- Later add a separate interpretation step: input raw artifact -> normalize feature labels and propose structured model/trim/price/specification records -> validate required fields and citations -> human review -> publish canonical catalog.
-- Interpretation may normalize wording, but must consume already-established cell/trim assignments. It cannot change a cell's marker state or turn `unknown` into included/not-included without new source evidence.
-- Only after this boundary works should the POC consider LLM-assisted interpretation. The model must cite supplied document/page evidence, return structured output, and leave unsupported facts unknown.
+- **Status: complete for the extraction-to-catalog handoff.** The broader workflow plan documents the `./gradlew extractPdfs` command, schema-v1 artifact shape, PDFBox parser behavior, and current limitations in [PDF extraction handoff](car-recommendation-poc-plan.md#pdf-extraction-handoff).
+- [x] Record that artifacts contain source identity/hash, parser/status/diagnostics, ordered pages, text, and PDF metadata.
+- [x] State that current extraction does not populate tables/cells or produce normalized vehicle/trim/price/specification records; generated artifacts remain review staging.
+- [x] Define the downstream boundary: normalize source wording into typed candidate records, validate required fields and document/page citations, require human approval, then publish to the canonical catalog.
+- [x] Preserve extraction evidence. Interpretation may not change established cell/trim assignments or turn `unknown` into included/not-included without new source evidence.
+- [x] Defer LLM-assisted interpretation until the non-LLM evidence-to-review boundary is established; any later model must cite supplied document/page evidence, return structured output, and leave unsupported facts unknown.
 
-**Done when:** the extraction contract is stable enough for another stage to consume without depending on Tika internals.
+**Done when:** the broader POC plan can invoke and consume the extraction contract without depending on PDFBox/Tika internals, while keeping raw evidence, interpretation, review, and publication as distinct steps. **Met for documentation and handoff; canonical catalog interpretation remains the next implementation stage.**
 
 ## Dedicated AI agent decision
 
