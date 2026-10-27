@@ -4,6 +4,13 @@
 # Log file
 *.log
 
+# IntelliJ IDEA project metadata and compiler output
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
 # BlueJ files
 *.ctxt
 
@@ -19,12 +26,18 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# JVM crash logs and diagnostic recordings (including JDK 25)
 hs_err_pid*
 replay_pid*
+*.hprof
+*.jfr
 
 # Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin/
+
+# Gradle caches and build output
 .gradle/
 build/
+
+# Keep the Gradle wrapper JAR under version control
 !gradle/wrapper/gradle-wrapper.jar
