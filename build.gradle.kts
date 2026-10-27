@@ -62,6 +62,43 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEa
     mustRunAfter("spotlessApply")
 }
 
+tasks.register<JavaExec>("inventoryPdfs") {
+    group = "verification"
+    description = "Generate a deterministic inventory of the source PDF corpus."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.pdfextractor.PdfInventoryCli")
+    args(
+        "src/main/resources/car-pricelists",
+        "src/main/resources/car-pricelists-extracted/manifest.json",
+    )
+}
+
+tasks.register<JavaExec>("probePdfMatrix") {
+    group = "verification"
+    description = "Compare Tika text evidence with PDFBox coordinates on the annotated real matrix."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.pdfextractor.PdfMatrixSpikeCli")
+    args(
+        "src/main/resources/car-pricelists/vw/Golf_MY27.pdf",
+        "8",
+        "docs/evidence/vw-golf-my27-page-8-exterior-highlights.psv",
+        "vw-golf-exterior",
+    )
+}
+
+tasks.register<JavaExec>("probePeugeot5008Matrix") {
+    group = "verification"
+    description = "Evaluate the Peugeot 5008 multi-trim options matrix against manual ground truth."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.pdfextractor.PdfMatrixSpikeCli")
+    args(
+        "src/main/resources/car-pricelists/peugeot/5008-spec-sheet.pdf",
+        "17",
+        "docs/evidence/peugeot-5008-page-17-options.psv",
+        "peugeot-5008-options",
+    )
+}
+
 tasks.matching { it.name.startsWith("spotless") && it.name.endsWith("Check") }.configureEach {
     mustRunAfter("spotlessApply")
 }
