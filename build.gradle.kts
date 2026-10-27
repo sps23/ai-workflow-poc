@@ -73,6 +73,17 @@ tasks.register<JavaExec>("inventoryPdfs") {
     )
 }
 
+tasks.register<JavaExec>("extractPdfs") {
+    group = "verification"
+    description = "Extract local PDF page text into validated, change-aware JSON artifacts."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.pdfextractor.PdfBatchExtractorCli")
+    args(
+        "src/main/resources/car-pricelists",
+        "src/main/resources/car-pricelists-extracted",
+    )
+}
+
 tasks.register<JavaExec>("probePdfMatrix") {
     group = "verification"
     description = "Compare Tika text evidence with PDFBox coordinates on the annotated real matrix."
