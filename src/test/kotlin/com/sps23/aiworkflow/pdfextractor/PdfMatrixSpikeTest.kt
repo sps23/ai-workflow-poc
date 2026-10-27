@@ -7,6 +7,7 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts
 import java.nio.file.Files
+import java.nio.file.Path
 import kotlin.math.abs
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -14,6 +15,26 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class PdfMatrixSpikeTest {
+    @Test
+    fun `annotated real-matrix references retain expected coverage and exactness`() {
+        assertReferenceMetrics(
+            referencePath = "docs/evidence/vw-golf-my27-page-8-exterior-highlights.psv",
+            profile = PdfMatrixProfiles.VW_GOLF_EXTERIOR,
+            pageNumber = 8,
+            expectedTotal = 96,
+            expectedDetected = 96,
+            expectedReview = 0,
+        )
+        assertReferenceMetrics(
+            referencePath = "docs/evidence/peugeot-5008-page-17-options.psv",
+            profile = PdfMatrixProfiles.PEUGEOT_5008_OPTIONS,
+            pageNumber = 17,
+            expectedTotal = 12,
+            expectedDetected = 11,
+            expectedReview = 1,
+        )
+    }
+
     @Test
     fun `PDFBox text positions preserve page geometry and glyph coordinates`() {
         val pdf = Files.createTempFile("pdf-geometry", ".pdf")
@@ -92,6 +113,40 @@ class PdfMatrixSpikeTest {
     }
 
     @Test
+    fun `unsupported and out-of-region glyphs are not assigned to cells`() {
+        val reference =
+            listOf(
+                MatrixRowReference(
+                    rowIndex = 1,
+                    yFromTop = 100f,
+                    markersByTrim = listOf("●", "●", "●", "●"),
+                ),
+            )
+        val evidence =
+            PdfPageEvidence(
+                pageNumber = 8,
+                geometry =
+                    PdfPageGeometry(
+                        mediaBox = PdfBox(0f, 0f, 960f, 540f),
+                        cropBox = PdfBox(0f, 0f, 960f, 540f),
+                        rotation = 0,
+                    ),
+                glyphs =
+                    listOf(
+                        PdfTextGlyph("*", 154f, 100f, 2f, 2f, 0f, "Fixture"),
+                        PdfTextGlyph("●", 158f, 100f, 2f, 2f, 0f, "Fixture"),
+                    ),
+            )
+
+        val result = PdfMatrixEvaluator.evaluate(evidence, reference, PdfMatrixProfiles.VW_GOLF_EXTERIOR)
+
+        assertEquals(4, result.totalCells)
+        assertEquals(0, result.detectedCells)
+        assertEquals(0, result.exactCells)
+        assertTrue(result.diagnostics.isNotEmpty())
+    }
+
+    @Test
     fun `Tika probe returns document text and metadata without cell coordinates`() {
         val pdf = Files.createTempFile("pdf-tika-evidence", ".pdf")
         try {
@@ -116,5 +171,55 @@ class PdfMatrixSpikeTest {
         } finally {
             Files.deleteIfExists(pdf)
         }
+    }
+
+    private fun assertReferenceMetrics(
+        referencePath: String,
+        profile: MatrixEvaluationProfile,
+        pageNumber: Int,
+        expectedTotal: Int,
+        expectedDetected: Int,
+        expectedReview: Int,
+    ) {
+        val reference = PdfMatrixEvaluator.readReference(Path.of(referencePath), profile)
+        val glyphs =
+            reference.flatMap { row ->
+                row.markersByTrim.mapIndexedNotNull { column, marker ->
+                    if (marker == "?") {
+                        null
+                    } else {
+                        PdfTextGlyph(
+                            text = marker,
+                            xFromLeft = profile.columnCenters[column],
+                            yFromTop = row.yFromTop,
+                            width = 0f,
+                            height = 0f,
+                            direction = 0f,
+                            fontName = "annotated reference",
+                        )
+                    }
+                }
+            }
+        val evidence =
+            PdfPageEvidence(
+                pageNumber = pageNumber,
+                geometry =
+                    PdfPageGeometry(
+                        mediaBox = PdfBox(0f, 0f, 960f, 540f),
+                        cropBox = PdfBox(0f, 0f, 960f, 540f),
+                        rotation = 0,
+                    ),
+                glyphs = glyphs,
+            )
+
+        val result = PdfMatrixEvaluator.evaluate(evidence, reference, profile)
+
+        assertEquals(expectedTotal, result.totalCells)
+        assertEquals(expectedDetected, result.detectedCells)
+        assertEquals(expectedDetected, result.exactCells)
+        assertEquals(expectedReview, result.reviewCells)
+        assertEquals(1.0, result.exactness)
+        assertEquals(expectedDetected.toDouble() / expectedTotal, result.coverage)
+        assertTrue(result.diagnostics.isEmpty())
     }
 }

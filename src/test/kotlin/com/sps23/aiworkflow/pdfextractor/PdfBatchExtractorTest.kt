@@ -40,8 +40,27 @@ class PdfBatchExtractorTest {
             assertTrue(artifact.pages[0].text.contains("Page one"))
             assertTrue(artifact.pages[1].text.contains("Page two"))
             assertTrue(artifact.pages.all { it.tables.isEmpty() })
+            assertEquals("Fixture title", artifact.source.metadata["title"])
+            assertEquals("Fixture author", artifact.source.metadata["author"])
             assertEquals(PdfExtractionStatus.NEEDS_REVIEW, artifact.extraction.status)
             assertTrue(artifact.extraction.diagnostics.any { it.message.contains("feature-matrix cells") })
+        }
+    }
+
+    @Test
+    fun `empty and malformed PDFs are reported as per-document failures`() {
+        withWorkspace { inputRoot, outputRoot ->
+            Files.createDirectories(inputRoot.resolve("make"))
+            PDDocument().use { document -> document.save(inputRoot.resolve("make/empty.pdf").toFile()) }
+            Files.writeString(inputRoot.resolve("make/malformed.pdf"), "not a PDF")
+
+            val result = PdfBatchExtractor(inputRoot, outputRoot, PdfBoxDocumentParser()).run()
+
+            assertEquals(2, result.summary.discovered)
+            assertEquals(0, result.summary.extracted)
+            assertEquals(2, result.summary.failed)
+            assertTrue(result.manifest.documents.all { !it.diagnostic.isNullOrBlank() })
+            assertTrue(Files.exists(result.summary.manifestPath))
         }
     }
 
@@ -264,6 +283,8 @@ class PdfBatchExtractorTest {
     ) {
         Files.createDirectories(path.parent)
         PDDocument().use { document ->
+            document.documentInformation.title = "Fixture title"
+            document.documentInformation.author = "Fixture author"
             texts.forEach { text ->
                 val page = PDPage()
                 document.addPage(page)
