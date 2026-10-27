@@ -28,7 +28,7 @@ It cannot establish that an LLM is always accurate, that the five-brand sample r
 | Market and source | Five car brands; a pilot of about 2–3 model PDFs per brand (roughly 10–15 PDFs total) |
 | User journey | One form to enter requirements and preferences, followed by a short ranked recommendation list |
 | Application | Kotlin desktop app using the existing Compose Desktop setup |
-| PDF processing | Extract text locally with Apache Tika; start with text-based PDFs |
+| PDF processing | Extract locally with the implemented PDFBox batch; review raw text artifacts before cataloging |
 | Knowledge base | Small, versioned structured catalog; Markdown may be generated for people to inspect |
 | Recommendation | Deterministic eligibility filtering followed by LLM-assisted ranking and explanation |
 | Model provider | OpenRouter behind a replaceable integration boundary; live API use is opt-in in tests |
@@ -55,7 +55,7 @@ Reviewed catalog records
   ^
   |
 Batch document registry -> PDF extraction -> staging/review -> publication
-                         Apache Tika
+                         Apache PDFBox
 ```
 
 ### Suggested responsibilities
@@ -63,7 +63,7 @@ Batch document registry -> PDF extraction -> staging/review -> publication
 - **Presentation:** Collect budget and preferences; show validation, progress, errors, no-match results, recommendation reasons, trade-offs, and citations.
 - **Use-case layer:** Validate user input, retrieve eligible catalog records, invoke ranking, validate the result, and assemble the final response.
 - **Catalog/domain:** Typed records for vehicles, trims, prices, features, sources, and preferences. Keep hard-constraint filtering deterministic and independently testable.
-- **Ingestion:** Track each source PDF in a document registry, extract it locally with Tika, retain source/page context where possible, and produce staging records for review. Batch processing should report status per document so one failed PDF does not hide successful imports or block review of the rest.
+- **Ingestion:** Track each source PDF in a document registry, extract it locally, retain source/page context, and produce staging records for review. The current batch uses Apache PDFBox; see [PDF extraction handoff](#pdf-extraction-handoff). Batch processing reports status per document so one failed PDF does not hide successful imports or block review of the rest.
 - **Model adapter:** Encapsulate Koog/OpenRouter behind an interface so the model/provider can be changed without changing filtering or UI behavior. Use structured requests and responses, timeouts, and visible error handling.
 - **Catalog persistence:** Store the POC's reviewed records and source-document manifest in a small, version-controlled JSON catalog. Markdown can be generated from the same structured records for human review, but should not be the authoritative runtime source.
 
@@ -117,6 +117,27 @@ Separate **hard constraints** from **soft preferences**:
 
 The ranking request should include only the user's preferences and the bounded set of eligible catalog facts. The response should reference stable candidate IDs and include concise reasons, trade-offs, unknowns, and matching source/page references. Validate all IDs and claims against the catalog before displaying the result. If no candidate meets hard constraints, report that plainly; never relax a constraint without asking the user.
 
+### PDF extraction handoff
+
+The local batch command is `./gradlew extractPdfs`. It reads PDFs from
+`src/main/resources/car-pricelists/` and writes one JSON artifact per document
+plus `batch-manifest.json` under `src/main/resources/car-pricelists-extracted/`.
+The versioned artifact contract is schema v1: `source` records relative path,
+make, model-coverage hints, SHA-256, file size, and PDF metadata; `extraction`
+records parser identity, page count, status, and diagnostics; `pages` retains
+ordered page numbers and extracted text. The schema can represent structured
+blocks, tables, cells, marker evidence, and provenance, but the current parser
+does not populate table/cell geometry.
+
+Current artifacts are raw extraction evidence, not normalized vehicle/trim
+records. The PDFBox parser extracts page text and document metadata only;
+successful documents remain `NEEDS_REVIEW`, and image-only or unsupported
+content requires review. It does not infer prices, specifications, equipment,
+or canonical catalog facts. Use the extraction contract as input to the
+subsequent normalization and approval work, not as the recommendation catalog.
+See the [PDF extractor implementation plan](pdf-extractor-implementation-plan.md)
+for implementation stages, evaluation evidence, and known layout limits.
+
 ## Implementation plan
 
 ### 1. Confirm the corpus and evaluation examples
@@ -137,8 +158,8 @@ The ranking request should include only the user's preferences and the bounded s
 
 ### 3. Implement repeatable batch PDF extraction and review staging
 
-- Use the existing Tika dependency to extract each registered PDF locally; start with one document end-to-end, then batch the pilot corpus.
-- Feature matrices must map each feature row to the correct trim column and tick/dot state; Tika's plain text extraction does not compute table row or cell boundaries. For the Kotlin coordinate-aware extraction design, raw artifact contract, evaluation, and review states, see [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md).
+- Use `./gradlew extractPdfs` to run the existing local PDFBox batch over the configured source directory. Its schema-v1 JSON artifacts contain page text, metadata, source identity, and per-document status; the current parser does not extract table/cell geometry.
+- Feature matrices must map each feature row to the correct trim column and tick/dot state; flattened page text does not establish row/cell boundaries. For the extraction contract, evidence, and supported-layout limits, see [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md).
 - Keep extracted text and page context associated with its document ID and verify page attribution on actual sample documents.
 - Produce staging records rather than writing directly to the published catalog. Track per-document state and errors so a partial batch can be resumed and reviewed.
 - Make imports idempotent: reprocessing an unchanged content hash should not create duplicate models, trims, or facts. If a source file changes, retain the revision history or explicitly mark prior extracted facts as superseded and re-review affected records.
@@ -219,8 +240,8 @@ The POC succeeds if a reviewer can follow a recommendation from user input to el
 
 ## Repository starting point
 
-The repository already declares Kotlin 2.3.21, Compose Desktop 1.7.0, Apache Tika 3.3.3, and Koog/OpenRouter 1.3.0 in `build.gradle.kts`. `README.md` documents the JDK 25 and Gradle 9.3.0 baseline and relevant dependency/runtime considerations. There is no application entry point yet. The current source tree contains 22 PDFs across five makes; curate a representative subset for the recommendation catalog. See [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md) for the next extraction stage. Existing tests are compatibility smoke checks; `TikaCompatibilityTest` and `JdkCompatibilityTest` are annotated with `@Ignore`, so add focused non-ignored tests for new behavior rather than assuming those smoke checks exercise the workflow.
+The repository already declares Kotlin 2.3.21, Compose Desktop 1.7.0, Apache Tika 3.3.3, PDFBox 3.0.8, and Koog/OpenRouter 1.3.0 in `build.gradle.kts`. `README.md` documents the JDK 25 and Gradle 9.3.0 baseline and relevant dependency/runtime considerations. There is no application entry point yet. The current source tree contains 22 PDFs across five makes; curate a representative subset for the recommendation catalog. See [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md) for the implemented extraction contract and its evidence-backed limits. Existing tests are compatibility smoke checks; `TikaCompatibilityTest` and `JdkCompatibilityTest` are annotated with `@Ignore`, so add focused non-ignored tests for new behavior rather than assuming those smoke checks exercise the workflow.
 
 ## Suggested first development task
 
-Start with the extraction spike and batch task in [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md): verify page/table fidelity on representative PDFs, then create source-linked raw artifacts. Next, define the catalog data classes and deterministic filtering with unit tests, and promote only reviewed model/trim facts from raw artifacts into the recommendation catalog.
+Extraction and its handoff contract are implemented in [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md); run `./gradlew extractPdfs` to refresh raw artifacts. The next development task is to define catalog data classes and deterministic validation/filtering, add manually verified source-backed examples, and promote only reviewed model/trim facts. Raw extracted text is not yet a meaningful canonical vehicle catalog.
