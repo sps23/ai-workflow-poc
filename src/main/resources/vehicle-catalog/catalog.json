@@ -1,0 +1,934 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "documentId": "peugeot/5008-spec-sheet.pdf",
+      "relativePath": "peugeot/5008-spec-sheet.pdf",
+      "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+      "market": "IE",
+      "pageCount": 31,
+      "effectivePeriod": "2026-11"
+    },
+    {
+      "documentId": "vw/Golf_MY27.pdf",
+      "relativePath": "vw/Golf_MY27.pdf",
+      "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+      "market": "IE",
+      "pageCount": 14
+    },
+    {
+      "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+      "relativePath": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+      "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+      "market": "IE",
+      "pageCount": 18
+    }
+  ],
+  "models": [
+    {
+      "id": "peugeot-5008",
+      "make": "Peugeot",
+      "name": "5008"
+    },
+    {
+      "id": "toyota-rav4-phev",
+      "make": "Toyota",
+      "name": "RAV4 Plug-in Hybrid"
+    },
+    {
+      "id": "volkswagen-golf",
+      "make": "Volkswagen",
+      "name": "Golf"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "peugeot-5008-electric-210-73kwh-allure",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "Allure",
+      "powertrain": "ELECTRIC",
+      "engine": "Electric 210 (73 kWh)",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh), Allure"
+        }
+      ]
+    },
+    {
+      "id": "peugeot-5008-electric-210-73kwh-gt",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "GT",
+      "powertrain": "ELECTRIC",
+      "engine": "Electric 210 (73 kWh)",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh), GT"
+        }
+      ]
+    },
+    {
+      "id": "peugeot-5008-electric-210-73kwh-gt-exclusive",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "GT Exclusive",
+      "powertrain": "ELECTRIC",
+      "engine": "Electric 210 (73 kWh)",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh), GT Exclusive"
+        }
+      ]
+    },
+    {
+      "id": "peugeot-5008-hybrid-145-allure",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "Allure",
+      "powertrain": "HYBRID",
+      "engine": "Hybrid 145",
+      "transmission": "AUTO",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO, Allure"
+        }
+      ]
+    },
+    {
+      "id": "peugeot-5008-hybrid-145-gt",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "GT",
+      "powertrain": "HYBRID",
+      "engine": "Hybrid 145",
+      "transmission": "AUTO",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO, GT"
+        }
+      ]
+    },
+    {
+      "id": "peugeot-5008-hybrid-145-gt-exclusive",
+      "modelId": "peugeot-5008",
+      "market": "IE",
+      "trim": "GT Exclusive",
+      "powertrain": "HYBRID",
+      "engine": "Hybrid 145",
+      "transmission": "AUTO",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO, GT Exclusive"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-phev-sol",
+      "modelId": "toyota-rav4-phev",
+      "market": "IE",
+      "trim": "SOL",
+      "powertrain": "PLUG_IN_HYBRID",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 4,
+          "rawText": "RAV4 PHEV SOL"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-phev-sport",
+      "modelId": "toyota-rav4-phev",
+      "market": "IE",
+      "trim": "SPORT",
+      "powertrain": "PLUG_IN_HYBRID",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 5,
+          "rawText": "RAV4 PHEV SPORT"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-phev-fwd",
+      "modelId": "toyota-rav4-phev",
+      "market": "IE",
+      "powertrain": "PLUG_IN_HYBRID",
+      "engine": "2.5 TNGA PHEV",
+      "drivetrain": "FWD",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "2.5 TNGA PHEV FWD"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-phev-awd-gr-sport",
+      "modelId": "toyota-rav4-phev",
+      "market": "IE",
+      "trim": "GR SPORT",
+      "powertrain": "PLUG_IN_HYBRID",
+      "engine": "2.5 TNGA PHEV",
+      "drivetrain": "AWD",
+      "reviewStatus": "NEEDS_REVIEW",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "2.5 TNGA PHEV AWD (GR SPORT)*; GR SPORT Specification Pending Final Homologation"
+        }
+      ]
+    },
+    {
+      "id": "volkswagen-golf-life-1-5-tsi-116hp",
+      "modelId": "volkswagen-golf",
+      "market": "IE",
+      "modelYear": 2027,
+      "trim": "Life",
+      "powertrain": "PETROL",
+      "engine": "1.5 TSI 116HP",
+      "transmission": "6 speed manual",
+      "manufacturerCode": "DA13BX",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BX Golf Life 1.5 TSI 116HP"
+        },
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 13,
+          "rawText": "1.5 TSI 116HP; Gearbox type: 6 speed manual"
+        }
+      ]
+    },
+    {
+      "id": "volkswagen-golf-life-1-5-tsi-mhev-116hp",
+      "modelId": "volkswagen-golf",
+      "market": "IE",
+      "modelYear": 2027,
+      "trim": "Life",
+      "powertrain": "MILD_HYBRID",
+      "engine": "1.5 TSI MHEV 116HP",
+      "transmission": "7 speed auto DSG",
+      "manufacturerCode": "DA13BM",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BM Golf Life 1.5 TSI MHEV 116HP"
+        },
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 13,
+          "rawText": "1.5 TSI 116HP; Gearbox type: 7 speed auto DSG mHEV"
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": "heated-front-seat-pack",
+      "name": "Heated front seats, Driver & Passenger Pack",
+      "category": "seats"
+    },
+    {
+      "id": "black-perforated-nappa-leather",
+      "name": "Black perforated Nappa leather upholstery",
+      "category": "seats"
+    },
+    {
+      "id": "metallic-paint",
+      "name": "Metallic paint",
+      "category": "exterior"
+    },
+    {
+      "id": "power-boot",
+      "name": "Power Boot",
+      "category": "convenience"
+    },
+    {
+      "id": "power-back-door-kick-function",
+      "name": "Power Back Door with Kick Function",
+      "category": "convenience"
+    }
+  ],
+  "prices": [
+    {
+      "id": "5008-electric-allure-rrp",
+      "configurationIds": ["peugeot-5008-electric-210-73kwh-allure"],
+      "amountMinorUnits": 5299500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh): Allure €52,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-electric-gt-rrp",
+      "configurationIds": ["peugeot-5008-electric-210-73kwh-gt"],
+      "amountMinorUnits": 5599500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh): GT €55,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-electric-gt-exclusive-rrp",
+      "configurationIds": ["peugeot-5008-electric-210-73kwh-gt-exclusive"],
+      "amountMinorUnits": 5799500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Electric 210 (73 kWh): GT Exclusive €57,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-hybrid-allure-rrp",
+      "configurationIds": ["peugeot-5008-hybrid-145-allure"],
+      "amountMinorUnits": 4999500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO: Allure €49,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-hybrid-gt-rrp",
+      "configurationIds": ["peugeot-5008-hybrid-145-gt"],
+      "amountMinorUnits": 5299500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO: GT €52,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-hybrid-gt-exclusive-rrp",
+      "configurationIds": ["peugeot-5008-hybrid-145-gt-exclusive"],
+      "amountMinorUnits": 5399500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "effectiveFrom": "2026-11",
+      "conditions": "Dealer delivery charges, metallic paint and tyre recycling levy excluded.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 3,
+          "rawText": "Hybrid 145 AUTO: GT Exclusive €53,995; prices applicable from November 2026"
+        }
+      ]
+    },
+    {
+      "id": "5008-heated-seat-pack-option",
+      "configurationIds": [
+        "peugeot-5008-hybrid-145-allure",
+        "peugeot-5008-electric-210-73kwh-allure"
+      ],
+      "featureId": "heated-front-seat-pack",
+      "amountMinorUnits": 79000,
+      "currency": "EUR",
+      "basis": "OPTION_PRICE",
+      "effectiveFrom": "2026-11",
+      "conditions": "Option code J7EV; trim-level option shown for Allure.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Heated front seats, Driver & Passenger Pack; J7EV; €790; optional on Allure"
+        }
+      ]
+    },
+    {
+      "id": "5008-nappa-leather-option",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-gt-exclusive",
+        "peugeot-5008-hybrid-145-gt-exclusive"
+      ],
+      "featureId": "black-perforated-nappa-leather",
+      "amountMinorUnits": 333000,
+      "currency": "EUR",
+      "basis": "OPTION_PRICE",
+      "effectiveFrom": "2026-11",
+      "conditions": "Option code 4HFX; trim-level option shown for GT Exclusive.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Black perforated Nappa leather upholstery; 4HFX; €3,330; optional on GT Exclusive"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-petrol-rrp",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-116hp"],
+      "amountMinorUnits": 3463000,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "conditions": "Volkswagen Ireland MY27 published RRP.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BX Golf Life 1.5 TSI 116HP; RRP €34,630"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-petrol-delivery-service",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-116hp"],
+      "amountMinorUnits": 210500,
+      "currency": "EUR",
+      "basis": "DELIVERY_SERVICE_CHARGE",
+      "conditions": "Published Delivery & Service amount; optional Service Plan may be removable.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BX Golf Life; Delivery & Service €2,105"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-petrol-rotr",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-116hp"],
+      "amountMinorUnits": 3673500,
+      "currency": "EUR",
+      "basis": "ON_THE_ROAD_TOTAL",
+      "conditions": "Published ROTR total; subject to the source footnotes.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BX Golf Life; ROTR €36,735"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-mhev-rrp",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-mhev-116hp"],
+      "amountMinorUnits": 3725500,
+      "currency": "EUR",
+      "basis": "MANUFACTURER_RRP",
+      "conditions": "Volkswagen Ireland MY27 published RRP.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BM Golf Life 1.5 TSI MHEV 116HP; RRP €37,255"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-mhev-delivery-service",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-mhev-116hp"],
+      "amountMinorUnits": 210500,
+      "currency": "EUR",
+      "basis": "DELIVERY_SERVICE_CHARGE",
+      "conditions": "Published Delivery & Service amount; optional Service Plan may be removable.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BM Golf Life; Delivery & Service €2,105"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-mhev-rotr",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-mhev-116hp"],
+      "amountMinorUnits": 3936000,
+      "currency": "EUR",
+      "basis": "ON_THE_ROAD_TOTAL",
+      "conditions": "Published ROTR total; subject to the source footnotes.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 4,
+          "rawText": "DA13BM Golf Life; ROTR €39,360"
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "id": "5008-electric-usable-battery-capacity",
+      "name": "Usable battery capacity",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-allure",
+        "peugeot-5008-electric-210-73kwh-gt",
+        "peugeot-5008-electric-210-73kwh-gt-exclusive"
+      ],
+      "value": 73.0,
+      "unit": "kWh",
+      "testCycleOrCondition": "Electric 210 73kWh Standard Range",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 24,
+          "rawText": "Usable capacity (kWh): 73; Electric 210 73kWh Standard Range"
+        }
+      ]
+    },
+    {
+      "id": "5008-electric-boot-volume-five-seat",
+      "name": "Boot volume",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-allure",
+        "peugeot-5008-electric-210-73kwh-gt",
+        "peugeot-5008-electric-210-73kwh-gt-exclusive"
+      ],
+      "value": 748.0,
+      "unit": "dm3 VDA",
+      "testCycleOrCondition": "Five-seat configuration",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 22,
+          "rawText": "E-5008 boot volume: 748 dm3 VDA in a 5-seater configuration"
+        }
+      ]
+    },
+    {
+      "id": "5008-electric-boot-volume-seven-seat",
+      "name": "Boot volume",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-allure",
+        "peugeot-5008-electric-210-73kwh-gt",
+        "peugeot-5008-electric-210-73kwh-gt-exclusive"
+      ],
+      "value": 259.0,
+      "unit": "dm3 VDA",
+      "testCycleOrCondition": "Seven-seat configuration",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 22,
+          "rawText": "E-5008 boot volume: 259 dm3 VDA in a 7-seater configuration"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-petrol-acceleration",
+      "name": "Acceleration 0-100 km/h",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-116hp"],
+      "value": 9.9,
+      "unit": "s",
+      "testCycleOrCondition": "1.5 TSI 116HP, 6 speed manual",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 13,
+          "rawText": "1.5 TSI 116HP, 6 speed manual; Acceleration 0-100km/h: 9.9 s"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-mhev-acceleration",
+      "name": "Acceleration 0-100 km/h",
+      "configurationIds": ["volkswagen-golf-life-1-5-tsi-mhev-116hp"],
+      "value": 8.6,
+      "unit": "s",
+      "testCycleOrCondition": "1.5 TSI 116HP, 7 speed auto DSG mHEV",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 13,
+          "rawText": "1.5 TSI 116HP, 7 speed auto DSG mHEV; Acceleration 0-100km/h: 8.6 s"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-fwd-ev-range",
+      "name": "WLTP EV range",
+      "configurationIds": ["toyota-rav4-phev-fwd"],
+      "minValue": 125.0,
+      "maxValue": 137.0,
+      "unit": "km",
+      "testCycleOrCondition": "WLTP",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "2.5 TNGA PHEV FWD; WLTP EV RANGE (km): 125-137"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-fwd-acceleration",
+      "name": "Acceleration 0-100 km/h",
+      "configurationIds": ["toyota-rav4-phev-fwd"],
+      "value": 7.5,
+      "unit": "s",
+      "testCycleOrCondition": "2.5 TNGA PHEV FWD",
+      "approvalStatus": "CONFIRMED",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "2.5 TNGA PHEV FWD; ACCELERATION 0-100 km/h: 7.5 s"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-shared-maximum-boot-volume",
+      "name": "Maximum boot capacity",
+      "configurationIds": [
+        "toyota-rav4-phev-fwd",
+        "toyota-rav4-phev-awd-gr-sport"
+      ],
+      "value": 446.0,
+      "unit": "L",
+      "testCycleOrCondition": "Maximum capacity as published; source table does not separate drivetrains",
+      "approvalStatus": "UNSPECIFIED",
+      "reviewStatus": "NEEDS_REVIEW",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "MAX BOOT CAPACITY (l): 446"
+        }
+      ]
+    },
+    {
+      "id": "toyota-rav4-awd-acceleration-pending",
+      "name": "Acceleration 0-100 km/h",
+      "configurationIds": ["toyota-rav4-phev-awd-gr-sport"],
+      "value": 5.8,
+      "unit": "s",
+      "testCycleOrCondition": "2.5 TNGA PHEV AWD (GR SPORT)",
+      "approvalStatus": "PENDING_HOMOLOGATION",
+      "reviewStatus": "NEEDS_REVIEW",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 10,
+          "rawText": "2.5 TNGA PHEV AWD (GR SPORT); ACCELERATION 0-100 km/h: 5.8 s; specification pending final homologation"
+        }
+      ]
+    }
+  ],
+  "fitments": [
+    {
+      "id": "5008-heated-seat-pack-allure-optional",
+      "featureId": "heated-front-seat-pack",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-allure",
+        "peugeot-5008-hybrid-145-allure"
+      ],
+      "status": "OPTIONAL",
+      "conditions": "Trim-level options table applies to Hybrid/Electric versions.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: ⚫ standard; ○ option; - not available; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Heated front seats, Driver & Passenger Pack; J7EV; €790; ○ under Allure"
+        }
+      ]
+    },
+    {
+      "id": "5008-heated-seat-pack-unavailable-gt",
+      "featureId": "heated-front-seat-pack",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-gt",
+        "peugeot-5008-hybrid-145-gt"
+      ],
+      "status": "NOT_AVAILABLE",
+      "conditions": "Explicit dash in the trim-level options table.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: - not available; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Heated front seats, Driver & Passenger Pack; dash under GT"
+        }
+      ]
+    },
+    {
+      "id": "5008-heated-seat-pack-unavailable-gt-exclusive",
+      "featureId": "heated-front-seat-pack",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-gt-exclusive",
+        "peugeot-5008-hybrid-145-gt-exclusive"
+      ],
+      "status": "NOT_AVAILABLE",
+      "conditions": "Explicit dash in the trim-level options table.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: - not available; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Heated front seats, Driver & Passenger Pack; dash under GT Exclusive"
+        }
+      ]
+    },
+    {
+      "id": "5008-nappa-leather-unavailable-allure",
+      "featureId": "black-perforated-nappa-leather",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-allure",
+        "peugeot-5008-hybrid-145-allure"
+      ],
+      "status": "NOT_AVAILABLE",
+      "conditions": "Explicit dash in the trim-level options table.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: - not available; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Black perforated Nappa leather upholstery; dash under Allure"
+        }
+      ]
+    },
+    {
+      "id": "5008-nappa-leather-unavailable-gt",
+      "featureId": "black-perforated-nappa-leather",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-gt",
+        "peugeot-5008-hybrid-145-gt"
+      ],
+      "status": "NOT_AVAILABLE",
+      "conditions": "Explicit dash in the trim-level options table.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: - not available; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Black perforated Nappa leather upholstery; dash under GT"
+        }
+      ]
+    },
+    {
+      "id": "5008-nappa-leather-optional-gt-exclusive",
+      "featureId": "black-perforated-nappa-leather",
+      "configurationIds": [
+        "peugeot-5008-electric-210-73kwh-gt-exclusive",
+        "peugeot-5008-hybrid-145-gt-exclusive"
+      ],
+      "status": "OPTIONAL",
+      "conditions": "Option code 4HFX; €3,330.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 17,
+          "rawText": "Legend: ○ option; (1) Hybrid / Electric Version"
+        },
+        {
+          "documentId": "peugeot/5008-spec-sheet.pdf",
+          "sha256": "ab7f8929c47ceffa2621669f23064bb8afc5227fc53fe2808320f22b790d55af",
+          "pageNumber": 18,
+          "rawText": "Black perforated Nappa leather upholstery; 4HFX; €3,330; ○ under GT Exclusive"
+        }
+      ]
+    },
+    {
+      "id": "golf-life-metallic-paint-optional",
+      "featureId": "metallic-paint",
+      "configurationIds": [
+        "volkswagen-golf-life-1-5-tsi-116hp",
+        "volkswagen-golf-life-1-5-tsi-mhev-116hp"
+      ],
+      "status": "OPTIONAL",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "vw/Golf_MY27.pdf",
+          "sha256": "3d5da94101e2321fdd90cc2b6abb188a1006e0be09e6b85bd5a5749c7a3fc9c6",
+          "pageNumber": 8,
+          "rawText": "Standard ● Optional ○ Unavailable -; Metallic Paint: Life ○"
+        }
+      ]
+    },
+    {
+      "id": "rav4-sol-power-boot-standard",
+      "featureId": "power-boot",
+      "configurationIds": ["toyota-rav4-phev-sol"],
+      "status": "STANDARD",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 4,
+          "rawText": "RAV4 PHEV SOL; Power Boot"
+        }
+      ]
+    },
+    {
+      "id": "rav4-sport-power-back-door-standard",
+      "featureId": "power-back-door-kick-function",
+      "configurationIds": ["toyota-rav4-phev-sport"],
+      "status": "STANDARD",
+      "conditions": "Listed as an addition to SOL grade.",
+      "reviewStatus": "REVIEWED",
+      "evidence": [
+        {
+          "documentId": "toyota/Toyota RAV4 - PHEV Brochure.pdf",
+          "sha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+          "pageNumber": 5,
+          "rawText": "RAV4 PHEV SPORT; Power Back Door with Kick Function; Adds to SOL"
+        }
+      ]
+    }
+  ]
+}

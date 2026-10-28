@@ -69,7 +69,7 @@ Batch document registry -> PDF extraction -> staging/review -> publication
 
 ## Data contract
 
-Keep facts explicit, typed, and attributable. Model-level information and trim/grade-level information are different entities: one model can have several trims, each with its own price or equipment, and a document may cover one or more of them. Use stable IDs so model responses can refer to records without repeating or modifying facts.
+Keep facts explicit, typed, and attributable. A `VehicleModel` is the make/model identity; a `VehicleConfiguration` identifies a specific market/year/trim/powertrain/engine/transmission/drivetrain combination. Trim alone is not a unique vehicle: the 5008 Allure is offered as both Hybrid and Electric, while the Golf source separates petrol and mild-hybrid engine/gearbox configurations. Use stable configuration IDs so model responses can refer to catalog candidates without repeating or modifying facts.
 
 ### Source-document registry
 
@@ -87,25 +87,24 @@ Maintain one record for each input PDF. At minimum, track:
 
 A catalog fact must point back to its source document and page when available. Keep provenance on the particular price/specification/feature where facts could come from different PDFs; a generic list of documents on a model record is not enough to prove which source supports a claim.
 
-### Vehicle/trim record
+### Vehicle configuration and catalog facts
 
-Each catalog record should include, where available:
-
-| Field | Meaning |
+| Record | Required meaning |
 | --- | --- |
-| `id` | Stable ID for the exact model/trim |
-| `make`, `model`, `trim` | Manufacturer, model, and exact trim/grade as published |
-| `modelYear`, `market` | Applicable model year and market; market is `IE` for this POC |
-| `currency`, `priceAmount`, `priceKind` | Currency (`EUR`), amount, and price basis such as list or on-the-road |
-| `priceEffectiveDate` | Date or period to which the price applies |
-| `bodyStyle`, `powertrain`, `transmission` | Normalized values when explicitly supported by the source |
-| `specifications` | Optional measurements with units, such as boot capacity or dimensions |
-| `features` | Normalized equipment names, with source wording retained where useful |
-| `sourceReferences` | Document ID, page number(s), and relevant source wording for this record/fact |
-| `reviewStatus` | For example, `needs_review` or `reviewed` |
-| `lastReviewed` | Date the record was last checked against its source |
+| `VehicleModel` | Stable ID, make, model, and optional generation |
+| `VehicleConfiguration` | Model ID, market (`IE`), model year when known, published trim, powertrain, engine, transmission, drivetrain, and other distinguishing configuration details |
+| `VehiclePrice` | One or more exact configuration IDs, integer minor-unit amount, currency, typed price basis, effective period, caveats, and evidence |
+| `VehicleMeasurement` | One or more exact configuration IDs, one value or a complete range, explicit unit, test/configuration conditions, approval state, and evidence |
+| `EquipmentFitment` | Feature ID, exact configuration IDs, fitment state, optional conditions, review state, and evidence |
+| `SourceEvidence` | Source document ID/hash, positive page number, and short raw source wording |
 
-Use explicit unknown or absent values. Do not fill missing price/specification fields with model-generated guesses. Keep price kinds and units explicit: a list price and an on-the-road price may not be comparable. If a model-level PDF contains several trims, create distinct trim records and attach each price/equipment fact to the correct trim; do not merge neighboring table rows or copy equipment across trims without source support.
+Model facts and configuration facts remain separate. Use price bases such as manufacturer RRP, delivery/service charge, on-the-road total, incentive-adjusted price, or option price; do not collapse the Golf's €34,630 RRP, €2,105 delivery/service charge, and €36,735 ROTR into one unlabeled amount. A value's effective period and source caveats belong with that price fact.
+
+Equipment state is `STANDARD`, `OPTIONAL`, `NOT_AVAILABLE`, or `UNKNOWN`. The first three require explicit source evidence; omission from a document means `UNKNOWN`, never `NOT_AVAILABLE`. Keep optional package membership/codes distinct from feature identity. Commercial sale/stock availability is a separate concern and must not reuse fitment states. Measurements retain units and conditions such as WLTP cycle or 5-seat/7-seat boot configuration; provisional values remain under review.
+
+The hierarchy aligns with automotive data practice: a model is distinct from a market-specific, powertrain-specific vehicle configuration. Schema.org's `Car`, `Vehicle`, `Product`, and `Offer` terms are useful interoperability mappings, but are not the internal schema because they do not capture this POC's source-page evidence, fact review state, and four-state equipment fitment contract.
+
+The initial implementation is `src/main/kotlin/com/sps23/aiworkflow/catalog/VehicleCatalog.kt`, with the versioned seed at `src/main/resources/vehicle-catalog/catalog.json`. The reviewed sample covers six Peugeot 5008 Hybrid/Electric trim configurations, two Volkswagen Golf MY27 configurations, and Toyota RAV4 PHEV grade/drivetrain examples. Toyota GR SPORT figures explicitly marked as pending final homologation remain `NEEDS_REVIEW`; the raw PDF extraction artifacts remain unchanged staging evidence.
 
 ### Recommendation request and response
 
@@ -150,11 +149,13 @@ for implementation stages, evaluation evidence, and known layout limits.
 
 ### 2. Define the catalog schema and manual examples
 
-- Implement Kotlin data classes for source documents, model/trim records, fact-level provenance, user requests, and recommendation responses.
-- Choose a versioned JSON representation for the source manifest and runtime catalog.
-- Add a few records manually transcribed and checked against the PDFs before building automated extraction.
-- Validate document IDs/content hashes, model and trim IDs, market/year, price/currency/basis, source references, and uniqueness. Permit the same model/trim to be mentioned in multiple source documents only when the facts are reconciled and their provenance remains clear.
-- Represent missing data as unknown/absent, not as zero, a default, or an inferred value.
+- **Status: implemented for catalog schema v1 and source-reviewed examples across three makes.** Kotlin types and validation live in `VehicleCatalog.kt`; the versioned JSON catalog is `src/main/resources/vehicle-catalog/catalog.json`.
+- [x] Define source references, model/configuration records, price and measurement facts, feature fitment, and fact-level provenance.
+- [x] Choose deterministic, versioned JSON for the reviewed runtime catalog; keep the existing all-document inventory manifest separate.
+- [x] Manually transcribe and visually check Peugeot 5008, VW Golf MY27, and Toyota RAV4 PHEV examples against cited PDF pages.
+- [x] Validate source hashes/pages, market, configuration identity, price periods, measurement units/ranges, references, and fitment review constraints.
+- [x] Represent unknowns explicitly; do not convert absent facts to zero or unavailable.
+- [ ] Define user request/response types when implementing the recommendation use case.
 
 ### 3. Implement repeatable batch PDF extraction and review staging
 
@@ -242,6 +243,6 @@ The POC succeeds if a reviewer can follow a recommendation from user input to el
 
 The repository already declares Kotlin 2.3.21, Compose Desktop 1.7.0, Apache Tika 3.3.3, PDFBox 3.0.8, and Koog/OpenRouter 1.3.0 in `build.gradle.kts`. `README.md` documents the JDK 25 and Gradle 9.3.0 baseline and relevant dependency/runtime considerations. There is no application entry point yet. The current source tree contains 22 PDFs across five makes; curate a representative subset for the recommendation catalog. See [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md) for the implemented extraction contract and its evidence-backed limits. Existing tests are compatibility smoke checks; `TikaCompatibilityTest` and `JdkCompatibilityTest` are annotated with `@Ignore`, so add focused non-ignored tests for new behavior rather than assuming those smoke checks exercise the workflow.
 
-## Suggested first development task
+## Suggested next development task
 
-Extraction and its handoff contract are implemented in [`pdf-extractor-implementation-plan.md`](pdf-extractor-implementation-plan.md); run `./gradlew extractPdfs` to refresh raw artifacts. The next development task is to define catalog data classes and deterministic validation/filtering, add manually verified source-backed examples, and promote only reviewed model/trim facts. Raw extracted text is not yet a meaningful canonical vehicle catalog.
+Catalog schema v1 and manually reviewed, source-backed sample records are implemented in `VehicleCatalog.kt` and `src/main/resources/vehicle-catalog/catalog.json`. Next, curate the remaining representative pilot records and implement deterministic eligibility filtering over reviewed configurations and price facts. Raw extracted text remains review staging, not a canonical vehicle catalog.
