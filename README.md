@@ -68,6 +68,61 @@ Volkswagen Golf MY27 page 8 and Peugeot 5008 page 17. Annotated, label-free
 references and measured limits are in
 [`docs/pdf-extractor-stage-2-spike.md`](docs/pdf-extractor-stage-2-spike.md).
 
+## Car prompt CLI (OpenRouter)
+
+Sends one prompt plus a compact JSON of all reviewed catalog configurations to
+one `:free` OpenRouter model via Koog, then prints a plain-text answer.
+Plan: [`docs/openrouter-simple-integration-plan.md`](docs/openrouter-simple-integration-plan.md).
+
+```sh
+export OPENROUTER_API_KEY=...        # never commit it
+export OPENROUTER_MODEL=vendor/model:free
+./gradlew carPrompt --args='Suggest a seven-seat car from this catalog'
+```
+
+Pick a current model from [OpenRouter's free models](https://openrouter.ai/models?q=free).
+The CLI checks live metadata first: the exact ID must be listed, end in `:free`,
+have text output and zero pricing. No fallback model, retry, tool, or plugin is
+used; unavailable or non-free models stop the run.
+
+- **External transmission:** the prompt and the compact catalog (prices,
+  measurements, equipment, `documentId:page` references; no raw PDF text) go to
+  OpenRouter and its provider. Use only data cleared for that.
+- **Size gate:** the request must fit the model's context with a 1024-token
+  output allowance. The input estimate is a conservative heuristic (1 token per
+  2 UTF-8 bytes), not a tokenizer count. Oversized requests fail with both
+  figures; nothing is truncated. The full catalog may exceed small free models.
+- **Limitations:** answers are AI-generated and unchecked against the user's
+  requirements; free endpoints can be rate-limited. Koog 1.3.0 does not expose
+  the provider's response model ID, so the CLI prints the requested ID unless
+  Koog reports one.
+- Other OpenRouter tests use a local fake server; no key or internet needed.
+
+### Live OpenRouter integration test
+
+`OpenRouterClient` (in `openrouter/`) is the reusable real client: it checks
+the configured `:free` model against `https://openrouter.ai/api/v1/models`, then
+sends one Koog prompt. `complete(..., context = json)` wraps the question and a
+context document as delimited data blocks and rejects requests whose estimated
+size exceeds the model context (`REQUEST_TOO_LARGE`, nothing sent).
+`OpenRouterClientIntegrationTest` sends a simple prompt to the real API and
+asserts a non-empty answer; a second test sends "Show me all hybrid cars under
+50,000 EUR." with the full compact catalog (~1 MB, ~512k estimated tokens, so it
+needs a large-context model such as a 1M-token one) and asserts a non-empty
+answer, allowing up to 8192 completion tokens and a 10-minute timeout. Both run with the
+normal tests and fail if either variable is missing:
+
+```sh
+export OPENROUTER_API_KEY=...        # never commit it
+export OPENROUTER_MODEL=vendor/model:free
+./gradlew test --tests 'com.sps23.aiworkflow.openrouter.OpenRouterClientIntegrationTest'
+```
+
+When done, add `@Ignore` (`kotlin.test.Ignore`) to the test class; otherwise
+`./gradlew test` and CI need a key and internet. A pass shows connectivity, not
+answer quality. Free models can return HTTP 429; retry later or pick another
+current free model.
+
 On Windows, use `gradlew.bat` instead of `./gradlew`.
 
 The [Gradle build and test workflow](.github/workflows/gradle.yml) runs

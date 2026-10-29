@@ -110,6 +110,13 @@ tasks.register<JavaExec>("probePeugeot5008Matrix") {
     )
 }
 
+tasks.register<JavaExec>("carPrompt") {
+    group = "application"
+    description = "Send one prompt plus the compact reviewed car catalog to a free OpenRouter model."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.recommendation.CarPromptCliKt")
+}
+
 tasks.matching { it.name.startsWith("spotless") && it.name.endsWith("Check") }.configureEach {
     mustRunAfter("spotlessApply")
 }
