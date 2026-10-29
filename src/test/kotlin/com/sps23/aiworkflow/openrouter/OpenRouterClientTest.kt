@@ -15,6 +15,23 @@ class OpenRouterClientTest {
         OpenRouterClient(OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL, server.baseUrl, 10_000, 512))
 
     @Test
+    fun `desktop and CLI environment configuration allows ten minutes for catalog inference`() {
+        val config =
+            OpenRouterConfig.fromEnvironment(
+                mapOf(
+                    API_KEY_VARIABLE to "test-secret-key",
+                    MODEL_VARIABLE to FakeOpenRouterServer.FREE_MODEL,
+                ),
+            )
+
+        assertEquals(600_000L, config.requestTimeoutMillis)
+        assertEquals(
+            600_000L,
+            OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL).requestTimeoutMillis,
+        )
+    }
+
+    @Test
     fun `complete verifies the model then sends only the user message`() {
         FakeOpenRouterServer().use { server ->
             val completion = runBlocking { client(server).complete("Say hi") }
@@ -69,6 +86,80 @@ class OpenRouterClientTest {
             server.chatBody = FakeOpenRouterServer.chatResponse("")
             val error = assertFailsWith<OpenRouterWorkflowException> { runBlocking { client(server).complete("Say hi") } }
             assertEquals(FailureKind.EMPTY_RESPONSE, error.kind)
+        }
+    }
+
+    @Test
+    fun `workflow default sends larger completion budget capped by model metadata`() {
+        listOf(16_384L to 8192L, 4096L to 4096L).forEach { (modelMaximum, expectedBudget) ->
+            FakeOpenRouterServer().use { server ->
+                server.modelsBody = FakeOpenRouterServer.modelsJson(maxCompletionTokens = modelMaximum)
+                server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
+                val config = OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL, server.baseUrl)
+
+                val answer = runBlocking { OpenRouterCarWorkflow(config, "{}").answer("Suggest a hybrid") }
+
+                assertEquals(FakeOpenRouterServer.CAR_OUTPUT, answer.text)
+                val body = Json.parseToJsonElement(server.chatRequests.last().body).jsonObject
+                assertEquals(
+                    expectedBudget,
+                    body
+                        .getValue("max_tokens")
+                        .jsonPrimitive.content
+                        .toLong(),
+                )
+                val system =
+                    body
+                        .getValue("messages")
+                        .jsonArray
+                        .first()
+                        .jsonObject
+                        .getValue("content")
+                        .jsonPrimitive.content
+                assertTrue("Keep details concise" in system)
+                assertTrue("unless the user explicitly requests more" in system)
+                assertTrue("necessary caveats" in system)
+            }
+        }
+    }
+
+    @Test
+    fun `context gate reserves the larger default completion budget before inference`() {
+        FakeOpenRouterServer().use { server ->
+            val inputTokens = estimateInputTokens(SYSTEM_INSTRUCTIONS, buildUserMessage("Suggest a hybrid", "{}"))
+            server.modelsBody =
+                FakeOpenRouterServer.modelsJson(
+                    contextLength = inputTokens + 8192 - 1,
+                    maxCompletionTokens = 16_384,
+                )
+            val config = OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL, server.baseUrl)
+
+            val error =
+                assertFailsWith<OpenRouterWorkflowException> {
+                    runBlocking { OpenRouterCarWorkflow(config, "{}").answer("Suggest a hybrid") }
+                }
+
+            assertEquals(FailureKind.REQUEST_TOO_LARGE, error.kind)
+            assertTrue("8192 completion tokens" in error.message.orEmpty())
+            assertEquals(1, server.chatRequests.size)
+        }
+    }
+
+    @Test
+    fun `length finish reason is truncation even without visible text`() {
+        listOf("", "partial answer").forEach { text ->
+            FakeOpenRouterServer().use { server ->
+                server.chatBody = FakeOpenRouterServer.chatResponse(text, finishReason = "length")
+                val error =
+                    assertFailsWith<OpenRouterWorkflowException> {
+                        runBlocking { client(server).complete("Say hi") }
+                    }
+
+                assertEquals(FailureKind.TRUNCATED_RESPONSE, error.kind)
+                assertTrue("512-token output limit" in error.message.orEmpty())
+                assertTrue("configured: 512; model maximum: 4096" in error.message.orEmpty())
+                assertEquals(1, server.chatRequests.size)
+            }
         }
     }
 }

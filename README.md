@@ -70,8 +70,10 @@ references and measured limits are in
 
 ## Car prompt CLI (OpenRouter)
 
-Sends one prompt plus a compact JSON of all reviewed catalog configurations to
-one `:free` OpenRouter model via Koog, then prints a plain-text answer.
+Uses two sequential calls to the same `:free` OpenRouter model via Koog:
+translate user text into `LlmRequest` JSON without catalog, then send that JSON
+plus the complete compact catalog of all reviewed configurations/facts. Validate
+the cars/trim/options response shape, then print a readable text projection.
 Plan: [`docs/openrouter-simple-integration-plan.md`](docs/openrouter-simple-integration-plan.md).
 
 ```sh
@@ -82,21 +84,90 @@ export OPENROUTER_MODEL=vendor/model:free
 
 Pick a current model from [OpenRouter's free models](https://openrouter.ai/models?q=free).
 The CLI checks live metadata first: the exact ID must be listed, end in `:free`,
-have text output and zero pricing. No fallback model, retry, tool, or plugin is
+have text output and zero pricing. The exact free-router ID `openrouter/free`
+is also accepted; it may choose different underlying free models per call.
+No application fallback model, retry, tool, or plugin is
 used; unavailable or non-free models stop the run.
 
 - **External transmission:** the prompt and the compact catalog (prices,
   measurements, equipment, `documentId:page` references; no raw PDF text) go to
   OpenRouter and its provider. Use only data cleared for that.
-- **Size gate:** the request must fit the model's context with a 1024-token
-  output allowance. The input estimate is a conservative heuristic (1 token per
+- **Translation:** `LlmRequest` preserves original text, separates hard requirements,
+  preferences and requested attributes, and retains unresolved phrases instead of
+  guessing. Terms map to catalog fields with operators, string values, units and
+  original source wording. Invalid translations stop before catalog inference.
+  Validation checks shape/original text/source phrases, not semantic equivalence.
+  The original request remains authoritative in the second call.
+- **Size gate:** the request must fit the model's context with an 8192-token
+  output allowance (capped by the model's advertised maximum). This budget may
+  include reasoning tokens as well as visible text. The input estimate is a conservative heuristic (1 token per
   2 UTF-8 bytes), not a tokenizer count. Oversized requests fail with both
   figures; nothing is truncated. The full catalog may exceed small free models.
 - **Limitations:** answers are AI-generated and unchecked against the user's
   requirements; free endpoints can be rate-limited. Koog 1.3.0 does not expose
   the provider's response model ID, so the CLI prints the requested ID unless
   Koog reports one.
+- **Answer shape:** car, trim, configuration ID, and requested options with
+  Standard / Optional / Not available / Unknown status and conditions/evidence
+  details. No summary or free-form answer sections; no matches prints
+  `No cars returned.` Shape validation does not verify recommendation accuracy.
+- **Answer length:** option details stay concise; recommendations default
+  to at most three configurations unless more/all matches are explicitly requested.
+  Necessary source caveats remain included. Truncated responses still fail visibly,
+  even when the token budget is exhausted before any visible answer.
+- **Timeout:** each of the two calls allows up to 10 minutes, including waiting
+  for the provider's first response. Even a short question sends the full compact
+  catalog, so free providers can take several minutes. Connection establishment
+  remains limited to 15 seconds. Requests are not automatically retried; a longer
+  timeout does not guarantee provider availability.
+  Translation output is capped at 2048 tokens; recommendations default to 8192,
+  both capped by model metadata. Each stage has its own context check; a second-stage
+  size failure can occur after translation. Two calls consume more quota/time;
+  no optimization gain is assumed without measurement.
 - Other OpenRouter tests use a local fake server; no key or internet needed.
+
+### Desktop prompt UI
+
+Same workflow in a Compose Desktop window: pick a free model from the dropdown,
+with **openrouter/free** listed first and selected by default,
+type a prompt, press **Send**, and
+native car/trim/options tables render below with the model ID and prototype disclaimer.
+Progress shows translation then car selection. After translation,
+**Download LLM Request JSON** saves the validated intermediate JSON via a Save
+dialog—even while selection runs or after it fails. This is the same JSON sent
+to the second call. The adjacent **Copy to clipboard** button copies that JSON
+and confirms copying. The JSON includes your original request. Review before sharing.
+Editing the input immediately clears prior results and JSON actions. Input editing
+is disabled while either call runs. With unchanged text, Send reuses the validated
+translation—even after changing models—and runs only car selection. Switching
+models still triggers fresh metadata/context checks. Selection starts automatically.
+The **Sources** column follows **Details**. Each **source** link opens a Save dialog
+for the original bundled PDF, with confirmation before replacing an existing file.
+Source documents/pages are shown beside the links; missing or invalid sources and
+save errors appear explicitly. Sources are resolved through the catalog, not
+model-supplied URLs. Readable copied output includes source references in a
+separate tab-separated Sources column.
+**Copy raw JSON** copies the exact model response text exposed by Koog (not the
+HTTP envelope or reasoning). **Copy readable output** copies the displayed
+information as tab-separated text plus model/disclaimer for diagnostics.
+Both buttons confirm copying. Invalid JSON shows an explicit `INVALID_RESPONSE`
+error rather than rendering Markdown or falling back to plain text. Invalid or
+truncated responses retain a **Copy raw model output** button. Raw model content
+can repeat request/catalog data: review before sharing.
+No input validation; errors (including a missing key) appear in a selectable
+error panel. **Copy error details** copies the displayed report: failure
+category, submitted model, request stage, HTTP status, provider code/message,
+upstream JSON error reason, provider name and request ID when available, plus a
+suggested action.
+Credentials are redacted; raw response dumps, request headers and prompt/catalog
+fields are excluded. Review provider-written messages before sharing.
+Plan: [`docs/openrouter-desktop-ui-plan.md`](docs/openrouter-desktop-ui-plan.md).
+
+Prerequisites: `OPENROUTER_API_KEY` (the dropdown replaces `OPENROUTER_MODEL`), and a compact catalog JSON file. The UI does not upload PDFs or raw text.
+
+```sh
+./gradlew run
+```
 
 ### Live OpenRouter integration test
 

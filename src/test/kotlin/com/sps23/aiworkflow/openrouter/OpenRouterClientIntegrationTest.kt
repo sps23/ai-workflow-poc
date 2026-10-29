@@ -38,18 +38,9 @@ class OpenRouterClientIntegrationTest {
     @Test
     fun `catalog question with the full compact catalog returns a non-empty answer`() {
         val catalogJson = CatalogContext.bundledJson()
-        // A ~512k-token prompt on a free model can take minutes; the 120s default is too short.
-        val slowConfig =
-            OpenRouterConfig(
-                apiKey = config.apiKey,
-                modelId = config.modelId,
-                baseUrl = config.baseUrl,
-                requestTimeoutMillis = 600_000,
-            )
-
         val completion =
             runBlocking {
-                OpenRouterClient(slowConfig).complete(
+                OpenRouterClient(config).complete(
                     userMessage = "Show me all hybrid cars under 50,000 EUR.",
                     systemPrompt = SYSTEM_INSTRUCTIONS,
                     context = catalogJson,

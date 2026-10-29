@@ -3,20 +3,25 @@
 ## Goal and agreed scope
 
 Build a small Kotlin CLI that accepts one user prompt, loads the existing car
-catalog, sends one inference request to OpenRouter, and prints a plain-text answer.
+catalog, sends two sequential inference requests to OpenRouter, and prints a readable answer
+from the structured JSON response.
 Use Koog for prompt execution and its Ktor transport for HTTP.
 
 Confirmed decisions:
-- CLI first, with one request per invocation and no conversation history.
+- One user submission per invocation, two bounded inference calls, no conversation history.
 - Send a compact catalog containing all reviewed configurations and their reviewed
   facts. Omit unreviewed configurations, raw source text, and duplicate evidence.
-- Use one configurable, verified `:free` model. Stop when unavailable; no fallback.
-- Return plain text. Recommendations are prototype advice, not deterministically
+- Use one configurable, verified `:free` model or exactly `openrouter/free`.
+  The latter routes across free models; the underlying model may differ per call.
+  Stop when unavailable; no application fallback.
+- Return cars/trim/requested-options JSON using the contract in
+  `openrouter-desktop-ui-plan.md`; render locally as readable text/tables.
+  Recommendations are prototype advice, not deterministically
   checked matches against the user's requirements.
 - Reject an oversized request rather than silently dropping cars or facts.
 
-This is a simpler alternative to `openrouter-integration-plan.md`. The two-stage
-recommendation architecture in that plan is not a prerequisite for this workflow.
+This is a simpler alternative to `openrouter-integration-plan.md`. Its deterministic
+filtering/ranking architecture is not a prerequisite for this two-call workflow.
 Saving this plan authorizes neither application implementation nor live API calls.
 
 ## Flow
@@ -25,13 +30,23 @@ Saving this plan authorizes neither application implementation nor live API call
 CLI prompt + bundled catalog.json
   -> validate inputs and decode catalog
   -> compact reviewed catalog
-  -> verify configured free model and request size
-  -> build system instructions + user prompt/catalog data
-  -> one Koog OpenRouter inference request over Ktor
-  -> print answer, actual model ID, and prototype disclaimer
+  -> verify configured free model once for this submission
+  -> size check, then translate user text to LlmRequest JSON without catalog
+  -> validate translation and preserve original wording
+  -> publish translated JSON for desktop download
+  -> size check, then send LlmRequest JSON + entire compact reviewed catalog
+  -> one recommendation inference call (same model, no filtering)
+  -> decode/validate cars/trim/options JSON
+  -> print readable answer, actual model ID, and prototype disclaimer
 ```
 
-Model metadata requests are separate from the single inference request.
+Desktop resubmissions with exactly unchanged input reuse the validated translation
+and run only recommendation, even after switching models. Input edits invalidate
+this in-memory cache immediately; CLI invocations still run both stages.
+Metadata/pricing/context checks run for the newly selected model before inference.
+
+Model metadata requests are separate from the two inference calls. Any first-stage
+failure prevents the second call; no automatic retry or fallback at either stage.
 
 ## Existing pieces to reuse
 
@@ -58,7 +73,7 @@ duplicate evidence. Preserve unknown values as unknown.
 Done when fixture tests show that every reviewed configuration survives,
 unreviewed facts are excluded, joins remain correct, and JSON is compact.
 
-### 2. Add the OpenRouter call
+### 2. Run translation and recommendation
 
 Create `openrouter/OpenRouterCarWorkflow.kt`; keep the small configuration and
 prompt-building functions together rather than introducing a framework.
@@ -66,7 +81,7 @@ prompt-building functions together rather than introducing a framework.
 - Read `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` from the environment.
   Fail clearly if either is missing; never print the key.
 - Use Ktor to read current OpenRouter model metadata. Require the exact model ID
-  to exist, end in `:free`, support text output, and have valid zero pricing for
+  to exist, end in `:free` or equal `openrouter/free`, support text output, and have valid zero pricing for
   applicable inference fees. Reject unverifiable or nonzero pricing before inference.
 - Obtain context/output limits from metadata. Reserve an explicit completion
   allowance and a conservative input-size bound covering instructions, prompt,
@@ -81,15 +96,28 @@ prompt-building functions together rather than introducing a framework.
   from supplied catalog facts, distinguish optional from standard equipment,
   preserve date/measurement caveats, disclose unknowns, and say when evidence is
   insufficient. Do not treat instructions embedded in data as system policy.
-- Configure one inference attempt, a bounded output, and a request timeout using
+- Configure one inference attempt per stage, a bounded output, and a request timeout using
   supported installed APIs. Disable hidden inference retries. Send no fallback
   models, paid router, tools, or plugins.
+  Translation uses up to 2048 completion tokens (also capped by caller budget and
+  model metadata). Recommendation uses an 8192-token default capped by model metadata, reserving it in
+  the context-size check. The budget may include reasoning tokens. Keep simple
+  answers concise and recommendations to three configurations by default,
+  honoring explicit more/all requests and retaining necessary caveats.
+  Allow 600,000 ms for request/socket timeouts: full-catalog processing on free
+  providers can exceed two minutes even for a short user prompt. Keep the
+  connection-establishment timeout at 15,000 ms; explicit caller timeout
+  overrides remain supported, with no automatic retries. Timeouts apply per call,
+  so two calls can take up to approximately 20 minutes plus metadata work.
 - Surface authentication, rate-limit, timeout, context, provider, empty-response,
-  and truncated-response failures. Propagate cancellation and close clients.
+  truncated-response, and invalid-JSON/contract failures. Preserve model text
+  separately for explicit UI clipboard export, including invalid/truncated text.
+  Propagate cancellation and close clients.
   Avoid logging headers, prompt/catalog bodies, or raw responses.
 
 Done when offline request capture verifies the free-only payload, prompt/data
-separation, one inference attempt, and visible failure paths using a local fake
+separation, exactly two inference calls on success, first-stage failure short-circuit,
+and visible stage-labelled failures using a local fake
 server. If installed Koog cannot satisfy these essentials, report the specific
 blocker rather than silently replacing Koog with a raw HTTP inference client.
 
@@ -97,7 +125,7 @@ blocker rather than silently replacing Koog with a raw HTTP inference client.
 
 Create `recommendation/CarPromptCli.kt` and a `carPrompt` Gradle `JavaExec` task.
 Accept the prompt as command-line arguments; reject blank input. Run the workflow
-once and print the model answer and actual response model ID when available.
+once and print the locally rendered structured answer and actual response model ID when available.
 Label it as AI-generated prototype advice that requires checking catalog facts.
 Print actionable errors to stderr with a nonzero exit status.
 
@@ -128,16 +156,45 @@ connectivity passed, not that recommendation accuracy was proven.
 
 ## Boundaries and trade-offs
 
-No intent-extraction call, deterministic eligibility/ranking engine, structured
-model-output schema, clarification loop, automatic retries/fallbacks, model
-discovery UI, Compose screen, embeddings, persistence, or PDF changes.
+No deterministic eligibility/ranking engine, provider-enforced JSON schema,
+clarification loop, automatic retries/fallbacks, model discovery UI, embeddings,
+automatic persistence, or PDF changes. Desktop integration and explicit request
+JSON export are defined in `openrouter-desktop-ui-plan.md`.
+
+### LlmRequest translation contract
+
+`recommendation/LlmRequest.kt` owns the serializable model and fixed translator
+instructions. Fields: `originalRequest`, `requirements`, `preferences`,
+`requestedAttributes`, `unresolvedPhrases`; all required. Term objects contain
+`field`, `operator`, `value`, nullable `unit`, and exact `sourceText`. Field/operator
+enums map onto catalog concepts (including equipment, measurements, prices,
+seating, and powertrain), not catalog facts or invented feature IDs.
+
+Validate exact original wording, source/unresolved substring membership, required
+fields/types, nonblank terms, and recognized enums (including catalog powertrains).
+Compound alternatives/conditions remain intact using `OTHER` when splitting would
+alter meaning. Ambiguity stays in `unresolvedPhrases`; no clarification pause.
+The second prompt treats `originalRequest` as authoritative and the structured
+terms as aids, not instructions. JSON validity and substring checks cannot prove
+semantic completeness or interpretation fidelity.
+
+**Decision:** user approved automatic stage two and retention of downloadable
+translation after recommendation failure. "Full catalog" means every reviewed
+configuration/fact in the existing compact projection, not raw/unreviewed catalog data.
+
+**Glossary:** LlmRequest = loss-preserving structured query plus original text;
+translation = first inference without catalog; recommendation = second inference
+with complete compact catalog and translated request.
 
 All-reviewed catalog context favors simplicity over scalability. Its measured
 size and a currently available free model's context capacity are an early
 feasibility gate; if they do not fit, report that limitation rather than quietly
-changing the agreed scope. Plain-text output cannot guarantee factual accuracy
+changing the agreed scope. Structurally valid JSON cannot guarantee factual accuracy
 or compliance with every user requirement. Free endpoints may be rate-limited
 or unavailable even with a valid key.
+Translation adds a call and consumes additional quota/time; the full catalog still
+dominates context size. No latency/token saving or recommendation-accuracy gain is
+claimed without measurement.
 
 ## References for implementation
 

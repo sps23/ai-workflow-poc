@@ -29,7 +29,7 @@ fun runCarPrompt(
     return try {
         val config = OpenRouterConfig.fromEnvironment(environment, baseUrl)
         val answer = runBlocking { OpenRouterCarWorkflow(config, catalogJson()).answer(prompt) }
-        out.println(answer.text)
+        out.println(answer.selection.toReadableText())
         out.println()
         out.println(
             "Model: ${answer.responseModelId ?: "${answer.requestedModelId} (requested; response model ID not reported)"}",

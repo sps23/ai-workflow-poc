@@ -1,7 +1,14 @@
 package com.sps23.aiworkflow.openrouter
 
+import com.sps23.aiworkflow.recommendation.LlmRequest
+import com.sps23.aiworkflow.recommendation.LlmRequestCodec
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.util.concurrent.CopyOnWriteArrayList
@@ -25,6 +32,9 @@ class FakeOpenRouterServer : AutoCloseable {
     @Volatile var chatBody: String = chatResponse("Fake answer")
 
     @Volatile var chatDelayMillis: Long = 0
+
+    @Volatile var translationBody: String? = null
+
     val requests = CopyOnWriteArrayList<CapturedRequest>()
 
     private val executor = Executors.newCachedThreadPool()
@@ -50,7 +60,35 @@ class FakeOpenRouterServer : AutoCloseable {
 
                     "/api/v1/chat/completions" -> {
                         if (chatDelayMillis > 0) Thread.sleep(chatDelayMillis)
-                        chatStatus to chatBody
+                        val messages = Json.parseToJsonElement(body).jsonObject["messages"]?.jsonArray
+                        val translating = messages?.firstOrNull()?.toString()?.contains("loss-preserving car-catalog query") == true
+                        val payload =
+                            if (translating && chatStatus == 200) {
+                                translationBody ?: chatResponse(
+                                    LlmRequestCodec.encode(
+                                        LlmRequest(
+                                            messages
+                                                .last()
+                                                .jsonObject
+                                                .getValue("content")
+                                                .jsonPrimitive.content,
+                                            emptyList(),
+                                            emptyList(),
+                                            emptyList(),
+                                            listOf(
+                                                messages
+                                                    .last()
+                                                    .jsonObject
+                                                    .getValue("content")
+                                                    .jsonPrimitive.content,
+                                            ),
+                                        ),
+                                    ),
+                                )
+                            } else {
+                                chatBody
+                            }
+                        chatStatus to payload
                     }
 
                     else -> {
@@ -73,6 +111,8 @@ class FakeOpenRouterServer : AutoCloseable {
 
     companion object {
         const val FREE_MODEL = "vendor/model:free"
+        const val CAR_OUTPUT =
+            """{"cars":[{"configurationId":"car-a","car":"Example Family","trim":"Comfort","options":[{"name":"Electric seats","status":"OPTIONAL","details":"Requires comfort pack","sources":["vw/Golf_MY27.pdf:8"]}]}]}"""
 
         fun modelsJson(
             id: String = FREE_MODEL,
@@ -81,19 +121,20 @@ class FakeOpenRouterServer : AutoCloseable {
             contextLength: Long = 100_000,
             outputs: String = "\"text\"",
             extraPricing: String = "",
+            maxCompletionTokens: Long = 4096,
         ): String =
             """{"data":[
               {"id":"other/model","pricing":{"prompt":"1","completion":"1"}},
               {"id":"$id","context_length":$contextLength,
                "architecture":{"output_modalities":[$outputs]},
                "pricing":{"prompt":"$promptPrice","completion":"$completionPrice","request":"0"$extraPricing},
-               "top_provider":{"context_length":$contextLength,"max_completion_tokens":4096}}]}"""
+               "top_provider":{"context_length":$contextLength,"max_completion_tokens":$maxCompletionTokens}}]}"""
 
         fun chatResponse(
             content: String?,
             finishReason: String = "stop",
         ): String {
-            val contentJson = if (content == null) "null" else "\"$content\""
+            val contentJson = JsonPrimitive(content).toString()
             return """{"id":"gen-1","model":"$FREE_MODEL","created":1,"choices":[
                 {"index":0,"finish_reason":"$finishReason",
                  "message":{"role":"assistant","content":$contentJson}}],
