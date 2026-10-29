@@ -42,14 +42,18 @@ class CarPromptCliTest {
     @Test
     fun `prints answer model and disclaimer on success`() {
         FakeOpenRouterServer().use { server ->
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
             val result = run(listOf("Suggest", "a", "seven-seat", "car"), env, server.baseUrl)
 
             assertEquals(0, result.code)
-            assertTrue("Fake answer" in result.out)
+            assertTrue("Car: Example Family" in result.out)
+            assertTrue("Trim: Comfort" in result.out)
+            assertTrue("Electric seats\tOptional\tRequires comfort pack" in result.out)
             assertTrue(FakeOpenRouterServer.FREE_MODEL in result.out)
             assertTrue(PROTOTYPE_DISCLAIMER in result.out)
             assertEquals("", result.err)
-            assertTrue("Suggest a seven-seat car" in server.chatRequests.single().body)
+            assertEquals(2, server.chatRequests.size)
+            assertTrue("Suggest a seven-seat car" in server.chatRequests.last().body)
         }
     }
 

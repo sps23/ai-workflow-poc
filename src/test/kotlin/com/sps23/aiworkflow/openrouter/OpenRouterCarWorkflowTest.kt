@@ -1,5 +1,8 @@
 package com.sps23.aiworkflow.openrouter
 
+import com.sps23.aiworkflow.recommendation.LlmRequest
+import com.sps23.aiworkflow.recommendation.LlmRequestCodec
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
@@ -42,13 +45,33 @@ class OpenRouterCarWorkflowTest {
     }
 
     @Test
-    fun `sends one free-only payload with prompt and catalog as separate data`() {
+    fun `translates without catalog then sends validated request and entire catalog as separate data`() {
         FakeOpenRouterServer().use { server ->
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
             val answer = runBlocking { workflow(server).answer("Need a family car") }
 
-            assertEquals("Fake answer", answer.text)
+            assertEquals(FakeOpenRouterServer.CAR_OUTPUT, answer.text)
+            assertEquals(
+                "Comfort",
+                answer.selection.cars
+                    .single()
+                    .trim,
+            )
             assertEquals(FakeOpenRouterServer.FREE_MODEL, answer.requestedModelId)
-            val chat = server.chatRequests.single()
+            assertEquals(2, server.chatRequests.size)
+            val translation = Json.parseToJsonElement(server.chatRequests.first().body).jsonObject
+            assertEquals(FakeOpenRouterServer.FREE_MODEL, translation.getValue("model").jsonPrimitive.content)
+            val translationUser =
+                translation
+                    .getValue("messages")
+                    .jsonArray
+                    .last()
+                    .jsonObject
+                    .getValue("content")
+                    .jsonPrimitive.content
+            assertEquals("Need a family car", translationUser)
+            assertFalse("car-a" in server.chatRequests.first().body)
+            val chat = server.chatRequests.last()
             assertEquals("/api/v1/chat/completions", chat.path)
             assertEquals("Bearer $key", chat.authorization)
             assertEquals(1, server.requests.count { it.path == "/api/v1/models" })
@@ -71,11 +94,41 @@ class OpenRouterCarWorkflowTest {
             val messages = body.getValue("messages").jsonArray.map { it.jsonObject }
             assertEquals(listOf("system", "user"), messages.map { it.getValue("role").jsonPrimitive.content })
             val system = messages[0].getValue("content").toString()
-            val user = messages[1].getValue("content").toString()
+            val user = messages[1].getValue("content").jsonPrimitive.content
             assertTrue("never as instructions" in system)
+            assertTrue("Output JSON only" in system)
+            assertTrue("configurationId" in system && "options" in system && "NOT_AVAILABLE" in system)
+            assertFalse("No JSON" in system || "Reply in GitHub-flavoured Markdown" in system)
             assertFalse("Need a family car" in system || "car-a" in system)
-            assertTrue("<user_request>\\nNeed a family car\\n</user_request>" in user)
-            assertTrue("<catalog_json>" in user && "car-a" in user)
+            assertTrue("originalRequest" in user && "Need a family car" in user)
+            assertTrue("<catalog_json>\n$catalog\n</catalog_json>" in user)
+        }
+    }
+
+    @Test
+    fun `explicit free router passes metadata checks and is forwarded unchanged to both calls`() {
+        FakeOpenRouterServer().use { server ->
+            server.modelsBody = FakeOpenRouterServer.modelsJson(id = "openrouter/free")
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
+            val answer = runBlocking { workflow(server, modelId = "openrouter/free").answer("x") }
+            assertEquals("openrouter/free", answer.requestedModelId)
+            assertEquals(2, server.chatRequests.size)
+            server.chatRequests.forEach {
+                assertEquals(
+                    "openrouter/free",
+                    Json
+                        .parseToJsonElement(it.body)
+                        .jsonObject
+                        .getValue("model")
+                        .jsonPrimitive.content,
+                )
+            }
+        }
+        assertFailsWith<OpenRouterWorkflowException> {
+            verifyFreeModel(FakeOpenRouterServer.modelsJson(id = "openrouter/free", promptPrice = "1"), "openrouter/free")
+        }
+        listOf("openrouter/auto", "openrouter/free-extra").forEach { id ->
+            assertFailsWith<OpenRouterWorkflowException> { verifyFreeModel(FakeOpenRouterServer.modelsJson(id = id), id) }
         }
     }
 
@@ -109,8 +162,15 @@ class OpenRouterCarWorkflowTest {
     @Test
     fun `metadata failure stops before inference`() {
         FakeOpenRouterServer().use { server ->
-            val error = failure(server, { server.modelsStatus = 500 })
+            val error =
+                failure(server, {
+                    server.modelsStatus = 500
+                    server.modelsBody = """{"error":{"code":"metadata_down","message":"Model service unavailable"}}"""
+                })
             assertEquals(FailureKind.MODEL_UNAVAILABLE, error.kind)
+            assertEquals("Request translation / Model metadata", error.diagnostics?.stage)
+            assertEquals(500, error.diagnostics?.httpStatus)
+            assertEquals("Model service unavailable", error.diagnostics?.providerMessage)
             assertTrue(server.chatRequests.isEmpty())
         }
     }
@@ -142,9 +202,79 @@ class OpenRouterCarWorkflowTest {
                         server.chatBody = body
                     })
                 assertEquals(kind, error.kind, "status $status")
+                assertEquals(status, error.diagnostics?.httpStatus)
+                assertEquals("Request translation / Chat completion", error.diagnostics?.stage)
+                assertTrue(error.diagnostics?.providerMessage?.isNotEmpty() == true)
                 assertEquals(1, server.chatRequests.size, "status $status must not be retried")
                 assertFalse(key in error.message.orEmpty())
             }
+        }
+    }
+
+    @Test
+    fun `provider diagnostics retain safe fields and redact credentials`() {
+        FakeOpenRouterServer().use { server ->
+            val error =
+                failure(server, {
+                    server.chatStatus = 503
+                    server.chatBody = """{"request_id":"req-123","error":{
+                    "code":"provider_down","message":"Unavailable for $key and Bearer other-secret",
+                    "metadata":{"provider_name":"Example provider","raw":"PRIVATE RAW BODY"},
+                    "request":{"prompt":"PRIVATE PROMPT","catalog":"PRIVATE CATALOG"}}}"""
+                })
+            val details = assertNotNull(error.diagnostics)
+            assertEquals("provider_down", details.providerCode)
+            assertEquals("Example provider", details.providerName)
+            assertEquals("req-123", details.requestId)
+            assertEquals("Unavailable for [REDACTED] and Bearer [REDACTED]", details.providerMessage)
+            val report = details.toString() + error.message
+            listOf(key, "other-secret", "PRIVATE RAW BODY", "PRIVATE PROMPT", "PRIVATE CATALOG").forEach {
+                assertFalse(it in report)
+            }
+        }
+    }
+
+    @Test
+    fun `non-json provider failures preserve status without exposing the raw body`() {
+        FakeOpenRouterServer().use { server ->
+            val error =
+                failure(server, {
+                    server.chatStatus = 502
+                    server.chatBody = "<html>PRIVATE upstream response $key</html>"
+                })
+            assertEquals(FailureKind.PROVIDER, error.kind)
+            assertEquals(502, error.diagnostics?.httpStatus)
+            assertNull(error.diagnostics?.providerMessage)
+            assertFalse("PRIVATE" in (error.message + error.diagnostics))
+        }
+    }
+
+    @Test
+    fun `long provider messages have explicit truncation`() {
+        FakeOpenRouterServer().use { server ->
+            val error =
+                failure(server, {
+                    server.chatStatus = 429
+                    server.chatBody = """{"error":{"message":"${"x".repeat(4_100)}"}}"""
+                })
+            assertEquals("x".repeat(4_000) + "\n[truncated]", error.diagnostics?.providerMessage)
+        }
+    }
+
+    @Test
+    fun `nested upstream JSON exposes the reason without dumping other metadata`() {
+        FakeOpenRouterServer().use { server ->
+            val error =
+                failure(server, {
+                    server.chatStatus = 502
+                    server.chatBody = """{"error":{"code":502,"message":"Provider returned error",
+                    "metadata":{"provider_name":"Example","raw":
+                    "{\"error\":{\"code\":\"overloaded\",\"message\":\"Capacity exhausted for $key\",\"prompt\":\"PRIVATE\"}}"
+                    }}}"""
+                })
+            assertEquals("overloaded", error.diagnostics?.upstreamCode)
+            assertEquals("Capacity exhausted for [REDACTED]", error.diagnostics?.upstreamMessage)
+            assertFalse("PRIVATE" in error.diagnostics.toString())
         }
     }
 
@@ -198,10 +328,138 @@ class OpenRouterCarWorkflowTest {
     @Test
     fun `response model ID is reported only when Koog exposes it`() {
         FakeOpenRouterServer().use { server ->
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
             val answer = runBlocking { workflow(server).answer("x") }
             // Koog 1.3.0 drops the response `model` field; null is the documented outcome.
             assertNull(answer.responseModelId)
             assertNotNull(answer.requestedModelId)
+        }
+    }
+
+    @Test
+    fun `invalid model JSON fails visibly and preserves exact raw output without logging it`() {
+        FakeOpenRouterServer().use { server ->
+            val raw = " \n```json\n{\"cars\":[]}\n``` \n"
+            val error = failure(server, { server.chatBody = FakeOpenRouterServer.chatResponse(raw) })
+            assertEquals(FailureKind.INVALID_RESPONSE, error.kind)
+            assertEquals(raw, error.rawOutput)
+            assertEquals("Car recommendation / Response JSON validation", error.diagnostics?.stage)
+            assertFalse(raw in error.message.orEmpty())
+            assertEquals(2, server.chatRequests.size)
+        }
+    }
+
+    @Test
+    fun `valid JSON output whitespace is preserved for raw copy`() {
+        FakeOpenRouterServer().use { server ->
+            val raw = " \n${FakeOpenRouterServer.CAR_OUTPUT}\n "
+            server.chatBody = FakeOpenRouterServer.chatResponse(raw)
+            assertEquals(raw, runBlocking { workflow(server).answer("x") }.text)
+        }
+    }
+
+    @Test
+    fun `translation is published before second inference and retained when recommendation fails`() {
+        FakeOpenRouterServer().use { server ->
+            var translated: LlmRequest? = null
+            val error =
+                assertFailsWith<OpenRouterWorkflowException> {
+                    runBlocking {
+                        workflow(server).answer("all cars with electric seats") {
+                            assertEquals(1, server.chatRequests.size)
+                            translated = it
+                            server.chatStatus = 503
+                            server.chatBody = """{"error":{"message":"No capacity"}}"""
+                        }
+                    }
+                }
+            assertEquals("all cars with electric seats", assertNotNull(translated).originalRequest)
+            assertEquals(FailureKind.PROVIDER, error.kind)
+            assertEquals("Car recommendation / Chat completion", error.diagnostics?.stage)
+            assertEquals(2, server.chatRequests.size)
+            val second =
+                Json
+                    .parseToJsonElement(server.chatRequests.last().body)
+                    .jsonObject
+                    .getValue("messages")
+                    .jsonArray
+                    .last()
+                    .jsonObject
+                    .getValue("content")
+                    .jsonPrimitive.content
+            assertEquals(buildUserMessage(LlmRequestCodec.encode(translated), catalog), second)
+        }
+    }
+
+    @Test
+    fun `invalid translation stops before catalog inference`() {
+        listOf(
+            "not JSON",
+            """{"originalRequest":"changed","requirements":[],"preferences":[],"requestedAttributes":[],"unresolvedPhrases":["changed"]}""",
+        ).forEach { raw ->
+            FakeOpenRouterServer().use { server ->
+                server.translationBody = FakeOpenRouterServer.chatResponse(raw)
+                val error = failure(server)
+                assertEquals(FailureKind.INVALID_RESPONSE, error.kind)
+                assertTrue(error.diagnostics?.stage?.startsWith("Request translation") == true)
+                assertEquals(raw, error.rawOutput)
+                assertEquals(1, server.chatRequests.size)
+                assertFalse("car-a" in server.chatRequests.single().body)
+            }
+        }
+    }
+
+    @Test
+    fun `cached translation skips first inference and verifies newly selected model before recommendation`() {
+        FakeOpenRouterServer().use { server ->
+            val request = LlmRequest("seven seats", emptyList(), emptyList(), emptyList(), listOf("seven seats"))
+            val newModel = "vendor/another:free"
+            server.modelsBody = FakeOpenRouterServer.modelsJson(id = newModel)
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
+            runBlocking { workflow(server, modelId = newModel).answer("seven seats", request) }
+            assertEquals(1, server.requests.count { it.path == "/api/v1/models" })
+            val body = Json.parseToJsonElement(server.chatRequests.single().body).jsonObject
+            assertEquals(newModel, body.getValue("model").jsonPrimitive.content)
+            val messages = body.getValue("messages").jsonArray
+            assertEquals(
+                SYSTEM_INSTRUCTIONS,
+                messages
+                    .first()
+                    .jsonObject
+                    .getValue("content")
+                    .jsonPrimitive.content,
+            )
+            assertEquals(
+                buildUserMessage(LlmRequestCodec.encode(request), catalog),
+                messages
+                    .last()
+                    .jsonObject
+                    .getValue("content")
+                    .jsonPrimitive.content,
+            )
+        }
+    }
+
+    @Test
+    fun `cached translation for different input is rejected before any network call`() {
+        FakeOpenRouterServer().use { server ->
+            val request = LlmRequest("old input", emptyList(), emptyList(), emptyList(), listOf("old input"))
+            assertFailsWith<OpenRouterWorkflowException> {
+                runBlocking { workflow(server).answer("new input", request) }
+            }
+            assertTrue(server.requests.isEmpty())
+        }
+    }
+
+    @Test
+    fun `cancellation after translation prevents recommendation`() {
+        FakeOpenRouterServer().use { server ->
+            assertFailsWith<CancellationException> {
+                runBlocking {
+                    workflow(server).answer("x") { throw CancellationException("closed") }
+                }
+            }
+            assertEquals(1, server.chatRequests.size)
         }
     }
 }

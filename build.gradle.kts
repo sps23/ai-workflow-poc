@@ -18,7 +18,9 @@ kotlin {
 spotless {
     kotlin {
         target("src/**/*.kt")
-        ktlint("1.8.0")
+        ktlint("1.8.0").editorConfigOverride(
+            mapOf("ktlint_function_naming_ignore_when_annotated_with" to "Composable"),
+        )
     }
     kotlinGradle {
         target("*.gradle.kts")
@@ -45,8 +47,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
     implementation(compose.desktop.currentOs)
+    implementation(compose.material3)
 
     testImplementation(kotlin("test-junit"))
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.sps23.aiworkflow.ui.CarPromptAppKt"
+        jvmArgs += listOf("--enable-native-access=ALL-UNNAMED")
+    }
 }
 
 tasks.withType<Test>().configureEach {
