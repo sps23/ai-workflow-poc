@@ -1,0 +1,515 @@
+{
+  "model": "Škoda Peaq",
+  "effective_date": "August 2026",
+  "trims": [
+    {
+      "trim_level": "Selection",
+      "pricing": [
+        {
+          "powertrain": "Selection 60",
+          "model_code": "PZ7DF2",
+          "battery": "63 kWh",
+          "power_kw": 150,
+          "wltp_range_km": 452,
+          "wltp_consumption_wh_km": 150.1,
+          "annual_road_tax": "€120",
+          "rrp": "€54,996",
+          "vrt_rebate": "€0",
+          "seai_grant": "€0",
+          "rrp_from": "€54,996"
+        },
+        {
+          "powertrain": "Selection 90",
+          "model_code": "PZ7DP2",
+          "battery": "91 kWh",
+          "power_kw": 210,
+          "wltp_range_km": 637,
+          "wltp_consumption_wh_km": 152.3,
+          "annual_road_tax": "€120",
+          "rrp": "€58,150",
+          "vrt_rebate": "€0",
+          "seai_grant": "€0",
+          "rrp_from": "€58,150"
+        },
+        {
+          "powertrain": "Selection 90X",
+          "model_code": "PZ7DT4",
+          "battery": "91 kWh",
+          "power_kw": 220,
+          "wltp_range_km": 602,
+          "wltp_consumption_wh_km": 161.4,
+          "annual_road_tax": "€120",
+          "rrp": "€59,650",
+          "vrt_rebate": "€0",
+          "seai_grant": "€0",
+          "rrp_from": "€59,650"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "Side Assist - blind spot monitoring system",
+          "Crew protect assist",
+          "Driver monitoring system",
+          "One pedal driving technology",
+          "Mobile digital key incl. 2x physical keys",
+          "Adaptive lane assist incl. emergency assist",
+          "ISOFIX child seat anchor points",
+          "Turn assist incl. crossroad assist",
+          "Tyre pressure monitoring system",
+          "Front & rear side airbag with front curtain airbag",
+          "Driver & front passenger airbags",
+          "Front assist: Forward collision warning incl. emergency brake & pedestrian recognition"
+        ],
+        "functional_and_convenience": [
+          "Climatronic 3-zone air conditioning",
+          "Adaptive cruise control incl. traffic jam assist",
+          "Kessy Full - keyless entry/go system",
+          "Front & Rear parking sensors",
+          "Rear view camera",
+          "Drive mode select",
+          "Virtual pedal - electric tailgate",
+          "Power folding exterior mirrors",
+          "Automatic rain & light sensors",
+          "Auto-dimming rear view mirror",
+          "Vehicle to load (V2L) readiness (adaptor required)",
+          "3-pin boot socket with vehicle to load capability",
+          "35 litre front trunk",
+          "Dual wireless charging ring (subject to device compatibility)"
+        ],
+        "audio_and_infotainment": [
+          "Infotainment pack: 13.6\" vertical touchscreen display",
+          "Navigation system",
+          "Bluetooth & Voice control",
+          "Smartlink (Apple CarPlay/Android Auto)",
+          "2x USB-C ports & 8 speakers",
+          "Online services (10-years subscription)",
+          "10GB monthly data pack (3-year subscription)"
+        ],
+        "interior_and_upholstery": [
+          "'Suite' design selection upholstery",
+          "Heated front seats",
+          "Front centre armrest",
+          "Split folding rear seats incl. rear centre armrest",
+          "Electric front seats incl. memory function",
+          "Front & rear floor mats",
+          "Storage compartment in boot",
+          "Leatherette heated steering wheel (2-spoke)",
+          "LED interior pack: LED ambient lighting, LED footwell lights, 'Welcome' logo projection"
+        ],
+        "exterior_and_visibility": [
+          "19\" 'Whale' alloy wheels",
+          "Flush exterior door handles",
+          "LED headlights",
+          "LED tail light",
+          "Tech deck front grill",
+          "Škoda UDC inscription on D-pillar"
+        ]
+      }
+    },
+    {
+      "trim_level": "Sportline",
+      "pricing": [
+        {
+          "powertrain": "Sportline 90",
+          "model_code": "PZ7RP2",
+          "battery": "91 kWh",
+          "power_kw": 210,
+          "wltp_range_km": 630,
+          "wltp_consumption_wh_km": 154.3,
+          "annual_road_tax": "€120",
+          "rrp": "€61,550",
+          "vrt_rebate": "€0",
+          "seai_grant": "€0",
+          "rrp_from": "€61,550"
+        },
+        {
+          "powertrain": "Sportline 90X",
+          "model_code": "PZ7RT4",
+          "battery": "91 kWh",
+          "power_kw": 220,
+          "wltp_range_km": 596,
+          "wltp_consumption_wh_km": 163.1,
+          "annual_road_tax": "€120",
+          "rrp": "€63,050",
+          "vrt_rebate": "€0",
+          "seai_grant": "€0",
+          "rrp_from": "€63,050"
+        }
+      ],
+      "standard_equipment": {
+        "additions_over_selection": [
+          "Area view 360 degree camera",
+          "Leatherette heated sports steering wheel (3-spoke) incl. regeneration paddles",
+          "Sportline interior styling pack: Suedia & leatherette upholstery, Front sport seats, Dark interior headliner, Leatherette wrapped dashboard, Carbon/Black decorative inserts, Aluminium sport pedals",
+          "20\" 'Okapi' alloy wheels",
+          "Crystal face 2.0",
+          "Matrix LED headlights",
+          "'SUNSET' dark tinted privacy glass",
+          "Sportline exterior styling pack: Black window surrounds, Black ŠKODA lettering"
+        ]
+      }
+    }
+  ],
+  "wheels_and_tyres": [
+    {
+      "code": "V95",
+      "description": "19\" 'Whale' alloy wheels",
+      "selection": "STANDARD",
+      "sportline": "N/A"
+    },
+    {
+      "code": "F55",
+      "description": "19\" 'Gharial' alloy wheels",
+      "selection": "€0",
+      "sportline": "N/A"
+    },
+    {
+      "code": "PV1",
+      "description": "20\" 'Mustela' alloy wheels",
+      "selection": "€666",
+      "sportline": "N/A"
+    },
+    {
+      "code": "PV2",
+      "description": "20\" 'Kouprey' alloy wheels",
+      "selection": "€779",
+      "sportline": "N/A"
+    },
+    {
+      "code": "CM5",
+      "description": "20\" 'Okapi' alloy wheels",
+      "selection": "N/A",
+      "sportline": "STANDARD"
+    },
+    {
+      "code": "PW1",
+      "description": "21\" 'Javan' alloy wheels",
+      "selection": "€1,581",
+      "sportline": "N/A"
+    },
+    {
+      "code": "PW2",
+      "description": "21\" 'Dugong' alloy wheels",
+      "selection": "N/A",
+      "sportline": "€915"
+    }
+  ],
+  "design_selections": [
+    {
+      "trim_name": "Suite Black",
+      "status": "STANDARD (Selection)",
+      "code": "ZH",
+      "upholstery": "Black leather & Leatherette",
+      "decorative_trim": "Carbon/black decor",
+      "door_lining": "Techtona Black",
+      "roof_liner": "Grey"
+    },
+    {
+      "trim_name": "Suite Ceramique",
+      "status": "STANDARD (Selection)",
+      "code": "YE",
+      "upholstery": "Grey Techona Leatherette",
+      "decorative_trim": "Carbon/grey decor",
+      "door_lining": "Techtona Ceramique",
+      "roof_liner": "Grey"
+    },
+    {
+      "trim_name": "Sportline",
+      "status": "STANDARD (Sportline)",
+      "code": "YM",
+      "upholstery": "Black Suedia & Leatherette",
+      "decorative_trim": "Carbon/black decor",
+      "door_lining": "Suedia Black",
+      "roof_liner": "Black"
+    }
+  ],
+  "optional_packages": [
+    {
+      "code": "P1B",
+      "pack_name": "Tech pack",
+      "items": [
+        "Matrix LED headlights",
+        "LED taillights incl. dynamic indicators",
+        "Crystal face 2.0",
+        "Area view 360-degree camera"
+      ],
+      "selection_price": "€1,806",
+      "sportline_price": "STANDARD"
+    },
+    {
+      "code": "P2C",
+      "pack_name": "Assist pack",
+      "items": [
+        "Intelligent parking assist",
+        "Remote park assist and Reverse assist",
+        "Trained Parking"
+      ],
+      "selection_price": "€599",
+      "sportline_price": "€599"
+    },
+    {
+      "code": "P1D",
+      "pack_name": "Relax pack",
+      "items": [
+        "Massage front seats",
+        "Electrically adjustable footrest",
+        "'SONOS' sound system",
+        "Folding table in centre console",
+        "2x black attachable headrest pillows"
+      ],
+      "selection_price": "€1,761",
+      "sportline_price": "€1,761"
+    },
+    {
+      "code": "P2D",
+      "pack_name": "Relax pack with seat ventilation",
+      "items": [
+        "Ventilated front seats",
+        "Massage front seats",
+        "Electrically adjustable footrest",
+        "'SONOS' sound system",
+        "Folding table in centre console",
+        "2x black attachable headrest pillows"
+      ],
+      "selection_price": "€2,160",
+      "sportline_price": "N/A"
+    },
+    {
+      "code": "P1F",
+      "pack_name": "Simply Clever pack",
+      "items": [
+        "Tablet holder",
+        "Detachable rubbish bin",
+        "Cable cleaner",
+        "2nd Umbrella in passenger's door"
+      ],
+      "selection_price": "€69",
+      "sportline_price": "€69"
+    },
+    {
+      "code": "P1E",
+      "pack_name": "Winter pack",
+      "items": [
+        "Heated windshield",
+        "Heated rear seats"
+      ],
+      "selection_price": "€604",
+      "sportline_price": "€604"
+    }
+  ],
+  "single_options": [
+    {
+      "code": "3FP",
+      "description": "Panoramic fixed glass sunroof with dynamic shade control",
+      "selection_price": "€2,178",
+      "sportline_price": "€2,178"
+    },
+    {
+      "code": "W2B",
+      "description": "Ventilated front seats",
+      "selection_price": "€399",
+      "sportline_price": "N/A"
+    },
+    {
+      "code": "3CX",
+      "description": "Net partition",
+      "selection_price": "€191",
+      "sportline_price": "€191"
+    },
+    {
+      "code": "1M6",
+      "description": "Tow bar - electrically retractable",
+      "selection_price": "€820",
+      "sportline_price": "€820"
+    },
+    {
+      "code": "PHC",
+      "description": "Heat pump",
+      "selection_price": "€1,271",
+      "sportline_price": "€1,271"
+    },
+    {
+      "code": "PFD",
+      "description": "Adaptive chassis control & 3-spoke leatherette heated steering wheel with Tiptronic paddles",
+      "selection_price": "€1,205",
+      "sportline_price": "€944"
+    },
+    {
+      "code": "7AL",
+      "description": "Interior anti-theft alarm",
+      "selection_price": "€272",
+      "sportline_price": "€272"
+    },
+    {
+      "code": "PA2",
+      "description": "SUNSET dark tinted privacy glass",
+      "selection_price": "€253",
+      "sportline_price": "STANDARD"
+    },
+    {
+      "code": "6NW",
+      "description": "Black interior fabric ceiling",
+      "selection_price": "€97",
+      "sportline_price": "STANDARD"
+    },
+    {
+      "code": "EA9",
+      "description": "Extended warranty (5 year / max 150,000km)",
+      "selection_price": "€781",
+      "sportline_price": "€781"
+    },
+    {
+      "code": "EV_PLAN",
+      "description": "Škoda EV Plan (Routine Inspections, Brake Fluid, Pollen Filter, 4 Tyres, Wiper Blades, Brake Pads)",
+      "selection_price": "€1,250",
+      "sportline_price": "€1,250"
+    }
+  ],
+  "color_options": [
+    {
+      "name": "Energy Blue",
+      "code": "K4K4",
+      "type": "Solid",
+      "selection_price": "€0",
+      "sportline_price": "€0"
+    },
+    {
+      "name": "Steel Grey",
+      "code": "M3M3",
+      "type": "Solid",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Black Magic",
+      "code": "1Z1Z",
+      "type": "Metallic",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Graphite Grey",
+      "code": "5X5X",
+      "type": "Metallic",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Race Blue",
+      "code": "8X8X",
+      "type": "Metallic",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Moon White",
+      "code": "2Y2Y",
+      "type": "Metallic",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Smokey Diamond Silver",
+      "code": "B3B3",
+      "type": "Metallic",
+      "selection_price": "€877",
+      "sportline_price": "€877"
+    },
+    {
+      "name": "Rosewood Beige",
+      "code": "4P4P",
+      "type": "Exclusive",
+      "selection_price": "€1,182",
+      "sportline_price": "€1,182"
+    },
+    {
+      "name": "Olibo Green",
+      "code": "R2R2",
+      "type": "Exclusive",
+      "selection_price": "€1,182",
+      "sportline_price": "€1,182"
+    },
+    {
+      "name": "Velvet Red",
+      "code": "K1K1",
+      "type": "Exclusive",
+      "selection_price": "€1,182",
+      "sportline_price": "€1,182"
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4874,
+      "width_mm": 1867,
+      "height_mm": 1674,
+      "wheelbase_mm": 2970,
+      "max_luggage_capacity_litres": 890,
+      "front_trunk_capacity_litres": 35
+    },
+    "powertrains": [
+      {
+        "version": "60",
+        "drivetrain": "4x2",
+        "battery_gross_kwh": 63,
+        "battery_net_kwh": 59,
+        "max_power_kw": 150,
+        "max_torque_nm": 350,
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 8.4,
+        "wltp_range_km": 452,
+        "gross_vehicle_weight_kg": 2700,
+        "max_towing_capacity_braked_kg": 1800,
+        "charging": {
+          "dc_fast_charger_max_kw": 160,
+          "dc_time_10_80_percent": "27 mins",
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "6hr 30 min",
+          "home_socket_max_kw": 2.3,
+          "home_socket_time_0_100_percent": ">24 hours"
+        }
+      },
+      {
+        "version": "90",
+        "drivetrain": "4x2",
+        "battery_gross_kwh": 91,
+        "battery_net_kwh": 86,
+        "max_power_kw": 210,
+        "max_torque_nm": 545,
+        "top_speed_kmh": 180,
+        "acceleration_0_100_kmh_s": 7.1,
+        "wltp_range_km": "630 - 637",
+        "gross_vehicle_weight_kg": 2909,
+        "max_towing_capacity_braked_kg": 1800,
+        "charging": {
+          "dc_fast_charger_max_kw": 199,
+          "dc_time_10_80_percent": "28 mins",
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "9 hours",
+          "home_socket_max_kw": 2.3,
+          "home_socket_time_0_100_percent": ">24 hours"
+        }
+      },
+      {
+        "version": "90X",
+        "drivetrain": "4x4",
+        "battery_gross_kwh": 91,
+        "battery_net_kwh": 77,
+        "max_power_kw": 220,
+        "max_torque_nm": "Front: 162 / Rear: 350",
+        "top_speed_kmh": 180,
+        "acceleration_0_100_kmh_s": 6.7,
+        "wltp_range_km": "596 - 602",
+        "gross_vehicle_weight_kg": 2990,
+        "max_towing_capacity_braked_kg": 2000,
+        "charging": {
+          "dc_fast_charger_max_kw": 199,
+          "dc_time_10_80_percent": "28 mins",
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "9 hours",
+          "home_socket_max_kw": 2.3,
+          "home_socket_time_0_100_percent": ">24 hours"
+        }
+      }
+    ]
+  }
+}

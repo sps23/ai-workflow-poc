@@ -1,6 +1,6 @@
 package com.sps23.aiworkflow.recommendation
 
-import com.sps23.aiworkflow.catalog.FitmentStatus
+import com.sps23.aiworkflow.catalog.datamodel.FitmentState
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.OpenRouterErrorDiagnostics
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
@@ -30,7 +30,7 @@ data class SelectedCar(
 @Serializable
 data class RequestedOption(
     val name: String,
-    val status: FitmentStatus,
+    val status: FitmentState,
     val details: String,
     val sources: List<String>,
 )
@@ -80,12 +80,12 @@ internal fun JsonElement.hasOnlyTextValues(): Boolean =
         is JsonPrimitive -> this == JsonNull || isString
     }
 
-fun FitmentStatus.displayLabel(): String =
+fun FitmentState.displayLabel(): String =
     when (this) {
-        FitmentStatus.STANDARD -> "Standard"
-        FitmentStatus.OPTIONAL -> "Optional"
-        FitmentStatus.NOT_AVAILABLE -> "Not available"
-        FitmentStatus.UNKNOWN -> "Unknown"
+        FitmentState.STANDARD -> "Standard"
+        FitmentState.OPTIONAL -> "Optional"
+        FitmentState.NOT_AVAILABLE -> "Not available"
+        FitmentState.UNKNOWN -> "Unknown"
     }
 
 fun CarSelection.toReadableText(): String =

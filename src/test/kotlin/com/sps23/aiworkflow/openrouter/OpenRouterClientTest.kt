@@ -148,7 +148,7 @@ class OpenRouterClientTest {
                         .getValue("content")
                         .jsonPrimitive.content
                 assertTrue("Keep details concise" in system)
-                assertTrue("unless the user explicitly requests more" in system)
+                assertTrue("explicit user result count or request for all matches overrides" in system)
                 assertTrue("necessary caveats" in system)
             }
         }

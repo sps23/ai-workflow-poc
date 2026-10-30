@@ -1,9 +1,0 @@
-# Peugeot 5008 spec sheet, physical page 17, Options table.
-# Row indexes follow the visible top-to-bottom order.
-# Column order: Allure | GT | GT Exclusive.
-# Coordinates: PDFBox direction-adjusted points from displayed crop top-left.
-# '?' means the reference cell is visually blank and must remain unknown/reviewed.
-1|105.26|⚫|⚫|⚫
-2|150.30|||
-3|272.80|-||
-4|385.75|?||

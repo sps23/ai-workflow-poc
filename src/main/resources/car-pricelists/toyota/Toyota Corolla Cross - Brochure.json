@@ -1,0 +1,325 @@
+{
+  "model": "Toyota Corolla Cross",
+  "effective_date": "February 2026",
+  "trims": [
+    {
+      "trim_level": "Luna",
+      "pricing": [
+        {
+          "powertrain": "1.8 HEV FWD",
+          "price": "Not explicitly stated in brochure",
+          "co2_emissions_g_km": "112",
+          "annual_road_tax": "€190"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "Toyota Safety Sense 3 (TSS3)",
+          "Anti-lock Braking System (ABS) with Electronic Brake force Distribution (EBD)",
+          "Supplemental Restraint System (SRS) - 8 Airbags",
+          "Pre-Collision System with Intersection Collision Avoidance Support",
+          "Pre-Collision System with Pedestrian & Daytime Cyclist and Motorbike Detection",
+          "Front-to-Front Oncoming Car and Motorbike Detection (Day) on Pre-Collision System",
+          "eCall Emergency Call System",
+          "Driver Monitor Camera",
+          "Emergency Brake-light Signal (EBS)",
+          "Emergency Driving Stop System (EDSS)",
+          "Proactive Driving Assist (PDA)",
+          "Emergency Steering Assist on Pre-Collision System",
+          "Hill-start Assist Control (HAC)",
+          "Immobiliser",
+          "Intelligent Adaptive Cruise Control (IACC)",
+          "Lane Departure Alert with Steering Control",
+          "Lane Trace Assist (LTA)",
+          "Rear Seat Reminder System (RSRS)",
+          "Rear-View Camera",
+          "Road Sign Assist (RSA)",
+          "Tyre Pressure Warning System (TPWS)"
+        ],
+        "interior_and_instrumentation": [
+          "3-Spoke Leather Steering Wheel",
+          "12.3\" Coloured TFT Information Display Screen",
+          "Cup Holders (2x Front, 4x Rear)",
+          "Electro-Chromatic Rear-View Mirror",
+          "Electronic Parking Brake",
+          "Front 12V Power Outlet",
+          "Leather-Like Front Door Armrests",
+          "Manual Telescopic & Tilting Steering Wheel",
+          "Steering Wheel Switches (Adaptive Cruise Control, Lane Departure Alert, Voice Recognition)",
+          "Wireless Charger"
+        ],
+        "convenience": [
+          "Boot Door Release with Handle",
+          "Dual-Zone Automatic Air Conditioning",
+          "Front and Rear Power Windows with One Touch Auto Up & Down Function",
+          "Power-Adjustable, Automatically Retractable, Heated Door Mirrors",
+          "MyToyota Remote Air Conditioning System",
+          "MyToyota Remote Door Lock"
+        ],
+        "audio_and_navigation": [
+          "10.5\" Toyota Smart Connect Multimedia System",
+          "6 Speakers",
+          "Bluetooth Hands-Free System",
+          "Cloud Navigation",
+          "Smart Voice Assist",
+          "Smartphone Integration with Wireless Apple CarPlay & Android Auto",
+          "USB Ports (1x Front Type-C, 2x Rear Type-C)"
+        ],
+        "exterior_and_visibility": [
+          "Automatic High Beam (AHB)",
+          "Bi-Beam LED Headlamps",
+          "Black Door Mirrors",
+          "Black Roof Rails",
+          "Daytime Running Lights (Bulb)",
+          "Front Fog Lamps (LED)",
+          "Manual Headlamp Levelling",
+          "Rain Sensor",
+          "Rear Combination Lamps",
+          "Shark-Fin Antenna"
+        ],
+        "wheels_and_tyres": [
+          "17\" Silver Alloy Wheels (5-double-spoke)",
+          "Tyre Repair Kit"
+        ],
+        "seating_and_upholstery": [
+          "60:40 Split-Folding Rear Seats",
+          "Black Fabric Upholstery (FA20)",
+          "Heated Driver and Front Passenger Seats",
+          "ISOFIX Seat Fixing",
+          "Manually Height-Adjustable Driver Seat",
+          "Manually Sliding and Reclining Front Passenger and Driver Seat",
+          "Power-Adjustable Lumbar Support on Driver Seat",
+          "Reclining Rear Seats"
+        ]
+      }
+    },
+    {
+      "trim_level": "Sport",
+      "pricing": [
+        {
+          "powertrain": "1.8 HEV FWD",
+          "price": "Not explicitly stated in brochure",
+          "co2_emissions_g_km": "113",
+          "annual_road_tax": "€190"
+        }
+      ],
+      "standard_equipment": {
+        "safety_additions": [
+          "Blind Spot Monitor (BSM)",
+          "Front & Rear Parking Sensors",
+          "Rear Cross Traffic Alert with Automatic Braking",
+          "Safe Exit Assist"
+        ],
+        "interior_and_instrumentation_additions": [
+          "Heated Steering Wheel",
+          "Illuminated Entry System",
+          "Leather Gear Shift Knob",
+          "Slide Function in Console Box",
+          "Soft-Touch Front Door Trim"
+        ],
+        "convenience_additions": [
+          "Smart Entry & Start System",
+          "Power Back Door"
+        ],
+        "exterior_and_visibility_additions": [
+          "Chrome Window Frame",
+          "Daytime Running Lights (LED)",
+          "Rear Privacy Glass"
+        ],
+        "wheels_additions": [
+          "18\" Dark Grey Machined-Face Alloy Wheels (6-Double-Spoke)"
+        ]
+      }
+    },
+    {
+      "trim_level": "Sol",
+      "pricing": [
+        {
+          "powertrain": "1.8 HEV FWD",
+          "price": "Not explicitly stated in brochure",
+          "co2_emissions_g_km": "114",
+          "annual_road_tax": "€190"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_and_visibility_additions": [
+          "Panoramic Roof"
+        ],
+        "seating_and_upholstery_additions": [
+          "Black Partial Synthetic Leather Upholstery (LA20)"
+        ]
+      }
+    },
+    {
+      "trim_level": "GR SPORT",
+      "pricing": [
+        {
+          "powertrain": "2.0 HEV FWD",
+          "price": "Not explicitly stated in brochure",
+          "co2_emissions_g_km": "117",
+          "annual_road_tax": "€190"
+        }
+      ],
+      "standard_equipment": {
+        "interior_and_instrumentation_additions": [
+          "GR Sport Leather Steering Wheel",
+          "Paddle Shifts",
+          "Digital Key"
+        ],
+        "exterior_and_visibility_additions": [
+          "Black Sporty Front Bumper and Grille",
+          "Full Bi-tone Exterior"
+        ],
+        "audio_and_navigation_additions": [
+          "Embedded Navigation",
+          "9 JBL Speakers"
+        ],
+        "seating_and_upholstery_additions": [
+          "Synthetic Leather & Brin Naub® Suede GR SPORT Seats (EA20)"
+        ],
+        "wheels_additions": [
+          "19\" Alloy Wheels"
+        ]
+      }
+    }
+  ],
+  "color_options": {
+    "monotone": [
+      {
+        "name": "Pure White",
+        "code": "040",
+        "type": "Solid",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Urban Khaki",
+        "code": "6X3",
+        "type": "Metallic",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Metal Stream",
+        "code": "1K0",
+        "type": "Metallic",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Black",
+        "code": "209",
+        "type": "Metallic",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Sandstone",
+        "code": "4Z2",
+        "type": "Metallic",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Massive Grey",
+        "code": "1L6",
+        "type": "Metallic",
+        "availability": "Luna, Sport, Sol"
+      },
+      {
+        "name": "Pearl Ice White",
+        "code": "089",
+        "type": "Pearlescent",
+        "availability": "Sport, Sol (Not available on Luna)"
+      },
+      {
+        "name": "Pearl Red",
+        "code": "305",
+        "type": "Pearlescent",
+        "availability": "Sport, Sol (Not available on Luna)"
+      }
+    ],
+    "bitone": [
+      {
+        "name": "Storm Grey Bi-tone",
+        "code": "M29",
+        "type": "Metallic",
+        "availability": "GR SPORT"
+      },
+      {
+        "name": "Metal Stream Bi-tone",
+        "code": "2NK",
+        "type": "Metallic",
+        "availability": "GR SPORT"
+      },
+      {
+        "name": "Pearl Red Bi-tone",
+        "code": "2TB",
+        "type": "Pearlescent",
+        "availability": "GR SPORT"
+      },
+      {
+        "name": "Pearl Ice White Bi-tone",
+        "code": "2VP",
+        "type": "Pearlescent",
+        "availability": "GR SPORT"
+      }
+    ]
+  },
+  "accessory_packs": [
+    {
+      "pack_name": "Corolla Cross Care Pack",
+      "items": [
+        "Boot Liner",
+        "Front & Rear Mud Guards",
+        "Lock Nuts"
+      ]
+    },
+    {
+      "pack_name": "Corolla Cross Protection Pack",
+      "items": [
+        "Rubber Floor Mats",
+        "Rear Bumper Protection Plate"
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": "4460 (1.8 HEV) / 4465 (2.0 HEV)",
+      "width_mm": 1825,
+      "height_mm": "1620 (1.8 HEV) / 1605 (2.0 HEV)",
+      "wheelbase_mm": 2640,
+      "max_boot_capacity_litres": "473 (1.8 HEV) / 425 (2.0 HEV)",
+      "braked_towing_kg": 750
+    },
+    "powertrains": [
+      {
+        "engine_version": "1.8 HEV FWD",
+        "displacement_cc": 1798,
+        "max_power_hp_kw": "140 / 103",
+        "max_torque_nm": 142,
+        "battery_type_cells": "Lithium-ion / 56 cells",
+        "top_speed_kmh": 170,
+        "acceleration_0_100_kmh_s": "9.9 - 10.0",
+        "wltp_combined_co2_g_km": "112 - 114",
+        "wltp_combined_fuel_consumption_l_100km": "4.9 - 5.0",
+        "nitrogen_oxides_nox_mg_km": 2.4,
+        "trims_available": [
+          "Luna",
+          "Sport",
+          "Sol"
+        ]
+      },
+      {
+        "engine_version": "2.0 HEV FWD",
+        "displacement_cc": 1987,
+        "max_power_hp_kw": "197 / 145",
+        "max_torque_nm": 190,
+        "battery_type_cells": "Lithium-ion / 60 cells",
+        "top_speed_kmh": 180,
+        "acceleration_0_100_kmh_s": 7.7,
+        "wltp_combined_co2_g_km": "117",
+        "wltp_combined_fuel_consumption_l_100km": "5.1 - 5.2",
+        "nitrogen_oxides_nox_mg_km": 2.1,
+        "trims_available": [
+          "GR SPORT"
+        ]
+      }
+    ]
+  }
+}

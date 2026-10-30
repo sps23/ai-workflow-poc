@@ -19,7 +19,7 @@ fun runCarPrompt(
     out: PrintStream,
     err: PrintStream,
     baseUrl: String = OPENROUTER_BASE_URL,
-    catalogJson: () -> String = CatalogContext::bundledJson,
+    catalogJson: () -> String = { DataModelCatalogContext.loadBundled().promptJson },
 ): Int {
     val prompt = args.joinToString(" ").trim()
     if (prompt.isEmpty()) {
