@@ -16,6 +16,17 @@ import com.sps23.aiworkflow.catalog.VehicleFeature
 import com.sps23.aiworkflow.catalog.VehicleMeasurement
 import com.sps23.aiworkflow.catalog.VehicleModel
 import com.sps23.aiworkflow.catalog.VehiclePrice
+import com.sps23.aiworkflow.openrouter.SYSTEM_INSTRUCTIONS
+import com.sps23.aiworkflow.openrouter.buildUserMessage
+import com.sps23.aiworkflow.openrouter.estimateInputTokens
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -180,6 +191,7 @@ class CatalogContextTest {
         assertFalse("\n" in json || "null" in json || "  " in json)
         assertFalse("car-b" in json || "price-unreviewed" in json)
         assertTrue("\"sources\":[\"doc.pdf:3\"]" in json)
+        assertTrue("\"sources\":[0]" in json)
         assertFalse("\"engine\"" in json)
     }
 
@@ -193,5 +205,69 @@ class CatalogContextTest {
         val json = CatalogContext.bundledJson()
         assertFalse("rawText" in json)
         assertTrue(json.length < VehicleCatalogCodec.encode(bundled).length)
+    }
+
+    @Test
+    fun `indexed fixture round trips every fact and preserves index zero and shared records`() {
+        val encoded = CatalogContext.toJson(compact)
+        assertEquals(compact, expand(encoded))
+        val root = Json.parseToJsonElement(encoded).jsonObject
+        assertEquals(2, root.getValue("prices").jsonArray.size)
+        assertEquals(1, root.getValue("equipment").jsonArray.size)
+        assertEquals(1, root.getValue("sources").jsonArray.size)
+        assertEquals(encoded, CatalogContext.toJson(compact))
+    }
+
+    @Test
+    fun `bundled indexed catalog round trips losslessly and fits a 262144 token estimated budget`() {
+        val catalog = CatalogContext.compact(CatalogContext.loadBundledCatalog())
+        val encoded = CatalogContext.toJson(catalog)
+        assertEquals(catalog, expand(encoded))
+        val input =
+            estimateInputTokens(
+                SYSTEM_INSTRUCTIONS,
+                buildUserMessage("x".repeat(4096), encoded),
+            )
+        assertTrue(input + 32_768 <= 262_144, "Estimated input $input plus output must fit 262144")
+        val inline = Json.encodeToString(CompactCatalog.serializer(), catalog)
+        assertTrue(encoded.toByteArray().size < inline.toByteArray().size / 2)
+    }
+
+    @Test
+    fun `empty indexed catalog remains empty`() {
+        val empty = CompactCatalog(emptyList(), emptyList())
+        assertEquals(empty, expand(CatalogContext.toJson(empty)))
+    }
+
+    private fun expand(encoded: String): CompactCatalog {
+        val root = Json.parseToJsonElement(encoded).jsonObject
+        val features = root.getValue("features").jsonArray
+        val sources = root.getValue("sources").jsonArray
+
+        fun restore(record: JsonObject): JsonObject =
+            JsonObject(
+                record.mapValues { (key, value) ->
+                    when (key) {
+                        "sources" -> JsonArray(value.jsonArray.map { sources[it.jsonPrimitive.int] })
+                        "featureId" -> features[value.jsonPrimitive.int].jsonObject.getValue("id")
+                        else -> value
+                    }
+                },
+            )
+        val configurations =
+            root.getValue("configurations").jsonArray.map { configuration ->
+                JsonObject(
+                    restore(configuration.jsonObject).mapValues { (key, value) ->
+                        if (key in setOf("prices", "measurements", "equipment")) {
+                            JsonArray(value.jsonArray.map { restore(root.getValue(key).jsonArray[it.jsonPrimitive.int].jsonObject) })
+                        } else {
+                            value
+                        }
+                    },
+                )
+            }
+        return Json.decodeFromJsonElement(
+            JsonObject(mapOf("configurations" to JsonArray(configurations), "features" to features)),
+        )
     }
 }
