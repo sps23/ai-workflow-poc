@@ -15,6 +15,29 @@ class OpenRouterClientTest {
         OpenRouterClient(OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL, server.baseUrl, 10_000, 512))
 
     @Test
+    fun `OpenRouter output defaults and environment override do not change local budget`() {
+        val environment = mapOf(API_KEY_VARIABLE to "test-key", MODEL_VARIABLE to FakeOpenRouterServer.FREE_MODEL)
+        assertEquals(32_768L, OpenRouterConfig.fromEnvironment(environment).maxCompletionTokens)
+        assertEquals(32_768L, OpenRouterConfig("test-key", FakeOpenRouterServer.FREE_MODEL).maxCompletionTokens)
+        assertEquals(
+            65_536L,
+            OpenRouterConfig.fromEnvironment(environment + (MAX_COMPLETION_TOKENS_VARIABLE to " 65536 ")).maxCompletionTokens,
+        )
+        assertEquals(32_768L, LocalLlmConfig.fromEnvironment(environment, LlmApi.LM_STUDIO).maxCompletionTokens)
+        listOf("", "abc", "0", "-1", "1.5", "2147483648", "999999999999999999999").forEach { value ->
+            val error =
+                assertFailsWith<OpenRouterWorkflowException> {
+                    OpenRouterConfig.fromEnvironment(environment + (MAX_COMPLETION_TOKENS_VARIABLE to value))
+                }
+            assertEquals(FailureKind.CONFIGURATION, error.kind)
+            assertTrue(MAX_COMPLETION_TOKENS_VARIABLE in error.message.orEmpty())
+        }
+        assertFailsWith<IllegalArgumentException> {
+            OpenRouterConfig("test-key", FakeOpenRouterServer.FREE_MODEL, maxCompletionTokens = 0)
+        }
+    }
+
+    @Test
     fun `desktop and CLI environment configuration allows ten minutes for catalog inference`() {
         val config =
             OpenRouterConfig.fromEnvironment(
@@ -91,7 +114,7 @@ class OpenRouterClientTest {
 
     @Test
     fun `workflow default sends larger completion budget capped by model metadata`() {
-        listOf(16_384L to 8192L, 4096L to 4096L).forEach { (modelMaximum, expectedBudget) ->
+        listOf(65_536L to 32_768L, 16_384L to 16_384L, 4096L to 4096L).forEach { (modelMaximum, expectedBudget) ->
             FakeOpenRouterServer().use { server ->
                 server.modelsBody = FakeOpenRouterServer.modelsJson(maxCompletionTokens = modelMaximum)
                 server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
@@ -101,6 +124,14 @@ class OpenRouterClientTest {
 
                 assertEquals(FakeOpenRouterServer.CAR_OUTPUT, answer.text)
                 val body = Json.parseToJsonElement(server.chatRequests.last().body).jsonObject
+                assertEquals(
+                    "2048",
+                    Json
+                        .parseToJsonElement(server.chatRequests.first().body)
+                        .jsonObject
+                        .getValue("max_tokens")
+                        .jsonPrimitive.content,
+                )
                 assertEquals(
                     expectedBudget,
                     body
@@ -129,8 +160,8 @@ class OpenRouterClientTest {
             val inputTokens = estimateInputTokens(SYSTEM_INSTRUCTIONS, buildUserMessage("Suggest a hybrid", "{}"))
             server.modelsBody =
                 FakeOpenRouterServer.modelsJson(
-                    contextLength = inputTokens + 8192 - 1,
-                    maxCompletionTokens = 16_384,
+                    contextLength = inputTokens + 32_768 - 1,
+                    maxCompletionTokens = 65_536,
                 )
             val config = OpenRouterConfig("test-secret-key", FakeOpenRouterServer.FREE_MODEL, server.baseUrl)
 
@@ -140,8 +171,35 @@ class OpenRouterClientTest {
                 }
 
             assertEquals(FailureKind.REQUEST_TOO_LARGE, error.kind)
-            assertTrue("8192 completion tokens" in error.message.orEmpty())
+            assertTrue("32768 completion tokens" in error.message.orEmpty())
             assertEquals(1, server.chatRequests.size)
+        }
+    }
+
+    @Test
+    fun `environment override reaches completion payload capped by provider maximum`() {
+        listOf(65_536L to 65_536L, 16_384L to 16_384L).forEach { (maximum, expected) ->
+            FakeOpenRouterServer().use { server ->
+                server.modelsBody = FakeOpenRouterServer.modelsJson(maxCompletionTokens = maximum)
+                val config =
+                    OpenRouterConfig.fromEnvironment(
+                        mapOf(
+                            API_KEY_VARIABLE to "test-key",
+                            MODEL_VARIABLE to FakeOpenRouterServer.FREE_MODEL,
+                            MAX_COMPLETION_TOKENS_VARIABLE to "65536",
+                        ),
+                        server.baseUrl,
+                    )
+                runBlocking { OpenRouterClient(config).complete("Say hi") }
+                assertEquals(
+                    expected.toString(),
+                    Json
+                        .parseToJsonElement(server.chatRequests.single().body)
+                        .jsonObject
+                        .getValue("max_tokens")
+                        .jsonPrimitive.content,
+                )
+            }
         }
     }
 

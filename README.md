@@ -70,7 +70,7 @@ references and measured limits are in
 
 ## Car prompt CLI (OpenRouter)
 
-Uses two sequential calls to the same `:free` OpenRouter model via Koog:
+Uses two sequential calls to the same configured OpenRouter model via Koog:
 translate user text into `LlmRequest` JSON without catalog, then send that JSON
 plus the complete compact catalog of all reviewed configurations/facts. Validate
 the cars/trim/options response shape, then print a readable text projection.
@@ -86,27 +86,40 @@ Pick a current model from [OpenRouter's free models](https://openrouter.ai/model
 The CLI checks live metadata first: the exact ID must be listed, end in `:free`,
 have text output and zero pricing. The exact free-router ID `openrouter/free`
 is also accepted; it may choose different underlying free models per call.
+The exact paid model ID `qwen/qwen3.5-flash-02-23` is an explicitly approved exception:
+set `OPENROUTER_MODEL=qwen/qwen3.5-flash-02-23` to use it in the CLI.
+Listing, text output, numeric nonnegative pricing and context limits are still
+validated; zero pricing is required for every other allowed model.
+**Qwen requests incur OpenRouter charges**, including both translation and
+full-catalog recommendation calls. There is no automatic paid fallback.
 No application fallback model, retry, tool, or plugin is
-used; unavailable or non-free models stop the run.
+used; unavailable or unapproved paid models stop the run.
 
 - **External transmission:** the prompt and the compact catalog (prices,
   measurements, equipment, `documentId:page` references; no raw PDF text) go to
   OpenRouter and its provider. Use only data cleared for that.
+- **Lossless catalog indexing:** the model-facing `indexed-v1` JSON retains
+  every reviewed configuration and fact. Per-configuration prices, measurements
+  and equipment are zero-based indexes into shared top-level arrays; fact
+  `featureId` values index `features`, and all source entries index `sources`.
+  Full configuration IDs and original `documentId:page` strings remain available
+  for answers/downloads. Conditions, units, dates and unknowns are unchanged.
+  The stored catalog schema is unchanged; JSON is already minified.
 - **Translation:** `LlmRequest` preserves original text, separates hard requirements,
   preferences and requested attributes, and retains unresolved phrases instead of
   guessing. Terms map to catalog fields with operators, string values, units and
   original source wording. Invalid translations stop before catalog inference.
   Validation checks shape/original text/source phrases, not semantic equivalence.
   The original request remains authoritative in the second call.
-- **Size gate:** the request must fit the model's context with an 8192-token
+- **Size gate:** the request must fit the model's context with a 32,768-token
   output allowance (capped by the model's advertised maximum). This budget may
   include reasoning tokens as well as visible text. The input estimate is a conservative heuristic (1 token per
   2 UTF-8 bytes), not a tokenizer count. Oversized requests fail with both
   figures; nothing is truncated. The full catalog may exceed small free models.
 - **Limitations:** answers are AI-generated and unchecked against the user's
-  requirements; free endpoints can be rate-limited. Koog 1.3.0 does not expose
-  the provider's response model ID, so the CLI prints the requested ID unless
-  Koog reports one.
+  requirements; free endpoints can be rate-limited. The OpenRouter adapter
+  captures the provider's actual response model ID from its HTTP envelope,
+  even when Koog's standard metadata omits it; absent IDs use the requested ID.
 - **Answer shape:** car, trim, configuration ID, and requested options with
   Standard / Optional / Not available / Unknown status and conditions/evidence
   details. No summary or free-form answer sections; no matches prints
@@ -120,16 +133,45 @@ used; unavailable or non-free models stop the run.
   catalog, so free providers can take several minutes. Connection establishment
   remains limited to 15 seconds. Requests are not automatically retried; a longer
   timeout does not guarantee provider availability.
-  Translation output is capped at 2048 tokens; recommendations default to 8192,
+  Translation output is capped at 2048 tokens; OpenRouter recommendations default to 32,768,
   both capped by model metadata. Each stage has its own context check; a second-stage
   size failure can occur after translation. Two calls consume more quota/time;
   no optimization gain is assumed without measurement.
+- **Output configuration:** `OPENROUTER_MAX_COMPLETION_TOKENS` overrides the
+  OpenRouter recommendation budget in both CLI and desktop UI; default 32,768.
+  For example, `export OPENROUTER_MAX_COMPLETION_TOKENS=65536` before
+  `./gradlew run`. Restart the app after changing its launch environment.
+  Values must be positive integers up to 2,147,483,647; invalid/blank values fail
+  explicitly. Actual output is capped by the model's advertised maximum.
+  The budget includes reasoning where the provider counts it; a larger budget
+  can prevent truncation but does not guarantee completion. It reserves more
+  context, can increase latency and paid-model costs, and does not change the
+  10-minute timeout. Translation stays capped at 2048; local output targets
+  default to 32,768 and use the separate configuration below.
 - Other OpenRouter tests use a local fake server; no key or internet needed.
 
 ### Desktop prompt UI
 
-Same workflow in a Compose Desktop window: pick a free model from the dropdown,
-with **openrouter/free** listed first and selected by default,
+Same workflow in a Compose Desktop window: pick an **API**—**OpenRouter**
+(default), **LM Studio** (`http://localhost:1234/v1`), **llama.cpp**
+(`http://localhost:8080/v1`) or **Ollama** (`http://localhost:11434/v1`).
+For OpenRouter, pick a model from the dropdown:
+`openrouter/free`, the three NVIDIA free models, or `qwen/qwen3.5-flash-02-23` (paid).
+Qwen is marked paid in the menu and shows a charge warning when selected.
+Cohere and Recursive entries have been removed.
+The default remains free,
+with **openrouter/free** listed first and selected by default.
+Local APIs hide the model dropdown and skip OpenRouter metadata/pricing checks.
+LM Studio reads `/api/v0/models`, requires exactly one loaded chat model,
+uses its **loaded_context_length** (not advertised maximum), pins its model ID
+for both stages and dynamically sizes each request's output allowance.
+Unavailable/invalid metadata stops inference rather than bypassing the check.
+llama.cpp and Ollama retain server-selected models, omit `model`, and have no
+metadata/size preflight. Local APIs send
+`Authorization: Bearer $LOCAL_AI_API_KEY` only when that variable is set.
+The full catalog needs a large local context window; provider overflow still
+surfaces explicitly because byte estimates are not exact token counts.
+Ollama may require a `model` field and reject such requests. Then
 type a prompt, press **Send**, and
 native car/trim/options tables render below with the model ID and prototype disclaimer.
 Progress shows translation then car selection. After translation,
@@ -139,7 +181,7 @@ to the second call. The adjacent **Copy to clipboard** button copies that JSON
 and confirms copying. The JSON includes your original request. Review before sharing.
 Editing the input immediately clears prior results and JSON actions. Input editing
 is disabled while either call runs. With unchanged text, Send reuses the validated
-translation—even after changing models—and runs only car selection. Switching
+translation—even after changing models or APIs—and runs only car selection. Switching
 models still triggers fresh metadata/context checks. Selection starts automatically.
 The **Sources** column follows **Details**. Each **source** link opens a Save dialog
 for the original bundled PDF, with confirmation before replacing an existing file.
@@ -163,23 +205,149 @@ Credentials are redacted; raw response dumps, request headers and prompt/catalog
 fields are excluded. Review provider-written messages before sharing.
 Plan: [`docs/openrouter-desktop-ui-plan.md`](docs/openrouter-desktop-ui-plan.md).
 
-Prerequisites: `OPENROUTER_API_KEY` (the dropdown replaces `OPENROUTER_MODEL`), and a compact catalog JSON file. The UI does not upload PDFs or raw text.
+Prerequisites: `OPENROUTER_API_KEY` for OpenRouter (the dropdown replaces `OPENROUTER_MODEL`),
+or a running local server for local APIs (`LOCAL_AI_API_KEY` optional), and a compact catalog JSON file. The UI does not upload PDFs or raw text.
 
 ```sh
 ./gradlew run
 ```
 
+### DEBUG performance metadata
+
+After a response or failure, expand **DEBUG / Performance metadata** below the
+result/error. Per-stage summaries and selectable JSON distinguish model metadata
+lookup, request translation, and car recommendation. **Copy metadata JSON** copies
+the export with confirmation; **Download metadata JSON** saves `llm-metadata.json`
+via Save dialog, with overwrite confirmation and explicit save errors.
+Both actions export the same schema-versioned JSON.
+
+The typed metadata records:
+
+- Provider-reported prompt/completion/total tokens, reasoning tokens, cached
+  input/cache-write tokens and cost, when present.
+- API, requested/actual model, provider, response ID, HTTP status, finish reason,
+  stage outcome, elapsed milliseconds, input UTF-8 bytes and estimated input tokens.
+- Requested/effective output budget, known context/output limits, and whether
+  the chat request was dispatched.
+- Completion tokens per second over the entire measured request; optional
+  provider-reported generation tokens/second and time-to-first-token seconds.
+
+OpenRouter still executes via Koog 1.3.0. Its declared Ktor transport observes
+the response envelope and retains only allowlisted metadata; local responses
+use the same allowlist over OpenAI-compatible JSON. Nested usage details are
+provider-dependent, not guaranteed. Missing/invalid optional values are `null`,
+displayed as unavailable, never invented as zero or substituted with estimates.
+Reasoning/cached counts are subsets: do not add them to totals again. Reported
+cost is passed through, not calculated from model prices.
+
+Elapsed times use a monotonic client clock. Request timing includes transport
+and response processing, not just model generation; whole-request tokens/second
+is **not** generation speed. Non-streaming requests cannot measure client-side
+time to first token, so that field stays unavailable unless the server reports
+it explicitly. Usage/finish reason survive truncated, empty and invalid-answer
+failures where the response provides them. Timeouts/connection/preflight failures
+retain only known timing/size/limit data. Metadata lookup failures may have no
+chat request record. Successful prior stages remain visible after a later failure.
+
+Unchanged-input resubmissions mark translation `REUSED` without copying old
+token counts into the new run. New submissions clear old metrics; editing input
+clears the panel. Metadata contains **no prompts, catalog facts, generated text,
+reasoning text, headers or keys**. Provider identifiers are capped/redacted;
+review them before sharing. No raw metadata body or extra provider fields are
+dumped or logged. Collection adds no inference calls, retries, or paid lookups.
+
+### LM Studio context troubleshooting
+
+Measure the current model-facing payload without making any inference request:
+
+```sh
+./gradlew catalogSize
+curl --silent --show-error http://localhost:1234/api/v0/models
+```
+
+For the current bundled catalog, indexing reduces 1,024,558 UTF-8 bytes to
+235,979 bytes (76% smaller), retaining all 105 reviewed configurations.
+The catalog-only heuristic is 117,990 tokens; the recommendation baseline is
+about 120,472 input tokens plus a 32,768-token output target for both local and
+OpenRouter defaults, **before adding the actual
+translated request**. Rerun the command after catalog/prompt changes.
+The estimate uses one token per two UTF-8 bytes plus message overhead, not
+Qwen's tokenizer or its exact chat template. It can reject requests that would
+actually fit and cannot guarantee server acceptance.
+
+In LM Studio, start the server on port 1234, load exactly one chat model, set
+its context in the load settings, and reload if needed. Confirm the returned
+`state` is `loaded` and `loaded_context_length` is sufficient. A model's
+`max_context_length` is its advertised capability, not proof it was loaded
+with that capacity. A 262,144-token loaded context passes the current bundled
+catalog's baseline estimate; actual tokenization and runtime memory can differ.
+Do not raise context beyond supported model/runtime/memory limits or enable
+silent prompt truncation to conceal overflow.
+
+Local output configuration:
+
+```sh
+export LOCAL_AI_MAX_COMPLETION_TOKENS=32768
+./gradlew run
+```
+
+The local recommendation target is 32,768 by default (previously 8,192).
+Values must be positive integers up to 2,147,483,647; invalid/blank values fail
+explicitly. Restart with the updated launch environment. This variable is
+independent of `OPENROUTER_MAX_COMPLETION_TOKENS`.
+For each LM Studio call:
+
+```text
+output allowance = min(request target, reported model output maximum if known,
+                       loaded context - estimated full-message input)
+```
+
+Translation's target remains at most 2,048. Recommendation uses the configured
+target; it can shrink when a request leaves less context. The input estimate
+includes system instructions, request, catalog, delimiters and message overhead.
+LM Studio currently reports loaded context but no separate output maximum.
+No remaining output space means an explicit preflight failure; input/catalog
+are never truncated. llama.cpp/Ollama lack context discovery in this app and use
+the configured target without dynamic context sizing.
+
+`REQUEST_TOO_LARGE` reports UTF-8 input bytes, estimated input tokens, requested
+output and loaded context; the oversized chat call is not sent. Stage two can
+fail after translation succeeds. `CONTEXT` means the server rejected the
+request despite the estimate. Reducing `max_tokens` only frees the output
+reservation; it cannot fix an input that already exceeds the whole context.
+Local truncation diagnostics show the actual output allowance, requested target,
+estimated input and known limits. If context already caps output, increasing the
+target alone will not help. Larger targets may take longer and do not increase
+the existing 10-minute timeout; heuristic sizing still cannot guarantee a fit.
+Whitespace removal is already applied; gzip reduces transport size, not the
+text the model must tokenize.
+
+More parameters do not imply more context. Start with the existing Qwen model;
+consider a stronger model if valid JSON, index resolution or recommendation
+quality is poor, while independently checking its loaded context and memory
+requirements. Lossless encoding preserves data, not a guarantee of reasoning
+accuracy, especially on small models with long prompts.
+
+Local validation with `qwen3.5-2b-mlx` loaded at 262,144 tokens: a tiny request
+returned `OK`, but a recommendation request containing the entire indexed
+catalog timed out at the existing 600,000 ms limit. No full-catalog answer was
+validated. Passing the context estimate does not establish practical latency;
+increasing context alone does not solve this timeout. Check LM Studio's
+prompt-processing/generation progress and memory pressure before increasing
+timeouts. Request-specific projection or batching would be a separate workflow
+change; neither happens automatically.
+
 ### Live OpenRouter integration test
 
 `OpenRouterClient` (in `openrouter/`) is the reusable real client: it checks
-the configured `:free` model against `https://openrouter.ai/api/v1/models`, then
+the configured allowed model against `https://openrouter.ai/api/v1/models`, then
 sends one Koog prompt. `complete(..., context = json)` wraps the question and a
 context document as delimited data blocks and rejects requests whose estimated
 size exceeds the model context (`REQUEST_TOO_LARGE`, nothing sent).
 `OpenRouterClientIntegrationTest` sends a simple prompt to the real API and
 asserts a non-empty answer; a second test sends "Show me all hybrid cars under
-50,000 EUR." with the full compact catalog (~1 MB, ~512k estimated tokens, so it
-needs a large-context model such as a 1M-token one) and asserts a non-empty
+50,000 EUR." with the full indexed catalog (~236 KB, ~118k catalog-only estimated
+tokens; run `catalogSize` for current figures) and asserts a non-empty
 answer, allowing up to 8192 completion tokens and a 10-minute timeout. Both run with the
 normal tests and fail if either variable is missing:
 
@@ -197,8 +365,11 @@ current free model.
 On Windows, use `gradlew.bat` instead of `./gradlew`.
 
 The [Gradle build and test workflow](.github/workflows/gradle.yml) runs
-`./gradlew build test --no-daemon` on Ubuntu with Temurin JDK 25 for pushes and
-pull requests. It can also be started manually from the Actions tab.
+`./gradlew build test --no-daemon -PskipUiRenderTests` on Ubuntu with Temurin JDK 25
+for pushes and pull requests, excluding `CarPromptScreenTest`, which renders Compose
+UI offscreen but does not launch the desktop application. Run it locally with
+`./gradlew test --tests 'com.sps23.aiworkflow.ui.CarPromptScreenTest'` when needed.
+The workflow can also be started manually from the Actions tab.
 
 On macOS, after installing [Temurin 25](https://adoptium.net/temurin/releases/?version=25):
 

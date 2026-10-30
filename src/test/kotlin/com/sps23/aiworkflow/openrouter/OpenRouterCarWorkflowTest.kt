@@ -125,10 +125,53 @@ class OpenRouterCarWorkflowTest {
             }
         }
         assertFailsWith<OpenRouterWorkflowException> {
-            verifyFreeModel(FakeOpenRouterServer.modelsJson(id = "openrouter/free", promptPrice = "1"), "openrouter/free")
+            verifyOpenRouterModel(FakeOpenRouterServer.modelsJson(id = "openrouter/free", promptPrice = "1"), "openrouter/free")
         }
         listOf("openrouter/auto", "openrouter/free-extra").forEach { id ->
-            assertFailsWith<OpenRouterWorkflowException> { verifyFreeModel(FakeOpenRouterServer.modelsJson(id = id), id) }
+            assertFailsWith<OpenRouterWorkflowException> { verifyOpenRouterModel(FakeOpenRouterServer.modelsJson(id = id), id) }
+        }
+    }
+
+    @Test
+    fun `approved paid Qwen passes live metadata checks and is forwarded unchanged to both calls`() {
+        FakeOpenRouterServer().use { server ->
+            server.modelsBody =
+                FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, promptPrice = "0.000001", completionPrice = "0.000003")
+            server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
+            val answer = runBlocking { workflow(server, modelId = PAID_QWEN_MODEL_ID).answer("x") }
+            assertEquals(PAID_QWEN_MODEL_ID, answer.requestedModelId)
+            assertEquals(2, server.chatRequests.size)
+            server.chatRequests.forEach {
+                assertEquals(
+                    PAID_QWEN_MODEL_ID,
+                    Json
+                        .parseToJsonElement(it.body)
+                        .jsonObject
+                        .getValue("model")
+                        .jsonPrimitive.content,
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `paid exception remains exact and requires listing text valid pricing and context`() {
+        val cases =
+            listOf(
+                "$PAID_QWEN_MODEL_ID-extra" to FakeOpenRouterServer.modelsJson(id = "$PAID_QWEN_MODEL_ID-extra"),
+                "qwen/qwen3.5-plus" to FakeOpenRouterServer.modelsJson(id = "qwen/qwen3.5-plus"),
+                PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(),
+                PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, outputs = "\"image\""),
+                PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, promptPrice = "abc"),
+                PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, completionPrice = "-1"),
+                PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, contextLength = 0),
+            )
+        cases.forEach { (modelId, metadata) ->
+            FakeOpenRouterServer().use { server ->
+                val error = failure(server, { server.modelsBody = metadata }, modelId)
+                assertEquals(FailureKind.MODEL_UNAVAILABLE, error.kind)
+                assertTrue(server.chatRequests.isEmpty())
+            }
         }
     }
 
@@ -326,12 +369,11 @@ class OpenRouterCarWorkflowTest {
     }
 
     @Test
-    fun `response model ID is reported only when Koog exposes it`() {
+    fun `response model ID is captured from the provider envelope even when Koog drops it`() {
         FakeOpenRouterServer().use { server ->
             server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
             val answer = runBlocking { workflow(server).answer("x") }
-            // Koog 1.3.0 drops the response `model` field; null is the documented outcome.
-            assertNull(answer.responseModelId)
+            assertEquals(FakeOpenRouterServer.FREE_MODEL, answer.responseModelId)
             assertNotNull(answer.requestedModelId)
         }
     }

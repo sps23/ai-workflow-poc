@@ -40,9 +40,13 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.sps23.aiworkflow.openrouter.CarAnswer
+import com.sps23.aiworkflow.openrouter.LOCAL_API_KEY_VARIABLE
+import com.sps23.aiworkflow.openrouter.LlmApi
+import com.sps23.aiworkflow.openrouter.LocalLlmConfig
 import com.sps23.aiworkflow.openrouter.MODEL_VARIABLE
 import com.sps23.aiworkflow.openrouter.OpenRouterCarWorkflow
 import com.sps23.aiworkflow.openrouter.OpenRouterConfig
+import com.sps23.aiworkflow.openrouter.PAID_QWEN_MODEL_ID
 import com.sps23.aiworkflow.recommendation.CarSelection
 import com.sps23.aiworkflow.recommendation.CatalogContext
 import com.sps23.aiworkflow.recommendation.LlmRequest
@@ -60,18 +64,24 @@ import javax.swing.JOptionPane
 private val catalogJson: String by lazy { CatalogContext.bundledJson() }
 
 /**
- * Reads the API key per request so a missing key surfaces as a UI error, not a startup crash.
- * The dropdown choice replaces `OPENROUTER_MODEL`.
+ * Reads keys per request so a missing key surfaces as a UI error, not a startup crash.
+ * OpenRouter: the model dropdown replaces `OPENROUTER_MODEL`. Local: optional `LOCAL_AI_API_KEY`, loaded model.
  */
-private suspend fun answerFromOpenRouter(
+private suspend fun answerFromLlm(
     prompt: String,
+    api: LlmApi,
     modelId: String,
     cachedRequest: LlmRequest?,
     onTranslated: suspend (LlmRequest) -> Unit,
 ): CarAnswer =
     withContext(Dispatchers.IO) {
-        val config = OpenRouterConfig.fromEnvironment(System.getenv() + (MODEL_VARIABLE to modelId))
-        OpenRouterCarWorkflow(config, catalogJson).answer(prompt, cachedRequest) {
+        val workflow =
+            if (api.isLocal) {
+                OpenRouterCarWorkflow(LocalLlmConfig.fromEnvironment(System.getenv(), api), catalogJson)
+            } else {
+                OpenRouterCarWorkflow(OpenRouterConfig.fromEnvironment(System.getenv() + (MODEL_VARIABLE to modelId)), catalogJson)
+            }
+        workflow.answer(prompt, cachedRequest) {
             withContext(Dispatchers.Main) { onTranslated(it) }
         }
     }
@@ -85,7 +95,7 @@ fun main() =
         ) {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    CarPromptScreen(remember { CarPromptController(answer = ::answerFromOpenRouter) })
+                    CarPromptScreen(remember { CarPromptController(answer = ::answerFromLlm) })
                 }
             }
         }
@@ -101,7 +111,33 @@ fun CarPromptScreen(controller: CarPromptController) {
         modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        ModelDropdown(controller, enabled = !loading)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+            Selector("API:", controller.selectedApi.label, controller.apis, { it.label }, controller::selectApi, enabled = !loading)
+            if (!controller.selectedApi.isLocal) {
+                Selector(
+                    "Model:",
+                    controller.selectedModel,
+                    controller.models,
+                    { if (it == PAID_QWEN_MODEL_ID) "$it (paid)" else it },
+                    controller::selectModel,
+                    enabled = !loading,
+                )
+            }
+        }
+        if (controller.selectedApi.isLocal) {
+            Text(
+                "Uses the model loaded in ${controller.selectedApi.label} at ${controller.selectedApi.baseUrl}. " +
+                    "Optional key: $LOCAL_API_KEY_VARIABLE. The full catalog needs a large context window.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+        if (!controller.selectedApi.isLocal && controller.selectedModel == PAID_QWEN_MODEL_ID) {
+            Text(
+                "Paid model: OpenRouter charges apply to translation and full-catalog recommendation requests.",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
         OutlinedTextField(
             value = controller.prompt,
             onValueChange = controller::updatePrompt,
@@ -145,11 +181,31 @@ fun CarPromptScreen(controller: CarPromptController) {
                 Unit
             }
         }
+        controller.metadata?.let { DebugMetadataPanel(it) }
     }
 }
 
 @Composable
 private fun RequestDownloadButton(json: String) {
+    JsonExportButtons(
+        json = json,
+        fileName = "llm-request.json",
+        contentLabel = "LLM Request JSON",
+        downloadLabel = "Download LLM Request JSON",
+        copyLabel = "Copy to clipboard",
+        description = "Contains your original request. Review before sharing.",
+    )
+}
+
+@Composable
+internal fun JsonExportButtons(
+    json: String,
+    fileName: String,
+    contentLabel: String,
+    downloadLabel: String,
+    copyLabel: String,
+    description: String,
+) {
     val scope = rememberCoroutineScope()
     var message by remember(json) { mutableStateOf<String?>(null) }
     var saving by remember(json) { mutableStateOf(false) }
@@ -162,34 +218,34 @@ private fun RequestDownloadButton(json: String) {
                         saving = true
                         message = null
                         try {
-                            val chooser = JFileChooser().apply { selectedFile = java.io.File("llm-request.json") }
+                            val chooser = JFileChooser().apply { selectedFile = java.io.File(fileName) }
                             if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
                                 val target = chooser.selectedFile.toPath()
                                 if (!Files.exists(target) ||
                                     JOptionPane.showConfirmDialog(
                                         null,
                                         "Replace the existing file?",
-                                        "Save LLM Request JSON",
+                                        "Save $contentLabel",
                                         JOptionPane.YES_NO_OPTION,
                                     ) == JOptionPane.YES_OPTION
                                 ) {
                                     withContext(Dispatchers.IO) { Files.writeString(target, json, Charsets.UTF_8) }
-                                    message = "LLM Request JSON saved."
+                                    message = "$contentLabel saved."
                                 }
                             }
                         } catch (e: IOException) {
-                            message = "Could not save LLM Request JSON: ${e.message}"
+                            message = "Could not save $contentLabel: ${e.message}"
                         } catch (e: SecurityException) {
-                            message = "Permission denied saving LLM Request JSON: ${e.message}"
+                            message = "Permission denied saving $contentLabel: ${e.message}"
                         } finally {
                             saving = false
                         }
                     }
                 },
-            ) { Text("Download LLM Request JSON") }
-            CopyButton("Copy to clipboard", json)
+            ) { Text(downloadLabel) }
+            CopyButton(copyLabel, json)
         }
-        Text("Contains your original request. Review before sharing.", style = MaterialTheme.typography.bodySmall)
+        Text(description, style = MaterialTheme.typography.bodySmall)
         message?.let { Text(it) }
     }
 }
@@ -347,23 +403,27 @@ private fun ErrorPanel(details: String) {
 }
 
 @Composable
-private fun ModelDropdown(
-    controller: CarPromptController,
+private fun <T> Selector(
+    title: String,
+    selectedLabel: String,
+    options: List<T>,
+    label: (T) -> String,
+    onSelect: (T) -> Unit,
     enabled: Boolean,
 ) {
     var expanded by remember { mutableStateOf(false) }
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        Text("Model:")
+        Text(title)
         Box {
             OutlinedButton(onClick = { expanded = true }, enabled = enabled) {
-                Text("${controller.selectedModel} ▾")
+                Text("$selectedLabel ▾")
             }
             DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                controller.models.forEach { model ->
+                options.forEach { option ->
                     DropdownMenuItem(
-                        text = { Text(model) },
+                        text = { Text(label(option)) },
                         onClick = {
-                            controller.selectModel(model)
+                            onSelect(option)
                             expanded = false
                         },
                     )

@@ -2,6 +2,7 @@ package com.sps23.aiworkflow.openrouter
 
 import com.sps23.aiworkflow.recommendation.CatalogContext
 import kotlinx.coroutines.runBlocking
+import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -10,6 +11,7 @@ import kotlin.test.assertTrue
  * Live test against https://openrouter.ai. Requires OPENROUTER_API_KEY and a `:free` OPENROUTER_MODEL.
  * Add `@Ignore` to the class when done so `./gradlew test` and CI do not call the real API.
  */
+@Ignore
 class OpenRouterClientIntegrationTest {
     private val config = OpenRouterConfig.fromEnvironment(System.getenv())
 

@@ -10,6 +10,12 @@ import com.sps23.aiworkflow.catalog.VehicleCatalog
 import com.sps23.aiworkflow.catalog.VehicleCatalogCodec
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 /**
  * Compact, model-facing view of the catalog. Absent (null) fields mean "unknown";
@@ -102,7 +108,61 @@ object CatalogContext {
     /** Compact JSON for the bundled catalog. */
     fun bundledJson(): String = toJson(compact(loadBundledCatalog()))
 
-    fun toJson(catalog: CompactCatalog): String = json.encodeToString(catalog)
+    /** Lossless wire format: shared facts, features and citations use zero-based array indexes. */
+    fun toJson(catalog: CompactCatalog): String {
+        val expanded = json.encodeToJsonElement(CompactCatalog.serializer(), catalog).jsonObject
+        val features = expanded.getValue("features").jsonArray
+        val featureIndexes = catalog.features.mapIndexed { index, feature -> feature.id to index }.toMap()
+        val sources = linkedMapOf<String, Int>()
+        val tables = listOf("prices", "measurements", "equipment").associateWith { linkedMapOf<JsonObject, Int>() }
+
+        fun indexedSources(record: JsonObject): JsonObject =
+            JsonObject(
+                record.mapValues { (key, value) ->
+                    if (key == "sources") {
+                        JsonArray(value.jsonArray.map { JsonPrimitive(sources.getOrPut(it.jsonPrimitive.content) { sources.size }) })
+                    } else {
+                        value
+                    }
+                },
+            )
+
+        val configurations =
+            expanded.getValue("configurations").jsonArray.map { configuration ->
+                JsonObject(
+                    indexedSources(configuration.jsonObject).mapValues { (key, value) ->
+                        val table = tables[key]
+                        if (table == null) {
+                            value
+                        } else {
+                            JsonArray(
+                                value.jsonArray.map { fact ->
+                                    val record =
+                                        JsonObject(
+                                            indexedSources(fact.jsonObject).mapValues { (field, entry) ->
+                                                if (field == "featureId") {
+                                                    JsonPrimitive(featureIndexes.getValue(entry.jsonPrimitive.content))
+                                                } else {
+                                                    entry
+                                                }
+                                            },
+                                        )
+                                    JsonPrimitive(table.getOrPut(record) { table.size })
+                                },
+                            )
+                        }
+                    },
+                )
+            }
+        return JsonObject(
+            linkedMapOf(
+                "format" to JsonPrimitive("indexed-v1"),
+                "configurations" to JsonArray(configurations),
+                "features" to features,
+                "sources" to JsonArray(sources.keys.map(::JsonPrimitive)),
+            ) + tables.mapValues { (_, records) -> JsonArray(records.keys.toList()) },
+        ).toString()
+    }
 
     /** Keeps every reviewed configuration and joins only its reviewed facts. */
     fun compact(catalog: VehicleCatalog): CompactCatalog {

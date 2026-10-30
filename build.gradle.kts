@@ -62,6 +62,11 @@ compose.desktop {
 tasks.withType<Test>().configureEach {
     dependsOn("spotlessCheck")
     jvmArgs("--enable-native-access=ALL-UNNAMED")
+    if (providers.gradleProperty("skipUiRenderTests").isPresent) {
+        filter {
+            excludeTestsMatching("com.sps23.aiworkflow.ui.CarPromptScreenTest")
+        }
+    }
 }
 
 tasks.named("build") {
@@ -122,9 +127,16 @@ tasks.register<JavaExec>("probePeugeot5008Matrix") {
 
 tasks.register<JavaExec>("carPrompt") {
     group = "application"
-    description = "Send one prompt plus the compact reviewed car catalog to a free OpenRouter model."
+    description = "Send one prompt plus the compact reviewed car catalog to an allowed OpenRouter model."
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass.set("com.sps23.aiworkflow.recommendation.CarPromptCliKt")
+}
+
+tasks.register<JavaExec>("catalogSize") {
+    group = "verification"
+    description = "Measure the losslessly indexed catalog and report estimated context requirements without inference."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.recommendation.CatalogSizeCli")
 }
 
 tasks.matching { it.name.startsWith("spotless") && it.name.endsWith("Check") }.configureEach {

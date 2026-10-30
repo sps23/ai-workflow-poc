@@ -27,6 +27,10 @@ class FakeOpenRouterServer : AutoCloseable {
 
     @Volatile var modelsBody: String = modelsJson()
 
+    @Volatile var localModelsStatus: Int = 200
+
+    @Volatile var localModelsBody: String = localModelsJson()
+
     @Volatile var chatStatus: Int = 200
 
     @Volatile var chatBody: String = chatResponse("Fake answer")
@@ -58,7 +62,11 @@ class FakeOpenRouterServer : AutoCloseable {
                         modelsStatus to modelsBody
                     }
 
-                    "/api/v1/chat/completions" -> {
+                    "/api/v0/models" -> {
+                        localModelsStatus to localModelsBody
+                    }
+
+                    "/api/v1/chat/completions", "/v1/chat/completions" -> {
                         if (chatDelayMillis > 0) Thread.sleep(chatDelayMillis)
                         val messages = Json.parseToJsonElement(body).jsonObject["messages"]?.jsonArray
                         val translating = messages?.firstOrNull()?.toString()?.contains("loss-preserving car-catalog query") == true
@@ -110,9 +118,14 @@ class FakeOpenRouterServer : AutoCloseable {
     }
 
     companion object {
+        const val LOCAL_MODEL = "local/test-model"
         const val FREE_MODEL = "vendor/model:free"
         const val CAR_OUTPUT =
             """{"cars":[{"configurationId":"car-a","car":"Example Family","trim":"Comfort","options":[{"name":"Electric seats","status":"OPTIONAL","details":"Requires comfort pack","sources":["vw/Golf_MY27.pdf:8"]}]}]}"""
+
+        fun localModelsJson(context: Long = 262_144): String =
+            """{"data":[{"id":"$LOCAL_MODEL","type":"llm","state":"loaded",
+                "max_context_length":1048576,"loaded_context_length":$context}]}"""
 
         fun modelsJson(
             id: String = FREE_MODEL,
