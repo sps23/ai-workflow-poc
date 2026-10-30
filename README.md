@@ -22,8 +22,8 @@ GitHub LFS quota.
 
 The build workflow and [Copilot setup workflow](.github/workflows/copilot-setup-steps.yml)
 download LFS objects so tools can read the PDF resources. Copilot's cloud setup
-takes effect once that workflow is on the default branch. PDF text extraction
-still requires PDF tooling; an LFS pointer alone is not a readable PDF.
+takes effect once that workflow is on the default branch. Catalog source
+downloads require the original PDFs; an LFS pointer is not a readable PDF.
 
 ## Build
 
@@ -37,36 +37,22 @@ Gradle 9.3.0 wrapper:
 ./gradlew dependencies --configuration runtimeClasspath
 ```
 
-## PDF corpus inventory
+## Catalog data and external extraction
 
-Generate the checked-in, metadata-only inventory with:
+PDF extraction is handled outside this application. The local extractor,
+inventory/matrix probes, extraction tests, and Tika/PDFBox dependencies have
+been removed. Their former Gradle tasks are no longer available.
 
-```sh
-./gradlew inventoryPdfs
-```
+Catalog search still uses `catalog/VehicleCatalog.kt` and the reviewed JSON at
+`src/main/resources/vehicle-catalog/catalog.json`; its model, validation, CLI,
+and desktop recommendation workflow are unchanged. A replacement data model
+and ingestion of externally parsed JSON are deferred to the next step.
 
-The task writes `src/main/resources/car-pricelists-extracted/manifest.json`
-with each PDF's relative path, make, size, SHA-256, page count, detected
-text/image status, initial processing status, and collision-checked output
-path. It does not store extracted PDF text. Text-based PDFs start as `QUEUED`;
-image-only or non-extractable documents start as `NEEDS_REVIEW`; unreadable
-files remain in the manifest as `FAILED`.
-
-The initial representative samples cover four makes: Peugeot's `208-spec-sheet.pdf`,
-CUPRA's `20260618-cupra-price-list.pdf`, Toyota's `Toyota Corolla Cross - Brochure.pdf`,
-and Škoda's `Epiq_MY27_PG_September_CW48_2026.pdf` (product guide).
-
-The Stage 2 matrix spike runs with:
-
-```sh
-./gradlew probePdfMatrix
-./gradlew probePeugeot5008Matrix
-```
-
-These compare Tika's document text/metadata with PDFBox glyph coordinates on
-Volkswagen Golf MY27 page 8 and Peugeot 5008 page 17. Annotated, label-free
-references and measured limits are in
-[`docs/pdf-extractor-stage-2-spike.md`](docs/pdf-extractor-stage-2-spike.md).
+Existing generated JSON under `src/main/resources/car-pricelists-extracted/`
+and plans/evidence under `docs/` are retained as historical artifacts.
+Extraction commands and implementation claims in those plans describe the
+removed pipeline, not current functionality. Original PDFs remain bundled for
+catalog citation downloads.
 
 ## Car prompt CLI (OpenRouter)
 
@@ -440,7 +426,6 @@ the tests for 21; the committed configuration targets 25 only.
 | --- | --- | --- |
 | Koog core / OpenRouter | 1.3.0 | Core agent class loading and OpenRouter client construction/cleanup |
 | Koog Ktor HTTP transport | 1.3.0 | Service-provider discovery during OpenRouter initialization |
-| Tika core / standard parsers | 3.2.3 (historical comparison) | Parser discovery and HTML text extraction |
 | Ktor core / CIO / content negotiation / JSON | 3.3.3 | Local HTTP request and JSON response decoding |
 | Coroutines core / Swing | 1.10.2 | Concurrent I/O and Swing event-thread dispatch |
 | kotlinx serialization JSON | 1.10.0 | Generated serializer and JSON round trip |
@@ -448,7 +433,7 @@ the tests for 21; the committed configuration targets 25 only.
 
 These are compatibility smoke checks, not blanket upstream certification of
 every transitive dependency or execution path. They do not cover authenticated
-OpenRouter calls, all Tika file formats, interactive GPU windows, native
+OpenRouter calls, interactive GPU windows, native
 packaging, or other operating systems.
 
 JDK 24+ warns about JNI native access. Tests explicitly pass
@@ -465,19 +450,6 @@ Other dependency details:
   `ai.koog:http-client-ktor` dependency fixes client initialization, which
   otherwise fails on both JDK versions; plain Ktor client dependencies do not
   register a Koog transport provider.
-- Tika core and the full standard parser bundle now use 3.3.3, a supported 3.x
-  maintenance release with dependency upgrades and parser hardening. All
-  standard formats remain available; no parser modules are excluded.
-  `TikaCompatibilityTest` checks HTML extraction and HTML/PDF/DOCX parser
-  registration on JDK 25 independently of the ignored JDK comparison suite.
-  The table above records the earlier 3.2.3 comparison, not a 3.3.3/JDK 21 run.
-- Updating Tika does not guarantee that all transitive dependencies are free of
-  vulnerabilities. Re-scan the resolved runtime dependencies and match each
-  warning to its exact artifact/version and advisory. For hostile documents,
-  use a restricted worker process with memory/time limits, least-privilege
-  filesystem access, and no unnecessary network access; Tika is not a sandbox.
-  See the [3.3.3 release notes](https://tika.apache.org/3.3.3/index.html) and
-  [Tika security model](https://tika.apache.org/security-model.html).
 - The older direct Ktor, coroutines, and serialization declarations resolve to
   the newer versions required by Koog, as shown above. The dependency report is
   the source of truth if dependencies change.
