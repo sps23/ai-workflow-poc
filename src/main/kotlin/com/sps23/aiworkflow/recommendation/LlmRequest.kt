@@ -1,6 +1,6 @@
 package com.sps23.aiworkflow.recommendation
 
-import com.sps23.aiworkflow.catalog.Powertrain
+import com.sps23.aiworkflow.catalog.datamodel.PowertrainType
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.OpenRouterErrorDiagnostics
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
@@ -91,7 +91,7 @@ object LlmRequestCodec {
                     it.unit?.isBlank() == true ||
                     (
                         it.field == CatalogRequestField.POWERTRAIN &&
-                            it.value !in Powertrain.entries.map { powertrain -> powertrain.name }
+                            it.value !in PowertrainType.entries.map { powertrain -> powertrain.name }
                     )
             } ||
             request.unresolvedPhrases.any { it.isBlank() || it !in originalRequest } ||

@@ -1,6 +1,6 @@
 package com.sps23.aiworkflow.recommendation
 
-import com.sps23.aiworkflow.catalog.FitmentStatus
+import com.sps23.aiworkflow.catalog.datamodel.FitmentState
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.FakeOpenRouterServer
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
@@ -12,7 +12,7 @@ import kotlin.test.assertTrue
 class CarSelectionTest {
     @Test
     fun `parses all existing fitment statuses and renders readable labels`() {
-        FitmentStatus.entries.forEach { status ->
+        FitmentState.entries.forEach { status ->
             val raw = FakeOpenRouterServer.CAR_OUTPUT.replace("OPTIONAL", status.name)
             val selection = CarSelectionCodec.decode(raw)
             assertEquals(

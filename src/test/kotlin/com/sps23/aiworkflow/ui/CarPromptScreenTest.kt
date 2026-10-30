@@ -23,7 +23,12 @@ class CarPromptScreenTest {
         runBlocking {
             withContext(Dispatchers.Swing) {
                 val cases =
-                    listOf(FakeOpenRouterServer.CAR_OUTPUT, """{"cars":[]}""", "not JSON").flatMap { raw ->
+                    listOf(
+                        FakeOpenRouterServer.CAR_OUTPUT,
+                        FakeOpenRouterServer.MULTI_MODEL_OUTPUT,
+                        """{"cars":[]}""",
+                        "not JSON",
+                    ).flatMap { raw ->
                         listOf(LlmApi.OPENROUTER, LlmApi.LM_STUDIO).map { raw to it }
                     }
                 cases.forEach { (raw, api) ->
@@ -59,12 +64,19 @@ class CarPromptScreenTest {
                         estimatedInputTokens = 1012,
                         requestedOutputTokens = 32768,
                         effectiveOutputTokens = 2000,
-                        usage = TokenUsage(100, 40, 140, 30, 80),
+                        elapsedMillis = 100,
+                        usage = TokenUsage(100, 40, 140, 30, 80, 5),
+                        completionTokensPerSecondOverRequest = 400.0,
                     )
                 listOf(
                     WorkflowMetadata(
                         elapsedMillis = 100,
-                        stages = listOf(StageMetrics("Car recommendation", "SUCCEEDED", 100, request = request)),
+                        stages =
+                            listOf(
+                                StageMetrics("Model metadata", "SUCCEEDED", 10),
+                                StageMetrics("Request translation", "SUCCEEDED", 50, request = request),
+                                StageMetrics("Car recommendation", "SUCCEEDED", 100, request = request),
+                            ),
                     ),
                     WorkflowMetadata(
                         elapsedMillis = 100,
@@ -73,11 +85,13 @@ class CarPromptScreenTest {
                     WorkflowMetadata(elapsedMillis = 100, stages = listOf(StageMetrics("Request translation", "REUSED", 0))),
                 ).forEach { metadata ->
                     listOf(false, true).forEach { expanded ->
-                        renderComposeScene(width = 900, height = 1000) {
-                            MaterialTheme { DebugMetadataPanel(metadata, initiallyExpanded = expanded) }
-                        }.use { image ->
-                            assertEquals(900, image.width)
-                            assertEquals(1000, image.height)
+                        listOf(600, 900).forEach { width ->
+                            renderComposeScene(width = width, height = 2000) {
+                                MaterialTheme { DebugMetadataPanel(metadata, initiallyExpanded = expanded) }
+                            }.use { image ->
+                                assertEquals(width, image.width)
+                                assertEquals(2000, image.height)
+                            }
                         }
                     }
                 }

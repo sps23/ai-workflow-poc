@@ -1,0 +1,330 @@
+﻿{
+  "model": "Peugeot 5008 (Including Electric & Hybrid)",
+  "effective_date": "November 2026",
+  "trims": [
+    {
+      "trim_level": "Allure",
+      "pricing": [
+        {
+          "powertrain": "Electric 210 (73 kWh)",
+          "price": "€51,995",
+          "co2_emissions_g_km": "0-0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        },
+        {
+          "powertrain": "Hybrid 145 AUTO",
+          "price": "€49,995",
+          "co2_emissions_g_km": "128-135",
+          "tax_band": "B1-B2",
+          "annual_road_tax": "€200 - €210"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "8 Airbags (Front passenger, driver, front passenger & row 2 lateral, front & rear curtain)",
+          "ESP with Hill Start Assist & indirect under inflation detection",
+          "ISOFIX and Top Tether fasteners on row 2 rear side seats",
+          "Electric parking brake",
+          "Pneumatic emergency kit (12-volt compressor, sealant bottle, towing eye, 2 wheel chocks)",
+          "PEUGEOT LED Technology headlamps with 3-claw LED daytime running lights",
+          "Rear 3-claws LED 3D lights"
+        ],
+        "advanced_safety_and_driving_aids": [
+          "VisioPark 2: 360° Vision with 4 exterior cameras with front and rear sensors",
+          "Adaptive Cruise Control with 'Stop & Go'",
+          "Advanced Emergency Braking System with video camera & radar (AEBS3)",
+          "Active Lane Keeping Assist",
+          "Blind spot monitoring",
+          "Rear cross traffic alert (RCTA)",
+          "Extended traffic sign recognition and speed recommendations",
+          "Driver attention alert",
+          "PEUGEOT SOS & Assistance"
+        ],
+        "exterior": [
+          "Black lacquered strip between headlights with '5008' logo",
+          "Body-coloured front grille, glossy black side scoops, Meteor Grey lower decor, black grained lower skirt",
+          "Dark tinted rear windows, quarter windows & tailgate window",
+          "Concealed weatherstrips",
+          "Black grained wheel arch claddings & door lower protections",
+          "Glossy black strip between rear lights with PEUGEOT lettering",
+          "Rear bumper with Meteor Grey decor & black grained lower skirt",
+          "Body-coloured rear spoiler",
+          "Front monograms: 'Peugeot Shield' and '5008'",
+          "Rear monograms: 'PEUGEOT', '5008', and 'Hybrid'/'E5008'",
+          "19\" diamond-cut alloy wheels"
+        ],
+        "interior_and_comfort": [
+          "Peugeot Panoramic i-Cockpit ® with 21\" HD curved and floating screen",
+          "Foamed dashboard with RIMINI heathered fabric & Graphene alcove",
+          "Multifunction full-grain leather steering wheel with coloured stitching",
+          "Keyless entry with 'proximity' locking and unlocking",
+          "Tri-zone automatic air conditioning",
+          "Heated steering wheel",
+          "Front & rear LED reading lights, illuminated glovebox and central console, front footwell LED lights",
+          "Automatic front wipers",
+          "Sequential electric front & rear windows with anti-pinch feature",
+          "2-position trunk floor",
+          "Heated, electric folding door mirrors with courtesy approach lighting",
+          "Electrochromic interior mirror with frame"
+        ],
+        "seating_and_upholstery": [
+          "Embossed CRISPY fabric upholstery, TEP Isabella support, heathered RIMINI fabric scarf, Quartz stitching",
+          "Driver & passenger seats with manual height adjustment",
+          "Row 2 sliding bench (60/40) with 3 individually reclinable backrests (40/20/40) with Easy Access function to row 3",
+          "2 seats bench in row 3 with 50/50 reclinable backrests"
+        ],
+        "multimedia": [
+          "PEUGEOT i-Connect® Advanced with 3D connected Navigation",
+          "Radio DAB, Bluetooth (2 smartphones connection)",
+          "Wireless Mirror Screen (Apple CarPlay / Android Auto)",
+          "Customisable Virtual 'i-Toggle' display",
+          "Smartphone Wireless Charger (15W)",
+          "6 speakers (2 tweeters, 2 woofers front, 2 wide-band rear)",
+          "3 x 12V sockets (centre console, rear centre console, boot)",
+          "2 USB-C sockets (1 data/charging, 1 charging)"
+        ],
+        "electric_specificities": [
+          "3-phase 22kW Mode 3 electrical charging cable",
+          "3-phase 11 kW on-board charger",
+          "'E5008' rear monogram"
+        ]
+      }
+    },
+    {
+      "trim_level": "GT",
+      "pricing": [
+        {
+          "powertrain": "Electric 210 (73 kWh)",
+          "price": "€55,995",
+          "co2_emissions_g_km": "0-0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        },
+        {
+          "powertrain": "Hybrid 145 AUTO",
+          "price": "€52,995",
+          "co2_emissions_g_km": "128-135",
+          "tax_band": "B1-B2",
+          "annual_road_tax": "€200 - €210"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "PEUGEOT PIXEL LED headlamps with 3-claw LED daytime running lights",
+          "Adaptive High Beam Assist with Anti-Glare function and Boost function",
+          "Full 3D LED rear lights with PEUGEOT 'Claw effect'"
+        ],
+        "driving_aids_additions": [
+          "Highway Assist 2.0"
+        ],
+        "exterior_and_wheels_additions": [
+          "PEUGEOT shield on front wings",
+          "19\" diamond-cut alloy wheels (Hybrid 145 Auto)",
+          "20\" diamond-cut alloy wheels (Electric)",
+          "Gloss Black lower door claddings & widened wheel arches (Electric)"
+        ],
+        "interior_and_comfort_additions": [
+          "Night & day indirect ambient lighting (8 customizable colours)",
+          "Aluminium printed dashboard and front door panel 'alcove' decor",
+          "Compact heated multifunction steering wheel with 'Iced Clay' stitching and 'GT' badge",
+          "Aluminum pedals & footrest",
+          "Stainless steel front door sill with 'PEUGEOT' lettering",
+          "Concealable driver and passenger vanity mirrors with LED lights",
+          "Rear central armrest with two cupholders and smartphone holder",
+          "Handsfree Smart Electric Tailgate (foot operated)",
+          "Frameless Electrochrome Rear View Mirror"
+        ],
+        "seating_and_upholstery_additions": [
+          "Mistral black 'UZIRIS' fabric with Iced Clay stitching and leather effect trim",
+          "Luxury front & rear floor mats with Iced Clay stitching & 'GT' logo",
+          "Heated driver and passenger seats",
+          "Driver's seat with manual lumbar adjustment",
+          "Front headrests with integrated height adjustment"
+        ],
+        "multimedia_additions": [
+          "TomTom connected navigation services & EV routing with charging scheduling",
+          "Natural language voice recognition",
+          "4 USB sockets (2 front, 2 rear)",
+          "PEUGEOT Virtual i-Toggles with 10 customizable shortcuts"
+        ]
+      }
+    },
+    {
+      "trim_level": "GT EXCLUSIVE",
+      "pricing": [
+        {
+          "powertrain": "Electric 210 (73 kWh)",
+          "price": "€57,995",
+          "co2_emissions_g_km": "0-0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        },
+        {
+          "powertrain": "Hybrid 145 AUTO",
+          "price": "€53,995",
+          "co2_emissions_g_km": "128-135",
+          "tax_band": "B1-B2",
+          "annual_road_tax": "€200 - €210"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "'Black Diamond' roof and rear spoiler",
+          "Sunblinds integrated in rear doors"
+        ],
+        "seating_and_upholstery_additions": [
+          "Alcantara® Executive interior",
+          "AGR-certified electrically adjustable driver and passenger seats with memory settings",
+          "Heated and massaging driver and passenger seats",
+          "Adaptive lateral support & pneumatic lumbar adjustment"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Exterior Paint",
+      "options": [
+        {
+          "code": "M0DP",
+          "description": "Obsession Blue Metallic Paint",
+          "price": "€0",
+          "availability": "All Trims"
+        },
+        {
+          "code": "0MM0",
+          "description": "Metallic Paint (Nera Black M09V, Titane Grey M01J, Cumulus Grey M0F4, Ingaro Blue M07K, Okenite White M0SU)",
+          "price": "€900",
+          "availability": "All Trims"
+        }
+      ]
+    },
+    {
+      "category": "Option Packs",
+      "options": [
+        {
+          "code": "J6C0",
+          "description": "Sunroof Pack: Panoramic Split Opening Spoiler Sunroof (tinted, one touch control, electric retractable interior blind, 8-colour ambient lighting) incl. Laminated acoustic front windows",
+          "price": "€1,920",
+          "availability": "GT, GT EXCLUSIVE"
+        }
+      ]
+    },
+    {
+      "category": "Safety and Security",
+      "options": [
+        {
+          "code": "DX02",
+          "description": "Advanced Grip Control - 3 Driving Modes (Sand, Snow & Mud), Hill Assist Descent Control",
+          "price": "€430",
+          "availability": "GT, GT EXCLUSIVE (Electric Version Only)"
+        }
+      ]
+    },
+    {
+      "category": "Interior Ambiences",
+      "options": [
+        {
+          "code": "J7EV",
+          "description": "Heated Front Seats, Driver & Passenger Pack (10-way manual driver, 6-way manual passenger, pneumatic lumbar, powered cushion angle adjustment, heated steering wheel)",
+          "price": "€790",
+          "availability": "Allure"
+        },
+        {
+          "code": "4HFX",
+          "description": "Black Perforated Nappa Leather Upholstery (Includes AGR 10-way electric front seats, massaging front seats, ventilated seats, adaptive bolsters, driver memory, heated rear seats)",
+          "price": "€3,330",
+          "availability": "GT EXCLUSIVE"
+        }
+      ]
+    },
+    {
+      "category": "Exterior Features",
+      "options": [
+        {
+          "code": "AQ05",
+          "description": "Tow Bar: With 13-way harness, Trailer Sway Mitigation (TSM)",
+          "price": "€675",
+          "availability": "Electric Versions Only"
+        },
+        {
+          "code": "AQ14",
+          "description": "Tow Bar: With 13-way harness, Trailer Sway Mitigation (TSM), upgraded cooling system",
+          "price": "€750",
+          "availability": "Hybrid 145 Auto Only"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_m": 4.79,
+      "width_m": 1.89,
+      "height_m": 1.69,
+      "wheelbase_m": 2.90,
+      "turning_diameter_m": 11.20,
+      "trunk_volume_7_seater_row3_down_l": 748,
+      "trunk_volume_7_seater_all_up_l": 259,
+      "max_trunk_volume_all_down_l": 1815
+    },
+    "powertrains": [
+      {
+        "name": "Electric 210 73kWh Standard Range",
+        "type": "Electric",
+        "power_hp": 213,
+        "max_power_kw": 157,
+        "torque_nm": 343,
+        "usable_battery_capacity_kwh": 73,
+        "wltp_mixed_range_km": "489 - 502",
+        "wltp_mixed_consumption_kwh_100km": "17.7 - 18.3",
+        "top_speed_kmh": 170,
+        "acceleration_0_100_kmh_s": 9.7,
+        "dc_fast_charging_max_kw": 160,
+        "dc_fast_charge_20_to_80_percent_mins": 30
+      },
+      {
+        "name": "Electric 210 97kWh Long Range",
+        "type": "Electric",
+        "power_hp": 231,
+        "max_power_kw": 170,
+        "torque_nm": 343,
+        "usable_battery_capacity_kwh": 96.9,
+        "wltp_mixed_range_km": "637 - 668",
+        "wltp_mixed_consumption_kwh_100km": "18.1 - 19.1",
+        "top_speed_kmh": 170,
+        "acceleration_0_100_kmh_s": 9.6,
+        "dc_fast_charging_max_kw": 160,
+        "dc_fast_charge_20_to_80_percent_mins": 27
+      },
+      {
+        "name": "Electric 325 73kWh Dual Motor",
+        "type": "Electric",
+        "power_hp": 325,
+        "max_power_kw": 239,
+        "torque_nm": "343 (Front) / 166 (Rear)",
+        "usable_battery_capacity_kwh": 73,
+        "wltp_mixed_range_km": "465 - 467",
+        "wltp_mixed_consumption_kwh_100km": "18.8 - 18.9",
+        "top_speed_kmh": 180,
+        "acceleration_0_100_kmh_s": 6.5,
+        "dc_fast_charging_max_kw": 160,
+        "dc_fast_charge_20_to_80_percent_mins": 30
+      },
+      {
+        "name": "Hybrid 145 AUTO",
+        "type": "Hybrid",
+        "ice_power_hp": 136,
+        "ice_torque_nm": 230,
+        "electric_motor_power_hp": 21,
+        "displacement_cc": 1199,
+        "cylinders": 3,
+        "transmission": "6-Speed Automatic",
+        "wltp_combined_consumption_l_100km": "5.7 - 5.9",
+        "wltp_combined_co2_g_km": "125 - 133",
+        "top_speed_kmh": 200,
+        "acceleration_0_100_kmh_s": 11.3
+      }
+    ]
+  }
+}

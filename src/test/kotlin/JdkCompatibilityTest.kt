@@ -15,7 +15,6 @@ import kotlinx.coroutines.swing.Swing
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import org.apache.tika.Tika
 import java.net.InetAddress
 import java.net.ServerSocket
 import javax.swing.SwingUtilities
@@ -82,13 +81,6 @@ class JdkCompatibilityTest {
                 assertTrue(SwingUtilities.isEventDispatchThread())
             }
         }
-
-    @Test
-    fun `Tika discovers parsers and extracts HTML`() {
-        val html = "<html><body><p>jdk compatibility</p></body></html>"
-        val text = Tika().parseToString(html.byteInputStream())
-        assertTrue(text.contains("jdk compatibility"))
-    }
 
     @Test
     fun `Compose compiler state and native text rendering work together`() =

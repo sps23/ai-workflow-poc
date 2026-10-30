@@ -1,7 +1,9 @@
 package com.sps23.aiworkflow.openrouter
 
+import com.sps23.aiworkflow.recommendation.CarSelection
 import com.sps23.aiworkflow.recommendation.LlmRequest
 import com.sps23.aiworkflow.recommendation.LlmRequestCodec
+import com.sps23.aiworkflow.recommendation.SelectedCar
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
 import kotlinx.serialization.json.Json
@@ -122,6 +124,19 @@ class FakeOpenRouterServer : AutoCloseable {
         const val FREE_MODEL = "vendor/model:free"
         const val CAR_OUTPUT =
             """{"cars":[{"configurationId":"car-a","car":"Example Family","trim":"Comfort","options":[{"name":"Electric seats","status":"OPTIONAL","details":"Requires comfort pack","sources":["vw/Golf_MY27.pdf:8"]}]}]}"""
+
+        val MULTI_MODEL_OUTPUT =
+            Json.encodeToString(
+                CarSelection(
+                    listOf(
+                        SelectedCar("car-a-base", "Example Family", "Base", emptyList()),
+                        SelectedCar("car-b-comfort", "Example SUV", "Comfort", emptyList()),
+                        SelectedCar("car-a-comfort", "Example Family", "Comfort", emptyList()),
+                        SelectedCar("car-c-sport", "Example Hatch", "Sport", emptyList()),
+                        SelectedCar("car-a-sport", "Example Family", "Sport", emptyList()),
+                    ),
+                ),
+            )
 
         fun localModelsJson(context: Long = 262_144): String =
             """{"data":[{"id":"$LOCAL_MODEL","type":"llm","state":"loaded",
