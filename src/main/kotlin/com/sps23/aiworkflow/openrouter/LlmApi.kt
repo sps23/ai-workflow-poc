@@ -9,9 +9,12 @@ enum class LlmApi(
     val isLocal: Boolean,
 ) {
     OPENROUTER("OpenRouter", OPENROUTER_BASE_URL, false),
+    OPENAI("OpenAI", OPENAI_BASE_URL, false),
+    GOOGLE_AI("Google AI Studio", GOOGLE_AI_BASE_URL, false),
     LM_STUDIO("LM Studio (local)", "http://localhost:1234/v1", true),
     LLAMA_CPP("llama.cpp (local)", "http://localhost:8080/v1", true),
     OLLAMA("Ollama (local)", "http://localhost:11434/v1", true),
+    MANUAL("Manual API (OpenAI-compatible)", "", false),
 }
 
 /** One chat-completion backend used by [OpenRouterCarWorkflow]. */

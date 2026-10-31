@@ -21,6 +21,8 @@ data class CapturedRequest(
     val path: String,
     val authorization: String?,
     val body: String,
+    val googleApiKey: String? = null,
+    val query: String? = null,
 )
 
 /** Loopback fake of the two OpenRouter endpoints used by the workflow. No credentials or internet. */
@@ -28,6 +30,12 @@ class FakeOpenRouterServer : AutoCloseable {
     @Volatile var modelsStatus: Int = 200
 
     @Volatile var modelsBody: String = modelsJson()
+
+    @Volatile var openAiModelsBody: String = """{"data":[{"id":"gpt-test"},{"id":"embedding-test"}]}"""
+
+    @Volatile var googleModelsBody: String = googleModelsJson()
+
+    @Volatile var googleNextPageBody: String? = null
 
     @Volatile var localModelsStatus: Int = 200
 
@@ -38,6 +46,8 @@ class FakeOpenRouterServer : AutoCloseable {
     @Volatile var chatBody: String = chatResponse("Fake answer")
 
     @Volatile var chatDelayMillis: Long = 0
+
+    @Volatile var redirectLocation: String? = null
 
     @Volatile var translationBody: String? = null
 
@@ -57,18 +67,37 @@ class FakeOpenRouterServer : AutoCloseable {
     private fun handle(exchange: HttpExchange) {
         exchange.use {
             val body = it.requestBody.readBytes().toString(Charsets.UTF_8)
-            requests += CapturedRequest(it.requestMethod, it.requestURI.path, it.requestHeaders.getFirst("Authorization"), body)
+            requests +=
+                CapturedRequest(
+                    it.requestMethod,
+                    it.requestURI.path,
+                    it.requestHeaders.getFirst("Authorization"),
+                    body,
+                    it.requestHeaders.getFirst("x-goog-api-key"),
+                    it.requestURI.rawQuery,
+                )
             val (status, payload) =
                 when (it.requestURI.path) {
-                    "/api/v1/models" -> {
+                    "/api/v1/models", "/custom/api/models" -> {
                         modelsStatus to modelsBody
+                    }
+
+                    "/v1/models" -> {
+                        modelsStatus to openAiModelsBody
+                    }
+
+                    "/v1beta/models" -> {
+                        val page = if (it.requestURI.rawQuery?.contains("pageToken=") == true) googleNextPageBody else null
+                        modelsStatus to (page ?: googleModelsBody)
                     }
 
                     "/api/v0/models" -> {
                         localModelsStatus to localModelsBody
                     }
 
-                    "/api/v1/chat/completions", "/v1/chat/completions" -> {
+                    "/api/v1/chat/completions", "/v1/chat/completions", "/custom/api/chat/completions",
+                    "/v1beta/openai/chat/completions",
+                    -> {
                         if (chatDelayMillis > 0) Thread.sleep(chatDelayMillis)
                         val messages = Json.parseToJsonElement(body).jsonObject["messages"]?.jsonArray
                         val translating = messages?.firstOrNull()?.toString()?.contains("loss-preserving car-catalog query") == true
@@ -107,6 +136,7 @@ class FakeOpenRouterServer : AutoCloseable {
                 }
             val bytes = payload.toByteArray()
             it.responseHeaders.add("Content-Type", "application/json")
+            redirectLocation?.let { location -> it.responseHeaders.add("Location", location) }
             runCatching {
                 it.sendResponseHeaders(status, bytes.size.toLong())
                 it.responseBody.write(bytes)
@@ -121,6 +151,7 @@ class FakeOpenRouterServer : AutoCloseable {
 
     companion object {
         const val LOCAL_MODEL = "local/test-model"
+        const val GOOGLE_MODEL = "gemini-test"
         const val FREE_MODEL = "vendor/model:free"
         const val CAR_OUTPUT =
             """{"cars":[{"configurationId":"car-a","car":"Example Family","trim":"Comfort","options":[{"name":"Electric seats","status":"OPTIONAL","details":"Requires comfort pack","sources":["vw/Golf_MY27.pdf:8"]}]}]}"""
@@ -141,6 +172,15 @@ class FakeOpenRouterServer : AutoCloseable {
         fun localModelsJson(context: Long = 262_144): String =
             """{"data":[{"id":"$LOCAL_MODEL","type":"llm","state":"loaded",
                 "max_context_length":1048576,"loaded_context_length":$context}]}"""
+
+        fun googleModelsJson(
+            id: String = GOOGLE_MODEL,
+            input: Long = 100_000,
+            output: Long = 8192,
+        ): String =
+            """{"models":[{"name":"models/$id","displayName":"Gemini Test","inputTokenLimit":$input,
+                "outputTokenLimit":$output,"supportedGenerationMethods":["generateContent"]},
+                {"name":"models/embedding-test","supportedGenerationMethods":["embedContent"]}]}"""
 
         fun modelsJson(
             id: String = FREE_MODEL,
@@ -163,7 +203,7 @@ class FakeOpenRouterServer : AutoCloseable {
             finishReason: String = "stop",
         ): String {
             val contentJson = JsonPrimitive(content).toString()
-            return """{"id":"gen-1","model":"$FREE_MODEL","created":1,"choices":[
+            return """{"id":"gen-1","object":"chat.completion","model":"$FREE_MODEL","created":1,"choices":[
                 {"index":0,"finish_reason":"$finishReason",
                  "message":{"role":"assistant","content":$contentJson}}],
                 "usage":{"prompt_tokens":10,"completion_tokens":5,"total_tokens":15}}"""

@@ -37,9 +37,10 @@ class LocalLlmConfig(
     val baseUrl: String = api.baseUrl,
     val requestTimeoutMillis: Long = DEFAULT_REQUEST_TIMEOUT_MILLIS,
     val maxCompletionTokens: Long = DEFAULT_LOCAL_MAX_COMPLETION_TOKENS,
+    val modelId: String? = null,
 ) {
     init {
-        require(api.isLocal) { "${api.label} is not a local API." }
+        require(api.isLocal || api == LlmApi.MANUAL || api == LlmApi.GOOGLE_AI) { "${api.label} is not a compatible API." }
         require(maxCompletionTokens in 1..Int.MAX_VALUE.toLong()) {
             "Local maxCompletionTokens must be an integer between 1 and ${Int.MAX_VALUE}."
         }
@@ -52,9 +53,11 @@ class LocalLlmConfig(
             environment: Map<String, String?>,
             api: LlmApi,
             baseUrl: String = api.baseUrl,
+            apiKeyOverride: String? = null,
         ) = LocalLlmConfig(
             api,
-            environment[LOCAL_API_KEY_VARIABLE]?.trim()?.takeIf { it.isNotEmpty() },
+            apiKeyOverride?.trim()?.takeIf { it.isNotEmpty() }
+                ?: environment[LOCAL_API_KEY_VARIABLE]?.trim()?.takeIf { it.isNotEmpty() },
             baseUrl,
             maxCompletionTokens =
                 completionTokenBudget(
@@ -77,7 +80,7 @@ class LocalLlmClient(
     override val maxCompletionTokens: Long get() = config.maxCompletionTokens
 
     private val url = "${config.baseUrl.trimEnd('/')}/chat/completions"
-    private val requestedModelLabel = "${config.api.label} loaded model"
+    private val requestedModelLabel = config.modelId ?: "${config.api.label} loaded model"
 
     override suspend fun fetchLimits(): ModelLimits? {
         if (config.api != LlmApi.LM_STUDIO) return null
@@ -161,7 +164,10 @@ class LocalLlmClient(
             val inputTokens = estimateInputTokens(systemPrompt.orEmpty(), message)
             val targetTokens = minOf(maxCompletionTokens, modelLimits?.maxCompletionTokens ?: Long.MAX_VALUE)
             val completionTokens =
-                if (modelLimits == null) {
+                if (config.api == LlmApi.GOOGLE_AI && modelLimits != null) {
+                    validateRequestSize(systemPrompt.orEmpty(), message, modelLimits, 0)
+                    targetTokens
+                } else if (modelLimits == null) {
                     targetTokens
                 } else {
                     val remaining = modelLimits.contextLength - inputTokens
@@ -169,10 +175,12 @@ class LocalLlmClient(
                     minOf(targetTokens, remaining)
                 }
             recorder.limits(modelLimits, completionTokens)
-            modelLimits?.let { validateRequestSize(systemPrompt.orEmpty(), message, it, completionTokens) }
+            if (config.api != LlmApi.GOOGLE_AI) {
+                modelLimits?.let { validateRequestSize(systemPrompt.orEmpty(), message, it, completionTokens) }
+            }
             val body =
                 buildJsonObject {
-                    modelLimits?.modelId?.let { put("model", it) }
+                    (config.modelId ?: modelLimits?.modelId)?.let { put("model", it) }
                     putJsonArray("messages") {
                         systemPrompt?.let {
                             addJsonObject {
@@ -185,13 +193,14 @@ class LocalLlmClient(
                             put("content", message)
                         }
                     }
-                    put("temperature", 0.2)
+                    if (config.api.isLocal) put("temperature", 0.2)
                     put("max_tokens", completionTokens)
                     put("stream", false)
                 }.toString()
 
             val http =
                 HttpClient(CIO) {
+                    if (!config.api.isLocal) followRedirects = false
                     install(HttpTimeout) {
                         requestTimeoutMillis = config.requestTimeoutMillis
                         connectTimeoutMillis = LOCAL_CONNECT_TIMEOUT_MILLIS
@@ -238,11 +247,18 @@ class LocalLlmClient(
             if ((first["finish_reason"] as? JsonPrimitive)?.contentOrNull == "length") {
                 throw OpenRouterWorkflowException(
                     FailureKind.TRUNCATED_RESPONSE,
-                    "The model response was truncated at the $completionTokens-token output limit " +
-                        "(requested target: $maxCompletionTokens; estimated input: $inputTokens; loaded context: " +
-                        "${modelLimits?.contextLength ?: "not reported"}; model output maximum: " +
-                        "${modelLimits?.maxCompletionTokens ?: "not reported"}). " +
-                        "The budget is adjusted to estimated remaining context and may also include reasoning tokens.",
+                    if (config.api == LlmApi.GOOGLE_AI) {
+                        "Google AI response was truncated at the $completionTokens-token output/reasoning limit " +
+                            "(requested: $maxCompletionTokens; model output maximum: ${modelLimits?.maxCompletionTokens}). " +
+                            "The estimated input ($inputTokens tokens) is checked separately against the model input limit " +
+                            "(${modelLimits?.contextLength} tokens); no catalog facts were dropped."
+                    } else {
+                        "The model response was truncated at the $completionTokens-token output limit " +
+                            "(requested target: $maxCompletionTokens; estimated input: $inputTokens; loaded context: " +
+                            "${modelLimits?.contextLength ?: "not reported"}; model output maximum: " +
+                            "${modelLimits?.maxCompletionTokens ?: "not reported"}). " +
+                            "The budget is adjusted to estimated remaining context and may also include reasoning tokens."
+                    },
                     diagnostics = OpenRouterErrorDiagnostics("Response validation"),
                     rawOutput = text,
                 )
@@ -264,8 +280,20 @@ class LocalLlmClient(
     ): OpenRouterWorkflowException {
         val (kind, message) =
             when {
+                config.api == LlmApi.GOOGLE_AI && status == 400 &&
+                    (body.contains("API_KEY_INVALID") || body.contains("API key not valid", ignoreCase = true)) -> {
+                    FailureKind.AUTHENTICATION to "Google AI rejected the API key. Check $GOOGLE_AI_API_KEY_VARIABLE or the key input."
+                }
+
                 status == 401 || status == 403 -> {
-                    FailureKind.AUTHENTICATION to "Authentication failed (HTTP $status). Check $LOCAL_API_KEY_VARIABLE."
+                    FailureKind.AUTHENTICATION to
+                        if (config.api == LlmApi.GOOGLE_AI) {
+                            "Authentication failed (HTTP $status). Check $GOOGLE_AI_API_KEY_VARIABLE or the Google AI key input."
+                        } else if (config.api == LlmApi.MANUAL) {
+                            "Authentication failed (HTTP $status). Check the manual API key."
+                        } else {
+                            "Authentication failed (HTTP $status). Check $LOCAL_API_KEY_VARIABLE."
+                        }
                 }
 
                 status == 429 -> {
@@ -274,6 +302,14 @@ class LocalLlmClient(
 
                 status == 408 || status == 504 -> {
                     FailureKind.TIMEOUT to "The request timed out (HTTP $status)."
+                }
+
+                config.api == LlmApi.GOOGLE_AI && status == 404 -> {
+                    FailureKind.MODEL_UNAVAILABLE to "Google AI model is unavailable (HTTP 404)."
+                }
+
+                config.api == LlmApi.GOOGLE_AI && status in 400..499 && body.contains("input token", ignoreCase = true) -> {
+                    FailureKind.CONTEXT to "Google AI rejected the request as exceeding the model input-token limit (HTTP $status)."
                 }
 
                 status in 400..499 && body.contains("context", ignoreCase = true) -> {

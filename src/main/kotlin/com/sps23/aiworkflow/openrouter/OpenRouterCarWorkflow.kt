@@ -11,8 +11,8 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
-import java.math.BigDecimal
 
 const val OPENROUTER_BASE_URL = "https://openrouter.ai"
 const val API_KEY_VARIABLE = "OPENROUTER_API_KEY"
@@ -228,9 +228,8 @@ fun validateRequestSize(
 }
 
 /**
- * Checks listing, text output and limits. Free entries require zero pricing;
- * the explicitly approved Qwen ID allows nonnegative paid pricing.
- * Unverifiable data is rejected.
+ * Checks exact listing, text output, nonnegative pricing and limits.
+ * IDs advertised as free still require zero pricing; unverifiable data is rejected.
  */
 fun verifyOpenRouterModel(
     modelsJson: String,
@@ -238,39 +237,59 @@ fun verifyOpenRouterModel(
 ): ModelLimits {
     fun reject(reason: String): Nothing =
         throw OpenRouterWorkflowException(FailureKind.MODEL_UNAVAILABLE, "Model $modelId rejected: $reason")
-    val paidModel = modelId == PAID_QWEN_MODEL_ID
-    if (!paidModel && !modelId.endsWith(":free") && modelId != "openrouter/free") {
-        reject("ID must end in :free, be exactly openrouter/free, or be the approved paid model $PAID_QWEN_MODEL_ID.")
-    }
-    val data =
-        try {
-            Json.parseToJsonElement(modelsJson).jsonObject["data"]?.jsonArray
-        } catch (e: Exception) {
-            throw OpenRouterWorkflowException(FailureKind.MODEL_UNAVAILABLE, "Model metadata response is not valid JSON.", e)
-        } ?: reject("metadata response has no model list.")
+    if (modelId.isBlank()) reject("ID must not be blank.")
+    val data = openRouterModelData(modelsJson)
     val model =
         data.map { it as? JsonObject }.firstOrNull { (it?.get("id") as? JsonPrimitive)?.contentOrNull == modelId }
             ?: reject("not listed by OpenRouter.")
 
+    return verifiedOpenRouterModel(model).limits
+}
+
+internal fun openRouterModelData(modelsJson: String): JsonArray =
+    try {
+        Json.parseToJsonElement(modelsJson).jsonObject["data"]?.jsonArray
+            ?: throw OpenRouterWorkflowException(FailureKind.MODEL_UNAVAILABLE, "Model metadata response has no model list.")
+    } catch (e: IllegalArgumentException) {
+        throw OpenRouterWorkflowException(FailureKind.MODEL_UNAVAILABLE, "Model metadata response is not valid JSON.", e)
+    }
+
+internal fun verifiedOpenRouterModel(model: JsonObject): OpenRouterModel {
+    val modelId = (model["id"] as? JsonPrimitive)?.takeIf { it.isString }?.contentOrNull.orEmpty()
+
+    fun reject(reason: String): Nothing =
+        throw OpenRouterWorkflowException(FailureKind.MODEL_UNAVAILABLE, "Model $modelId rejected: $reason")
+    if (modelId.isBlank()) reject("ID must not be blank.")
     val outputs = (model["architecture"] as? JsonObject)?.get("output_modalities") as? JsonArray
     if (outputs == null || outputs.none { (it as? JsonPrimitive)?.contentOrNull == "text" }) reject("text output not confirmed.")
 
     val pricing = model["pricing"] as? JsonObject ?: reject("pricing unavailable.")
     if ("prompt" !in pricing || "completion" !in pricing) reject("prompt/completion pricing unavailable.")
+    var isFree = true
     pricing.forEach { (name, value) ->
         if (name == "discount") return@forEach
         val amount =
             (value as? JsonPrimitive)?.contentOrNull?.toBigDecimalOrNull()
                 ?: reject("pricing field $name is not a valid number.")
         if (amount.signum() < 0) reject("pricing field $name is negative.")
-        if (!paidModel && amount.compareTo(BigDecimal.ZERO) != 0) reject("pricing field $name is not zero.")
+        if (amount.signum() != 0) isFree = false
+        if ((modelId.endsWith(":free") || modelId == "openrouter/free") && amount.signum() != 0) {
+            reject("pricing field $name is not zero.")
+        }
     }
 
     val topProvider = model["top_provider"] as? JsonObject
     val context =
         topProvider.long("context_length") ?: model.long("context_length")
             ?: reject("context length unavailable.")
-    return ModelLimits(context, topProvider.long("max_completion_tokens"))
+    return OpenRouterModel(
+        id = modelId,
+        name = (model["name"] as? JsonPrimitive)?.takeIf { it.isString }?.contentOrNull ?: modelId,
+        isFree = isFree,
+        promptPrice = pricing.getValue("prompt").jsonPrimitive.content,
+        completionPrice = pricing.getValue("completion").jsonPrimitive.content,
+        limits = ModelLimits(context, topProvider.long("max_completion_tokens")),
+    )
 }
 
 private fun JsonObject?.long(name: String): Long? = (this?.get(name) as? JsonPrimitive)?.longOrNull?.takeIf { it > 0 }

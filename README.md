@@ -138,18 +138,16 @@ export OPENROUTER_MODEL=vendor/model:free
 ./gradlew carPrompt --args='Suggest a seven-seat car from this catalog'
 ```
 
-Pick a current model from [OpenRouter's free models](https://openrouter.ai/models?q=free).
-The CLI checks live metadata first: the exact ID must be listed, end in `:free`,
-have text output and zero pricing. The exact free-router ID `openrouter/free`
-is also accepted; it may choose different underlying free models per call.
-The exact paid model ID `qwen/qwen3.5-flash-02-23` is an explicitly approved exception:
-set `OPENROUTER_MODEL=qwen/qwen3.5-flash-02-23` to use it in the CLI.
-Listing, text output, numeric nonnegative pricing and context limits are still
-validated; zero pricing is required for every other allowed model.
-**Qwen requests incur OpenRouter charges**, including both translation and
-catalog recommendation calls. There is no automatic paid fallback.
-No application fallback model, retry, tool, or plugin is
-used; unavailable or unapproved paid models stop the run.
+Pick a current model from [OpenRouter's models](https://openrouter.ai/models).
+The CLI checks live metadata first: the exact ID must be listed, support text
+output, and have verifiable nonnegative pricing and context limits.
+IDs ending in `:free` and exactly `openrouter/free` require zero pricing.
+The free router may choose different underlying free models per call.
+Any verified paid text model is accepted, for example
+`OPENROUTER_MODEL=qwen/qwen3.5-flash-02-23`.
+**Paid requests incur OpenRouter charges**, including translation and full-catalog
+recommendation calls. No automatic fallback, retry, tool or plugin is used;
+unavailable or unverifiable models stop the run.
 
 - **External transmission:** the prompt and generated Data Model catalog,
   including source-derived prices, specifications and equipment, go to OpenRouter
@@ -204,22 +202,144 @@ used; unavailable or unapproved paid models stop the run.
 
 ### Desktop prompt UI
 
+To test Google model discovery alone, set `GOOGLE_AI_API_KEY` in the test process
+environment and run:
+
+```sh
+./gradlew test -PgoogleAiModelsIntegration --tests 'com.sps23.aiworkflow.openrouter.GoogleAiModelsIntegrationTest'
+```
+
+This opt-in test asserts a nonempty generation-model catalog and prints IDs/limits.
+It makes only model-list requests, not inference; `GOOGLE_AI_MODEL` is not required.
+Normal test runs exclude it. Missing credentials fail explicitly when opted in.
+
 Same workflow in a Compose Desktop window: pick an **API**—**OpenRouter**
-(default), **LM Studio** (`http://localhost:1234/v1`), **llama.cpp**
+(default), **OpenAI**, **Google AI Studio**, **LM Studio** (`http://localhost:1234/v1`), **llama.cpp**
 (`http://localhost:8080/v1`) or **Ollama** (`http://localhost:11434/v1`).
-For OpenRouter, pick a model from the dropdown:
-`openrouter/free`, the three NVIDIA free models, or `qwen/qwen3.5-flash-02-23` (paid).
-Qwen is marked paid in the menu and shows a charge warning when selected.
-Cohere and Recursive entries have been removed.
-The default remains free,
-with **openrouter/free** listed first and selected by default.
+For remote providers, use **Browse / search models** to open a searchable picker.
+Search by ID/display name inside the popup; searching never changes the selection.
+It initially exposes 10 models, adding batches of 10 on scroll. Search covers the
+entire fetched catalog, including Google's API pages, not just visible rows.
+Use Up/Down and Enter to select; Escape dismisses. Reopening clears the search and
+shows the catalog independently of the selected ID. The separate **selected model ID
+(exact entry)** field still accepts manual IDs; **Clear selection** clears that ID.
+OpenRouter entries are grouped **Free / Low / Medium / High** with labeled colors.
+The public catalog loads on first display; **Refresh models** reloads it.
+Only text models with verifiable pricing/context appear. Free means all reported
+non-discount charges are zero; Paid means at least one is positive. Selected
+models show exact input/output USD per million tokens; other charges may apply.
+Price tiers use output USD per million tokens: Low <= $1, Medium > $1 through $10,
+High > $10. These are UI-defined thresholds, not provider ratings or total-request
+cost estimates. Free still requires every non-discount charge to be zero.
+Paid or unverified selections show a charge warning. Discovery failures stay
+visible; exact typed IDs remain usable and are reverified on Send.
+**openrouter/free** remains the default; there is no automatic model fallback.
+
+For **OpenAI**, enter a masked **OpenAI API key** (blank uses `OPENAI_API_KEY`).
+Keys stay in memory only. The authenticated model list loads after a 600-ms
+key-entry debounce; **Refresh models** reloads it. The picker includes every listed
+ID with **compatibility unknown**, including non-chat models; OpenAI rejects
+unsupported requests. Search inside the picker or type an exact ID.
+No model is selected automatically; OpenAI and OpenRouter retain separate selections.
+Changing keys clears stale discovery data; failures stay visible without blocking
+exact typed IDs.
+
+For **Google AI Studio**, enter the masked API key (blank uses
+`GOOGLE_AI_API_KEY`). The authenticated, paginated Google model catalog loads
+after a 600-ms key-entry debounce; **Refresh models** reloads it. Search
+generateContent models by ID/display name or type an exact ID. Selection starts
+blank and remains independent of other APIs; key edits discard stale discovery.
+Each submission verifies the model and separate input/output limits.
+Specialized generation models may reject compatible chat requests explicitly.
+OpenAI and Google model-list APIs do not report token pricing: their picker rows
+show **Price unavailable**, never inferred Free/Low/Medium/High classifications.
+
+The Google adapter reuses the existing OpenAI-compatible chat transport at
+`/v1beta/openai/chat/completions`; no new inference library. Native listing uses
+`x-goog-api-key` headers, chat uses Bearer auth; keys stay out of URLs/exports.
+The conservative input estimate is checked against `inputTokenLimit`, independently
+of requested output, which is capped by `outputTokenLimit`. No catalog facts are
+dropped. Debug context length represents Google's **input limit**, not a shared
+input/output budget. `GOOGLE_AI_MAX_COMPLETION_TOKENS` defaults to 32768
+(positive Int); translation stays capped at 2048.
+Pricing is not supplied by model metadata. Prompt/catalog go to Google: review
+Google's data-processing terms and project quota/billing before sending.
+No automatic retries/fallbacks. Manual API remains the last dropdown choice.
+
+### Standalone Google AI prompt and opt-in integration test
+
+Set `GOOGLE_AI_API_KEY` and `GOOGLE_AI_MODEL` in your terminal. Choose a model
+currently available to your Google AI Studio project; IDs may omit the native
+`models/` prefix. With those environment variables already set:
+
+```sh
+./gradlew googleAiPrompt --args='Hello! Reply with one short greeting.'
+```
+
+This sends **one text inference call**, with a separate native metadata lookup;
+no car catalog or translation. It prints the answer/model, reports errors to
+stderr and exits nonzero on failure. It may consume Google quota/incur charges.
+
+`GoogleAiClientIntegrationTest` is annotated `@Ignore` from creation. To run only
+its live hello smoke, remove `@Ignore` locally, set both env variables, then:
+
+```sh
+./gradlew test --tests 'com.sps23.aiworkflow.openrouter.GoogleAiClientIntegrationTest'
+```
+
+Selecting the test does not bypass `@Ignore`; restore it after the smoke.
+The test checks nonempty text and requested model ID, not recommendation accuracy.
+Normal Google tests use a loopback fake provider and need no key/internet.
+
+### Other desktop provider details
+
+OpenAI's `/v1/models` includes models not supported by Chat Completions and does
+not supply pricing or context/output limits. These stay **unavailable**, not
+assumed free or unlimited. Select a Chat Completions text model; unsupported
+models, insufficient context, auth and quota errors surface explicitly.
+The dedicated Koog backend uses `/v1/chat/completions`, exact model IDs,
+`max_completion_tokens`, `store=false`, no temperature override and no retries/fallback.
+**OpenAI requests may incur charges:** translation sends the prompt; recommendation
+sends the translated request and full catalog. Use only data cleared for external
+processing. `OPENAI_MAX_COMPLETION_TOKENS` independently defaults to 32768
+(positive integer through 2147483647); translation stays capped at 2048.
+OpenAI validates supported output/context limits; the app never drops catalog facts.
+Provider-reported usage is captured; unreported prices/limits remain unavailable.
+The `carPrompt` CLI stays OpenRouter-only.
+
+**Manual API (OpenAI-compatible)** is the last API choice. Enter an API base URL
+including its prefix (e.g. `https://provider.example/v1`), an optional masked key,
+and an exact model ID. HTTPS is required remotely; HTTP is allowed on
+localhost/loopback only. URL credentials, query strings, fragments and complete
+`/models` or `/chat/completions` URLs are rejected.
+Blank key sends **no authentication**, without environment-key fallback;
+nonblank sends Bearer auth. URL/key stay in memory.
+
+Model discovery appends `/models` after a URL/key-entry debounce; **Refresh models**
+retries explicitly. Search returned IDs or type an ID if discovery is unsupported.
+URL/key edits clear stale discovery results. Inference appends `/chat/completions`,
+pins the model and sends `messages`, `max_tokens`, `stream=false`, with no temperature
+override or automatic retries/fallbacks. Providers must support this Chat Completions
+contract; an OpenAPI schema alone or Responses-only endpoint is insufficient.
+Redirects are blocked, and provider incompatibility/auth/context errors are visible.
+Pricing/context metadata stay unavailable; prompt/catalog go to the entered endpoint
+and charges may apply. `MANUAL_AI_MAX_COMPLETION_TOKENS` defaults to 32768
+(positive Int); translation stays capped at 2048. Provider switches and URL/key/model
+edits preserve translation for unchanged input; setup controls are disabled while
+inference runs. Existing provider integrations and CLI behavior remain unchanged.
+
+The masked **Local API key (optional)** field overrides `LOCAL_AI_API_KEY` when
+nonblank; blank uses the environment key if set. Typed keys stay in memory only
+and authenticate local metadata and both chat calls. API/model/key controls are
+disabled during inference. Changing provider, model or key preserves an unchanged
+prompt's translation cache.
 Local APIs hide the model dropdown and skip OpenRouter metadata/pricing checks.
 LM Studio reads `/api/v0/models`, requires exactly one loaded chat model,
 uses its **loaded_context_length** (not advertised maximum), pins its model ID
 for both stages and dynamically sizes each request's output allowance.
 Unavailable/invalid metadata stops inference rather than bypassing the check.
 llama.cpp and Ollama retain server-selected models, omit `model`, and have no
-metadata/size preflight. Local APIs send
+metadata/size preflight. With no typed key override, local APIs send
 `Authorization: Bearer $LOCAL_AI_API_KEY` only when that variable is set.
 The UI and CLI use the generated
 `vehicle-catalog/data-model-catalog.json` (run `./gradlew generateDataModelCatalog`
@@ -231,7 +351,7 @@ are derived deterministically from the car, trim and variant name. The model
 returns empty `sources` arrays rather than invented page citations; each result
 offers a **PDF Source** column with **Download** buttons resolved locally from the catalog.
 These Data Model facts have not been independently reviewed; recommendations
-remain prototype advice. OpenRouter receives this UI catalog along with the
+remain prototype advice. The selected remote API (OpenRouter or OpenAI) receives this UI catalog along with the
 translated request; use it only if its source-derived contents are cleared for
 external processing. The UI catalog needs a large context window; provider
 overflow still surfaces explicitly because byte estimates are not exact token counts.
@@ -278,8 +398,9 @@ Credentials are redacted; raw response dumps, request headers and prompt/catalog
 fields are excluded. Review provider-written messages before sharing.
 Plan: [`docs/openrouter-desktop-ui-plan.md`](docs/openrouter-desktop-ui-plan.md).
 
-Prerequisites: `OPENROUTER_API_KEY` for OpenRouter (the dropdown replaces `OPENROUTER_MODEL`),
-or a running local server for local APIs (`LOCAL_AI_API_KEY` optional). The UI
+Prerequisites: `OPENROUTER_API_KEY` for OpenRouter (the picker replaces `OPENROUTER_MODEL`),
+typed key or `OPENAI_API_KEY` for OpenAI,
+or a running local server for local APIs (typed key or `LOCAL_AI_API_KEY` optional). The UI
 does not upload PDFs or raw PDF contents.
 
 ```sh

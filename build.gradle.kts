@@ -58,6 +58,11 @@ compose.desktop {
 tasks.withType<Test>().configureEach {
     dependsOn("spotlessCheck")
     jvmArgs("--enable-native-access=ALL-UNNAMED")
+    if (!providers.gradleProperty("googleAiModelsIntegration").isPresent) {
+        filter {
+            excludeTestsMatching("com.sps23.aiworkflow.openrouter.GoogleAiModelsIntegrationTest")
+        }
+    }
     if (providers.gradleProperty("skipUiRenderTests").isPresent) {
         filter {
             excludeTestsMatching("com.sps23.aiworkflow.ui.CarPromptScreenTest")
@@ -91,6 +96,13 @@ tasks.register<JavaExec>("carPrompt") {
     description = "Send one prompt plus the generated car catalog to an allowed OpenRouter model."
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass.set("com.sps23.aiworkflow.recommendation.CarPromptCliKt")
+}
+
+tasks.register<JavaExec>("googleAiPrompt") {
+    group = "application"
+    description = "Send one standalone prompt to Google AI Studio using GOOGLE_AI_API_KEY and GOOGLE_AI_MODEL."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.openrouter.GoogleAiPromptCli")
 }
 
 tasks.matching { it.name.startsWith("spotless") && it.name.endsWith("Check") }.configureEach {
