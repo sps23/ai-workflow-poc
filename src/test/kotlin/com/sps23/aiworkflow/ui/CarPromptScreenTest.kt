@@ -26,6 +26,10 @@ class CarPromptScreenTest {
                     listOf(
                         FakeOpenRouterServer.CAR_OUTPUT,
                         FakeOpenRouterServer.MULTI_MODEL_OUTPUT,
+                        """{"cars":[{"configurationId":"skoda-peaq-selection-selection-90x","car":"Skoda Peaq","trim":"Selection",
+                           "options":[{"name":"PV1","status":"OPTIONAL","details":"","sources":[]}]}]}""",
+                        """{"cars":[{"configurationId":"toyota-corolla-cross-gr-sport-2-0-hev-fwd","car":"Toyota Corolla Cross",
+                           "trim":"GR SPORT","options":[]}]}""",
                         """{"cars":[]}""",
                         "not JSON",
                     ).flatMap { raw ->

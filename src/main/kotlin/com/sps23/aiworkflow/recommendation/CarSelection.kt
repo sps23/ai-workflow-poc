@@ -88,7 +88,7 @@ fun FitmentState.displayLabel(): String =
         FitmentState.UNKNOWN -> "Unknown"
     }
 
-fun CarSelection.toReadableText(): String =
+fun CarSelection.toReadableText(catalog: DataModelCatalogContext? = null): String =
     if (cars.isEmpty()) {
         "No cars returned."
     } else {
@@ -97,6 +97,10 @@ fun CarSelection.toReadableText(): String =
                 appendLine("Car: ${car.car}")
                 appendLine("Trim: ${car.trim ?: "Unknown"}")
                 appendLine("Configuration: ${car.configurationId}")
+                catalog?.details(car)?.let { details ->
+                    appendLine(details.engine)
+                    details.priceLines.forEach { appendLine(it) }
+                }
                 if (car.options.isEmpty()) {
                     append("No requested options returned.")
                 } else {

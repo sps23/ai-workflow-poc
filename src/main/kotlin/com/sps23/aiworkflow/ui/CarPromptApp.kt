@@ -52,6 +52,7 @@ import com.sps23.aiworkflow.recommendation.DataModelPdfStore
 import com.sps23.aiworkflow.recommendation.LlmRequest
 import com.sps23.aiworkflow.recommendation.PROTOTYPE_DISCLAIMER
 import com.sps23.aiworkflow.recommendation.displayLabel
+import com.sps23.aiworkflow.recommendation.toReadableText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -159,7 +160,10 @@ fun CarPromptScreen(controller: CarPromptController) {
                 HorizontalDivider()
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     CopyButton("Copy raw JSON", state.rawOutput)
-                    CopyButton("Copy readable output", state.readableOutput)
+                    CopyButton(
+                        "Copy readable output",
+                        "${state.selection.toReadableText(dataModelCatalog)}\n\nModel: ${state.modelLabel}\n$PROTOTYPE_DISCLAIMER",
+                    )
                 }
                 SelectionContainer {
                     CarTables(state.selection)
@@ -261,6 +265,9 @@ private fun CarTables(selection: CarSelection) {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("Trim: ${car.trim ?: "Unknown"}")
                         Text("Configuration: ${car.configurationId}", style = MaterialTheme.typography.bodySmall)
+                        val details = dataModelCatalog.details(car)
+                        Text(details.engine)
+                        details.priceLines.forEach { Text(it) }
                         OptionTableRow("Requested option", "Availability", "Details", header = true)
                         if (car.options.isEmpty()) {
                             OptionTableRow("No requested options returned.", "", "", configurationId = car.configurationId)

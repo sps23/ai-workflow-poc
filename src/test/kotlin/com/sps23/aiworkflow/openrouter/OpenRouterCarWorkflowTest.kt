@@ -144,6 +144,8 @@ class OpenRouterCarWorkflowTest {
                         .getValue("content")
                         .jsonPrimitive.content
                 assertEquals(SYSTEM_INSTRUCTIONS, system)
+                assertTrue("copy its exact catalog option name" in system)
+                assertTrue("list the package only once" in system)
                 assertTrue("up to three distinct make/model combinations" in system)
                 assertTrue("include ALL catalog trim/powertrain configurations" in system)
                 assertTrue("explicit user result count or request for all matches overrides" in system)

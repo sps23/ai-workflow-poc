@@ -63,7 +63,11 @@ val SYSTEM_INSTRUCTIONS: String =
     - The only top-level key is cars. Each car has only configurationId, car, trim, options.
       Each option has only name, status, details, sources. Use JSON strings, arrays, and null as shown.
       Use the catalog trim string, or null when unknown. Use an empty options array if none were requested.
-    - Include every requested equipment option for each returned car. Reuse the same option names across cars.
+    - Include every requested equipment option for each returned car. For OPTIONAL equipment that maps
+      to a catalog option, copy its exact catalog option name into name so local pricing can resolve it.
+      Keep the original requested feature in details when its wording differs. If a package is required,
+      name that catalog package and explain the included feature in details; list the package only once.
+      Otherwise reuse the same requested option names across cars.
       status must be exactly STANDARD, OPTIONAL, NOT_AVAILABLE, or UNKNOWN.
       Missing evidence means UNKNOWN, not NOT_AVAILABLE. Include fitment conditions and evidence
       limitations in details; use an empty string if none. Put citations ONLY in sources, never in details.
