@@ -5,10 +5,12 @@ import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.FakeOpenRouterServer
 import com.sps23.aiworkflow.openrouter.LlmApi
 import com.sps23.aiworkflow.openrouter.OpenRouterErrorDiagnostics
+import com.sps23.aiworkflow.openrouter.OpenRouterModelTest
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
 import com.sps23.aiworkflow.openrouter.StageMetrics
 import com.sps23.aiworkflow.openrouter.WorkflowMetadata
 import com.sps23.aiworkflow.openrouter.WorkflowMetadataCodec
+import com.sps23.aiworkflow.openrouter.parseOpenRouterModels
 import com.sps23.aiworkflow.recommendation.LlmRequest
 import com.sps23.aiworkflow.recommendation.LlmRequestCodec
 import kotlinx.coroutines.CancellationException
@@ -26,6 +28,92 @@ class CarPromptControllerTest {
     private val raw = FakeOpenRouterServer.CAR_OUTPUT
 
     @Test
+    fun `discovery runs once refreshes explicitly and supports ID and name search without changing selection`() =
+        runBlocking {
+            var calls = 0
+            val controller =
+                CarPromptController(
+                    discoverModels = {
+                        calls++
+                        parseOpenRouterModels(
+                            OpenRouterModelTest.catalogJson().replace("\"vendor/paid\"", "\"vendor/paid\",\"name\":\"Friendly Model\""),
+                        )
+                    },
+                ) { _, _, _, _, _, _ -> error("unused") }
+            controller.loadModels()
+            controller.loadModels()
+            assertEquals(1, calls)
+            assertEquals("openrouter/free", controller.selectedModel)
+            controller.selectModel("FRIENDLY")
+            assertEquals(listOf("vendor/paid"), controller.matchingModels.map { it.id })
+            controller.selectModel("zero-COST")
+            assertEquals(listOf("vendor/zero-cost"), controller.matchingModels.map { it.id })
+            controller.selectModel("")
+            assertEquals(3, controller.matchingModels.size)
+            controller.selectModel("vendor/paid")
+            assertEquals(false, controller.selectedModelInfo?.isFree)
+            controller.loadModels(refresh = true)
+            assertEquals(2, calls)
+            assertEquals("vendor/paid", controller.selectedModel)
+        }
+
+    @Test
+    fun `failed discovery leaves typed IDs usable and refresh clears its explicit error`() =
+        runBlocking {
+            var fail = true
+            val controller =
+                CarPromptController(
+                    discoverModels = {
+                        if (fail) throw OpenRouterWorkflowException(FailureKind.CONNECTION, "private diagnostic")
+                        parseOpenRouterModels(OpenRouterModelTest.catalogJson())
+                    },
+                ) { _, _, model, _, _, _ -> CarAnswer(raw, model, null) }
+            controller.loadModels()
+            assertTrue("CONNECTION" in controller.modelsError.orEmpty())
+            assertTrue("private diagnostic" !in controller.modelsError.orEmpty())
+            controller.selectModel("vendor/custom")
+            controller.submit("x")
+            assertIs<CarPromptState.Answered>(controller.state)
+            fail = false
+            controller.loadModels(refresh = true)
+            assertNull(controller.modelsError)
+            assertEquals("vendor/custom", controller.selectedModel)
+        }
+
+    @Test
+    fun `local key is forwarded only to local APIs preserves translation and cannot change during inference`() =
+        runBlocking {
+            val keys = mutableListOf<String?>()
+            val caches = mutableListOf<LlmRequest?>()
+            lateinit var controller: CarPromptController
+            controller =
+                CarPromptController { prompt, _, _, key, cached, translated ->
+                    keys += key
+                    caches += cached
+                    controller.updateLocalApiKey("blocked")
+                    controller.selectModel("blocked-model")
+                    controller.selectApi(LlmApi.OLLAMA)
+                    translated(cached ?: LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
+                    CarAnswer(raw, "model", null)
+                }
+            controller.updateLocalApiKey("local-secret")
+            controller.submit("x")
+            assertNull(keys[0])
+            assertEquals("local-secret", controller.localApiKey)
+            assertEquals("openrouter/free", controller.selectedModel)
+            assertEquals(LlmApi.OPENROUTER, controller.selectedApi)
+            controller.selectApi(LlmApi.LM_STUDIO)
+            controller.submit("x")
+            assertEquals("local-secret", keys[1])
+            assertEquals("x", caches[1]?.originalRequest)
+            controller.updateLocalApiKey("")
+            controller.submit("x")
+            assertNull(keys[2])
+            assertEquals("x", caches[2]?.originalRequest)
+            assertTrue("local-secret" !in controller.metadataJson.orEmpty())
+        }
+
+    @Test
     fun `debug metadata is exportable after success and failure and clears for edits and new submissions`() =
         runBlocking {
             val success = WorkflowMetadata(elapsedMillis = 50, stages = listOf(StageMetrics("Car recommendation", "SUCCEEDED", 50)))
@@ -33,7 +121,7 @@ class CarPromptControllerTest {
             var calls = 0
             lateinit var controller: CarPromptController
             controller =
-                CarPromptController { _, _, _, _, _ ->
+                CarPromptController { _, _, _, _, _, _ ->
                     assertNull(controller.metadata)
                     calls++
                     if (calls == 1) {
@@ -59,7 +147,7 @@ class CarPromptControllerTest {
     fun `configuration failures expose unavailable metrics without including exception text in JSON`() =
         runBlocking {
             val controller =
-                CarPromptController { _, _, _, _, _ ->
+                CarPromptController { _, _, _, _, _, _ ->
                     throw OpenRouterWorkflowException(FailureKind.CONFIGURATION, "secret failure text")
                 }
             controller.submit("x")
@@ -86,7 +174,7 @@ class CarPromptControllerTest {
         runBlocking {
             var received: String? = null
             val controller =
-                CarPromptController { prompt, _, _, _, _ ->
+                CarPromptController { prompt, _, _, _, _, _ ->
                     received = prompt
                     CarAnswer(raw, "vendor/model:free", "vendor/model")
                 }
@@ -111,7 +199,7 @@ class CarPromptControllerTest {
     @Test
     fun `missing response model id falls back to requested id`() =
         runBlocking {
-            val controller = CarPromptController { _, _, _, _, _ -> CarAnswer(raw, "vendor/model:free", null) }
+            val controller = CarPromptController { _, _, _, _, _, _ -> CarAnswer(raw, "vendor/model:free", null) }
 
             controller.submit("x")
 
@@ -125,7 +213,7 @@ class CarPromptControllerTest {
     fun `workflow failure is shown with its kind`() =
         runBlocking {
             val controller =
-                CarPromptController { _, _, _, _, _ ->
+                CarPromptController { _, _, _, _, _, _ ->
                     throw OpenRouterWorkflowException(FailureKind.RATE_LIMIT, "Slow down.")
                 }
 
@@ -140,7 +228,7 @@ class CarPromptControllerTest {
     @Test
     fun `unexpected failure is shown with its type`() =
         runBlocking {
-            val controller = CarPromptController { _, _, _, _, _ -> throw IllegalArgumentException("Prompt must not be blank.") }
+            val controller = CarPromptController { _, _, _, _, _, _ -> throw IllegalArgumentException("Prompt must not be blank.") }
 
             controller.submit("")
 
@@ -153,7 +241,7 @@ class CarPromptControllerTest {
     fun `failure report includes provider diagnostics and the submitted model`() =
         runBlocking {
             val controller =
-                CarPromptController { _, _, _, _, _ ->
+                CarPromptController { _, _, _, _, _, _ ->
                     throw OpenRouterWorkflowException(
                         FailureKind.PROVIDER,
                         "Provider error (HTTP 503).",
@@ -170,13 +258,13 @@ class CarPromptControllerTest {
                             ),
                     )
                 }
-            controller.selectModel(OPENROUTER_MODELS.last())
+            controller.selectModel("vendor/paid-model")
             controller.submit("x")
             controller.selectModel(OPENROUTER_MODELS.first())
 
             val details = assertIs<CarPromptState.Failed>(controller.state).message
             listOf(
-                "Model: ${OPENROUTER_MODELS.last()}",
+                "Model: vendor/paid-model",
                 "Stage: Chat completion",
                 "HTTP status: 503",
                 "Provider code: unavailable",
@@ -192,7 +280,7 @@ class CarPromptControllerTest {
     @Test
     fun `cancellation restores idle instead of showing an error`() =
         runBlocking {
-            val controller = CarPromptController { _, _, _, _, _ -> throw CancellationException("closed") }
+            val controller = CarPromptController { _, _, _, _, _, _ -> throw CancellationException("closed") }
 
             assertFailsWith<CancellationException> { controller.submit("x") }
 
@@ -204,7 +292,7 @@ class CarPromptControllerTest {
         runBlocking {
             var sentModel: String? = null
             val controller =
-                CarPromptController { _, _, model, _, _ ->
+                CarPromptController { _, _, model, _, _, _ ->
                     sentModel = model
                     CarAnswer(raw, model, null)
                 }
@@ -220,7 +308,7 @@ class CarPromptControllerTest {
         runBlocking {
             var sentModel: String? = null
             val controller =
-                CarPromptController { _, _, model, _, _ ->
+                CarPromptController { _, _, model, _, _, _ ->
                     sentModel = model
                     CarAnswer(raw, model, null)
                 }
@@ -232,30 +320,28 @@ class CarPromptControllerTest {
         }
 
     @Test
-    fun `model list keeps NVIDIA free models and free router plus approved paid Qwen`() {
-        assertEquals(
-            listOf(
-                "openrouter/free",
-                "nvidia/nemotron-3-ultra-550b-a55b:free",
-                "nvidia/nemotron-3.5-super-vl:free",
-                "nvidia/nemotron-3.5-lightning:free",
-                "qwen/qwen3.5-flash-02-23",
-            ),
-            OPENROUTER_MODELS,
-        )
+    fun `only the default router is seeded before discovery`() {
+        assertEquals(listOf("openrouter/free"), OPENROUTER_MODELS)
     }
 
     @Test
-    fun `unknown model is rejected`() {
-        val controller = CarPromptController { _, _, _, _, _ -> error("unused") }
-
-        assertFailsWith<IllegalArgumentException> { controller.selectModel("vendor/paid-model") }
-    }
+    fun `typed model outside discovered list is forwarded trimmed for live verification`() =
+        runBlocking {
+            var received: String? = null
+            val controller =
+                CarPromptController { _, _, model, _, _, _ ->
+                    received = model
+                    CarAnswer(raw, model, null)
+                }
+            controller.selectModel(" vendor/paid-model ")
+            controller.submit("x")
+            assertEquals("vendor/paid-model", received)
+        }
 
     @Test
     fun `invalid output has error details and copyable raw content`() =
         runBlocking {
-            val controller = CarPromptController { _, _, _, _, _ -> CarAnswer("not JSON", "vendor/model:free", null) }
+            val controller = CarPromptController { _, _, _, _, _, _ -> CarAnswer("not JSON", "vendor/model:free", null) }
             controller.submit("x")
             val state = assertIs<CarPromptState.Failed>(controller.state)
             assertTrue("INVALID_RESPONSE" in state.message)
@@ -270,7 +356,7 @@ class CarPromptControllerTest {
             val finish = CompletableDeferred<Unit>()
             var calls = 0
             val controller =
-                CarPromptController { prompt, _, _, _, translated ->
+                CarPromptController { prompt, _, _, _, _, translated ->
                     calls++
                     if (calls == 1) {
                         translated(LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
@@ -305,7 +391,7 @@ class CarPromptControllerTest {
             val caches = mutableListOf<LlmRequest?>()
             val models = mutableListOf<String>()
             val controller =
-                CarPromptController { prompt, _, model, cached, translated ->
+                CarPromptController { prompt, _, model, _, cached, translated ->
                     caches += cached
                     models += model
                     translated(cached ?: LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
@@ -316,11 +402,11 @@ class CarPromptControllerTest {
             controller.updatePrompt("seven seats")
             assertIs<CarPromptState.Answered>(controller.state)
             assertEquals(json, controller.translatedRequestJson)
-            controller.selectModel(OPENROUTER_MODELS.last())
+            controller.selectModel("vendor/different-model")
             controller.submit("seven seats")
             assertEquals(null, caches[0])
             assertEquals("seven seats", caches[1]?.originalRequest)
-            assertEquals(OPENROUTER_MODELS.last(), models[1])
+            assertEquals("vendor/different-model", models[1])
             controller.updatePrompt("seven seats ")
             assertEquals(CarPromptState.Idle, controller.state)
             assertEquals(null, controller.translatedRequestJson)
@@ -334,7 +420,7 @@ class CarPromptControllerTest {
         runBlocking {
             var calls = 0
             val controller =
-                CarPromptController { prompt, _, _, cached, translated ->
+                CarPromptController { prompt, _, _, _, cached, translated ->
                     calls++
                     if (calls == 1) {
                         assertEquals(null, cached)
@@ -356,7 +442,7 @@ class CarPromptControllerTest {
 
     @Test
     fun `openrouter is the default api and local presets use common local urls`() {
-        val controller = CarPromptController { _, _, _, _, _ -> error("unused") }
+        val controller = CarPromptController { _, _, _, _, _, _ -> error("unused") }
 
         assertEquals(LlmApi.OPENROUTER, controller.selectedApi)
         assertEquals(
@@ -371,7 +457,7 @@ class CarPromptControllerTest {
         runBlocking {
             val calls = mutableListOf<Pair<LlmApi, LlmRequest?>>()
             val controller =
-                CarPromptController { prompt, api, _, cached, translated ->
+                CarPromptController { prompt, api, _, _, cached, translated ->
                     calls += api to cached
                     translated(cached ?: LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
                     if (api.isLocal) throw OpenRouterWorkflowException(FailureKind.CONNECTION, "Could not connect.")
@@ -394,7 +480,7 @@ class CarPromptControllerTest {
     @Test
     fun `local answer label names the reported model and api`() =
         runBlocking {
-            val controller = CarPromptController { _, _, _, _, _ -> CarAnswer(raw, "LM Studio (local) loaded model", "qwen3-8b") }
+            val controller = CarPromptController { _, _, _, _, _, _ -> CarAnswer(raw, "LM Studio (local) loaded model", "qwen3-8b") }
             controller.selectApi(LlmApi.LM_STUDIO)
             controller.submit("x")
             assertEquals("qwen3-8b via LM Studio (local)", assertIs<CarPromptState.Answered>(controller.state).modelLabel)

@@ -4,11 +4,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.renderComposeScene
 import com.sps23.aiworkflow.openrouter.CarAnswer
 import com.sps23.aiworkflow.openrouter.FakeOpenRouterServer
+import com.sps23.aiworkflow.openrouter.GoogleAiModel
 import com.sps23.aiworkflow.openrouter.LlmApi
 import com.sps23.aiworkflow.openrouter.RequestMetrics
 import com.sps23.aiworkflow.openrouter.StageMetrics
 import com.sps23.aiworkflow.openrouter.TokenUsage
 import com.sps23.aiworkflow.openrouter.WorkflowMetadata
+import com.sps23.aiworkflow.openrouter.parseOpenRouterModels
 import com.sps23.aiworkflow.recommendation.LlmRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -33,17 +35,44 @@ class CarPromptScreenTest {
                         """{"cars":[]}""",
                         "not JSON",
                     ).flatMap { raw ->
-                        listOf(LlmApi.OPENROUTER, LlmApi.LM_STUDIO).map { raw to it }
+                        listOf(LlmApi.OPENROUTER, LlmApi.OPENAI, LlmApi.GOOGLE_AI, LlmApi.LM_STUDIO, LlmApi.MANUAL).map { raw to it }
                     }
                 cases.forEach { (raw, api) ->
                     val controller =
-                        CarPromptController { prompt, _, model, _, translated ->
+                        CarPromptController(
+                            discoverModels = { parseOpenRouterModels(FakeOpenRouterServer.modelsJson()) },
+                            discoverOpenAiModels = { listOf("gpt-test", "embedding-test") },
+                            resolveOpenAiKey = { "fake-key" },
+                            resolveGoogleKey = { "fake-key" },
+                            discoverGoogleModels = { listOf(GoogleAiModel("gemini-test", "Gemini Test", 100_000, 8192)) },
+                            discoverManualModels = { _, _ -> listOf("manual/model") },
+                            manualAnswer = { prompt, config, _, translated ->
+                                translated(LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
+                                CarAnswer(raw, config.modelId, null)
+                            },
+                        ) { prompt, _, model, _, _, translated ->
                             translated(LlmRequest(prompt, emptyList(), emptyList(), emptyList(), listOf(prompt)))
                             CarAnswer(raw, model, null, metadata = WorkflowMetadata(elapsedMillis = 1, stages = emptyList()))
                         }
                     controller.selectApi(api)
                     if (api == LlmApi.OPENROUTER) controller.selectModel("qwen/qwen3.5-flash-02-23")
+                    if (api == LlmApi.OPENAI) {
+                        controller.updateOpenAiApiKey("fake-key")
+                        controller.selectModel("gpt-test")
+                        controller.loadOpenAiModels()
+                    }
+                    if (api == LlmApi.MANUAL) {
+                        controller.updateManualBaseUrl("https://example.com/v1")
+                        controller.selectModel("manual/model")
+                        controller.loadManualModels()
+                    }
+                    if (api == LlmApi.GOOGLE_AI) {
+                        controller.updateGoogleApiKey("fake-key")
+                        controller.selectModel("gemini-test")
+                        controller.loadGoogleModels()
+                    }
                     controller.submit("Family car with electric seats")
+                    if (api == LlmApi.OPENROUTER) controller.loadModels()
                     renderComposeScene(width = 900, height = 800) {
                         MaterialTheme {
                             CarPromptScreen(controller)

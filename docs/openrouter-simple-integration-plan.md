@@ -12,12 +12,11 @@ Confirmed decisions:
 - Both CLI and desktop use the generated `vehicle-catalog/data-model-catalog.json`.
   It contains normalized values from the per-car JSON files, not review-approved
   facts or page-level citations.
-- Use one configurable, verified `:free` model or exactly `openrouter/free`.
-  The latter routes across free models; the underlying model may differ per call.
-  **Approved paid exception:** exactly `qwen/qwen3.5-flash-02-23` may use nonnegative
-  paid pricing, with live listing/text/context checks unchanged. Other paid IDs
-  remain rejected; free entries still require zero pricing. Both stages may
-  incur charges when Qwen is explicitly selected/configured; no paid fallback.
+- Use one configurable, live-listed text model with verifiable nonnegative
+  pricing and context limits. IDs ending in `:free` and exactly `openrouter/free`
+  still require zero pricing; the free router's underlying model may differ per call.
+  **Approved selection change:** any verified paid text model may be explicitly
+  selected/configured. Both stages may incur charges; no automatic paid fallback.
   Stop when unavailable; no application fallback.
 - Return cars/trim/requested-options JSON using the contract in
   `openrouter-desktop-ui-plan.md`; render locally as readable text/tables.
@@ -28,7 +27,19 @@ Confirmed decisions:
   (`LocalLlmClient`, see `openrouter-desktop-ui-plan.md`): same two stages and
   prompts. LM Studio now discovers its single loaded chat model/context, pins
   its ID and applies the same estimated size gate; other local presets keep
-  model omission and no metadata/size gate. The CLI stays OpenRouter-only.
+  model omission and no metadata/size gate. The `carPrompt` CLI stays OpenRouter-only.
+- Desktop also supports the OpenAI API using the already available Koog 1.3.0
+  OpenAI client. Its authenticated model list reports IDs only: server-side
+  model/context validation is explicitly approved, with unavailable limits/prices
+  kept unknown. Model/key/discovery/budget behavior is defined in the desktop plan.
+- Desktop manual setup accepts a validated custom OpenAI-compatible base URL,
+  optional key and exact model ID. Reuse the compatible client and same workflow;
+  provider validation handles unknown limits. Details are in the desktop plan.
+  This does not extend CLI configuration or authorize automatic fallback.
+- Desktop Google AI Studio reuses compatible inference through its discovery/limits
+  adapter. Input/output limits are independently checked; details are in the
+  desktop plan. A separate `googleAiPrompt` CLI sends a single standalone text
+  prompt without catalog/translation; the `carPrompt` CLI remains OpenRouter-only.
 - The generator matches each JSON to a PDF by identical basename in the same
   folder. The prompt context derives stable IDs for trim/powertrain variants,
   carries document-level PDF links, and has no page-level citations. The response
@@ -42,7 +53,7 @@ engine. Saving this plan authorizes neither application implementation nor live 
 ```text
 CLI or desktop prompt + data-model-catalog.json
   -> validate prompt and load generated catalog context
-  -> verify configured free model once for this submission
+  -> verify configured model once for this submission
   -> size check, then translate user text to LlmRequest JSON without catalog
   -> validate translation and preserve original wording
   -> publish translated JSON for desktop download
@@ -55,7 +66,8 @@ CLI or desktop prompt + data-model-catalog.json
 Desktop resubmissions with exactly unchanged input reuse the validated translation
 and run only recommendation, even after switching models. Input edits invalidate
 this in-memory cache immediately; CLI invocations still run both stages.
-Metadata/pricing/context checks run for the newly selected model before inference.
+OpenRouter metadata/pricing/context checks and LM Studio loaded-context checks run
+before inference; OpenAI validates compatibility and limits at the provider.
 
 Model metadata requests are separate from the two inference calls. Any first-stage
 failure prevents the second call; no automatic retry or fallback at either stage.
@@ -92,9 +104,8 @@ prompt-building functions together rather than introducing a framework.
 - Read `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` from the environment.
   Fail clearly if either is missing; never print the key.
 - Use Ktor to read current OpenRouter model metadata. Require the exact model ID
-  to exist, end in `:free`, equal `openrouter/free`, or equal the approved paid
-  Qwen ID above, and support text output. Free entries require zero pricing;
-  Qwen requires numeric nonnegative pricing. Reject unverifiable metadata.
+  to exist and support text output, with numeric nonnegative pricing and context
+  limits. IDs advertised as free require zero pricing. Reject unverifiable metadata.
 - Obtain context/output limits from metadata. Reserve an explicit completion
   allowance and a conservative input-size bound covering instructions, prompt,
   catalog, and message overhead. Document the estimation limitation. If the
@@ -145,8 +156,8 @@ prompt-building functions together rather than introducing a framework.
   Propagate cancellation and close clients.
   Avoid logging headers, prompt/catalog bodies, or raw responses.
 
-Done when offline request capture verifies the free-model policy and exact paid
-Qwen exception, prompt/data
+Done when offline request capture verifies zero pricing for free-labelled models
+and arbitrary verified paid IDs, prompt/data
 separation, exactly two inference calls on success, first-stage failure short-circuit,
 and visible stage-labelled failures using a local fake
 server. If installed Koog cannot satisfy these essentials, report the specific
@@ -171,7 +182,7 @@ Done when a fake-provider CLI check covers successful output and a failing exit.
 ### 4. Document and verify
 
 Keep this plan aligned with the implementation and add minimal README usage:
-environment variable names, selecting a current free model, the command, external
+environment variable names, selecting a current model and paid-cost warnings, the command, external
 transmission of the prompt/generated catalog, and limitations.
 Keep API keys outside tracked files. Use only catalog data permitted for external
 processing; no catalog upload is needed while planning or running offline tests.
@@ -222,7 +233,7 @@ speed; non-streaming client TTFT cannot be measured. No performance/accuracy
 improvement is claimed merely because a request now has telemetry.
 
 No deterministic eligibility/ranking engine, provider-enforced JSON schema,
-clarification loop, automatic retries/fallbacks, model discovery UI, embeddings,
+clarification loop, automatic retries/fallbacks, embeddings,
 automatic persistence, or PDF changes. Desktop integration and explicit request
 JSON export are defined in `openrouter-desktop-ui-plan.md`.
 
@@ -265,6 +276,11 @@ claimed without measurement.
 - [Koog providers](https://docs.koog.ai/llm-providers/):
   installed artifact APIs are authoritative for compatibility.
 - [OpenRouter free variants](https://openrouter.ai/docs/guides/routing/model-variants/free):
-  use actual listed `:free` entries; paid fallback models can incur charges.
+  use actual listed `:free` entries; paid models can incur charges.
 - [Model metadata](https://openrouter.ai/docs/guides/overview/models):
   verify pricing and context limits before dispatch.
+- [OpenAI model list](https://developers.openai.com/api/reference/resources/models/methods/list):
+  authenticated IDs without OpenRouter-style pricing/context metadata.
+- [Google OpenAI compatibility](https://ai.google.dev/gemini-api/docs/openai) and
+  [native models](https://ai.google.dev/api/models): compatible inference and
+  native pagination/generation methods/separate input-output limits.

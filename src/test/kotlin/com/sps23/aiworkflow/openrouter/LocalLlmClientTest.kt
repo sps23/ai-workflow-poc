@@ -62,6 +62,35 @@ class LocalLlmClientTest {
     }
 
     @Test
+    fun `typed local key overrides environment for discovery and both inference requests`() =
+        runBlocking {
+            FakeOpenRouterServer().use { server ->
+                server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.CAR_OUTPUT)
+                val config =
+                    LocalLlmConfig.fromEnvironment(
+                        mapOf(LOCAL_API_KEY_VARIABLE to "environment-key", LOCAL_MAX_COMPLETION_TOKENS_VARIABLE to "512"),
+                        LlmApi.LM_STUDIO,
+                        "${server.baseUrl}/v1",
+                        apiKeyOverride = " typed-key ",
+                    )
+                assertEquals("typed-key", config.apiKey)
+                OpenRouterCarWorkflow(config, catalog).answer("x")
+                assertEquals(3, server.requests.size)
+                assertTrue(server.requests.all { it.authorization == "Bearer typed-key" })
+                assertFalse("typed-key" in config.toString())
+                assertEquals(
+                    "environment-key",
+                    LocalLlmConfig
+                        .fromEnvironment(
+                            mapOf(LOCAL_API_KEY_VARIABLE to "environment-key"),
+                            LlmApi.OLLAMA,
+                            apiKeyOverride = " ",
+                        ).apiKey,
+                )
+            }
+        }
+
+    @Test
     fun `context overflow and auth errors are classified with redacted diagnostics`() {
         FakeOpenRouterServer().use { server ->
             server.chatStatus = 400

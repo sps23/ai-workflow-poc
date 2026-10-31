@@ -177,9 +177,6 @@ class OpenRouterCarWorkflowTest {
         assertFailsWith<OpenRouterWorkflowException> {
             verifyOpenRouterModel(FakeOpenRouterServer.modelsJson(id = "openrouter/free", promptPrice = "1"), "openrouter/free")
         }
-        listOf("openrouter/auto", "openrouter/free-extra").forEach { id ->
-            assertFailsWith<OpenRouterWorkflowException> { verifyOpenRouterModel(FakeOpenRouterServer.modelsJson(id = id), id) }
-        }
     }
 
     @Test
@@ -205,11 +202,9 @@ class OpenRouterCarWorkflowTest {
     }
 
     @Test
-    fun `paid exception remains exact and requires listing text valid pricing and context`() {
+    fun `paid models require listing text valid pricing and context`() {
         val cases =
             listOf(
-                "$PAID_QWEN_MODEL_ID-extra" to FakeOpenRouterServer.modelsJson(id = "$PAID_QWEN_MODEL_ID-extra"),
-                "qwen/qwen3.5-plus" to FakeOpenRouterServer.modelsJson(id = "qwen/qwen3.5-plus"),
                 PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(),
                 PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, outputs = "\"image\""),
                 PAID_QWEN_MODEL_ID to FakeOpenRouterServer.modelsJson(id = PAID_QWEN_MODEL_ID, promptPrice = "abc"),

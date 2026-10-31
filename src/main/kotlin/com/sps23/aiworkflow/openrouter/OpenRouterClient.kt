@@ -43,7 +43,9 @@ class OpenRouterClient(
     private val baseUrl = config.baseUrl.trimEnd('/')
 
     /** Reads live metadata and checks model eligibility, pricing, text output and limits. */
-    override suspend fun fetchLimits(): ModelLimits {
+    override suspend fun fetchLimits(): ModelLimits = verifyOpenRouterModel(fetchModelsJson(), config.modelId)
+
+    internal suspend fun fetchModelsJson(): String {
         val http =
             HttpClient(CIO) {
                 install(HttpTimeout) {
@@ -61,7 +63,7 @@ class OpenRouterClient(
                     diagnostics = diagnostics("Model metadata", response.status.value, response.bodyAsText()),
                 )
             }
-            return verifyOpenRouterModel(response.bodyAsText(), config.modelId)
+            return response.bodyAsText()
         } catch (e: CancellationException) {
             throw e
         } catch (e: OpenRouterWorkflowException) {

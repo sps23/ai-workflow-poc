@@ -24,6 +24,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,18 +35,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.sps23.aiworkflow.openrouter.CarAnswer
+import com.sps23.aiworkflow.openrouter.GoogleAiClient
+import com.sps23.aiworkflow.openrouter.GoogleAiConfig
 import com.sps23.aiworkflow.openrouter.LOCAL_API_KEY_VARIABLE
 import com.sps23.aiworkflow.openrouter.LlmApi
 import com.sps23.aiworkflow.openrouter.LocalLlmConfig
 import com.sps23.aiworkflow.openrouter.MODEL_VARIABLE
+import com.sps23.aiworkflow.openrouter.ManualApiConfig
+import com.sps23.aiworkflow.openrouter.OpenAiClient
+import com.sps23.aiworkflow.openrouter.OpenAiConfig
 import com.sps23.aiworkflow.openrouter.OpenRouterCarWorkflow
 import com.sps23.aiworkflow.openrouter.OpenRouterConfig
-import com.sps23.aiworkflow.openrouter.PAID_QWEN_MODEL_ID
 import com.sps23.aiworkflow.recommendation.CarSelection
 import com.sps23.aiworkflow.recommendation.DataModelCatalogContext
 import com.sps23.aiworkflow.recommendation.DataModelPdfStore
@@ -54,6 +60,7 @@ import com.sps23.aiworkflow.recommendation.PROTOTYPE_DISCLAIMER
 import com.sps23.aiworkflow.recommendation.displayLabel
 import com.sps23.aiworkflow.recommendation.toReadableText
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -66,23 +73,40 @@ private val catalogJson: String by lazy { dataModelCatalog.promptJson }
 
 /**
  * Reads keys per request so a missing key surfaces as a UI error, not a startup crash.
- * OpenRouter: the model dropdown replaces `OPENROUTER_MODEL`. Local: optional `LOCAL_AI_API_KEY`, loaded model.
+ * Remote APIs use their selected model; local APIs use their loaded model. Key overrides stay in memory.
  */
 private suspend fun answerFromLlm(
     prompt: String,
     api: LlmApi,
     modelId: String,
+    apiKeyOverride: String?,
     cachedRequest: LlmRequest?,
     onTranslated: suspend (LlmRequest) -> Unit,
 ): CarAnswer =
     withContext(Dispatchers.IO) {
         val workflow =
             if (api.isLocal) {
-                OpenRouterCarWorkflow(LocalLlmConfig.fromEnvironment(System.getenv(), api), catalogJson)
+                OpenRouterCarWorkflow(LocalLlmConfig.fromEnvironment(System.getenv(), api, apiKeyOverride = apiKeyOverride), catalogJson)
+            } else if (api == LlmApi.OPENAI) {
+                OpenRouterCarWorkflow(OpenAiClient(OpenAiConfig.fromEnvironment(System.getenv(), modelId, apiKeyOverride)), catalogJson)
+            } else if (api == LlmApi.GOOGLE_AI) {
+                OpenRouterCarWorkflow(GoogleAiClient(GoogleAiConfig.fromEnvironment(System.getenv(), modelId, apiKeyOverride)), catalogJson)
             } else {
                 OpenRouterCarWorkflow(OpenRouterConfig.fromEnvironment(System.getenv() + (MODEL_VARIABLE to modelId)), catalogJson)
             }
         workflow.answer(prompt, cachedRequest) {
+            withContext(Dispatchers.Main) { onTranslated(it) }
+        }
+    }
+
+private suspend fun answerFromManual(
+    prompt: String,
+    config: ManualApiConfig,
+    cachedRequest: LlmRequest?,
+    onTranslated: suspend (LlmRequest) -> Unit,
+): CarAnswer =
+    withContext(Dispatchers.IO) {
+        OpenRouterCarWorkflow(config.backend(), catalogJson).answer(prompt, cachedRequest) {
             withContext(Dispatchers.Main) { onTranslated(it) }
         }
     }
@@ -96,7 +120,7 @@ fun main() =
         ) {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    CarPromptScreen(remember { CarPromptController(answer = ::answerFromLlm) })
+                    CarPromptScreen(remember { CarPromptController(manualAnswer = ::answerFromManual, answer = ::answerFromLlm) })
                 }
             }
         }
@@ -107,6 +131,27 @@ fun CarPromptScreen(controller: CarPromptController) {
     val scope = rememberCoroutineScope()
     val state = controller.state
     val loading = state == CarPromptState.Loading
+    LaunchedEffect(controller, controller.selectedApi) {
+        if (controller.selectedApi == LlmApi.OPENROUTER) controller.loadModels()
+    }
+    LaunchedEffect(controller, controller.selectedApi, controller.openAiApiKey, loading) {
+        if (controller.selectedApi == LlmApi.OPENAI && !loading) {
+            delay(600)
+            controller.loadOpenAiModels()
+        }
+    }
+    LaunchedEffect(controller, controller.selectedApi, controller.manualBaseUrl, controller.manualApiKey, loading) {
+        if (controller.selectedApi == LlmApi.MANUAL && !loading && controller.manualBaseUrl.isNotBlank()) {
+            delay(600)
+            controller.loadManualModels()
+        }
+    }
+    LaunchedEffect(controller, controller.selectedApi, controller.googleApiKey, loading) {
+        if (controller.selectedApi == LlmApi.GOOGLE_AI && !loading) {
+            delay(600)
+            controller.loadGoogleModels()
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
@@ -114,30 +159,79 @@ fun CarPromptScreen(controller: CarPromptController) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
             Selector("API:", controller.selectedApi.label, controller.apis, { it.label }, controller::selectApi, enabled = !loading)
-            if (!controller.selectedApi.isLocal) {
-                Selector(
-                    "Model:",
-                    controller.selectedModel,
-                    controller.models,
-                    { if (it == PAID_QWEN_MODEL_ID) "$it (paid)" else it },
-                    controller::selectModel,
-                    enabled = !loading,
-                )
-            }
         }
         if (controller.selectedApi.isLocal) {
+            OutlinedTextField(
+                value = controller.localApiKey,
+                onValueChange = controller::updateLocalApiKey,
+                enabled = !loading,
+                label = { Text("Local API key (optional)") },
+                visualTransformation = PasswordVisualTransformation(),
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+            )
             Text(
                 "Uses the model loaded in ${controller.selectedApi.label} at ${controller.selectedApi.baseUrl}. " +
-                    "Optional key: $LOCAL_API_KEY_VARIABLE. The full catalog needs a large context window.",
+                    "Blank key uses $LOCAL_API_KEY_VARIABLE if set; typed keys stay in memory only. " +
+                    "The full catalog needs a large context window.",
                 style = MaterialTheme.typography.bodySmall,
             )
-        }
-        if (!controller.selectedApi.isLocal && controller.selectedModel == PAID_QWEN_MODEL_ID) {
-            Text(
-                "Paid model: OpenRouter charges apply to translation and full-catalog recommendation requests.",
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodySmall,
-            )
+        } else {
+            if (controller.selectedApi == LlmApi.GOOGLE_AI) {
+                OutlinedTextField(
+                    value = controller.googleApiKey,
+                    onValueChange = controller::updateGoogleApiKey,
+                    enabled = !loading,
+                    label = { Text("Google AI Studio API key") },
+                    visualTransformation = PasswordVisualTransformation(),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Text(
+                    "Blank uses GOOGLE_AI_API_KEY. Typed keys stay in memory; available models load after key entry.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            if (controller.selectedApi == LlmApi.MANUAL) {
+                OutlinedTextField(
+                    value = controller.manualBaseUrl,
+                    onValueChange = controller::updateManualBaseUrl,
+                    enabled = !loading,
+                    label = { Text("API base URL (including /v1 if required)") },
+                    placeholder = { Text("https://provider.example/v1") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = controller.manualApiKey,
+                    onValueChange = controller::updateManualApiKey,
+                    enabled = !loading,
+                    label = { Text("Manual API key (optional)") },
+                    visualTransformation = PasswordVisualTransformation(),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Text(
+                    "Blank key sends no authentication. URL/key stay in memory. HTTPS required except loopback HTTP.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            if (controller.selectedApi == LlmApi.OPENAI) {
+                OutlinedTextField(
+                    value = controller.openAiApiKey,
+                    onValueChange = controller::updateOpenAiApiKey,
+                    enabled = !loading,
+                    label = { Text("OpenAI API key") },
+                    visualTransformation = PasswordVisualTransformation(),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Text(
+                    "Blank uses OPENAI_API_KEY. Typed keys stay in memory only. Model discovery refreshes after key entry.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            RemoteModelPicker(controller, enabled = !loading)
         }
         OutlinedTextField(
             value = controller.prompt,
@@ -186,6 +280,145 @@ fun CarPromptScreen(controller: CarPromptController) {
             }
         }
         controller.metadata?.let { DebugMetadataPanel(it) }
+    }
+}
+
+@Composable
+internal fun RemoteModelPicker(
+    controller: CarPromptController,
+    enabled: Boolean,
+) {
+    val scope = rememberCoroutineScope()
+    val openAi = controller.selectedApi == LlmApi.OPENAI
+    val manual = controller.selectedApi == LlmApi.MANUAL
+    val google = controller.selectedApi == LlmApi.GOOGLE_AI
+    val provider = controller.selectedApi.label
+    val modelsLoading =
+        when {
+            manual -> controller.manualModelsLoading
+            google -> controller.googleModelsLoading
+            openAi -> controller.openAiModelsLoading
+            else -> controller.modelsLoading
+        }
+    val choices =
+        when {
+            manual -> controller.manualModels.map { ModelChoice(it) }
+            google -> controller.googleModels.map { ModelChoice(it.id, it.name) }
+            openAi -> controller.openAiModels.map { ModelChoice(it) }
+            else -> controller.availableModels.map { it.toModelChoice() }.sortedWith(compareBy<ModelChoice> { it.tier }.thenBy { it.id })
+        }
+    var expanded by remember(controller.selectedApi) { mutableStateOf(false) }
+    LaunchedEffect(enabled) { if (!enabled) expanded = false }
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        OutlinedTextField(
+            value = controller.selectedModel,
+            onValueChange = controller::selectModel,
+            enabled = enabled,
+            label = { Text("$provider selected model ID (exact entry)") },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box {
+                OutlinedButton(onClick = { expanded = true }, enabled = enabled) { Text("Browse / search models") }
+                if (expanded && enabled) {
+                    ModelPickerPopup(
+                        choices = choices,
+                        onDismiss = { expanded = false },
+                        onSelect = {
+                            controller.selectModel(it)
+                            expanded = false
+                        },
+                    )
+                }
+            }
+            TextButton(onClick = { controller.selectModel("") }, enabled = enabled) { Text("Clear selection") }
+            OutlinedButton(
+                onClick = {
+                    scope.launch {
+                        when {
+                            manual -> controller.loadManualModels(refresh = true)
+                            google -> controller.loadGoogleModels(refresh = true)
+                            openAi -> controller.loadOpenAiModels(refresh = true)
+                            else -> controller.loadModels(refresh = true)
+                        }
+                    }
+                },
+                enabled = enabled && !modelsLoading,
+            ) { Text("Refresh models") }
+            if (modelsLoading) CircularProgressIndicator(modifier = Modifier.size(24.dp))
+        }
+        if (google) {
+            Text(
+                "Browse all Google generateContent models; search inside the picker or enter an exact ID. " +
+                    "Selected models and input/output limits are reverified on Send. Some specialized models may reject chat requests.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            controller.googleModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            controller.selectedGoogleModel?.let {
+                Text(
+                    "Input limit: ${it.inputTokenLimit}; output limit: ${it.outputTokenLimit} tokens.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            Text(
+                "Pricing is not reported by model discovery. Prompt/catalog go to Google; quota limits and charges may apply. No fallback.",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        } else if (manual) {
+            Text(
+                "Requires OpenAI-compatible /chat/completions with model, messages and max_tokens. " +
+                    "Model discovery uses /models if supported; otherwise type an exact ID. Pricing/context limits are unavailable.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            controller.manualModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            Text(
+                "Prompt and full catalog are sent to this endpoint; charges may apply. Review the URL before sending. No automatic fallback.",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        } else if (openAi) {
+            Text(
+                "Browse all OpenAI-listed IDs or type an exact model ID. Compatibility unknown: the list includes non-chat models; " +
+                    "Chat Completions support, pricing and context/output limits are not reported. " +
+                    "Unsupported models and context errors are reported by OpenAI.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            controller.openAiModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            Text(
+                "Paid API: prompt and full catalog are sent to OpenAI. Both workflow stages may incur charges. No automatic fallback.",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        } else {
+            Text(
+                "Search inside the picker by ID/name, or enter an exact model ID. Only verified text models are listed. " +
+                    "Output USD / 1M token tiers: Low <=1, Medium >1 to 10, High >10. Free requires all non-discount charges zero. " +
+                    "Other provider charges may apply; tiers are UI-defined, not provider ratings.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            controller.modelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            val model = controller.selectedModelInfo
+            if (model != null) {
+                Text(
+                    "${if (model.isFree) "Free" else "Paid"} model. " +
+                        "USD/token: input ${model.promptPrice}; output ${model.completionPrice}. Other provider charges may apply.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            if (model?.isFree != true) {
+                Text(
+                    if (model == null) {
+                        "Pricing unverified: this ID may incur charges. Live metadata checks run on Send; no automatic fallback."
+                    } else {
+                        "Paid model: OpenRouter charges apply to translation and full-catalog recommendation requests."
+                    },
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+        }
     }
 }
 
