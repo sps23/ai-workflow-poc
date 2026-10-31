@@ -9,8 +9,9 @@ Use Koog for prompt execution and its Ktor transport for HTTP.
 
 Confirmed decisions:
 - One user submission per invocation, two bounded inference calls, no conversation history.
-- Send a compact catalog containing all reviewed configurations and their reviewed
-  facts. Omit unreviewed configurations, raw source text, and duplicate evidence.
+- Both CLI and desktop use the generated `vehicle-catalog/data-model-catalog.json`.
+  It contains normalized values from the per-car JSON files, not review-approved
+  facts or page-level citations.
 - Use one configurable, verified `:free` model or exactly `openrouter/free`.
   The latter routes across free models; the underlying model may differ per call.
   **Approved paid exception:** exactly `qwen/qwen3.5-flash-02-23` may use nonnegative
@@ -28,23 +29,25 @@ Confirmed decisions:
   prompts. LM Studio now discovers its single loaded chat model/context, pins
   its ID and applies the same estimated size gate; other local presets keep
   model omission and no metadata/size gate. The CLI stays OpenRouter-only.
+- The generator matches each JSON to a PDF by identical basename in the same
+  folder. The prompt context derives stable IDs for trim/powertrain variants,
+  carries document-level PDF links, and has no page-level citations. The response
+  contract and first-stage `LlmRequest` remain unchanged; PDF paths resolve locally.
 
-This is a simpler alternative to `openrouter-integration-plan.md`. Its deterministic
-filtering/ranking architecture is not a prerequisite for this two-call workflow.
-Saving this plan authorizes neither application implementation nor live API calls.
+The workflow is prototype advice, not a deterministic eligibility or ranking
+engine. Saving this plan authorizes neither application implementation nor live API calls.
 
 ## Flow
 
 ```text
-CLI prompt + bundled catalog.json
-  -> validate inputs and decode catalog
-  -> compact reviewed catalog
+CLI or desktop prompt + data-model-catalog.json
+  -> validate prompt and load generated catalog context
   -> verify configured free model once for this submission
   -> size check, then translate user text to LlmRequest JSON without catalog
   -> validate translation and preserve original wording
   -> publish translated JSON for desktop download
-  -> size check, then send LlmRequest JSON + entire compact reviewed catalog
-  -> one recommendation inference call (same model, no filtering)
+  -> size check, then send LlmRequest JSON + generated car catalog
+  -> one recommendation inference call using the same model
   -> decode/validate cars/trim/options JSON
   -> print readable answer, actual model ID, and prototype disclaimer
 ```
@@ -59,48 +62,27 @@ failure prevents the second call; no automatic retry or fallback at either stage
 
 ## Existing pieces to reuse
 
-- `VehicleCatalogCodec.decode` already validates the catalog structure.
-- Catalog types and review flags are in
-  `src/main/kotlin/com/sps23/aiworkflow/catalog/VehicleCatalog.kt`.
-- Default input: `src/main/resources/vehicle-catalog/catalog.json`, loaded as a
-  classpath resource. A custom catalog path is outside this first version.
+- `DataModelCatalogContext.loadBundled()` loads the normalized catalog and creates
+  deterministic configuration IDs for prompt output and local PDF lookup.
+- `generateDataModelCatalog` rebuilds `src/main/resources/vehicle-catalog/data-model-catalog.json`
+  from same-basename source JSON/PDF pairs.
 - Koog core, OpenRouter client, Koog Ktor transport, Ktor, serialization, and
   coroutines are already declared in `build.gradle.kts`. No new library planned.
 
 ## Implementation todos
 
-### 1. Prepare the compact catalog
+### 1. Load the generated catalog context
 
-Create `recommendation/CatalogContext.kt` under the existing Kotlin package.
-Decode the bundled catalog using the existing codec. Retain every reviewed
-configuration and join its reviewed prices, measurements, and equipment facts.
-Keep IDs, names, units, ranges, equipment conditions, price basis/currency/dates,
-and measurement approval status. Include only referenced feature definitions.
-Represent source references compactly by document ID/page; omit raw text and
-duplicate evidence. Preserve unknown values as unknown.
+Use `DataModelCatalogContext.loadBundled()` for both CLI and desktop requests.
+It decodes the generated resource, adds stable IDs to trim/variant rows, and
+registers each ID's source PDF path for local downloads. The generator is the
+source of truth for normalization and exact PDF pairing; do not reconstruct
+catalog records in the prompt workflow.
 
-Done when fixture tests show that every reviewed configuration survives,
-unreviewed facts are excluded, joins remain correct, and JSON is compact.
-
-**Approved local-context revision:** serialize the compact projection as
-`indexed-v1`: configuration fact arrays index shared top-level prices,
-measurements and equipment; fact featureId values index features; all source
-entries index original citation strings in sources. Indexes are zero-based;
-zero is a valid reference. Deduplicate only identical complete facts, including
-conditions and provenance; keep applicability in each configuration. Preserve
-all reviewed data, output IDs and original citations. Stored catalog schema
-and filtering scope are unchanged. Runtime instructions explain resolution.
-Round-trip the indexed projection to the original typed compact projection in
-tests, including the full bundled catalog, to prove losslessness.
-
-`./gradlew catalogSize` reports actual inline/indexed UTF-8 sizes and heuristic
-context requirements without inference. The current payload is 235,979 bytes
-vs 1,024,558 inline (76% reduction); 105 reviewed configurations survive.
-The baseline estimate includes instructions, delimiters, empty request and
-message overhead, then uses a 32768-token output target for OpenRouter and local;
-real translation adds input.
-An exact tokenizer is not available in the declared dependencies. Use the
-existing byte estimate with explicit limitations, not a claimed exact count.
+The generated catalog has normalized inline values and document-level PDF
+links, but no fact-review flags or page citations. Preserve unknown source
+values as unknown, request empty page-citation arrays, and never submit a
+model-authored PDF path to the local download store.
 
 ### 2. Run translation and recommendation
 
@@ -146,8 +128,12 @@ prompt-building functions together rather than introducing a framework.
   Larger budgets can increase context requirements, latency and paid-model cost.
   OpenRouter retains its fixed reservation/rejection policy, not local shrinking.
   Keep simple
-  answers concise and recommendations to three configurations by default,
-  honoring explicit more/all requests and retaining necessary caveats.
+  answers concise and recommendations to up to three distinct make/model
+  combinations by default, honoring explicit result counts/all requests.
+  Include every matching trim/powertrain configuration for each selected model,
+  even when the response exceeds three configurations. Return fewer models when
+  fewer match; retain necessary caveats. Selection remains model-guided, not a
+  deterministic completeness or eligibility check.
   Allow 600,000 ms for request/socket timeouts: full-catalog processing on free
   providers can exceed two minutes even for a short user prompt. Keep the
   connection-establishment timeout at 15,000 ms; explicit caller timeout
@@ -186,11 +172,11 @@ Done when a fake-provider CLI check covers successful output and a failing exit.
 
 Keep this plan aligned with the implementation and add minimal README usage:
 environment variable names, selecting a current free model, the command, external
-transmission of the prompt/compact catalog, and limitations.
+transmission of the prompt/generated catalog, and limitations.
 Keep API keys outside tracked files. Use only catalog data permitted for external
 processing; no catalog upload is needed while planning or running offline tests.
 
-Keep related tests in `CatalogContextTest`, `OpenRouterCarWorkflowTest`, and
+Keep related tests in `DataModelCatalogContextTest`, `OpenRouterCarWorkflowTest`, and
 `CarPromptCliTest`. Reuse existing test libraries and local HTTP test patterns.
 Normal tests require neither credentials nor internet.
 
@@ -258,17 +244,16 @@ terms as aids, not instructions. JSON validity and substring checks cannot prove
 semantic completeness or interpretation fidelity.
 
 **Decision:** user approved automatic stage two and retention of downloadable
-translation after recommendation failure. "Full catalog" means every reviewed
-configuration/fact in the existing compact projection, not raw/unreviewed catalog data.
+translation after recommendation failure. Stage two receives the generated
+Data Model catalog; its source-derived values are not independently reviewed.
 
 **Glossary:** LlmRequest = loss-preserving structured query plus original text;
 translation = first inference without catalog; recommendation = second inference
-with complete compact catalog and translated request.
+with the generated Data Model catalog and translated request.
 
-All-reviewed catalog context favors simplicity over scalability. Its measured
-size and a currently available free model's context capacity are an early
-feasibility gate; if they do not fit, report that limitation rather than quietly
-changing the agreed scope. Structurally valid JSON cannot guarantee factual accuracy
+The full generated catalog favors simplicity over scalability. Its size must fit
+the selected model's context; if it does not, report the limitation rather than
+quietly dropping catalog entries. Structurally valid JSON cannot guarantee factual accuracy
 or compliance with every user requirement. Free endpoints may be rate-limited
 or unavailable even with a valid key.
 Translation adds a call and consumes additional quota/time; the full catalog still

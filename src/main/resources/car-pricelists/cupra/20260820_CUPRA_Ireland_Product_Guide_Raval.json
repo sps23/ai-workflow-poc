@@ -1,0 +1,683 @@
+{
+  "model": "CUPRA Raval",
+  "effective_date": "September 2026",
+  "trims": [
+    {
+      "trim_level": "Urban",
+      "pricing": [
+        {
+          "variant": "Raval Urban 116hp V1",
+          "model_code": "KS1AAF",
+          "battery_capacity": "37 kWh",
+          "power_hp": 116,
+          "co2_emissions": 0,
+          "fuel_economy_wltp": "13.5 kWh/100km",
+          "wltp_range_km": 311,
+          "vrt_rate": "7.00%",
+          "annual_road_tax": "€120",
+          "rrp_excl_grants": "€23,495",
+          "rrp_incl_grants": "€28,810",
+          "rotr_price": "€24,775"
+        },
+        {
+          "variant": "Raval Urban 135hp V2",
+          "model_code": "KS1AOF",
+          "battery_capacity": "37 kWh",
+          "power_hp": 135,
+          "co2_emissions": 0,
+          "fuel_economy_wltp": "13.8 kWh/100km",
+          "wltp_range_km": 327,
+          "vrt_rate": "7.00%",
+          "annual_road_tax": "€120",
+          "rrp_excl_grants": "€28,960",
+          "rrp_incl_grants": "€34,645",
+          "rotr_price": "€30,240"
+        }
+      ],
+      "standard_equipment": {
+        "v1_base": {
+          "exterior": [
+            "17\" \"DARK SHADOW\" Alloy Wheels in Matt Black",
+            "Front and Rear Power Windows",
+            "Full LED Headlamps",
+            "LED Rear Edge to Edge Light",
+            "Exterior Mirror Housings Painted in Grey, Heated, Manual Folding",
+            "Flush Door Handles"
+          ],
+          "interior": [
+            "CUPRA Multi-Function Steering Wheel",
+            "CUPRA Drive Profile",
+            "Interior Courtesy Lighting",
+            "Sharp Ambient Cloth Seats",
+            "Manual Height Adjustment For Driver",
+            "Dimming Rear View Mirror",
+            "1-Zone Climate Control"
+          ],
+          "safety": [
+            "Tyre Pressure Monitoring System",
+            "i-Size and 2 top tether child seat anchors in rear seats and passenger seat",
+            "3-point safety belts for front and rear seats, with visual and acoustic reminders",
+            "Pedestrian & Cyclist Protection",
+            "Emergency Call (eCall)",
+            "Speed Assist",
+            "Advanced Drowsiness Assist",
+            "Light and Rain Sensor",
+            "Emergency Steering Support w/ Turn Assist",
+            "Rear Traffic Alert",
+            "Lane Assist",
+            "Exit Warning & Side Assist"
+          ],
+          "technology": [
+            "12.9\" Touchscreen Android Infotainment System w/ Illuminated Sliders",
+            "10.25\" Digital Cockpit",
+            "Keyless Go",
+            "DAB Radio",
+            "Rear Parking Sensors",
+            "'One Pedal' Drive System with Regenerative Braking",
+            "CUPRA CONNECT",
+            "Traffic Sign Recognition",
+            "Wireless Android Auto & Apple CarPlay",
+            "Cruise Control",
+            "High Beam Assist"
+          ]
+        },
+        "v2_additions": [
+          "Rear-View Camera",
+          "2-Zone Climate Control",
+          "Digital Key (Beta)",
+          "Keyless Advanced",
+          "Vehicle-To-Load (V2L)",
+          "Illuminated Exterior Door Handles",
+          "Rear Tinted Windows",
+          "Adaptive Cruise Control",
+          "Heated Steering Wheel",
+          "Front Heated Seats",
+          "Wireless (15kW) Phone Charger",
+          "2x Front & 2x Rear USB (Type C 90W)",
+          "Breakaway, Auto Dimming Rear-View Mirror",
+          "Anti-Theft Alarm w/ Interior Monitor & Towing Protection",
+          "Front & Rear Parking Sensors"
+        ]
+      }
+    },
+    {
+      "trim_level": "Endurance",
+      "pricing": [
+        {
+          "variant": "Raval Endurance 211hp V1",
+          "model_code": "KS1B8E",
+          "battery_capacity": "52 kWh",
+          "power_hp": 211,
+          "co2_emissions": 0,
+          "fuel_economy_wltp": "13.6 kWh/100km",
+          "wltp_range_km": 443,
+          "vrt_rate": "7.00%",
+          "annual_road_tax": "€120",
+          "rrp_excl_grants": "€32,125",
+          "rrp_incl_grants": "€38,020",
+          "rotr_price": "€33,405"
+        },
+        {
+          "variant": "Raval Endurance 211hp V2",
+          "model_code": "KS1B8E",
+          "battery_capacity": "52 kWh",
+          "power_hp": 211,
+          "co2_emissions": 0,
+          "fuel_economy_wltp": "13.6 kWh/100km",
+          "wltp_range_km": 443,
+          "vrt_rate": "7.00%",
+          "annual_road_tax": "€120",
+          "rrp_excl_grants": "€33,110",
+          "rrp_incl_grants": "€39,070",
+          "rotr_price": "€34,390"
+        }
+      ],
+      "standard_equipment": {
+        "v1_base": {
+          "exterior": [
+            "18\" 'DEFIER' Alloy Wheel in Matt Black",
+            "Front and Rear Power Windows",
+            "Full LED Headlamps",
+            "LED Rear Edge to Edge Light",
+            "Welcome Light in Exterior Mirrors",
+            "Exterior Mirror Housings Painted in Grey, Heated, Power Folding",
+            "Flush Door Handles"
+          ],
+          "interior": [
+            "CUPRA Multi-Function Steering w/ satellites",
+            "CUPRA Drive Profile",
+            "Interior Courtesy Lighting",
+            "Sharp Ambient Cloth Seats",
+            "Manual Height Adjustment For Driver",
+            "Dimming Rear View Mirror",
+            "1-Zone Climate Control"
+          ],
+          "safety": [
+            "Tyre Pressure Monitoring System",
+            "i-Size and 2 top tether child seat anchors in rear seats and passenger seat",
+            "3-point safety belts for front and rear seats, with visual and acoustic reminders",
+            "Pedestrian & Cyclist Protection",
+            "Emergency Call (eCall)",
+            "Speed Assist",
+            "Advanced Drowsiness Assist",
+            "Light and Rain Sensor",
+            "Emergency Steering Support w/ Turn Assist",
+            "Rear Traffic Alert",
+            "Lane Assist",
+            "Exit Warning & Side Assist",
+            "Front Cross Traffic Assist"
+          ],
+          "technology": [
+            "12.9\" Touchscreen Android Infotainment System w/ Voice Control & Illuminated Sliders",
+            "10.25\" Digital Cockpit",
+            "Keyless Go",
+            "DAB Radio",
+            "Rear Parking Sensors",
+            "'One Pedal' Drive System with Regenerative Braking",
+            "CUPRA CONNECT",
+            "Traffic Sign Recognition",
+            "Wireless Android Auto & Apple CarPlay",
+            "Adaptive Cruise Control",
+            "High Beam Assist"
+          ]
+        },
+        "v2_additions": [
+          "Rear-View Camera",
+          "2-Zone Climate Control",
+          "Digital Key (Beta)",
+          "Keyless Advanced",
+          "Vehicle-To-Load (V2L)",
+          "Vehicle-To-Home (V2H)",
+          "Illuminated Exterior Door Handles",
+          "Rear Tinted Windows",
+          "Heated Steering Wheel",
+          "Front Heated Seats",
+          "Wireless (15kW) Phone Charger",
+          "2x Front & 2x Rear USB (Type C 90W)",
+          "Breakaway, Auto Dimming Rear-View Mirror",
+          "Anti-Theft Alarm w/ Interior Monitor & Towing Protection",
+          "Front & Rear Parking Sensors"
+        ]
+      }
+    },
+    {
+      "trim_level": "VZ",
+      "pricing": [
+        {
+          "variant": "Raval VZ 226hp VZ",
+          "model_code": "KS1C9E",
+          "battery_capacity": "52 kWh",
+          "power_hp": 226,
+          "co2_emissions": 0,
+          "fuel_economy_wltp": "13.8 kWh/100km",
+          "wltp_range_km": 440,
+          "vrt_rate": "7.00%",
+          "annual_road_tax": "€120",
+          "rrp_excl_grants": "€36,825",
+          "rrp_incl_grants": "€43,035",
+          "rotr_price": "€38,105"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "19\" \"REBEL\" Alloy Wheels in Black/Copper",
+          "Front and Rear Power Windows",
+          "Full LED Headlamps",
+          "LED Rear Edge to Edge Light",
+          "Exterior Mirror Housings Painted in Grey, Heated, Powered Folding",
+          "Flush, Illuminated Exterior Door Handles",
+          "Rear Tinted Windows"
+        ],
+        "interior": [
+          "CUPRA Multi-Function Steering w/ Satellites, Heated",
+          "Alu Pedals",
+          "CUPRA Drive Profile",
+          "Interior Courtesy Lighting",
+          "Dinamica Sport Bucket Seats",
+          "Heated Front Seats",
+          "Wireless (15kW) Phone Charger",
+          "2x Front & 2x Rear USB (Type C 90kW)",
+          "Manual Height Adjustment For Front Seats",
+          "Breakaway, Auto Dimming Rear View Mirror"
+        ],
+        "safety": [
+          "Tyre Pressure Monitoring System",
+          "i-Size and 2 top tether child seat anchors in rear seats and passenger seat",
+          "3-point safety belts for front and rear seats, with visual and acoustic reminders",
+          "Pedestrian & Cyclist Protection",
+          "Emergency Call (eCall)",
+          "Speed Assist",
+          "Advanced Drowsiness Assist",
+          "Light and Rain Sensor",
+          "Emergency Steering Support w/ Turn Assist",
+          "Rear Traffic Alert",
+          "Lane Assist",
+          "Exit Warning & Side Assist",
+          "Anti-Theft Alarm w/ Interior Monitor & Towing Protection"
+        ],
+        "technology": [
+          "12.9\" Touchscreen Android Infotainment System w/ Voice Control & Illuminated Sliders",
+          "10.25\" Digital Cockpit",
+          "Keyless Advanced w/ Digital Key (Beta)",
+          "DAB Radio",
+          "Rear-View Camera",
+          "Front & Rear Parking Sensors",
+          "'One Pedal' Drive System with Regenerative Braking",
+          "CUPRA CONNECT",
+          "Traffic Sign Recognition",
+          "Wireless Android Auto & Apple CarPlay",
+          "Adaptive Cruise Control",
+          "High Beam Assist",
+          "Dynamic Chassis Control (DCC)",
+          "eVAQ",
+          "Vehicle-To-Load (V2L) & Vehicle-To-Home (V2H)"
+        ]
+      }
+    }
+  ],
+  "wheels_and_tyres": [
+    {
+      "code": "STANDARD_V1",
+      "name": "DARK SHADOW 17\" MATT BLACK",
+      "v1_availability": "Standard",
+      "v2_availability": "N/A",
+      "vz_availability": "N/A",
+      "rrp": "Standard"
+    },
+    {
+      "code": "STANDARD_ENDURANCE",
+      "name": "DEFIER 18\" SPORT MATT BLACK",
+      "v1_availability": "Standard (Endurance)",
+      "v2_availability": "Standard (Endurance)",
+      "vz_availability": "N/A",
+      "rrp": "Standard"
+    },
+    {
+      "code": "R8A",
+      "name": "DEFIER 18\" Alloy wheels Machined in Sport Black/Silver",
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "N/A",
+      "rrp": "€280"
+    },
+    {
+      "code": "R9A",
+      "name": "MAVERICK 19\" Alloy wheels Machined in Sport Black/Silver",
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "N/A",
+      "rrp": "€700"
+    },
+    {
+      "code": "R9E",
+      "name": "VANDAL 19\" Alloy wheels Machined in Sport Black/Copper",
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "N/A",
+      "rrp": "€793"
+    },
+    {
+      "code": "STANDARD_VZ",
+      "name": "REBEL 19\" MACHINED SPORT BLACK/COPPER",
+      "v1_availability": "N/A",
+      "v2_availability": "N/A",
+      "vz_availability": "Standard",
+      "rrp": "Standard"
+    },
+    {
+      "code": "SULPHUR_REBEL",
+      "name": "SULPHUR REBEL 19\" MACHINED SPORT BLACK/SULPHUR",
+      "v1_availability": "N/A",
+      "v2_availability": "N/A",
+      "vz_availability": "Optional (Ahead Pack)",
+      "rrp": "Part of Ahead Pack"
+    },
+    {
+      "code": "R9B",
+      "name": "ICON 19\" Alloy wheels Machined in Sport Black/Copper",
+      "v1_availability": "N/A",
+      "v2_availability": "N/A",
+      "vz_availability": "Optional",
+      "rrp": "€466"
+    }
+  ],
+  "interior_options": [
+    {
+      "code": "EV",
+      "name": "Sharp Ambient Cloth Seats",
+      "v1_availability": "Standard",
+      "v2_availability": "Standard",
+      "vz_availability": "N/A",
+      "rrp": "No Cost"
+    },
+    {
+      "code": "GN + PS1",
+      "name": "Dynamic Design (V2: Electric, Heated w/ Driver Memory | VZ: Manual Adjustment & Heated)",
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€1,119"
+    },
+    {
+      "code": "LH + PR1",
+      "name": "Progressive Design (Heated Electric w/ Driver Memory)",
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€1,305"
+    },
+    {
+      "code": "GR + PX1",
+      "name": "Ahead 3D Knitted Cup Bucket (Heated, Electric w/ Driver Memory)",
+      "v1_availability": "N/A",
+      "v2_availability": "N/A",
+      "vz_availability": "Optional",
+      "rrp": "€1,166"
+    }
+  ],
+  "color_options": {
+    "body_colors": [
+      {
+        "name": "Fiord Blue",
+        "type": "Complimentary",
+        "code": "Complimentary",
+        "v1_availability": "Standard",
+        "v2_availability": "Standard",
+        "vz_availability": "Standard",
+        "rrp": "No Cost"
+      },
+      {
+        "name": "Magnetic Tech",
+        "type": "Metallic",
+        "code": "M",
+        "v1_availability": "Optional",
+        "v2_availability": "Optional",
+        "vz_availability": "Optional",
+        "rrp": "€513"
+      },
+      {
+        "name": "Midnight Black",
+        "type": "Metallic",
+        "code": "M",
+        "v1_availability": "Optional",
+        "v2_availability": "Optional",
+        "vz_availability": "Optional",
+        "rrp": "€513"
+      },
+      {
+        "name": "Glacial White",
+        "type": "Metallic",
+        "code": "M",
+        "v1_availability": "Optional",
+        "v2_availability": "Optional",
+        "vz_availability": "Optional",
+        "rrp": "€513"
+      },
+      {
+        "name": "Iridescent Plasma",
+        "type": "Premium Metallic",
+        "code": "C",
+        "v1_availability": "N/A",
+        "v2_availability": "Optional",
+        "vz_availability": "Optional",
+        "rrp": "€933"
+      },
+      {
+        "name": "Manganese Green",
+        "type": "Matt",
+        "code": "T",
+        "v1_availability": "N/A",
+        "v2_availability": "N/A",
+        "vz_availability": "Optional",
+        "rrp": "€1,679"
+      },
+      {
+        "name": "Century Bronze",
+        "type": "Matt",
+        "code": "T",
+        "v1_availability": "N/A",
+        "v2_availability": "N/A",
+        "vz_availability": "Optional",
+        "rrp": "€1,679"
+      }
+    ],
+    "roof_colors": [
+      {
+        "name": "Midnight Black",
+        "v1_availability": "N/A",
+        "v2_availability": "Optional (Bi-Colour Roof)",
+        "vz_availability": "Optional (Bi-Colour Roof)",
+        "rrp": "€373"
+      },
+      {
+        "name": "Manhattan Grey",
+        "v1_availability": "N/A",
+        "v2_availability": "Optional (Bi-Colour Roof)",
+        "vz_availability": "Optional (Bi-Colour Roof)",
+        "rrp": "€373"
+      }
+    ]
+  },
+  "optional_packages_and_extras": [
+    {
+      "code": "PF1",
+      "name": "Intelligent Drive Pack",
+      "items": [
+        "Top View Camera",
+        "Intelligent Park Assist",
+        "Remote Park Assist",
+        "Travel Assist 3.0"
+      ],
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€644"
+    },
+    {
+      "code": "PL2",
+      "name": "Exterior Light Pack",
+      "items": [
+        "CUPRA Matrix LED Headlights"
+      ],
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€835"
+    },
+    {
+      "code": "PW2/PW4",
+      "name": "Winter Pack Performance",
+      "items": [
+        "Heat Pump",
+        "Heated Steering Wheel"
+      ],
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€1,119"
+    },
+    {
+      "code": "PA2/PA3",
+      "name": "Light & Sound Pack",
+      "items": [
+        "Smartlight 2.0 w/ Ambient Light Plus",
+        "Sennheiser Ambeo Sound System"
+      ],
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€886"
+    },
+    {
+      "code": "PPL",
+      "name": "REBEL Pack",
+      "items": [
+        "Smartlight 2.0 w/ Ambient Light Plus",
+        "CUPRA Matrix LED Headlights",
+        "Power Seat Adjustment for Front Seats, Memory for Driver Only",
+        "Pneumatically Adjustable Lumbar Support for Front Seats"
+      ],
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€1,212"
+    },
+    {
+      "code": "PX1",
+      "name": "Ahead Pack",
+      "items": [
+        "19\" REBEL Alloy Wheels in Sulphur/Black",
+        "3D Knitted Interior in Sulphur",
+        "Cup Bucket Seats, Power Adjustment w/ Driver Memory",
+        "CUPRA Logos in Sulphur & Dark Chrome",
+        "Sulphur Interior Panels"
+      ],
+      "v1_availability": "N/A",
+      "v2_availability": "N/A",
+      "vz_availability": "Optional",
+      "rrp": "€1,166"
+    },
+    {
+      "code": "RN5",
+      "name": "Navigation System",
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€700"
+    },
+    {
+      "code": "P3A",
+      "name": "Bi-Colour Roof",
+      "v1_availability": "N/A",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€373"
+    },
+    {
+      "code": "PGP",
+      "name": "Tow Hook Prep (Wiring)",
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€173"
+    },
+    {
+      "code": "CUPRA_CARE",
+      "name": "CUPRA Raval Care Pack",
+      "items": [
+        "Brake Fluid Change",
+        "Pollen Filter Replacement",
+        "1 set of Front Brake Pads",
+        "1 set of Front & Rear Wiper Blades",
+        "2 Tyres"
+      ],
+      "v1_availability": "Optional",
+      "v2_availability": "Optional",
+      "vz_availability": "Optional",
+      "rrp": "€19.99 / month"
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4046,
+      "width_mm": 1784,
+      "height_mm": 1514,
+      "wheelbase_mm": 2599,
+      "front_track_mm": 1538,
+      "rear_track_mm": 1536,
+      "boot_capacity_litres": 441
+    },
+    "powertrains": [
+      {
+        "version": "Urban V1 116hp",
+        "model_code": "KS1EAF",
+        "motor_type": "Permanent Magnet Synchronous Electric Motor",
+        "drivetrain": "Front Wheel Drive",
+        "max_power": "85 kW (116 HP) / 3075-7000 rpm",
+        "max_torque": "264 Nm / 0-3075 rpm",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 10.7,
+        "electric_consumption": "13.5 - 14.5 kWh/100km",
+        "range_wltp_km": 311,
+        "co2_emissions_g_km": 0,
+        "battery_capacity_kwh": 37,
+        "battery_type": "LFP",
+        "battery_voltage": 327,
+        "max_allowable_weight_kg": 2050,
+        "max_towing_weight_unbraked_kg": 500,
+        "max_towing_weight_braked_12_pct_kg": 500,
+        "charging": {
+          "ac_11kw_0_100_percent": "4 hrs",
+          "dc_50kw_10_80_percent": "23 min"
+        }
+      },
+      {
+        "version": "Urban V2 135hp",
+        "model_code": "KS1EOF",
+        "motor_type": "Permanent Magnet Synchronous Electric Motor",
+        "drivetrain": "Front Wheel Drive",
+        "max_power": "99 kW (135 HP) / 3581-6000 rpm",
+        "max_torque": "264 Nm / 0-3581 rpm",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 9.5,
+        "electric_consumption": "13.8 - 15.0 kWh/100km",
+        "range_wltp_km": 327,
+        "co2_emissions_g_km": 0,
+        "battery_capacity_kwh": 37,
+        "battery_type": "LFP",
+        "battery_voltage": 327,
+        "max_allowable_weight_kg": 2010,
+        "max_towing_weight_unbraked_kg": 500,
+        "max_towing_weight_braked_12_pct_kg": 500,
+        "charging": {
+          "ac_11kw_0_100_percent": "4 hrs",
+          "dc_88kw_10_80_percent": "33 min"
+        }
+      },
+      {
+        "version": "Endurance 211hp (V1 & V2)",
+        "model_code": "KS1B8E",
+        "motor_type": "Permanent Magnet Synchronous Electric Motor",
+        "drivetrain": "Front Wheel Drive",
+        "max_power": "155 kW (211 HP) / 5104-8400 rpm",
+        "max_torque": "290 Nm / 0-5104 rpm",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 7.1,
+        "electric_consumption": "13.6 - 14.8 kWh/100km",
+        "range_wltp_km": "446 - 413",
+        "co2_emissions_g_km": 0,
+        "battery_capacity_kwh": 52,
+        "battery_type": "NMC",
+        "battery_voltage": "240-408",
+        "max_allowable_weight_kg": 2080,
+        "max_towing_weight_unbraked_kg": 750,
+        "max_towing_weight_braked_12_pct_kg": 1200,
+        "charging": {
+          "ac_11kw_0_100_percent": "5 hrs 30 mins"
+        }
+      },
+      {
+        "version": "VZ 226hp",
+        "model_code": "KS1C9E",
+        "motor_type": "Permanent Magnet Synchronous Electric Motor",
+        "drivetrain": "Front Wheel Drive",
+        "max_power": "161 kW (226 HP) / 5466-8400 rpm",
+        "max_torque": "290 Nm / 0-5466 rpm",
+        "top_speed_kmh": 175,
+        "acceleration_0_100_kmh_s": 6.8,
+        "electric_consumption": "13.8 - 16.2 kWh/100km",
+        "range_wltp_km": "440 - 379",
+        "co2_emissions_g_km": 0,
+        "battery_capacity_kwh": 52,
+        "battery_type": "NMC",
+        "battery_voltage": "240-408",
+        "max_allowable_weight_kg": 2090,
+        "max_towing_weight_unbraked_kg": 750,
+        "max_towing_weight_braked_12_pct_kg": 1200,
+        "charging": {
+          "ac_11kw_0_100_percent": "5 hrs 30 mins"
+        }
+      }
+    ]
+  }
+}

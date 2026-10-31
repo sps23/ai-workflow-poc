@@ -261,9 +261,9 @@ private fun FailureKind.localSuggestedAction(api: LlmApi): String =
         }
 
         FailureKind.REQUEST_TOO_LARGE, FailureKind.CONTEXT -> {
-            "Run ./gradlew catalogSize to inspect the indexed catalog estimate. In LM Studio, check the loaded " +
-                "context length, not only the model's advertised maximum. Reload with sufficient context if supported, " +
-                "or choose a larger-context model. No catalog facts are dropped to make requests fit."
+            "Check the reported input estimate and context limit. In LM Studio, check the loaded context length, " +
+                "not only the model's advertised maximum. Reload with sufficient context if supported, or choose " +
+                "a larger-context model. No catalog facts are dropped to make requests fit."
         }
 
         FailureKind.MODEL_UNAVAILABLE -> {

@@ -3,11 +3,11 @@
 ## Goal
 
 A Compose Desktop window that translates one free-text request to LlmRequest JSON,
-then sends that JSON plus the complete compact reviewed catalog to OpenRouter
+then sends that JSON plus the generated Data Model catalog to OpenRouter
 and renders car/trim/options tables below the input.
 Extends `openrouter-simple-integration-plan.md`; lifts its "no Compose screen"
 boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
-`CatalogContext.bundledJson()`.
+`DataModelCatalogContext.loadBundled()`.
 
 ## Decisions
 
@@ -43,21 +43,43 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
 - **Request timeout:** shares the CLI's 10-minute per-call request/socket limit, including
   waiting for the first response while the free provider processes the full
   catalog. Connection establishment stays at 15 seconds; no automatic retry.
+- **Result scope:** up to three distinct make/model combinations by default,
+  with every matching trim/powertrain configuration for each selected model.
+  Explicit result counts/all requests override the model count; fewer genuine
+  matches yield fewer models. The shared LLM instructions own this policy;
+  Kotlin neither truncates configurations nor proves matching completeness.
 - **Renderer:** native Compose Material 3 text and option-table rows grouped by
-  car, showing trim and configuration ID. Unknown trim displays `Unknown`;
+  model, then configuration, showing trim and configuration ID. Unknown trim displays `Unknown`;
   empty options display `No requested options returned.` Empty cars display
   `No cars returned.`
-- **Sources:** each option has a required `sources` array of exact `documentId:page`
-  references, one per page; citations stay out of `details`. Show a **Sources**
-  column after **Details**. Group references by document, with one clickable
-  underlined **source** label per PDF and document/page context underneath.
-  Clicking opens a Save dialog; confirm replacement of existing files. Resolve
-  document IDs through the bundled catalog registry and copy the original bundled
-  PDF. Model URLs/paths are not download targets. Unknown IDs, invalid pages,
-  unsafe registry paths, missing resources, LFS pointers, and save failures show
-  explicit errors. Cancellation leaves the destination unchanged.
-  Readable clipboard/CLI output adds a Sources column containing full references
-  (plain text cannot carry a desktop Save action); raw JSON remains unchanged.
+- **Catalog and sources:** the UI loads
+  `vehicle-catalog/data-model-catalog.json`, generated from per-car Data Model
+  files. It contains normalized trims, variants, equipment, options and specs,
+  plus a linked PDF path; it does not carry fact review states or page citations.
+  Derive stable configuration IDs from car ID, trim and variant name. Keep the
+  first-stage `LlmRequest` and cars/trim/options response JSON unchanged. The
+  model returns an empty `sources` array because no page evidence is available.
+  Replace page citations with a **PDF Source** column containing a **Download**
+  button for each option row (also show a download row when options are empty), resolving its
+  path only from the local generated-catalog registry; never trust a model-authored path.
+  Confirm overwrite and report missing resources, LFS pointers, unsafe paths and
+  save failures. The CLI uses this same generated catalog and response contract.
+- **Configuration details:** below the unchanged model/trim/configuration labels,
+  resolve engine type, battery capacity, displacement, horsepower and drivetrain
+  locally by configuration ID. Show gross battery capacity separately where published;
+  prefer technical-spec capacity over the price row's battery figure. Keep missing
+  facts explicitly unavailable; show kW when horsepower is absent. Flag AWD/4x4.
+  Show on-the-road price first, otherwise list price/RRP, with its published basis.
+  Itemize returned OPTIONAL equipment using an exact catalog name or code and
+  applicable trim/variant scope. Display a total only when base and every optional
+  item have unambiguous exact prices in the same currency, with no conditional notes
+  or duplicate references. Unknown/conditional/range/from prices withhold the total.
+  Standard equipment adds nothing. Preserve the response JSON schema and raw JSON;
+  the desktop readable copy includes these locally resolved details.
+  For OPTIONAL equipment, the shared recommendation prompt requests the exact
+  catalog option/package name for local lookup, retaining the requested feature
+  in details when wording differs. A required package appears once even when
+  it supplies several requested features. Other statuses retain shared request labels.
 - **Answer diagnostics:** **Copy raw JSON** copies model-authored response content
   exactly as exposed by Koog, including whitespace, not the HTTP envelope or
   reasoning. **Copy readable output** copies the same cars/options as tab-separated
@@ -67,8 +89,17 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   error report or logs; review before sharing because it may repeat request data.
 - **Performance metadata:** collapsed **DEBUG / Performance metadata** below
   results/errors, available after success or failure. Expand to see per-stage
-  outcome/time, API/model, actual token usage versus estimates and output budgets,
-  followed by selectable monospace schema-v1 JSON. **Copy metadata JSON** and
+  outcome/time and API/model. Translation (first request) and recommendation
+  (second request) each use four stacked, full-width tables: **Request details**,
+  **Token usage**, **Budgets & limits**, and **Timing & speed**. Equal-width columns
+  wrap to fit the available width without horizontal scrolling. Retain consistent
+  body typography and all reported token counts, input estimates,
+  output budgets/context limits, stage/request timings, reported TTFT/generation
+  speed, and **Output tokens / second (whole request)**. Missing values display
+  `unavailable`, including absent request data on reused/failed stages.
+  **Copy readable debug data** copies the same tables as tab-separated text plus
+  workflow/metadata-lookup timing, with confirmation. The existing selectable
+  monospace schema-v1 JSON and its controls remain unchanged. **Copy metadata JSON** and
   **Download metadata JSON** export identical metadata-only JSON; download defaults
   to `llm-metadata.json`, uses Save dialog/overwrite confirmation and visible
   save errors, sharing the request JSON export helper.
@@ -112,8 +143,8 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   estimated full-message input and dynamically caps output before chat dispatch; failures report
   bytes, estimated tokens, output budget and loaded context. Estimates use the
   existing byte heuristic, not model tokenization; server rejection stays visible.
-  All APIs use the lossless indexed catalog defined in the simple integration
-  plan; output IDs/citations and source download behavior remain unchanged.
+  All APIs use the generated Data Model catalog context; output IDs/citations
+  and source download behavior remain unchanged.
   Changing API with
   unchanged input reuses the cached translation. Disabled while a request runs.
   The CLI stays OpenRouter-only.
@@ -159,6 +190,9 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   success/failure, and `metadataJson` exposes the same serialization for tests.
 - `recommendation/CarSelection.kt`: serializable response contract, strict
   decoding, structural checks, status labels, and shared readable text rendering.
+- `recommendation/DataModelCatalogContext.kt`: loads the generated UI catalog,
+  adds deterministic variant IDs to prompt context and maps them to bundled
+  PDF paths for local downloads.
 
 ## Response contract
 

@@ -106,6 +106,56 @@ class OpenRouterCarWorkflowTest {
     }
 
     @Test
+    fun `remote and local recommendations request three models and retain every returned trim`() {
+        listOf(false, true).forEach { local ->
+            FakeOpenRouterServer().use { server ->
+                server.chatBody = FakeOpenRouterServer.chatResponse(FakeOpenRouterServer.MULTI_MODEL_OUTPUT)
+                val workflow =
+                    if (local) {
+                        OpenRouterCarWorkflow(
+                            LocalLlmConfig(LlmApi.LM_STUDIO, null, "${server.baseUrl}/v1", 10_000, 512),
+                            catalog,
+                        )
+                    } else {
+                        workflow(server)
+                    }
+                val answer = runBlocking { workflow.answer("Need a family car") }
+                assertEquals(5, answer.selection.cars.size)
+                assertEquals(
+                    3,
+                    answer.selection.cars
+                        .distinctBy { it.car }
+                        .size,
+                )
+                assertEquals(
+                    listOf("Base", "Comfort", "Sport"),
+                    answer.selection.cars
+                        .filter { it.car == "Example Family" }
+                        .map { it.trim },
+                )
+                val system =
+                    Json
+                        .parseToJsonElement(server.chatRequests.last().body)
+                        .jsonObject
+                        .getValue("messages")
+                        .jsonArray
+                        .first()
+                        .jsonObject
+                        .getValue("content")
+                        .jsonPrimitive.content
+                assertEquals(SYSTEM_INSTRUCTIONS, system)
+                assertTrue("copy its exact catalog option name" in system)
+                assertTrue("list the package only once" in system)
+                assertTrue("up to three distinct make/model combinations" in system)
+                assertTrue("include ALL catalog trim/powertrain configurations" in system)
+                assertTrue("explicit user result count or request for all matches overrides" in system)
+                assertTrue("if fewer models match, return only" in system)
+                assertFalse("at most three configurations" in system)
+            }
+        }
+    }
+
+    @Test
     fun `explicit free router passes metadata checks and is forwarded unchanged to both calls`() {
         FakeOpenRouterServer().use { server ->
             server.modelsBody = FakeOpenRouterServer.modelsJson(id = "openrouter/free")

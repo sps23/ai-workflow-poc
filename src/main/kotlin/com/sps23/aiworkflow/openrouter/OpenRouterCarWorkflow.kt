@@ -50,33 +50,43 @@ val SYSTEM_INSTRUCTIONS: String =
       measurement approval status (for example PENDING_HOMOLOGATION). Prices are in minor units (cents).
     - A missing field or status UNKNOWN means the value is unknown. Say so; never guess.
     - If the catalog lacks evidence to answer, say the evidence is insufficient.
-    - Refer to cars by configuration id and cite sources as documentId:page when useful.
-    - Catalog format "indexed-v1" is losslessly indexed, not filtered. Each configuration's prices,
-      measurements and equipment arrays contain zero-based indexes into the corresponding top-level
-      fact array. A fact's featureId is a zero-based index into top-level features. Every sources
-      entry on a configuration or fact is a zero-based index into top-level sources, whose strings
-      are the original documentId:page citations. Resolve these indexes before interpreting facts.
-      Never confuse index 0 with absence. Output original configuration IDs and full citation strings,
-      never numeric indexes. Catalogs without this format marker contain inline facts instead.
+    - Refer to cars by the exact configurationId supplied in the catalog.
+      The UI Data Model catalog provides document-level sourcePdfPath links but no page-level evidence;
+      do not invent page citations or paths. Return an empty sources array unless actual documentId:page
+      citations are present in the supplied evidence.
+    - The bundled Data Model catalog carries normalized inline values and deterministic configuration
+      IDs. Treat sourcePdfPath as a local document link, not a page citation or user-facing source.
+      Never invent page citations.
     - Return exactly one JSON object with this shape and every field present:
       {"cars":[{"configurationId":"catalog configuration id","car":"make and model","trim":null,
       "options":[{"name":"requested option","status":"UNKNOWN","details":"conditions or evidence limitations","sources":[]}]}]}
     - The only top-level key is cars. Each car has only configurationId, car, trim, options.
       Each option has only name, status, details, sources. Use JSON strings, arrays, and null as shown.
       Use the catalog trim string, or null when unknown. Use an empty options array if none were requested.
-    - Include every requested equipment option for each returned car. Reuse the same option names across cars.
+    - Include every requested equipment option for each returned car. For OPTIONAL equipment that maps
+      to a catalog option, copy its exact catalog option name into name so local pricing can resolve it.
+      Keep the original requested feature in details when its wording differs. If a package is required,
+      name that catalog package and explain the included feature in details; list the package only once.
+      Otherwise reuse the same requested option names across cars.
       status must be exactly STANDARD, OPTIONAL, NOT_AVAILABLE, or UNKNOWN.
       Missing evidence means UNKNOWN, not NOT_AVAILABLE. Include fitment conditions and evidence
       limitations in details; use an empty string if none. Put citations ONLY in sources, never in details.
-      sources is an array of exact documentId:page strings copied from the supplied catalog evidence,
+      sources is an array of exact documentId:page strings copied from supplied page-level evidence,
       one entry per page (for example ["vw/Golf_MY27.pdf:8","vw/Golf_MY27.pdf:9"]).
-      Use [] when evidence is unavailable. Never invent file paths, URLs, documents, or page numbers.
+      Use [] when page-level evidence is unavailable. Never invent file paths, URLs, documents, or page numbers.
+      A catalog sourcePdfPath is only a local document link and must not be copied into sources.
     - Use unique catalog configuration IDs and unique option names within each car.
       If no cars can be identified from the catalog for this request, return {"cars":[]}.
     - Output JSON only, without Markdown, code fences, commentary, or additional fields.
     - Keep details concise and focused on requested options and necessary caveats.
-    - For recommendations, show at most three configurations unless the user explicitly requests more
-      or all matches.
+    - For recommendations, select up to three distinct make/model combinations by default.
+      An explicit user result count or request for all matches overrides this model count.
+      Count models, not trims or powertrain variants: three matching trims of one model count as one model.
+      For each selected model, include ALL catalog trim/powertrain configurations that meet the request,
+      each as a separate cars entry with its exact configurationId. Do not cap the number of configurations.
+      Use the same exact catalog make and model string in car for every configuration of that model.
+      Fill the model count with other matching models when available; if fewer models match, return only
+      those matches. Never add a nonmatching model or trim just to reach the count.
     - Present the conclusion and supporting facts, not a step-by-step analysis of every catalog entry.
     """.trimIndent()
 
@@ -274,7 +284,7 @@ class OpenRouterCarWorkflow(
 
     constructor(config: LocalLlmConfig, catalogJson: String) : this(LocalLlmClient(config), catalogJson)
 
-    /** Two bounded calls: translate without catalog, then recommend with the entire reviewed catalog. */
+    /** Two bounded calls: translate without catalog, then recommend with the bundled car catalog. */
     suspend fun answer(
         userPrompt: String,
         cachedRequest: LlmRequest? = null,
