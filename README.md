@@ -239,6 +239,14 @@ Ollama may require a `model` field and reject such requests. Then
 type a prompt, press **Send**, and
 native car/trim/options tables render below, grouped by model then configuration,
 with the model ID and prototype disclaimer.
+Below each configuration, engine details and prices resolve from the bundled
+catalog, not model-authored specifications. Missing facts display as unavailable.
+Prices prefer on-the-road, then list price/RRP, with the basis labelled.
+Returned optional equipment is itemized when its name/code and trim scope match
+the catalog exactly. Totals appear only when all included prices are exact,
+unconditional and in the same currency; otherwise the total is unavailable.
+Standard equipment adds no charge. **Copy readable output** includes these
+details; raw response JSON remains unchanged.
 Progress shows translation then car selection. After translation,
 **Download LLM Request JSON** saves the validated intermediate JSON via a Save
 dialog—even while selection runs or after it fails. This is the same JSON sent

@@ -64,6 +64,22 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   path only from the local generated-catalog registry; never trust a model-authored path.
   Confirm overwrite and report missing resources, LFS pointers, unsafe paths and
   save failures. The CLI uses this same generated catalog and response contract.
+- **Configuration details:** below the unchanged model/trim/configuration labels,
+  resolve engine type, battery capacity, displacement, horsepower and drivetrain
+  locally by configuration ID. Show gross battery capacity separately where published;
+  prefer technical-spec capacity over the price row's battery figure. Keep missing
+  facts explicitly unavailable; show kW when horsepower is absent. Flag AWD/4x4.
+  Show on-the-road price first, otherwise list price/RRP, with its published basis.
+  Itemize returned OPTIONAL equipment using an exact catalog name or code and
+  applicable trim/variant scope. Display a total only when base and every optional
+  item have unambiguous exact prices in the same currency, with no conditional notes
+  or duplicate references. Unknown/conditional/range/from prices withhold the total.
+  Standard equipment adds nothing. Preserve the response JSON schema and raw JSON;
+  the desktop readable copy includes these locally resolved details.
+  For OPTIONAL equipment, the shared recommendation prompt requests the exact
+  catalog option/package name for local lookup, retaining the requested feature
+  in details when wording differs. A required package appears once even when
+  it supplies several requested features. Other statuses retain shared request labels.
 - **Answer diagnostics:** **Copy raw JSON** copies model-authored response content
   exactly as exposed by Koog, including whitespace, not the HTTP envelope or
   reasoning. **Copy readable output** copies the same cars/options as tab-separated

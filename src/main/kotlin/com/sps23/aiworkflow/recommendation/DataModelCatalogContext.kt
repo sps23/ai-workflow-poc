@@ -55,8 +55,16 @@ data class DataModelPromptConfiguration(
 class DataModelCatalogContext private constructor(
     val promptJson: String,
     private val sourcePdfByConfiguration: Map<String, String>,
+    private val detailsByConfiguration: Map<String, CatalogConfigurationDetails>,
 ) {
     fun sourcePdfPath(configurationId: String): String? = sourcePdfByConfiguration[configurationId]
+
+    fun details(car: SelectedCar): RecommendationDetails =
+        detailsByConfiguration[car.configurationId]?.describe(car.options)
+            ?: RecommendationDetails(
+                "Engine: unavailable (configuration not found in catalog)",
+                listOf("Price: unavailable (configuration not found in catalog)"),
+            )
 
     companion object {
         const val BUNDLED_CATALOG_RESOURCE = "/vehicle-catalog/data-model-catalog.json"
@@ -84,6 +92,7 @@ class DataModelCatalogContext private constructor(
             require(artifact.vehicles.isNotEmpty()) { "Bundled data-model catalog contains no vehicles." }
 
             val sourcePdfByConfiguration = linkedMapOf<String, String>()
+            val detailsByConfiguration = linkedMapOf<String, CatalogConfigurationDetails>()
             val vehicles =
                 artifact.vehicles.map { car ->
                     validatePdfPath(car.sourcePdfPath, car.sourcePath)
@@ -104,6 +113,7 @@ class DataModelCatalogContext private constructor(
                                             require(sourcePdfByConfiguration.put(configurationId, car.sourcePdfPath) == null) {
                                                 "Duplicate derived configuration id: $configurationId"
                                             }
+                                            detailsByConfiguration[configurationId] = CatalogConfigurationDetails(car, trim.name, variant)
                                             DataModelPromptConfiguration(configurationId, variant)
                                         },
                                     standardEquipment = trim.standardEquipment,
@@ -122,6 +132,7 @@ class DataModelCatalogContext private constructor(
                         DataModelPromptCatalog(DATA_MODEL_CATALOG_SCHEMA_VERSION, vehicles),
                     ),
                 sourcePdfByConfiguration = sourcePdfByConfiguration,
+                detailsByConfiguration = detailsByConfiguration,
             )
         }
 
