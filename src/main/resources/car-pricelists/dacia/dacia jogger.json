@@ -1,0 +1,180 @@
+{
+  "model": "Dacia Jogger",
+  "effective_date": "August 2026",
+  "trims": [
+    {
+      "trim_level": "Essential",
+      "pricing": [
+        {
+          "powertrain": "TCe 110",
+          "price": "€26,990",
+          "co2_emissions_g_km": "135",
+          "annual_road_tax": "€210"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "Driver & passenger airbags",
+          "Passenger airbag with deactivation function",
+          "Front & side airbags",
+          "ESC & ASR traction control with HSA Hill start assist",
+          "Emergency brake assist",
+          "Lane keep assist",
+          "Traffic sign recognition",
+          "Forward collision warning",
+          "Urban forward advanced emergency braking",
+          "Driver attention alert",
+          "Rear parking sensors",
+          "Emergency call",
+          "My Safety to manage driver assistance systems"
+        ],
+        "exterior": [
+          "16\" steel wheels with 'Erelia' trim",
+          "Longitudinal roof bars",
+          "Tinted side and rear windows",
+          "Whip/Rod antenna",
+          "New signature daytime running lights",
+          "LED headlamps"
+        ],
+        "interior_and_comfort": [
+          "7 seats",
+          "ISOFIX",
+          "Cruise control with speed limiter",
+          "Manual air conditioning",
+          "Auto lights & wipers",
+          "Electric front windows",
+          "Manual rear windows",
+          "Manually adjustable wing mirrors",
+          "Day/Night manual rear view mirror",
+          "Steering wheel with height adjustment",
+          "Height adjustable driver seat",
+          "TFT instrument panel with analogue display",
+          "Gear shift indicator"
+        ],
+        "multimedia": [
+          "Media control, Bluetooth with Smartphone app"
+        ]
+      }
+    },
+    {
+      "trim_level": "Expression",
+      "pricing": [
+        {
+          "powertrain": "TCe 110",
+          "price": "€27,890 - €28,490",
+          "co2_emissions_g_km": "132 - 135",
+          "annual_road_tax": "€210"
+        },
+        {
+          "powertrain": "HEV 155",
+          "price": "€31,590",
+          "co2_emissions_g_km": "104",
+          "annual_road_tax": "€180"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Rear view camera"
+        ],
+        "exterior_and_wheels_additions": [
+          "16\" steel wheel with 'Erelia' trim",
+          "Roof bars with modular functionality",
+          "Electrically adjustable & defrosting wing mirrors",
+          "Body coloured mirrors",
+          "Shark fin antenna"
+        ],
+        "interior_and_comfort_additions": [
+          "Keyless entry",
+          "Gear shift indicator",
+          "High centre console with armrest",
+          "Leather steering wheel"
+        ],
+        "multimedia_additions": [
+          "Access Media control with wireless Apple CarPlay & Android Auto"
+        ]
+      }
+    },
+    {
+      "trim_level": "Extreme",
+      "pricing": [
+        {
+          "powertrain": "TCe 110",
+          "price": "€29,990",
+          "co2_emissions_g_km": "135",
+          "annual_road_tax": "€210"
+        },
+        {
+          "powertrain": "HEV 155",
+          "price": "€33,090",
+          "co2_emissions_g_km": "104",
+          "annual_road_tax": "€180"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Blind spot warning",
+          "High beam assist",
+          "Front & rear parking sensors",
+          "Multi-view 360 degree camera"
+        ],
+        "exterior_and_wheels_additions": [
+          "16\" 'Tamia' alloy wheels",
+          "Front fog lights",
+          "Megalith grey door mirrors"
+        ],
+        "interior_and_comfort_additions": [
+          "Automatic air conditioning",
+          "Electronic parking brake",
+          "7\" TFT digital driver display",
+          "Wireless smartphone charger",
+          "Height adjustable driver seat",
+          "Split folding rear seat",
+          "Keyless entry",
+          "Heated steering wheel",
+          "Heated seats",
+          "Boot floor mat"
+        ],
+        "multimedia_additions": [
+          "Satellite navigation with wireless Apple CarPlay & Android Auto"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Exterior Paint",
+      "options": [
+        {
+          "code": "STANDARD",
+          "description": "Glacier White",
+          "price": "€0",
+          "availability": "All Trims"
+        },
+        {
+          "code": "METALLIC",
+          "description": "Metallic Paint (Pearl Black, Shadow Grey, Dusty Green, Sandstone, Urban Grey, Terracotta)",
+          "price": "€645",
+          "availability": "All Trims (Varies by trim color availability)"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "powertrains": [
+      {
+        "name": "TCe 110",
+        "type": "Petrol",
+        "displacement_cc": "998 - 999",
+        "wltp_combined_consumption_l_100km": "5.8 - 6.0",
+        "wltp_combined_co2_g_km": "132 - 135"
+      },
+      {
+        "name": "HEV 155",
+        "type": "Full Hybrid",
+        "displacement_cc": 1789,
+        "wltp_combined_consumption_l_100km": "4.6",
+        "wltp_combined_co2_g_km": "104"
+      }
+    ]
+  }
+}

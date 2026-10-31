@@ -1,0 +1,296 @@
+{
+  "model": "Volkswagen Golf MY27",
+  "effective_date": "October 2026",
+  "trims": [
+    {
+      "trim_level": "Golf Life",
+      "pricing": [
+        {
+          "model_code": "DA13BX",
+          "powertrain": "1.5 TSI 116HP",
+          "co2_emissions_g_km": "120",
+          "vrt_rate": "16.00%",
+          "fuel_consumption_l_100km": "5.4",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac34,630",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac36,735"
+        },
+        {
+          "model_code": "DA13BM",
+          "powertrain": "1.5 TSI MHEV 116HP",
+          "co2_emissions_g_km": "118",
+          "vrt_rate": "16.00%",
+          "fuel_consumption_l_100km": "5.2",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac37,255",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac39,360"
+        },
+        {
+          "model_code": "DA132X",
+          "powertrain": "2.0 TDI 116HP",
+          "co2_emissions_g_km": "114",
+          "vrt_rate": "15.25%",
+          "fuel_consumption_l_100km": "4.3",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac37,825",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac39,930"
+        },
+        {
+          "model_code": "DA13HY",
+          "powertrain": "1.5 eHybrid TSI 150HP",
+          "co2_emissions_g_km": "25.0",
+          "vrt_rate": "7.00%",
+          "fuel_consumption_l_100km": "5.0",
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac45,000",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac47,105"
+        }
+      ],
+      "highlights": [
+        "16\" Norfolk Alloy Wheels",
+        "Adaptive Cruise Control",
+        "Park Assist with Park Distance Control",
+        "Wireless Charging",
+        "Air Conditioning System Climatronic",
+        "Auto. Emergency Braking Front Assist with Pedestrian and Cyclist Monitoring",
+        "Exterior Mirrors: with Memory Feature, Power-folding / adjustable, separately heated"
+      ]
+    },
+    {
+      "trim_level": "Golf Edition 75",
+      "pricing": [
+        {
+          "model_code": "DA13BX",
+          "powertrain": "1.5 TSI 116HP",
+          "co2_emissions_g_km": "122",
+          "vrt_rate": "16.75%",
+          "fuel_consumption_l_100km": "5.4",
+          "annual_road_tax": "\u20ac200",
+          "rrp": "\u20ac34,830",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac36,936"
+        },
+        {
+          "model_code": "DA13BM",
+          "powertrain": "1.5 MHEV 116HP",
+          "co2_emissions_g_km": "116",
+          "vrt_rate": "16.00%",
+          "fuel_consumption_l_100km": "5.1",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac37,455",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac39,560"
+        },
+        {
+          "model_code": "DA132X",
+          "powertrain": "2.0 TDI 116HP",
+          "co2_emissions_g_km": "115",
+          "vrt_rate": "15.25%",
+          "fuel_consumption_l_100km": "4.4",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac38,025",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac40,130"
+        },
+        {
+          "model_code": "DA13HY",
+          "powertrain": "1.5 eHybrid TSI 150HP",
+          "co2_emissions_g_km": "25.0",
+          "vrt_rate": "7.00%",
+          "fuel_consumption_l_100km": "5.0",
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac45,200",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac47,305"
+        }
+      ],
+      "highlights": [
+        "17\" Nottingham Alloy Wheels",
+        "10-Colour Ambient Lighting",
+        "Metallic Paint",
+        "High Beam Control 'Light Assist'",
+        "Keyless Access with SAFELOCK",
+        "Leather-wrapped Multi-function Steering Wheel",
+        "Rear View Camera",
+        "We Connect Plus",
+        "Rear Tinted Windows"
+      ]
+    },
+    {
+      "trim_level": "Golf Style",
+      "pricing": [
+        {
+          "model_code": "DA14EX",
+          "powertrain": "1.5 TSI 150HP",
+          "co2_emissions_g_km": "124",
+          "vrt_rate": "16.75%",
+          "fuel_consumption_l_100km": "5.4",
+          "annual_road_tax": "\u20ac200",
+          "rrp": "\u20ac39,005",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac41,110"
+        },
+        {
+          "model_code": "DA14BM",
+          "powertrain": "1.5 TSI MHEV 116HP",
+          "co2_emissions_g_km": "116",
+          "vrt_rate": "16.00%",
+          "fuel_consumption_l_100km": "5.1",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac40,220",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac42,325"
+        },
+        {
+          "model_code": "DA142X",
+          "powertrain": "2.0 TDI 116HP",
+          "co2_emissions_g_km": "115",
+          "vrt_rate": "15.25%",
+          "fuel_consumption_l_100km": "4.4",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac40,805",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac42,910"
+        },
+        {
+          "model_code": "DA14HY",
+          "powertrain": "1.5 TSI eHybrid 150HP",
+          "co2_emissions_g_km": "26.0",
+          "vrt_rate": "7.00%",
+          "fuel_consumption_l_100km": "5.0",
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac50,090",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac52,195"
+        }
+      ],
+      "highlights": [
+        "Sports Comfort Seats in Front",
+        "Lane Change System Side Assist",
+        "Air Care Climatronic 3 Zone Automatic",
+        "Rear Traffic Alert",
+        "LED Light Unit in Footwell in Front & Rear",
+        "High-Beam Control 'Light Assist'",
+        "Sports Bumpers",
+        "Chrome Molding on bottom of the side window"
+      ]
+    },
+    {
+      "trim_level": "Golf R-Line",
+      "pricing": [
+        {
+          "model_code": "DA15EX",
+          "powertrain": "1.5 TSI 150HP",
+          "co2_emissions_g_km": "127",
+          "vrt_rate": "17.50%",
+          "fuel_consumption_l_100km": "5.6",
+          "annual_road_tax": "\u20ac200",
+          "rrp": "\u20ac40,235",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac42,340"
+        },
+        {
+          "model_code": "DA15BM",
+          "powertrain": "1.5 TSI MHEV 116HP",
+          "co2_emissions_g_km": "119",
+          "vrt_rate": "16.75%",
+          "fuel_consumption_l_100km": "5.2",
+          "annual_road_tax": "\u20ac190",
+          "rrp": "\u20ac41,145",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac43,250"
+        },
+        {
+          "model_code": "DA15EM",
+          "powertrain": "1.5 TSI MHEV 150HP",
+          "co2_emissions_g_km": "121",
+          "vrt_rate": "16.75%",
+          "fuel_consumption_l_100km": "5.3",
+          "annual_road_tax": "\u20ac200",
+          "rrp": "\u20ac43,595",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac45,700"
+        },
+        {
+          "model_code": "DA157Z",
+          "powertrain": "2.0 TDI 150HP DSG",
+          "co2_emissions_g_km": "123",
+          "vrt_rate": "16.75%",
+          "fuel_consumption_l_100km": "4.7",
+          "annual_road_tax": "\u20ac200",
+          "rrp": "\u20ac45,870",
+          "delivery_and_service": "\u20ac2,105",
+          "rotr_price": "\u20ac47,975"
+        }
+      ],
+      "highlights": [
+        "18\" York Alloy Wheels",
+        "Sports Suspension",
+        "Premium Sports Seats in Front",
+        "Driving Mode Selection",
+        "Progressive Steering",
+        "LED Headlights with LED Separate Daytime Running Lights",
+        "Body-coloured Bumpers in R-Line Style",
+        "Pedals in Brushed Stainless Steel",
+        "Inserts of Front and Outer Rear Seats in Fabric 'R-Line' Inner Sides of Bolsters in ArtVelours Microfleece"
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "powertrains": [
+      {
+        "name": "1.5 TSI 116HP",
+        "engine": "1.5 TSI 116HP",
+        "gearbox": "6 speed manual / 7 speed auto DSG MHEV",
+        "cubic_capacity_cc": 1498,
+        "max_output_hp": 116,
+        "max_torque_nm": 220,
+        "top_speed_kmh": 203,
+        "acceleration_0_100_kmh_s": 9.9
+      },
+      {
+        "name": "1.5 TSI 150HP",
+        "engine": "1.5 TSI 150HP",
+        "gearbox": "6 speed manual / 7 speed auto DSG MHEV",
+        "cubic_capacity_cc": 1498,
+        "max_output_hp": 150,
+        "max_torque_nm": 250,
+        "top_speed_kmh": 224,
+        "acceleration_0_100_kmh_s": 8.4
+      },
+      {
+        "name": "1.5 TSI 150HP PHEV",
+        "engine": "1.5 TSI 150HP PHEV",
+        "gearbox": "6 speed auto DSG",
+        "battery_capacity_kwh": 19.7,
+        "electric_range_km": 143,
+        "max_output_hp": 200,
+        "max_torque_nm": 350
+      },
+      {
+        "name": "2.0 TDI 116HP",
+        "engine": "2.0 TDI 116HP",
+        "gearbox": "6 speed manual",
+        "cubic_capacity_cc": 1968,
+        "max_output_hp": 116,
+        "max_torque_nm": 300,
+        "top_speed_kmh": 202,
+        "acceleration_0_100_kmh_s": 10.2
+      },
+      {
+        "name": "2.0 TDI 150HP",
+        "engine": "2.0 TDI 150HP",
+        "gearbox": "7 speed auto DSG",
+        "cubic_capacity_cc": 1968,
+        "max_output_hp": 150,
+        "max_torque_nm": 360,
+        "top_speed_kmh": 223,
+        "acceleration_0_100_kmh_s": 8.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "model": "Volkswagen ID.7 & ID.7 Tourer MY27",
+  "effective_date": "October 2026",
+  "trims": [
+    {
+      "trim_level": "Pure Plus",
+      "body_styles": [
+        {
+          "body_style": "Fastback",
+          "model_code": "ED22EH",
+          "powertrain": "59kWh (204HP)",
+          "range_wltp_km": 470,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 14.3,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac54,990",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac56,615"
+        },
+        {
+          "body_style": "Tourer",
+          "model_code": "ED52EH",
+          "powertrain": "59kWh (204HP)",
+          "range_wltp_km": 460,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 14.7,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac55,790",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac57,415"
+        }
+      ],
+      "highlights": [
+        "19\" Hudson Alloy Wheels",
+        "15\" Infotainment Display",
+        "Area View incl. Rear View Camera System",
+        "IQ.Light - LED Matrix Headlamps",
+        "Illuminated Front & Rear Logos",
+        "Heated Front Seats with Massage Programs",
+        "Rear Tinted Windows",
+        "Head-up Display",
+        "Easy Open & Close Package",
+        "Wireless Smartphone Charging",
+        "Lane Assist, Travel Assist & Emergency Assist",
+        "3 Zone Climatronic with enhanced air filter",
+        "IDA Voice Assistant",
+        "Keyless Access with SAFELOCK"
+      ]
+    },
+    {
+      "trim_level": "Pro S Plus",
+      "body_styles": [
+        {
+          "body_style": "Fastback",
+          "model_code": "ED24QM",
+          "powertrain": "86kWh (286HP)",
+          "range_wltp_km": 702,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 13.7,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac61,190",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac62,815"
+        },
+        {
+          "body_style": "Tourer",
+          "model_code": "ED54QM",
+          "powertrain": "86kWh (286HP)",
+          "range_wltp_km": 681,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 14.2,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac61,990",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac63,615"
+        }
+      ],
+      "highlights": [
+        "19\" Hudson Alloy Wheels",
+        "86kWh Extended Range Battery (Up to 702km WLTP)",
+        "15\" Infotainment Display",
+        "Area View incl. Rear View Camera System",
+        "IQ.Light - LED Matrix Headlamps",
+        "Illuminated Front & Rear Logos",
+        "Heated Front Seats with Massage Programs",
+        "Head-up Display",
+        "Lane Assist, Travel Assist & Emergency Assist",
+        "Predictive Speed Limiter & Dynamic Road Sign Display"
+      ]
+    },
+    {
+      "trim_level": "GTX Plus",
+      "body_styles": [
+        {
+          "body_style": "Fastback",
+          "model_code": "ED29PM",
+          "powertrain": "86kWh (340HP)",
+          "range_wltp_km": 597,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 16.3,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac67,890",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac69,515"
+        },
+        {
+          "body_style": "Tourer",
+          "model_code": "ED59PM",
+          "powertrain": "86kWh (340HP)",
+          "range_wltp_km": 585,
+          "co2_emissions_g_km": 0,
+          "vrt_rate": "7%",
+          "consumption_kwh_100km": 16.6,
+          "annual_road_tax": "\u20ac120",
+          "rrp": "\u20ac68,690",
+          "delivery_and_service": "\u20ac1,625",
+          "rotr_price": "\u20ac70,315"
+        }
+      ],
+      "highlights": [
+        "20\" Skagen Alloy Wheels (Black)",
+        "Panoramic Smart Glass Roof",
+        "Heated Rear Outer Seats",
+        "Active Climate Seats in Front",
+        "Upgraded GTX Perforated ArtVelours Seats",
+        "Adaptive Chassis Control (DCC)",
+        "Harman Kardon Sound System (12 Speakers + 1 Subwoofer)",
+        "GTX Sports Style Bumpers",
+        "GTX Interior & Exterior Styling Accents"
+      ]
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Alloy Wheels",
+      "options": [
+        {
+          "code": "WBT",
+          "description": "19\" Bergen Alloy Wheels (included w/ Black Package)",
+          "price": "Optional on Pure Plus & Pro S Plus"
+        },
+        {
+          "code": "P13",
+          "description": "20\" Trondheim Alloy Wheels (Airstop Tyres)",
+          "price": "Optional on Pure Plus & Pro S Plus"
+        },
+        {
+          "code": "PJ7",
+          "description": "20\" Montreal Alloy Wheels (Airstop Tyres)",
+          "price": "Optional on all trims"
+        },
+        {
+          "code": "PJ3",
+          "description": "20\" Skagen Alloy Wheels (Black)",
+          "price": "Standard on GTX Plus"
+        },
+        {
+          "code": "PJ6",
+          "description": "21\" Mataro Alloy Wheels (Airstop Tyres)",
+          "price": "Optional on Pro S Plus & GTX Plus"
+        }
+      ]
+    },
+    {
+      "category": "Styling & Packages",
+      "options": [
+        {
+          "code": "P25",
+          "description": "Exterior Package Plus incl. Panoramic Smart Glass Roof & DCC",
+          "price": "Optional on Pure Plus & Pro S Plus"
+        },
+        {
+          "code": "PBF",
+          "description": "Interior Package Plus incl. Active Climate Seats & Harman Kardon",
+          "price": "Optional on Pure Plus & Pro S Plus"
+        },
+        {
+          "code": "WBT",
+          "description": "Exterior Black Package",
+          "price": "Optional"
+        }
+      ]
+    },
+    {
+      "category": "Functional & Technology",
+      "options": [
+        {
+          "code": "FF1",
+          "description": "V2L Adapter (Bi-Directional Charging)",
+          "price": "Optional on all trims"
+        },
+        {
+          "code": "WPW",
+          "description": "Heat Pump",
+          "price": "Optional on Pure Plus & Pro S Plus"
+        },
+        {
+          "code": "1M6",
+          "description": "Folding Trailer Hitch with Electric Release",
+          "price": "Optional on all trims"
+        },
+        {
+          "code": "P03",
+          "description": "Park Assist Pro",
+          "price": "Optional"
+        },
+        {
+          "code": "PD4",
+          "description": "Park Assist Pro & Digital Key",
+          "price": "Optional"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4961,
+      "width_with_mirrors_mm": 2141,
+      "height_fastback_mm": 1536,
+      "height_tourer_mm": 1551,
+      "wheelbase_mm": 2971,
+      "boot_capacity_fastback_litres": 532,
+      "boot_capacity_tourer_litres": 605,
+      "max_boot_capacity_fastback_litres": 1586,
+      "max_boot_capacity_tourer_litres": 1714
+    },
+    "powertrains": [
+      {
+        "name": "59kWh (204HP)",
+        "battery_capacity": "59kWh (204HP)",
+        "net_battery_capacity_kwh": 59,
+        "max_power_hp": 204,
+        "ac_charging_11kw_time": "06:30 h",
+        "dc_charging_max_kw": 160,
+        "dc_charge_10_80_percent_mins": "27 mins",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": "7.9s (Fastback) / 8.0s (Tourer)"
+      },
+      {
+        "name": "86kWh (286HP)",
+        "battery_capacity": "86kWh (286HP)",
+        "net_battery_capacity_kwh": 86,
+        "max_power_hp": 286,
+        "ac_charging_11kw_time": "09:00 h",
+        "dc_charging_max_kw": 199,
+        "dc_charge_10_80_percent_mins": "28 mins",
+        "top_speed_kmh": 180,
+        "acceleration_0_100_kmh_s": "6.6s (Fastback) / 6.7s (Tourer)"
+      },
+      {
+        "name": "86kWh (340HP GTX)",
+        "battery_capacity": "86kWh (340HP GTX)",
+        "net_battery_capacity_kwh": 86,
+        "max_power_hp": 340,
+        "ac_charging_11kw_time": "09:00 h",
+        "dc_charging_max_kw": 199,
+        "dc_charge_10_80_percent_mins": "28 mins",
+        "top_speed_kmh": 200,
+        "acceleration_0_100_kmh_s": "5.4s (Fastback) / 5.5s (Tourer)"
+      }
+    ]
+  }
+}

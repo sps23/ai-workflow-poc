@@ -1,0 +1,179 @@
+{
+  "model": "CUPRA Born",
+  "effective_date": "September 2026",
+  "trims": [
+    {
+      "trim_level": "Urban V1",
+      "pricing": [
+        {
+          "powertrain": "Born Urban 58kWh 190hp",
+          "price": "\u20ac36,565",
+          "rrp_excl_grants": "\u20ac42,760",
+          "co2_emissions_g_km": "0",
+          "annual_road_tax": "\u20ac120"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "19\" 'STORM' Machined Alloy Wheels in Black",
+          "Full LED Headlamps with Adverse Weather Function",
+          "LED Rear Edge to Edge Light",
+          "Welcome Light in Exterior Mirrors",
+          "Grey Exterior Mirror Housings, Power Folding & Heated"
+        ],
+        "interior_and_comfort": [
+          "CUPRA Heated Steering Wheel",
+          "SEQUAL Yarn Cloth Seats",
+          "1-Zone Climate Control",
+          "CUPRA Drive Profile",
+          "Multicolour Ambient Light",
+          "Aluminium Pedals"
+        ],
+        "multimedia": [
+          "12.9\" Touchscreen Android Infotainment System w/ Voice Control & Illuminated Sliders",
+          "10.25\" Digital Cockpit",
+          "Wireless Android Auto & Apple CarPlay",
+          "4 x USB-C Sockets (2 Front 90W, 2 Rear 45W)",
+          "CUPRA CONNECT"
+        ],
+        "safety_and_security": [
+          "Adaptive Cruise Control",
+          "Lane Assist & Side Assist",
+          "Front & Rear Parking Sensors",
+          "Pedestrian & Cyclist Protection",
+          "Traffic Sign Recognition",
+          "Advanced Drowsiness Assist"
+        ]
+      }
+    },
+    {
+      "trim_level": "Endurance V1",
+      "pricing": [
+        {
+          "powertrain": "Born Endurance 79kWh 231hp",
+          "price": "\u20ac40,785",
+          "rrp_excl_grants": "\u20ac47,260",
+          "co2_emissions_g_km": "0",
+          "annual_road_tax": "\u20ac120"
+        }
+      ],
+      "standard_equipment": {
+        "interior_additions": [
+          "CUPRA Heated Steering Wheel with Satellite Buttons"
+        ]
+      }
+    },
+    {
+      "trim_level": "Urban V2 / Endurance V2",
+      "pricing": [
+        {
+          "powertrain": "Born Urban 58kWh 190hp (V2)",
+          "price": "\u20ac37,585",
+          "rrp_excl_grants": "\u20ac43,845",
+          "co2_emissions_g_km": "0",
+          "annual_road_tax": "\u20ac120"
+        },
+        {
+          "powertrain": "Born Endurance 79kWh 231hp (V2)",
+          "price": "\u20ac41,800",
+          "rrp_excl_grants": "\u20ac48,345",
+          "co2_emissions_g_km": "0",
+          "annual_road_tax": "\u20ac120"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "Illuminated Exterior Door Handles",
+          "Rear Tinted Windows"
+        ],
+        "interior_and_comfort_additions": [
+          "Front Heated Seats",
+          "Wireless Phone Charger",
+          "2-Zone Climate Control"
+        ],
+        "technology_additions": [
+          "Rear-View Camera",
+          "Keyless Advanced",
+          "Digital Key",
+          "Vehicle to Load (V2L)",
+          "Vehicle to Home (V2H - 79kWh Only)"
+        ]
+      }
+    },
+    {
+      "trim_level": "VZ",
+      "pricing": [
+        {
+          "powertrain": "Born VZ 79kWh 326hp",
+          "price": "\u20ac50,525",
+          "rrp_excl_grants": "\u20ac52,085",
+          "co2_emissions_g_km": "0",
+          "annual_road_tax": "\u20ac120"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "20\" 'FIRESTORM' Machined Black / Silver Alloys",
+          "Rear 'VZ' Logo in Sulphur Green",
+          "Full Matrix LED Headlights with Ceremony"
+        ],
+        "interior_and_comfort_additions": [
+          "Enceladus Grey Cup Bucket Seats",
+          "Electrically Adjustable Front Seats with Memory",
+          "Interior Ambient Smartlight",
+          "Dynamic Chassis Control (DCC)"
+        ]
+      }
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4336,
+      "width_mm": 1809,
+      "height_mm": 1540,
+      "wheelbase_mm": 2766,
+      "boot_capacity_l": 385
+    },
+    "powertrains": [
+      {
+        "name": "Urban 58kWh 190hp",
+        "type": "Electric",
+        "power_hp": 190,
+        "max_power_kw": 140,
+        "torque_nm": 350,
+        "usable_battery_capacity_kwh": 58,
+        "wltp_mixed_range_km": "483",
+        "wltp_mixed_consumption_kwh_100km": "14.2",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 8.0,
+        "dc_fast_charging_max_kw": 105
+      },
+      {
+        "name": "Endurance 79kWh 231hp",
+        "type": "Electric",
+        "power_hp": 231,
+        "max_power_kw": 170,
+        "torque_nm": 350,
+        "usable_battery_capacity_kwh": 79,
+        "wltp_mixed_range_km": "626",
+        "wltp_mixed_consumption_kwh_100km": "14.4",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 7.0,
+        "dc_fast_charging_max_kw": 183
+      },
+      {
+        "name": "VZ 79kWh 326hp",
+        "type": "Electric",
+        "power_hp": 326,
+        "max_power_kw": 240,
+        "torque_nm": 545,
+        "usable_battery_capacity_kwh": 79,
+        "wltp_mixed_range_km": "629",
+        "wltp_mixed_consumption_kwh_100km": "14.1",
+        "top_speed_kmh": 200,
+        "acceleration_0_100_kmh_s": 5.6,
+        "dc_fast_charging_max_kw": 185
+      }
+    ]
+  }
+}

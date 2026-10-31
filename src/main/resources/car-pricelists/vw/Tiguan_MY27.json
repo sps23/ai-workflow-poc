@@ -1,0 +1,215 @@
+{
+  "model": "Volkswagen Tiguan MY27",
+  "effective_date": "October 2026",
+  "trims": [
+    {
+      "trim_level": "Tiguan Life & Edition 75",
+      "pricing": [
+        {
+          "model_code": "CT1CZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (Life)",
+          "co2_emissions_g_km": "32g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.4,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac50,750",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac52,930"
+        },
+        {
+          "model_code": "CT1CZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (Edition 75)",
+          "co2_emissions_g_km": "32g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.4,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac51,080",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac53,260"
+        },
+        {
+          "model_code": "CT1C4Z",
+          "powertrain": "2.0 TDI 150HP DSG (Life)",
+          "co2_emissions_g_km": "139g",
+          "vrt_rate": "20%",
+          "fuel_consumption_l_100km": 5.3,
+          "annual_road_tax": "\u20ac210",
+          "rrp": "\u20ac51,690",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac53,870"
+        },
+        {
+          "model_code": "CT1C4Z",
+          "powertrain": "2.0 TDI 150HP DSG (Edition 75)",
+          "co2_emissions_g_km": "139g",
+          "vrt_rate": "20%",
+          "fuel_consumption_l_100km": 5.3,
+          "annual_road_tax": "\u20ac210",
+          "rrp": "\u20ac52,020",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac54,200"
+        }
+      ],
+      "highlights": [
+        "17\" Venezia Alloy Wheels",
+        "12.9\" Infotainment Display",
+        "Rear View Camera & Park Assist Plus",
+        "LED Headlamps (Basic / LED Plus on Edition 75)",
+        "3 Zone Climatronic with enhanced air filter",
+        "Wireless Charging Pad for 2 smart phones",
+        "Digital Cockpit Pro Screen",
+        "Front Cross Traffic Assist",
+        "Silver Roof Rails & Rear Tinted Windows (Edition 75)"
+      ]
+    },
+    {
+      "trim_level": "Tiguan 20th Anniversary",
+      "pricing": [
+        {
+          "model_code": "CT1CZY",
+          "powertrain": "1.5 eHybrid 204HP DSG",
+          "co2_emissions_g_km": "32g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.6,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac55,495",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac57,675"
+        },
+        {
+          "model_code": "CT1C4Z",
+          "powertrain": "2.0 TDI 150HP DSG",
+          "co2_emissions_g_km": "144g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.5,
+          "annual_road_tax": "\u20ac210",
+          "rrp": "\u20ac57,995",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac60,175"
+        }
+      ],
+      "highlights": [
+        "19\" Coventry Alloy Wheels",
+        "R-Line Exterior Design Package",
+        "Black Roof Rails & High-Gloss Black Window Trims",
+        "Anniversary '20' Logo Detailing on B-Pillar & Steering Wheel",
+        "Door Logo Projector ('20 Edition')",
+        "Exclusive Seat Design with Red Decorative Stitching"
+      ]
+    },
+    {
+      "trim_level": "Tiguan Style & R-Line / R-Line 75",
+      "pricing": [
+        {
+          "model_code": "CT1DZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (Style)",
+          "co2_emissions_g_km": "34g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.5,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac54,995",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac57,175"
+        },
+        {
+          "model_code": "CT1D4Z",
+          "powertrain": "2.0 TDI 150HP DSG (Style)",
+          "co2_emissions_g_km": "142g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.4,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac60,750",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac62,930"
+        },
+        {
+          "model_code": "CT1EZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (R-Line)",
+          "co2_emissions_g_km": "36g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.6,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac56,650",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac58,830"
+        },
+        {
+          "model_code": "CT1EZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (R-Line 75)",
+          "co2_emissions_g_km": "36g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.6,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac58,680",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac60,860"
+        },
+        {
+          "model_code": "CT1E4Z",
+          "powertrain": "2.0 TDI 150HP DSG (R-Line)",
+          "co2_emissions_g_km": "144g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.5,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac62,450",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac64,630"
+        },
+        {
+          "model_code": "CT1E4Z",
+          "powertrain": "2.0 TDI 150HP DSG (R-Line 75)",
+          "co2_emissions_g_km": "144g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.5,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac64,480",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac66,660"
+        }
+      ],
+      "highlights": [
+        "18\" Napoli / 20\" Leeds Alloy Wheels",
+        "Front Seats with Massage Feature",
+        "Sports Comfort Seats in ArtVelours Microfleece",
+        "30-Colour Ambient Lighting (Dash/Doors)",
+        "LED HD Matrix Headlamps & Head-Up Display (R-Line 75)",
+        "Area View Camera & Travel Assist (R-Line 75)",
+        "Memory Feature for Park Assist"
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4539,
+      "width_mm": 1859,
+      "height_mm": 1658,
+      "wheelbase_mm": 2677,
+      "boot_capacity_tdi_litres": 652,
+      "boot_capacity_ehybrid_litres": 490
+    },
+    "powertrains": [
+      {
+        "name": "2.0 TDI 150HP DSG",
+        "engine": "2.0 TDI 150HP DSG",
+        "fuel_type": "Diesel",
+        "capacity_cc": 1968,
+        "torque_nm": 360,
+        "transmission": "7-speed DSG",
+        "0_100_kmh_s": 9.4,
+        "top_speed_kmh": 210
+      },
+      {
+        "name": "1.5 eHybrid 204HP DSG",
+        "engine": "1.5 eHybrid 204HP DSG",
+        "fuel_type": "Plug-in Hybrid",
+        "capacity_cc": 1498,
+        "torque_nm": 250,
+        "battery_capacity_kwh": 19.7,
+        "electric_range_km": "118 - 121",
+        "transmission": "6-speed DSG",
+        "0_100_kmh_s": 8.2,
+        "top_speed_kmh": 210
+      }
+    ]
+  }
+}
