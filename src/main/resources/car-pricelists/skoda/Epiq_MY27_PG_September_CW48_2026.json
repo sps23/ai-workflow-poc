@@ -1,0 +1,232 @@
+{
+  "model": "Škoda Epiq",
+  "effective_date": "September 2026",
+  "trims": [
+    {
+      "trim_level": "Choice",
+      "pricing": [
+        {
+          "variant": "Choice 35",
+          "model_code": "PX1CB2",
+          "powertrain": "BEV",
+          "battery": 38.5,
+          "battery_gross_kwh": 38.5,
+          "power_kw": 85,
+          "power_hp": 115,
+          "wltp_range_km": 323,
+          "wltp_consumption_wh_km": 136.7,
+          "annual_road_tax": "€120",
+          "rrp": "€29,990",
+          "vrt_rebate": "€1,931",
+          "seai_grant": "€3,500",
+          "rrp_from": "€24,559"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "17\" Guan Steel Wheels with Aerodynamic Covers",
+          "LED Headlights & LED Taillights",
+          "Black Roof Rails"
+        ],
+        "interior_and_comfort": [
+          "1-Zone Climatronic Air Conditioning",
+          "Rear Parking Sensors"
+        ],
+        "multimedia_and_safety": [
+          "13\" Touchscreen Infotainment Display",
+          "Wireless Apple CarPlay & Android Auto",
+          "Side Assist & Lane Assist",
+          "Adaptive Cruise Control (ACC)",
+          "Mode 3 Charging Cable (11kW)"
+        ]
+      }
+    },
+    {
+      "trim_level": "Essence",
+      "pricing": [
+        {
+          "variant": "Essence 40",
+          "model_code": "PX1CF2",
+          "powertrain": "BEV",
+          "battery": 38.5,
+          "battery_gross_kwh": 38.5,
+          "power_kw": 99,
+          "power_hp": 133,
+          "wltp_range_km": 327,
+          "wltp_consumption_wh_km": 139.0,
+          "annual_road_tax": "€120",
+          "rrp": "€32,490",
+          "vrt_rebate": "€2,092",
+          "seai_grant": "€3,500",
+          "rrp_from": "€26,989"
+        }
+      ],
+      "standard_equipment": {
+        "additions_over_choice": [
+          "Front & Rear Parking Sensors",
+          "Rear View Camera",
+          "Kessy Full - Keyless Entry & Start/Stop System",
+          "Wireless Phone Charging Pad",
+          "Vehicle-to-Load (V2L) Hardware Readiness",
+          "Vehicle-to-Home (V2H) Charging Capability",
+          "Interior Anti-Theft Alarm",
+          "Mobile Digital Key Readiness"
+        ]
+      }
+    },
+    {
+      "trim_level": "Selection",
+      "pricing": [
+        {
+          "variant": "Selection 40",
+          "model_code": "PX1DF2",
+          "powertrain": "BEV",
+          "battery": 38.5,
+          "battery_gross_kwh": 38.5,
+          "power_kw": 99,
+          "power_hp": 133,
+          "wltp_range_km": 323,
+          "wltp_consumption_wh_km": 141.0,
+          "annual_road_tax": "€120",
+          "rrp": "€35,490",
+          "vrt_rebate": "€2,286",
+          "seai_grant": "€3,500",
+          "rrp_from": "€29,704"
+        },
+        {
+          "variant": "Selection 55",
+          "model_code": "PX1DQ2",
+          "powertrain": "BEV",
+          "battery": 55.0,
+          "battery_gross_kwh": 55.0,
+          "power_kw": 155,
+          "power_hp": 208,
+          "wltp_range_km": 435,
+          "wltp_consumption_wh_km": 138.8,
+          "annual_road_tax": "€120",
+          "rrp": "€38,990",
+          "vrt_rebate": "€2,511",
+          "seai_grant": "€3,500",
+          "rrp_from": "€32,979"
+        }
+      ],
+      "standard_equipment": {
+        "additions_over_essence": [
+          "18\" Saola Alloy Wheels",
+          "2-Zone Climatronic Air Conditioning",
+          "Drive Mode Select",
+          "Heated Front Seats",
+          "Heated Techtona Leatherette Multifunction Steering Wheel",
+          "Ambient Interior Lighting with Welcome Logo Projection",
+          "Sunset Privacy Glass",
+          "Auto-Dimming Rearview Mirror",
+          "7-Speaker Sound System"
+        ],
+        "selection_55_additions": [
+          "55 kWh Extended Battery Pack (155 kW / 208 hp)",
+          "Up to 105 kW DC Fast Charging Capability",
+          "1,200 kg Braked Towing Capacity"
+        ]
+      }
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4171,
+      "width_mm": 1798,
+      "height_mm": 1581,
+      "wheelbase_mm": 2597,
+      "max_boot_capacity_litres": 475
+    },
+    "powertrains": [
+      {
+        "version": "Choice 35",
+        "type": "BEV",
+        "model_code": "PX1CB2",
+        "drivetrain": "4x2",
+        "power_kw": 85,
+        "power_hp": 115,
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 11.0,
+        "wltp_range_km": 323,
+        "electric_consumption": 13.67,
+        "battery_capacity_kwh": 37.0,
+        "battery_gross_kwh": 38.5,
+        "gross_vehicle_weight_kg": 2070,
+        "max_towing_capacity_braked_kg": 750,
+        "charging": {
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "4 hours",
+          "dc_fast_charger_max_kw": 45,
+          "dc_time_10_80_percent": "23 mins"
+        }
+      },
+      {
+        "version": "Essence 40",
+        "type": "BEV",
+        "model_code": "PX1CF2",
+        "drivetrain": "4x2",
+        "power_kw": 99,
+        "power_hp": 133,
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 9.9,
+        "wltp_range_km": 327,
+        "electric_consumption": 13.9,
+        "battery_capacity_kwh": 37.0,
+        "battery_gross_kwh": 38.5,
+        "gross_vehicle_weight_kg": 2070,
+        "max_towing_capacity_braked_kg": 750,
+        "charging": {
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "4 hours",
+          "dc_fast_charger_max_kw": 88,
+          "dc_time_10_80_percent": "23 mins"
+        }
+      },
+      {
+        "version": "Selection 40",
+        "type": "BEV",
+        "model_code": "PX1DF2",
+        "drivetrain": "4x2",
+        "power_kw": 99,
+        "power_hp": 133,
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 9.9,
+        "wltp_range_km": 323,
+        "electric_consumption": 14.1,
+        "battery_capacity_kwh": 37.0,
+        "battery_gross_kwh": 38.5,
+        "gross_vehicle_weight_kg": 2070,
+        "max_towing_capacity_braked_kg": 750,
+        "charging": {
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "4 hours",
+          "dc_fast_charger_max_kw": 88,
+          "dc_time_10_80_percent": "23 mins"
+        }
+      },
+      {
+        "version": "Selection 55",
+        "type": "BEV",
+        "model_code": "PX1DQ2",
+        "drivetrain": "4x2",
+        "power_kw": 155,
+        "power_hp": 208,
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 7.1,
+        "wltp_range_km": 435,
+        "electric_consumption": 13.88,
+        "battery_capacity_kwh": 52.0,
+        "battery_gross_kwh": 55.0,
+        "gross_vehicle_weight_kg": 2080,
+        "max_towing_capacity_braked_kg": 1200,
+        "charging": {
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "5:30 hours",
+          "dc_fast_charger_max_kw": 105,
+          "dc_time_10_80_percent": "24 mins"
+        }
+      }
+    ]
+  }
+}

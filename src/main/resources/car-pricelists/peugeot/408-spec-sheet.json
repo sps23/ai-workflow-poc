@@ -1,0 +1,267 @@
+{
+  "model": "Peugeot 408 (Including Electric & Hybrid)",
+  "effective_date": "November 2026",
+  "trims": [
+    {
+      "trim_level": "ALLURE",
+      "pricing": [
+        {
+          "powertrain": "Hybrid 145 Auto",
+          "price": "€37,995",
+          "co2_emissions_g_km": "114-115",
+          "tax_band": "A6",
+          "annual_road_tax": "€190"
+        },
+        {
+          "powertrain": "Electric 210 (58 kWh)",
+          "price": "€38,550",
+          "co2_emissions_g_km": "0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "Advanced Emergency Braking System (Video-AEB) with radar (AEBS3)",
+          "Adaptive Cruise Control with Stop & Go",
+          "Extended Traffic Sign Recognition (ETSR)",
+          "PEUGEOT SOS & Assistance",
+          "Active lane keeping assist",
+          "Driver attention alert",
+          "Automatic Post Collision Safety Brake (PCSB)",
+          "ISOFIX child seat fittings (x2) in the second row",
+          "Perimeter, volumetric and anti-lift alarm",
+          "Tyre under-inflation monitoring and detection (indirect)"
+        ],
+        "exterior": [
+          "19\" 'ADAKITE' Diamond-cut Alloy Wheels (Hybrid 145 Auto)",
+          "19\" 'GRAPHITE' Diamond Cut Alloy Wheels (Electric Only)",
+          "Full LED Headlamps with 3-claw LED daytime running lights in the high position",
+          "'PEUGEOT Smartbeam' - High Beam Assist",
+          "Red illuminated 'PEUGEOT' lettering across rear connector strip",
+          "Body coloured 'cat's ear' rear spoiler",
+          "Body-colour exterior door handles",
+          "Gloss black door mirrors and B Pillar",
+          "Lower body and wheel arch 'SUV style' protection"
+        ],
+        "interior_and_comfort": [
+          "PEUGEOT Open & Go (Keyless entry with 'proximity' locking and unlocking)",
+          "Dual-zone automatic air conditioning",
+          "Acoustic laminated front side windows (HYBRID 145 e-DSC6 versions)",
+          "Dark tinted rear side and tailgate windows",
+          "Electric Folding Door Mirrors",
+          "Electrochrome rear view mirror",
+          "Front & rear parking sensors & 180° Colour Reversing Camera with wash system",
+          "Drive mode selector",
+          "Heated Steering Wheel (ELECTRIC versions)",
+          "Aluminium sports pedals"
+        ],
+        "seating_and_upholstery": [
+          "'Dynamic' front seats",
+          "'TREMEZZO' embossed fabric with 'ISABELLA' leather effect trim",
+          "Driver seat manual lumbar adjustment"
+        ],
+        "multimedia": [
+          "Wireless Mirror Screen with 10\" Touchscreen and i-Toggles",
+          "Wireless smartphone charging",
+          "PEUGEOT i-Cockpit® with a customizable 10\" digital instrument cluster",
+          "DAB radio, Bluetooth®",
+          "2 USB-C ports on the front console and 2 USB-C ports in the rear",
+          "PEUGEOT i-Connect Advanced with Connected 3D navigation"
+        ]
+      }
+    },
+    {
+      "trim_level": "GT",
+      "pricing": [
+        {
+          "powertrain": "Hybrid 145 Auto",
+          "price": "€41,995",
+          "co2_emissions_g_km": "114-115",
+          "tax_band": "A6",
+          "annual_road_tax": "€190"
+        },
+        {
+          "powertrain": "Electric 210 (58 kWh)",
+          "price": "€43,550",
+          "co2_emissions_g_km": "0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Pack Drive Assist Plus (Semi-autonomous driving level 2)",
+          "Full 'hidden' matrix LED headlights with 5 lighting models",
+          "Full 3D LED rear lights with PEUGEOT 'Claw effect' and welcome sequence",
+          "Sequential 'scrolling' indicators embedded in daytime running lights",
+          "Illuminated Front Grille and Peugeot Shield"
+        ],
+        "exterior_and_wheels_additions": [
+          "Powered Electric Tailgate",
+          "Acoustic laminated front side windows",
+          "PEUGEOT 'Lion' shield badging on front doors",
+          "'GT' model designation badging (HYBRID)"
+        ],
+        "interior_and_comfort_additions": [
+          "Ambient Lighting - choice of 8 colours",
+          "Aluminium door and boot sill trims",
+          "Electrochromic rear-view mirror",
+          "Cabin stitch detailing in 'Adamite' green",
+          "Full grain leather steering wheel with 'Adamite' green stitching & 'GT' badging",
+          "Interior roof lining 'MISTRAL' black",
+          "Luxury Carpet Mats with 'Adamite' green stitching",
+          "Sunvisors featuring concealable vanity mirrors with LED lighting"
+        ],
+        "seating_and_upholstery_additions": [
+          "'UZILA' fabric with 'ISABELLA' leather effect and cloth seat"
+        ],
+        "multimedia_additions": [
+          "PEUGEOT Virtual i-Toggles - customisable"
+        ]
+      }
+    },
+    {
+      "trim_level": "GT EXCLUSIVE",
+      "pricing": [
+        {
+          "powertrain": "Hybrid 145 Auto",
+          "price": "€43,995",
+          "co2_emissions_g_km": "114-115",
+          "tax_band": "A6",
+          "annual_road_tax": "€190"
+        },
+        {
+          "powertrain": "Electric 210 (58 kWh)",
+          "price": "€46,465",
+          "co2_emissions_g_km": "0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Pack Vision 360° (VisioPark 360° with 4 cameras)",
+          "Rear Traffic Detection",
+          "Long Range Blind Spot Detection",
+          "Clean Cabin air filtration system"
+        ],
+        "exterior_and_wheels_additions": [
+          "Powered Electric Tailgate - foot operated with pedestrian detection"
+        ],
+        "interior_and_comfort_additions": [
+          "10\" 3D digital instrument Panel Display",
+          "Wireless smartphone charger"
+        ],
+        "seating_and_upholstery_additions": [
+          "Alcantara® Upholstery ('FRAXX KNIT' Tri-Material Alcantara with 'ISABELLA' leather effect)",
+          "AGR certified drivers seat (both driver & front passenger seat on Electric versions)",
+          "Electric, heated, massaging front seats with 4-way electric lumbar adjustment",
+          "2-Position Memory & Welcome Movement for driver"
+        ],
+        "multimedia_additions": [
+          "FOCAL® 10-speaker premium Hi-Fi system"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Exterior Paint",
+      "options": [
+        {
+          "code": "MOF9",
+          "description": "Flare Green Metallic Paint",
+          "price": "€0",
+          "availability": "All Trims"
+        },
+        {
+          "code": "MO--",
+          "description": "Metallic Paint (Okenite White, Selenium Grey, Perla Nera Black)",
+          "price": "€900",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M6--",
+          "description": "Premium Paint (Elixir Red)",
+          "price": "€1,125",
+          "availability": "All Trims"
+        }
+      ]
+    },
+    {
+      "category": "Option Packs",
+      "options": [
+        {
+          "code": "6F04",
+          "description": "FOCAL Premium Hi-Fi System: 10 speakers (2 woofers front, 2 tweeters front, 2 woofers + 2 tweeters rear, 1 central speaker, 1 subwoofer in boot)",
+          "price": "€1,300",
+          "availability": "Allure, GT"
+        },
+        {
+          "code": "1G18",
+          "description": "360° Vision (4 Digital Cameras) & Front Parking Sensors",
+          "price": "€1,125",
+          "availability": "Allure, GT"
+        },
+        {
+          "code": "J60C",
+          "description": "Sunroof Pack & Hands-free module for electric tailgate",
+          "price": "€1,460",
+          "availability": "GT, GT Exclusive"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_m": 4.69,
+      "width_m": 1.85,
+      "height_m": 1.48,
+      "wheelbase_m": 2.79,
+      "turning_diameter_m": 11.2,
+      "trunk_volume_hybrid_l": 536,
+      "trunk_volume_electric_l": 468
+    },
+    "powertrains": [
+      {
+        "name": "Electric 210 hp battery 58 kWh",
+        "type": "Electric",
+        "power_hp": 210,
+        "max_power_kw": 157,
+        "torque_nm": 345,
+        "usable_battery_capacity_kwh": 58.2,
+        "wltp_mixed_range_km": "448 - 455",
+        "wltp_mixed_consumption_kwh_100km": "14.8 - 15.1",
+        "top_speed_kmh": 160,
+        "acceleration_0_100_kmh_s": 7.2,
+        "dc_fast_charging_max_kw": 120
+      },
+      {
+        "name": "Plug-in Hybrid 225 hp e-DCS7",
+        "type": "Plug-in Hybrid",
+        "power_hp": 225,
+        "displacement_cc": 1598,
+        "cylinders": 4,
+        "transmission": "7-Speed Automatic",
+        "usable_battery_capacity_kwh": 14.6,
+        "top_speed_kmh": 233,
+        "acceleration_0_100_kmh_s": 7.5
+      },
+      {
+        "name": "Hybrid 145 Auto",
+        "type": "Hybrid",
+        "power_hp": 145,
+        "ice_power_hp": 136,
+        "ice_torque_nm": 230,
+        "displacement_cc": 1199,
+        "cylinders": 3,
+        "transmission": "6-Speed Automatic",
+        "wltp_combined_consumption_l_100km": "5.1 - 5.2",
+        "wltp_combined_co2_g_km": "114 - 117",
+        "top_speed_kmh": 205,
+        "acceleration_0_100_kmh_s": 9.4
+      }
+    ]
+  }
+}

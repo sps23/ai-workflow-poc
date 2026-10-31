@@ -1,0 +1,303 @@
+{
+  "model": "Peugeot 208 (Including Electric & Hybrid)",
+  "effective_date": "November 2026",
+  "trims": [
+    {
+      "trim_level": "STYLE",
+      "pricing": [
+        {
+          "powertrain": "Petrol Turbo 100bhp",
+          "price": "€25,495",
+          "co2_emissions_g_km": "116-120",
+          "tax_band": "A6",
+          "annual_road_tax": "€190"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "ABS (Anti-lock Braking System) with EBD and EBA",
+          "Adaptive driver and front passenger airbags (with deactivation function)",
+          "Driver and front passenger side airbags",
+          "Front & rear curtain airbags",
+          "Alarm - Connected, Volumetric, Perimetric & Anti-lift sensor (Thatcham approved)",
+          "Automatic door locking when moving off",
+          "Automatic hazard light activation upon heavy brake application",
+          "Child locking functionality on rear doors",
+          "Deadlocking & Electronic code immobiliser",
+          "ESP (Electronic Stability Programme) with Hill Start Assist",
+          "Isofix child seat fittings (x2) in second row",
+          "Programmable cruise control and speed limiter",
+          "Lane Keeping Assist",
+          "Speed limit recognition and recommendation",
+          "Driver attention warning & Driver Vigilance Camera",
+          "Tyre pressure monitoring",
+          "Active Safety Brake (pedestrians)",
+          "PEUGEOT SOS & Assistance (BTA 45)"
+        ],
+        "exterior": [
+          "16\" steel wheels with 'MONTI' trim",
+          "Body-colour exterior door handles",
+          "Door Mirror Shells: Nera Black",
+          "Radiator Grille: Grained Black",
+          "Gloss Black rear cluster connecting strip with 'PEUGEOT' lettering",
+          "Model designation badges front and rear in Basalt Grey",
+          "Rear Spoiler",
+          "Shark fin Radio Antenna"
+        ],
+        "interior_and_comfort": [
+          "Automatic Mono-zone Climate Control Air Conditioning",
+          "PEUGEOT i-Cockpit® with 3.5\" instrument panel display",
+          "Electric power steering with reach and rake adjustable steering column",
+          "Electric and heated door mirrors",
+          "Manual rear-view mirror",
+          "Manual parking brake",
+          "Push button keyless start",
+          "Low centre console",
+          "One-touch electric front & rear windows with pinch protection",
+          "Parking sensors - rear",
+          "Dashboard, front and rear door panel finish: Carbon effect",
+          "Leather steering wheel"
+        ],
+        "seating_and_upholstery": [
+          "Driver and front passenger comfort seats with manual height/longitudinal adjustment",
+          "'Renzo' fabric upholstery with 'Rimini' cloth fabric seats complimented with orange stitch detailing",
+          "1/3 - 2/3 folding rear seat"
+        ],
+        "multimedia": [
+          "PEUGEOT i-Connect Advanced Infotainment System featuring Connected 3D Navigation including TomTom Live Updates and Speedcam/Dangerzones",
+          "Bluetooth® telephone facility & Voice recognition (with Smartphone)",
+          "DAB Radio (Digital Audio Broadcasting)",
+          "Wireless Mirror Screen® (Apple CarPlay™ & Android Auto)",
+          "6-Speaker radio, MP3 compatible",
+          "12V socket",
+          "USB Socket (x1) front"
+        ],
+        "lighting_and_visibility": [
+          "PEUGEOT Eco LED Headlight Technology",
+          "LED daytime running lights with distinctive 3-claw signature",
+          "LED rear lights with horizontal 3-claw signature",
+          "Visibility pack: automatic lights & wipers",
+          "Visibility pack: 'follow me home' headlights"
+        ]
+      }
+    },
+    {
+      "trim_level": "ALLURE",
+      "pricing": [
+        {
+          "powertrain": "Hybrid 110 Auto",
+          "price": "€27,995",
+          "co2_emissions_g_km": "102-105",
+          "tax_band": "A5",
+          "annual_road_tax": "€180"
+        },
+        {
+          "powertrain": "Electric 156 (54 kWh)",
+          "price": "€31,065",
+          "co2_emissions_g_km": "0-0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "16\" 'NOMA' two tone diamond cut alloy wheels",
+          "Gloss black B pillar",
+          "Grained black front and rear bumper inserts"
+        ],
+        "interior_and_comfort_additions": [
+          "PEUGEOT i-Cockpit®: 10\" Configurable heads-up digital instrument panel",
+          "Front & Rear Parking Sensors",
+          "High centre console with 2 cup holders",
+          "Central front armrest with storage compartment",
+          "Electric parking brake",
+          "Dark tinted rear side and tailgate windows",
+          "Electric Folding Door Mirrors with courtesy lighting",
+          "Electrochrome Rear View Mirror"
+        ],
+        "seating_and_upholstery_additions": [
+          "Tri-material 'CASUAL LOMSA' embossed fabric, TEP Isabella leather effect bolsters and cloth seat trim with Quartz stitch detail"
+        ],
+        "multimedia_additions": [
+          "PEUGEOT i-Connect Infotainment System with 10\" HD Colour Touchscreen",
+          "4 USB sockets: USB-C (x2) front, USB-C (x1) & USB-A (x1) rear"
+        ]
+      }
+    },
+    {
+      "trim_level": "ENVY",
+      "pricing": [
+        {
+          "powertrain": "Hybrid 110 Auto",
+          "price": "€29,995",
+          "co2_emissions_g_km": "102-105",
+          "tax_band": "A5",
+          "annual_road_tax": "€180"
+        },
+        {
+          "powertrain": "Electric 156 (54 kWh)",
+          "price": "€31,065",
+          "co2_emissions_g_km": "0-0",
+          "tax_band": "A",
+          "annual_road_tax": "€120"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "16\" 'NOMA' Diamond Cut Alloy Wheels with 'Black Mist' Varnish",
+          "Bi-tone 'Black Diamond' roof",
+          "Front door panel trims with Opalite blue-green screen-printed detailing",
+          "Gloss Black lower bumper lip and upper trim",
+          "Gloss Black Day-Time running light surround"
+        ],
+        "interior_and_comfort_additions": [
+          "Hands-Free Access & Start (proximity keyless entry)",
+          "180° HD Colour Reversing Rear HD camera",
+          "Illuminated Sun Visor Vanity Mirrors",
+          "Mistral Black Interior Roof Lining",
+          "Front aluminium door sills with PEUGEOT signature",
+          "Door Panel with 'Opalite' decorative stitching & co-ordinated door inserts"
+        ],
+        "seating_and_upholstery_additions": [
+          "Dynamic front seats with Tremezzo tri-material upholstery and Opalite blue-green stitching",
+          "Peugeot shield outline printed in 'Opalite' on front headrests"
+        ],
+        "multimedia_additions": [
+          "Navigation Pack - Connected 3D Navigation & Wireless Charging"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Exterior Paint",
+      "options": [
+        {
+          "code": "M0EQ",
+          "description": "Agueda Yellow Metallic Paint",
+          "price": "€675 (€0 on ENVY)",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M0VW",
+          "description": "Alvao Green Metallic Paint",
+          "price": "€675 (€0 on ENVY)",
+          "availability": "ENVY Only"
+        },
+        {
+          "code": "M0SU",
+          "description": "Okenite White Metallic Paint",
+          "price": "€675",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M0F4",
+          "description": "Cumulus (Light) Grey Metallic Paint",
+          "price": "€675",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M09V",
+          "description": "Perla Nera Black Metallic Paint",
+          "price": "€675",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M0LD",
+          "description": "Selenium Grey Metallic Paint",
+          "price": "€675",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M5VH",
+          "description": "Elixir Red Premium Paint",
+          "price": "€900",
+          "availability": "ALLURE, ENVY (Not available on STYLE)"
+        }
+      ]
+    },
+    {
+      "category": "Safety & Security Packs",
+      "options": [
+        {
+          "code": "ZVNR",
+          "description": "Drive Assist Pack Plus: Adaptive Cruise Control with Stop and Go (automatic versions) + Lane Positioning Assist",
+          "price": "€675",
+          "availability": "All Trims (Automatic/Thermal/Electric)"
+        },
+        {
+          "code": "WYAL",
+          "description": "Visiopark 2 (HD reversing & front cameras with 360° vision), Rear & front & side ('Flankguard') parking aid, Blind Spot Detection (BSD)",
+          "price": "€630",
+          "availability": "All Trims (Thermal/Electric)"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4055,
+      "width_mm": 1745,
+      "width_with_mirrors_mm": 1960,
+      "height_mm": 1430,
+      "wheelbase_mm": 2540,
+      "front_overhang_mm": 825,
+      "rear_overhang_mm": 690,
+      "trunk_volume_petrol_hybrid_l": 352,
+      "trunk_volume_electric_l": 309,
+      "max_trunk_volume_petrol_hybrid_l": 1163,
+      "max_trunk_volume_electric_l": 1118
+    },
+    "powertrains": [
+      {
+        "name": "Petrol Turbo 100",
+        "type": "Petrol",
+        "power_hp": 101,
+        "max_power_kw": 74,
+        "torque_nm": 205,
+        "displacement_cc": 1199,
+        "transmission": "6-Speed Manual",
+        "wltp_combined_consumption_l_100km": "6.7",
+        "wltp_combined_co2_g_km": "116 - 120",
+        "top_speed_kmh": 194,
+        "acceleration_0_100_kmh_s": 10.1,
+        "kerb_weight_kg": 1235,
+        "max_towable_weight_braked_kg": 1200
+      },
+      {
+        "name": "Hybrid 110 Auto",
+        "type": "Hybrid",
+        "power_hp": 101,
+        "max_power_kw": 74,
+        "torque_nm": 205,
+        "displacement_cc": 1199,
+        "transmission": "6-Speed Automatic",
+        "battery_technology": "Lithium-ion (48V, 0.432 kWh)",
+        "wltp_combined_consumption_l_100km": "4.5 - 4.7",
+        "wltp_combined_co2_g_km": "102 - 105",
+        "top_speed_kmh": 193,
+        "acceleration_0_100_kmh_s": 9.8,
+        "kerb_weight_kg": 1295,
+        "max_towable_weight_braked_kg": 1200
+      },
+      {
+        "name": "Electric 156 (54 kWh)",
+        "type": "Electric",
+        "power_hp": 156,
+        "max_power_kw": 115,
+        "torque_nm": 260,
+        "usable_battery_capacity_kwh": 48.1,
+        "transmission": "Single-Speed Automatic",
+        "wltp_mixed_range_km": "398 - 410",
+        "wltp_urban_range_km": "536 - 554",
+        "wltp_mixed_consumption_kwh_100km": "14.0 - 14.5",
+        "top_speed_kmh": 150,
+        "acceleration_0_100_kmh_s": 8.2,
+        "ac_charging_max_kw": 11,
+        "dc_fast_charging_max_kw": 100,
+        "dc_fast_charge_20_to_80_percent_mins": 27,
+        "kerb_weight_kg": 1530
+      }
+    ]
+  }
+}

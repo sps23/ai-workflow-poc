@@ -1,0 +1,277 @@
+{
+  "model": "Dacia Bigster",
+  "effective_date": "June 2026",
+  "trims": [
+    {
+      "trim_level": "Essential",
+      "pricing": [
+        {
+          "powertrain": "MHEV 140",
+          "price": "€29,990",
+          "co2_emissions_g_km": "121",
+          "annual_road_tax": "€200"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_security": [
+          "Forward emergency with collision alert",
+          "Emergency braking with pedestrian & cyclist recognition",
+          "Driver & passenger airbags",
+          "Front & side airbags",
+          "Passenger airbag with deactivation function",
+          "Cruise control with speed limiter",
+          "Remote central locking",
+          "LED headlights",
+          "Driver attention & drowsiness alert",
+          "Lane keep assist",
+          "Traffic sign recognition",
+          "ESC, ASR Traction control and HSA Hill start assist",
+          "Daytime running lights",
+          "Rear parking sensors",
+          "Rear camera",
+          "Emergency call",
+          "My Safety Switch"
+        ],
+        "exterior": [
+          "17\" Tergan alloy wheels",
+          "Electrically adjustable & heated door mirrors",
+          "Longitudinal roof bars",
+          "Megalith grey door mirrors",
+          "Megalith grey front & rear skid plates",
+          "Starkle lower door protector",
+          "Starkle front/rear cladding & wheelarches"
+        ],
+        "interior_and_comfort": [
+          "Auto single zone air conditioning",
+          "Synthetic leather steering wheel",
+          "Steel grey front door handles & grey effect dashboard",
+          "One touch electric front windows",
+          "Rear pulse electric rear windows",
+          "Day/Night rear view mirror",
+          "7\" TFT driver instrument display",
+          "ISOFIX",
+          "Manual handbrake",
+          "Auto lights & manual wipers",
+          "Roll away parcel shelf"
+        ],
+        "seating_and_upholstery": [
+          "Fabric/Velvet seat cover",
+          "6W height adjustable driver seat",
+          "4W height adjustable passenger seat",
+          "60/40 Folding rear bench"
+        ],
+        "multimedia": [
+          "10.1\" Media control, Bluetooth, Apple CarPlay & Android Auto"
+        ]
+      }
+    },
+    {
+      "trim_level": "Expression",
+      "pricing": [
+        {
+          "powertrain": "MHEV 140",
+          "price": "€32,290",
+          "co2_emissions_g_km": "121",
+          "annual_road_tax": "€200"
+        },
+        {
+          "powertrain": "HEV 155",
+          "price": "€35,140",
+          "co2_emissions_g_km": "103",
+          "annual_road_tax": "€180"
+        },
+        {
+          "powertrain": "HEV 4x4 150",
+          "price": "€39,140",
+          "co2_emissions_g_km": "129",
+          "annual_road_tax": "€200"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Blind spot monitor",
+          "Front fog lights",
+          "Auto lights & auto wipers"
+        ],
+        "driving_aids_additions": [
+          "Multi-view 360 camera",
+          "Front & rear parking sensors"
+        ],
+        "exterior_and_wheels_additions": [
+          "17\" diamond-cut alloy wheels",
+          "Electrically adjustable/folding & defrosting wing mirrors",
+          "Grey door mirrors",
+          "Shark antenna"
+        ],
+        "interior_and_comfort_additions": [
+          "Denim effect dashboard & door panels",
+          "Electronic handbrake",
+          "Dual zone climate control",
+          "High centre console with sliding armrest",
+          "12v socket in the boot",
+          "False boot floor",
+          "Keyless entry & exit"
+        ],
+        "seating_and_upholstery_additions": [
+          "40/20/40 split rear bench"
+        ]
+      }
+    },
+    {
+      "trim_level": "Journey",
+      "pricing": [
+        {
+          "powertrain": "MHEV 140",
+          "price": "€34,690",
+          "co2_emissions_g_km": "123",
+          "annual_road_tax": "€200"
+        },
+        {
+          "powertrain": "HEV 155",
+          "price": "€37,540",
+          "co2_emissions_g_km": "106",
+          "annual_road_tax": "€180"
+        },
+        {
+          "powertrain": "HEV 4x4 150",
+          "price": "€41,540",
+          "co2_emissions_g_km": "129",
+          "annual_road_tax": "€200"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Intelligent adaptive cruise control (HEV only)",
+          "Auto main/dipped beam headlight activation"
+        ],
+        "exterior_and_wheels_additions": [
+          "19\" Rasan diamond-cut alloy wheels",
+          "Dark tinted rear windows",
+          "Automatic handsfree tailgate"
+        ],
+        "interior_and_comfort_additions": [
+          "10\" TFT driver instrument display",
+          "Refrigerated cooler box in armrest (HEV only)",
+          "Wireless smartphone charger",
+          "Heated steering wheel"
+        ],
+        "seating_and_upholstery_additions": [
+          "Special Journey MicroCloud coated textile upholstery",
+          "6W adjustable driver and passenger seat with lumbar support",
+          "Heated driver & passenger seats"
+        ],
+        "multimedia_additions": [
+          "10.1\" Media Navigation with wireless smartphone replication",
+          "Arkamys 6 speaker 3D sound system"
+        ]
+      }
+    },
+    {
+      "trim_level": "Extreme",
+      "pricing": [
+        {
+          "powertrain": "MHEV 140",
+          "price": "€34,990",
+          "co2_emissions_g_km": "124",
+          "annual_road_tax": "€200"
+        },
+        {
+          "powertrain": "HEV 155",
+          "price": "€37,840",
+          "co2_emissions_g_km": "106",
+          "annual_road_tax": "€180"
+        },
+        {
+          "powertrain": "HEV 4x4 150",
+          "price": "€41,840",
+          "co2_emissions_g_km": "129",
+          "annual_road_tax": "€200"
+        }
+      ],
+      "standard_equipment": {
+        "safety_and_lights_additions": [
+          "Intelligent adaptive cruise control (HEV only)",
+          "Auto main/dipped beam headlight activation",
+          "Adaptive hill descent control"
+        ],
+        "exterior_and_wheels_additions": [
+          "18\" Tagasan diamond-cut alloy wheels",
+          "Dark tinted rear windows",
+          "Panoramic opening sunroof",
+          "Copper brown door mirrors",
+          "Copper brown rear badging",
+          "Modular roof bars"
+        ],
+        "interior_and_comfort_additions": [
+          "Matt Khaki effect dashboard & door panels",
+          "Copper brown air vents",
+          "Heated steering wheel",
+          "Rubber floor mats",
+          "Rubber boot liner"
+        ],
+        "seating_and_upholstery_additions": [
+          "Special Extreme MicroCloud coated textile washable synthetic TEP upholstery",
+          "6W adjustable driver seat with lumbar",
+          "6W adjustable passenger seat",
+          "Heated driver & passenger seats"
+        ],
+        "multimedia_additions": [
+          "10.1\" Media Navigation with wireless smartphone replication",
+          "Arkamys 6 speaker 3D sound system",
+          "Refrigerated cooler box in armrest (HEV only)",
+          "Wireless smartphone charger"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Exterior Paint",
+      "options": [
+        {
+          "code": "STANDARD",
+          "description": "Glacier White",
+          "price": "€0",
+          "availability": "All Trims"
+        },
+        {
+          "code": "METALLIC",
+          "description": "Metallic Paint (Pearl Black, Shadow Grey, Terracotta, Cedar Green, Indigo Blue)",
+          "price": "€745",
+          "availability": "All Trims (Varies by trim color availability)"
+        },
+        {
+          "code": "BI-TONE",
+          "description": "Contrasting (Black) Roof",
+          "price": "€400",
+          "availability": "Journey, Extreme"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "powertrains": [
+      {
+        "name": "MHEV 140",
+        "type": "Mild Hybrid",
+        "displacement_cc": 1199,
+        "wltp_combined_consumption_l_100km": "5.3 - 5.5",
+        "wltp_combined_co2_g_km": "121 - 124"
+      },
+      {
+        "name": "HEV 155",
+        "type": "Full Hybrid",
+        "displacement_cc": 1789,
+        "wltp_combined_consumption_l_100km": "4.5 - 4.7",
+        "wltp_combined_co2_g_km": "103 - 106"
+      },
+      {
+        "name": "HEV 4x4 150",
+        "type": "Full Hybrid 4x4",
+        "displacement_cc": 1199,
+        "wltp_combined_consumption_l_100km": "5.7",
+        "wltp_combined_co2_g_km": "129"
+      }
+    ]
+  }
+}

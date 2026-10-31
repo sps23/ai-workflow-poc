@@ -1,0 +1,113 @@
+{
+  "model": "Toyota RAV4 Plug-in Hybrid (PHEV)",
+  "market": "Ireland",
+  "effective_date": "September 2026",
+  "powertrains": [
+    {
+      "engine_code": "2.5 TNGA PHEV FWD",
+      "displacement_cc": 2487,
+      "max_system_power_hp": 272,
+      "max_torque_Nm": 272,
+      "ev_range_wltp_combined_km": "125 - 137",
+      "transmission": "e-CVT",
+      "performance": {
+        "acceleration_0_100_kmh_sec": 7.5
+      },
+      "environmental": {
+        "fuel_consumption_weighted_l_100km": "1.3 - 1.8",
+        "co2_combined_g_km": "30 - 40",
+        "nox_emissions_mg_km": 3.1
+      }
+    },
+    {
+      "engine_code": "2.5 TNGA PHEV AWD (GR SPORT)",
+      "displacement_cc": 2487,
+      "max_system_power_hp": 309,
+      "ev_range_wltp_combined_km": 121,
+      "transmission": "e-CVT with E-Four Intelligent All-Wheel Drive",
+      "performance": {
+        "acceleration_0_100_kmh_sec": 5.8
+      },
+      "environmental": {
+        "fuel_consumption_weighted_l_100km": 1.6,
+        "co2_combined_g_km": 36,
+        "nox_emissions_mg_km": 2.7
+      },
+      "towing_capacity_braked_kg": 2000
+    }
+  ],
+  "charging_specifications": {
+    "onboard_charger_ac_kw": 11,
+    "dc_fast_charging_kw": "50 (Platinum & GR SPORT)",
+    "wallbox_charging_time": "2 hours at 32A (11 kW)",
+    "household_plug_charging_time": "Up to 6.5 hours at 10A"
+  },
+  "dimensions_weights": {
+    "exterior_length_mm": {
+      "FWD": 4600,
+      "GR_SPORT": 4645
+    },
+    "exterior_width_mm": {
+      "FWD": 1855,
+      "GR_SPORT": 1880
+    },
+    "exterior_height_mm": 1685,
+    "wheelbase_mm": 2690,
+    "boot_capacity_litres_5seat": 446,
+    "fuel_tank_capacity_litres": 55
+  },
+  "grades_and_equipment": [
+    {
+      "grade": "Sol",
+      "hp": 272,
+      "ev_range_km": 137,
+      "standard_features": [
+        "18\" Dark Grey Machined-face Alloy Wheels",
+        "11kW On-Board AC Charger",
+        "12.9\" Touchscreen Multimedia System",
+        "12.3\" Digital Instrument Panel",
+        "Heated Front Seats",
+        "Power Driver Seat",
+        "Smart Entry & Start"
+      ]
+    },
+    {
+      "grade": "Sport",
+      "hp": 272,
+      "ev_range_km": 128,
+      "adds_over_sol": [
+        "20\" Black Alloy Wheels",
+        "Synthetic Leather & Suede Sport Seats",
+        "Hands-Free Power Backdoor",
+        "Bi-tone Exterior Roof"
+      ]
+    },
+    {
+      "grade": "Platinum",
+      "hp": 272,
+      "ev_range_km": 125,
+      "adds_over_sport": [
+        "50kW DC Fast Charging Capability",
+        "20\" Black Machined-Face Alloy Wheels",
+        "JBL Premium Sound System with Subwoofer",
+        "Panoramic Moon Roof",
+        "Toyota Teammate Advanced Park System",
+        "Heated Rear Outer Seats",
+        "Head-Up Display"
+      ]
+    },
+    {
+      "grade": "GR SPORT",
+      "hp": 309,
+      "ev_range_km": 121,
+      "adds_over_platinum": [
+        "E-Four Intelligent All-Wheel Drive (309 HP)",
+        "20\" GR Machined-Face Alloy Wheels",
+        "GR SPORT Dedicated Front & Rear Suspension Tuning",
+        "GR SPORT Styling Kit",
+        "Downhill Assist Control (DAC)",
+        "2,000 kg Braked Towing Capacity"
+      ]
+    }
+  ]
+}

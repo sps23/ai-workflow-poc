@@ -1,0 +1,197 @@
+{
+  "model": "Volkswagen Tayron MY27",
+  "effective_date": "October 2026",
+  "trims": [
+    {
+      "trim_level": "Tayron Life",
+      "seating": "7 Seats (Diesel)",
+      "pricing": [
+        {
+          "model_code": "R41C4Z",
+          "powertrain": "2.0 TDI 150HP DSG",
+          "co2_emissions_g_km": "143g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.5,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac59,650",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac61,830"
+        }
+      ],
+      "highlights": [
+        "LED Headlamps (Basic)",
+        "Rear View Camera",
+        "Anti-Theft Alarm System",
+        "3 Zone Climatronic",
+        "10-Colour Ambient Surround Lighting (Dash)",
+        "Park Assist Plus with Park Distance Control",
+        "Automatic Emergency Braking Front Assist",
+        "13\" Infotainment Screen",
+        "Digital Cockpit Pro Screen",
+        "App Connect Wireless",
+        "Adaptive Cruise Control"
+      ]
+    },
+    {
+      "trim_level": "Tayron Edition 75",
+      "seating": "7 Seats (Diesel)",
+      "pricing": [
+        {
+          "model_code": "R41C4Z",
+          "powertrain": "2.0 TDI 150HP DSG",
+          "co2_emissions_g_km": "143g",
+          "vrt_rate": "21.5%",
+          "fuel_consumption_l_100km": 5.5,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac59,980",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac62,160"
+        }
+      ],
+      "highlights": [
+        "17\" Venezia Alloy Wheels",
+        "Metallic Paint",
+        "Heated Front Seats",
+        "Heated Multi-Function Steering Wheel",
+        "Area View Camera",
+        "LED Plus Headlamps with Ambient Light Strip",
+        "Rear Tinted Windows",
+        "Electric Boot Closing",
+        "Memory Feature for Park Assist",
+        "10-Colour Ambient Surround Lighting (Dash/Doors)"
+      ]
+    },
+    {
+      "trim_level": "Tayron Style",
+      "seating": "5 Seats (eHybrid) / 7 Seats (Diesel)",
+      "pricing": [
+        {
+          "model_code": "R41DZY",
+          "powertrain": "1.5 eHybrid 204HP DSG",
+          "co2_emissions_g_km": "35g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.5,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac57,495",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac59,675"
+        },
+        {
+          "model_code": "R41D4Z",
+          "powertrain": "2.0 TDI 150HP DSG",
+          "co2_emissions_g_km": "145g",
+          "vrt_rate": "25%",
+          "fuel_consumption_l_100km": 5.6,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac70,695",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac72,875"
+        }
+      ],
+      "highlights": [
+        "18\" Napoli Alloy Wheels",
+        "30-Colour Ambient Lighting",
+        "Sports Comfort Seats in Front",
+        "Adaptive Chassis Control DCC Pro",
+        "Front Seats with Massage Feature",
+        "Progressive Steering",
+        "Comfort Seat ArtVelours Material",
+        "ErgoActive Seat on Driver Side"
+      ]
+    },
+    {
+      "trim_level": "Tayron R-Line & R-Line 75",
+      "seating": "5 Seats (eHybrid) / 7 Seats (Diesel)",
+      "pricing": [
+        {
+          "model_code": "R41EZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (R-Line)",
+          "co2_emissions_g_km": "37g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.6,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac58,750",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac60,930"
+        },
+        {
+          "model_code": "R41EZY",
+          "powertrain": "1.5 eHybrid 204HP DSG (R-Line 75)",
+          "co2_emissions_g_km": "38g",
+          "vrt_rate": "7%",
+          "fuel_consumption_l_100km": 1.7,
+          "annual_road_tax": "\u20ac140",
+          "rrp": "\u20ac60,780",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac62,960"
+        },
+        {
+          "model_code": "R41E4Z",
+          "powertrain": "2.0 TDI 150HP DSG (R-Line)",
+          "co2_emissions_g_km": "148g",
+          "vrt_rate": "25%",
+          "fuel_consumption_l_100km": 5.6,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac69,895",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac72,075"
+        },
+        {
+          "model_code": "R41E4Z",
+          "powertrain": "2.0 TDI 150HP DSG (R-Line 75)",
+          "co2_emissions_g_km": "149g",
+          "vrt_rate": "25%",
+          "fuel_consumption_l_100km": 5.7,
+          "annual_road_tax": "\u20ac270",
+          "rrp": "\u20ac71,925",
+          "delivery_and_service": "\u20ac2,180",
+          "rotr_price": "\u20ac74,105"
+        }
+      ],
+      "highlights": [
+        "19\" Coventry / 20\" Leeds Alloy Wheels",
+        "IQ.Light - HD Matrix Headlamps (R-Line 75)",
+        "15\" Infotainment Screen (R-Line 75)",
+        "Augmented Reality Head-Up Display",
+        "Black Headliner & R-Line Sport Seats",
+        "3D LED Rear Combination Lamps with Dynamic Turn Signal",
+        "Car2X Technology",
+        "Park Assist Pro incl. Park Distance Control"
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4792,
+      "width_mm": 1853,
+      "height_mm": 1668,
+      "wheelbase_mm": 2788,
+      "boot_capacity_tdi_litres": 850,
+      "boot_capacity_ehybrid_litres": 705
+    },
+    "powertrains": [
+      {
+        "name": "2.0 TDI 150HP DSG",
+        "engine": "2.0 TDI 150HP DSG",
+        "fuel_type": "Diesel",
+        "capacity_cc": 1968,
+        "torque_nm": 360,
+        "transmission": "7-speed DSG",
+        "0_100_kmh_s": 9.7,
+        "top_speed_kmh": 210
+      },
+      {
+        "name": "1.5 eHybrid 204HP DSG",
+        "engine": "1.5 eHybrid 204HP DSG",
+        "fuel_type": "Plug-in Hybrid",
+        "capacity_cc": 1498,
+        "torque_nm": 250,
+        "battery_capacity_kwh": 19.7,
+        "electric_range_km": "116 - 118",
+        "transmission": "6-speed DSG",
+        "0_100_kmh_s": 8.6,
+        "top_speed_kmh": 210
+      }
+    ]
+  }
+}

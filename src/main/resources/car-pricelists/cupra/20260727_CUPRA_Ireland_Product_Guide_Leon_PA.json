@@ -1,0 +1,401 @@
+{
+  "model": "CUPRA Leon & Leon Sportstourer (SP)",
+  "effective_date": "September 2026",
+  "trims": [
+    {
+      "trim_level": "V1",
+      "pricing": [
+        {
+          "body_style": "5D",
+          "powertrain": "1.5 TSI 150hp",
+          "price": "\u20ac34,995",
+          "co2_emissions_g_km": "131",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "1.5 eTSI 150hp DSG",
+          "price": "\u20ac37,585",
+          "co2_emissions_g_km": "122",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "2.0 TDI 150hp DSG",
+          "price": "\u20ac39,800",
+          "co2_emissions_g_km": "127",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "e-Hybrid 204hp DSG",
+          "price": "\u20ac44,425",
+          "co2_emissions_g_km": "28",
+          "annual_road_tax": "\u20ac140"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 1.5 TSI 150hp",
+          "price": "\u20ac37,120",
+          "co2_emissions_g_km": "133",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 1.5 eTSI 150hp DSG",
+          "price": "\u20ac39,505",
+          "co2_emissions_g_km": "124",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 2.0 TDI 150hp DSG",
+          "price": "\u20ac41,795",
+          "co2_emissions_g_km": "128",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP e-Hybrid 204hp DSG",
+          "price": "\u20ac46,690",
+          "co2_emissions_g_km": "29",
+          "annual_road_tax": "\u20ac140"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "GARBI 18\" Alloy Wheels in Sport Black",
+          "Heat-Insulating and Tinted Rear Windows",
+          "Front and Rear Power Windows",
+          "Black Roof Rails (SP Only)",
+          "Front Full LEDs",
+          "Rear 3D LED lights w/Dynamic Turn Signal & Illuminated CUPRA Logo",
+          "Dynamic Headlight Range Control Self-Adjusting While Driving",
+          "Front LED Fog Lamps with Cornering Function",
+          "Welcome Light in Exterior Mirrors",
+          "Power-Folding, Adjustable and Heated Exterior Mirrors w/ Front Passenger Mirror Lowering Function",
+          "CUPRA Sport Suspension",
+          "Black Contrast Moulding in Black"
+        ],
+        "interior_and_comfort": [
+          "Multi-Function Sports Steering Wheel, Heated w/ Satellites (DSG Only)",
+          "Climatronic 3-Zone Air Conditioning",
+          "Textile Sport Seats",
+          "Progressive Steering",
+          "CUPRA Drive Profile",
+          "Manually Adjustable Height and Lumbar Support for Front Seats",
+          "Aluminium Pedals (Automatic Only)",
+          "Black Roof Cloth",
+          "Auto Dimming Interior Mirror",
+          "Front Centre Armrest"
+        ],
+        "multimedia": [
+          "10.25\" Digital Cockpit",
+          "12.9\" Infotainment System with Illuminated Sliders",
+          "USB-C Sockets (2x Front | 2x Rear)",
+          "7 Speakers",
+          "Voice Control",
+          "Wireless Android Auto & Apple CarPlay",
+          "Wireless Charger",
+          "CUPRA CONNECT"
+        ],
+        "safety_and_security": [
+          "Adaptive Cruise Control",
+          "Lane Assist",
+          "Front Assist with Cross Traffic Assist",
+          "Intelligent Speed Assist",
+          "Traffic Sign Recognition",
+          "Attention Drowsiness Monitor w/ Driver Monitoring System",
+          "High Beam Control",
+          "Emergency Call",
+          "XDS Electronic Differential Lock with Dynamic Traction Support"
+        ]
+      }
+    },
+    {
+      "trim_level": "V2",
+      "pricing": [
+        {
+          "body_style": "5D",
+          "powertrain": "1.5 TSI 150hp",
+          "price": "\u20ac36,735",
+          "co2_emissions_g_km": "131",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "1.5 eTSI 150hp DSG",
+          "price": "\u20ac39,275",
+          "co2_emissions_g_km": "122",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "2.0 TDI 150hp DSG",
+          "price": "\u20ac41,505",
+          "co2_emissions_g_km": "127",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "e-Hybrid 204hp DSG",
+          "price": "\u20ac45,760",
+          "co2_emissions_g_km": "28",
+          "annual_road_tax": "\u20ac140"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 1.5 TSI 150hp",
+          "price": "\u20ac39,190",
+          "co2_emissions_g_km": "133",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 1.5 eTSI 150hp DSG",
+          "price": "\u20ac41,520",
+          "co2_emissions_g_km": "124",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 2.0 TDI 150hp DSG",
+          "price": "\u20ac43,825",
+          "co2_emissions_g_km": "128",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP e-Hybrid 204hp DSG",
+          "price": "\u20ac48,515",
+          "co2_emissions_g_km": "29",
+          "annual_road_tax": "\u20ac140"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "WINDSTORM 18\" Machined Sport Alloy Wheels in Black/Silver"
+        ],
+        "interior_and_comfort_additions": [
+          "Front Heated Seats",
+          "Smart Interior Wraparound Lighting"
+        ],
+        "safety_and_technology_additions": [
+          "Rear View Camera",
+          "Keyless Advanced",
+          "Alarm",
+          "Virtual Pedal (SP Only)",
+          "Towing Preparation"
+        ]
+      }
+    },
+    {
+      "trim_level": "VZ",
+      "pricing": [
+        {
+          "body_style": "5D",
+          "powertrain": "VZ e-Hybrid 272hp DSG",
+          "price": "\u20ac49,010",
+          "co2_emissions_g_km": "33",
+          "annual_road_tax": "\u20ac140"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "VZ 2.0 TSI 300hp DSG",
+          "price": "\u20ac59,500",
+          "co2_emissions_g_km": "172",
+          "annual_road_tax": "\u20ac600"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP VZ e-Hybrid 272hp DSG",
+          "price": "\u20ac50,895",
+          "co2_emissions_g_km": "34",
+          "annual_road_tax": "\u20ac140"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP VZ 2.0 TSI 333hp DSG 4WD",
+          "price": "\u20ac62,675",
+          "co2_emissions_g_km": "188",
+          "annual_road_tax": "\u20ac600"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "POLAR 19\" Machined Alloy Wheels in Sport Black/Silver"
+        ],
+        "interior_and_comfort_additions": [
+          "Electric Driver's Seat",
+          "Dinamica Bucket Seats"
+        ],
+        "technology_additions": [
+          "DCC - Dynamic Chassis Control"
+        ]
+      }
+    },
+    {
+      "trim_level": "Tribe Edition",
+      "pricing": [
+        {
+          "body_style": "5D",
+          "powertrain": "1.5 eTSI 150hp DSG",
+          "price": "\u20ac41,640",
+          "co2_emissions_g_km": "127",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "5D",
+          "powertrain": "2.0 TDI 150hp DSG",
+          "price": "\u20ac43,555",
+          "co2_emissions_g_km": "127",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 1.5 eTSI 150hp DSG",
+          "price": "\u20ac43,935",
+          "co2_emissions_g_km": "129",
+          "annual_road_tax": "\u20ac200"
+        },
+        {
+          "body_style": "SP",
+          "powertrain": "SP 2.0 TDI 150hp DSG",
+          "price": "\u20ac45,905",
+          "co2_emissions_g_km": "129",
+          "annual_road_tax": "\u20ac200"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "TRIBE 19\" Machined Wheels in Sport Black & Sulphur (eTSI)",
+          "WINDSTORM 18\" Machined Sport in Black/Silver (TDI)",
+          "CUPRA Side Skirts in Black"
+        ],
+        "interior_and_comfort_additions": [
+          "3D Knitted Bucket Seats with Green Stitching",
+          "Power Adjusting Front Seats with Memory Function",
+          "Heated Seats in Front"
+        ]
+      }
+    }
+  ],
+  "optional_equipment": [
+    {
+      "category": "Alloy Wheels",
+      "options": [
+        {
+          "code": "R8E",
+          "description": "GARBI COPPER - 18\" Machined in Copper",
+          "price": "\u20ac485",
+          "availability": "Optional on V2"
+        },
+        {
+          "code": "R9E",
+          "description": "POLAR COPPER - 19\" Machined in Sport Black/Copper",
+          "price": "\u20ac485",
+          "availability": "Optional on VZ"
+        },
+        {
+          "code": "R9C",
+          "description": "MISTRAL - 19\" Machined in Sport Black/Silver",
+          "price": "\u20ac935",
+          "availability": "Optional on VZ"
+        },
+        {
+          "code": "R9G",
+          "description": "MISTRAL COPPER - 19\" Machined in Sport Black/Copper",
+          "price": "\u20ac1,247",
+          "availability": "Optional on VZ"
+        }
+      ]
+    },
+    {
+      "category": "Paint Finishes",
+      "options": [
+        {
+          "code": "P",
+          "description": "Soft Paint (Fiord Blue)",
+          "price": "\u20ac0",
+          "availability": "All Trims"
+        },
+        {
+          "code": "M",
+          "description": "Metallic Paint (Glacial White, Midnight Black, Magnetic Tech)",
+          "price": "\u20ac920",
+          "availability": "All Trims"
+        },
+        {
+          "code": "C",
+          "description": "Special/Premium Metallic Paint (Graphene Grey, Taiga Grey, Dark Void)",
+          "price": "\u20ac1,332",
+          "availability": "All Trims"
+        },
+        {
+          "code": "T",
+          "description": "Matt Paint (Century Bronze, Enceladus Grey, Manganese Green)",
+          "price": "\u20ac2,666",
+          "availability": "Optional on VZ / Tribe Edition"
+        }
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4398,
+      "width_mm": 1799,
+      "height_mm": 1444,
+      "wheelbase_mm": 2686,
+      "boot_capacity_l": 380,
+      "sp_length_mm": 4656,
+      "sp_boot_capacity_l": 620
+    },
+    "powertrains": [
+      {
+        "name": "1.5 TSI 150hp",
+        "type": "Petrol",
+        "power_hp": 150,
+        "max_power_kw": 110,
+        "torque_nm": 250,
+        "displacement_cc": 1498,
+        "transmission": "6-Speed Manual",
+        "wltp_combined_consumption_l_100km": "5.8",
+        "wltp_combined_co2_g_km": "131"
+      },
+      {
+        "name": "1.5 eTSI 150hp DSG",
+        "type": "Mild Hybrid Petrol",
+        "power_hp": 150,
+        "max_power_kw": 110,
+        "torque_nm": 250,
+        "displacement_cc": 1498,
+        "transmission": "7-Speed DSG Automatic",
+        "wltp_combined_consumption_l_100km": "5.5",
+        "wltp_combined_co2_g_km": "122"
+      },
+      {
+        "name": "2.0 TDI 150hp DSG",
+        "type": "Diesel",
+        "power_hp": 150,
+        "max_power_kw": 110,
+        "torque_nm": 360,
+        "displacement_cc": 1968,
+        "transmission": "7-Speed DSG Automatic",
+        "wltp_combined_consumption_l_100km": "4.8",
+        "wltp_combined_co2_g_km": "127"
+      },
+      {
+        "name": "e-Hybrid 204hp DSG",
+        "type": "Plug-in Hybrid",
+        "power_hp": 204,
+        "max_power_kw": 150,
+        "torque_nm": 350,
+        "usable_battery_capacity_kwh": 20.0,
+        "gross_battery_capacity_kwh": 25.8,
+        "transmission": "6-Speed DSG Automatic",
+        "wltp_mixed_range_km": "132",
+        "wltp_combined_consumption_l_100km": "1.3"
+      }
+    ]
+  }
+}

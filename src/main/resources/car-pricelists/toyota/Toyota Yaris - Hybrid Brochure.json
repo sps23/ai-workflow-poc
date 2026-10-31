@@ -1,0 +1,131 @@
+{
+  "model": "Toyota Yaris Hybrid",
+  "market": "Ireland",
+  "effective_date": "March 2026",
+  "powertrains": [
+    {
+      "engine_code": "Hybrid 115 (1.5 VVT-i)",
+      "engine_type": "3 Cylinders, In-line",
+      "fuel_system": "Electronic Fuel Injection",
+      "displacement_cc": 1490,
+      "bore_x_stroke_mm": "80.5 x 97.6",
+      "compression_ratio": "14.0:1",
+      "max_power_hp_kW": "116 / 85",
+      "max_torque_Nm": 120,
+      "electric_motor_front_max_power_hp_kW": "80 / 59",
+      "electric_motor_front_max_torque_Nm": 141,
+      "hybrid_battery_type": "Lithium-ion",
+      "transmission": "e-CVT",
+      "performance": {
+        "max_speed_kmh": 175,
+        "acceleration_0_100_kmh_sec": 9.7
+      },
+      "environmental": {
+        "fuel_consumption_combined_l_100km": "3.8 - 4.3",
+        "co2_combined_g_km": "87 - 97",
+        "euro_class": "Euro 6 AP",
+        "nox_emissions_mg_km": 9.5,
+        "sound_level_drive_by_dbA": 65.0
+      }
+    },
+    {
+      "engine_code": "Hybrid 130 (1.5 VVT-i)",
+      "engine_type": "3 Cylinders, In-line",
+      "displacement_cc": 1490,
+      "max_power_hp_kW": "130 / 96",
+      "max_torque_Nm": 120,
+      "electric_motor_front_max_power_hp_kW": "84 / 62",
+      "electric_motor_front_max_torque_Nm": 185,
+      "hybrid_battery_type": "Lithium-ion",
+      "transmission": "e-CVT",
+      "performance": {
+        "max_speed_kmh": 175,
+        "acceleration_0_100_kmh_sec": 9.2
+      },
+      "environmental": {
+        "fuel_consumption_combined_l_100km": 4.4,
+        "co2_combined_g_km": 99,
+        "euro_class": "Euro 6 AP",
+        "nox_emissions_mg_km": 7.4,
+        "sound_level_drive_by_dbA": 65.0
+      }
+    }
+  ],
+  "chassis_suspension_brakes": {
+    "front_suspension": "MacPherson strut",
+    "rear_suspension": "Torsion beam",
+    "front_brakes": "Ventilated Disc",
+    "rear_brakes": "Solid Disc"
+  },
+  "dimensions_weights": {
+    "exterior_length_mm": 3940,
+    "exterior_width_mm": 1745,
+    "exterior_height_mm": 1500,
+    "wheelbase_mm": 2560,
+    "front_tread_mm": 1531,
+    "rear_tread_mm": 1528,
+    "front_overhang_mm": 800,
+    "rear_overhang_mm": 580,
+    "boot_capacity_litres_5seat": 286,
+    "fuel_tank_capacity_litres": 36,
+    "kerb_weight_kg": "1090 - 1160",
+    "gross_vehicle_weight_kg": 1615,
+    "towing_capacity_braked_kg": 450,
+    "towing_capacity_unbraked_kg": 450
+  },
+  "grades_and_equipment": [
+    {
+      "grade": "Luna",
+      "hp": 116,
+      "standard_features": [
+        "15\" Silver Alloy Wheels",
+        "9\" Touchscreen Multimedia Display",
+        "Wireless Apple CarPlay & Wired Android Auto",
+        "Automatic Air Conditioning",
+        "Toyota Safety Sense",
+        "Pre-Collision System with Pedestrian & Cyclist Detection",
+        "Lane Trace Assist & Adaptive Cruise Control",
+        "Reversing Camera",
+        "Leather Steering Wheel & Gear Shift Knob"
+      ]
+    },
+    {
+      "grade": "Luna Sport",
+      "hp": 116,
+      "adds_over_luna": [
+        "17\" Black Machined-face Alloy Wheels",
+        "7\" TFT Digital Combimeter Display",
+        "Full LED Headlamps & Rear LED Combination Lights",
+        "Privacy Glass",
+        "Wireless Smartphone Charger",
+        "MyToyota Remote A/C Controls",
+        "Front Sports Seats with Fabric Upholstery"
+      ]
+    },
+    {
+      "grade": "Platinum",
+      "hp": 116,
+      "adds_over_luna_sport": [
+        "10.5\" Smart Connect Multimedia Screen",
+        "12.3\" Digital Driver Instrument Cluster",
+        "Dual-Zone Automatic Air Conditioning",
+        "Nanoe-X Air Purifying System",
+        "Panoramic Glass Roof",
+        "Smart Entry & Push Button Start",
+        "Blind Spot Monitor (BSM) & Front/Rear Parking Sensors"
+      ]
+    },
+    {
+      "grade": "GR SPORT",
+      "hp": 130,
+      "adds_over_platinum": [
+        "Upgraded Hybrid 130 Powertrain (130 HP, 185 Nm Electric Torque)",
+        "17\" GR Machined-Face Alloy Wheels",
+        "GR SPORT Suspension and Chassis Tuning",
+        "Perforated Ultrasuede Sports Seats with Red Stitching",
+        "Full Bitone Exterior Styling",
+        "GR Sport Badging & Steering Wheel"
+      ]
+    }
+  ]
+}

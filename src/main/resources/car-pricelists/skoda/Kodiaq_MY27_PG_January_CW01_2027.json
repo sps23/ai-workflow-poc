@@ -1,0 +1,295 @@
+{
+  "model": "Škoda Kodiaq",
+  "effective_date": "January 2027",
+  "trims": [
+    {
+      "trim_level": "Selection",
+      "pricing": [
+        {
+          "variant": "1.5TSI 150hp DSG mHEV",
+          "model_code": "PS7_DD",
+          "powertrain": "Petrol (Mild Hybrid)",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€210",
+          "price": "€57,690",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "1.5TSI 202hp DSG PHEV",
+          "model_code": "PS7_WC",
+          "powertrain": "Petrol / Electric (PHEV)",
+          "power_kw": 110,
+          "power_hp": 202,
+          "annual_road_tax": "€140",
+          "price": "€54,235",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 150hp DSG",
+          "model_code": "PS7_4D",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€270",
+          "price": "€56,980",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 190hp DSG 4x4",
+          "model_code": "PS7_6Z",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 142,
+          "power_hp": 190,
+          "annual_road_tax": "€420",
+          "price": "€65,360",
+          "drivetrain": "4x4"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "18\" Mazeno Alloy Wheels",
+          "LED Headlights & LED Taillights with Dynamic Indicators",
+          "Silver Roof Rails & Chrome Exterior Window Surround Trim"
+        ],
+        "interior_and_comfort": [
+          "3-Zone Climatronic Automatic Air Conditioning",
+          "Smart Dials (Rotary Control Knobs with Integrated Displays)",
+          "Heated Front Seats with Electric Lumbar Support"
+        ],
+        "multimedia_and_convenience": [
+          "13\" Central Infotainment Touchscreen Display",
+          "10.25\" Digital Cockpit Dashboard",
+          "Kessy Keyless Entry & Engine Start System",
+          "Wireless Smartphone Charging (15W with Active Cooling)",
+          "Front & Rear Parking Sensors with Rear View Camera",
+          "Adaptive Cruise Control (ACC)"
+        ],
+        "safety": [
+          "Front Assist, Side Assist & Lane Assist Safety Systems"
+        ]
+      }
+    },
+    {
+      "trim_level": "Selection Plus",
+      "pricing": [
+        {
+          "variant": "1.5TSI 150hp DSG mHEV",
+          "model_code": "PS7_DD",
+          "powertrain": "Petrol (Mild Hybrid)",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€210",
+          "price": "€61,590",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "1.5TSI 202hp DSG PHEV",
+          "model_code": "PS7_WC",
+          "powertrain": "Petrol / Electric (PHEV)",
+          "power_kw": 110,
+          "power_hp": 202,
+          "annual_road_tax": "€140",
+          "price": "€58,595",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 150hp DSG",
+          "model_code": "PS7_4D",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€270",
+          "price": "€62,475",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 190hp DSG 4x4",
+          "model_code": "PS7_6Z",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 142,
+          "power_hp": 190,
+          "annual_road_tax": "€420",
+          "price": "€70,830",
+          "drivetrain": "4x4"
+        }
+      ],
+      "standard_equipment": {
+        "additions_over_selection": [
+          "19\" Soira Alloy Wheels",
+          "Matrix LED Headlights with AFS & Cornering Function",
+          "Full LED Rear Lights with Dynamic Turn Signals and Welcome Effect",
+          "Electrically Adjustable Front Seats with Memory Function",
+          "Leather Lounge Interior Design Selection (Cognac or Black)",
+          "Virtual Pedal Electrically Operated Tailgate",
+          "Adaptive Chassis Control (DCC Plus) with Drive Mode Select"
+        ]
+      }
+    },
+    {
+      "trim_level": "Sportline",
+      "pricing": [
+        {
+          "variant": "1.5TSI 150hp DSG mHEV",
+          "model_code": "PS7_DD",
+          "powertrain": "Petrol (Mild Hybrid)",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€210",
+          "price": "€64,005",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "1.5TSI 202hp DSG PHEV",
+          "model_code": "PS7_WC",
+          "powertrain": "Petrol / Electric (PHEV)",
+          "power_kw": 110,
+          "power_hp": 202,
+          "annual_road_tax": "€140",
+          "price": "€58,995",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 150hp DSG",
+          "model_code": "PS7_4D",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 110,
+          "power_hp": 150,
+          "annual_road_tax": "€270",
+          "price": "€62,740",
+          "drivetrain": "4x2"
+        },
+        {
+          "variant": "2.0TDI 190hp DSG 4x4",
+          "model_code": "PS7_6Z",
+          "powertrain": "Diesel / HVO",
+          "power_kw": 142,
+          "power_hp": 190,
+          "annual_road_tax": "€420",
+          "price": "€73,170",
+          "drivetrain": "4x4"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "20\" Talim Alloy Wheels with Anthracite Finish",
+          "Sportline Exterior Styling Pack (Gloss Black Grille, Roof Rails, & Window Trims)",
+          "Sports Front Bumpers & Rear Diffuser",
+          "Matrix LED Headlights & Dynamic LED Taillights"
+        ],
+        "interior_and_technology_additions": [
+          "Front Sports Seats with Integrated Headrests in Suedia/Leatherette",
+          "3-Spoke Heated Sport Multifunction Leather Steering Wheel with DSG Paddles",
+          "Black Headlining & Carbon-Look Interior Trim Accents",
+          "360-Degree Area View Camera System",
+          "Progressive Steering System"
+        ]
+      }
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4758,
+      "width_mm": 1864,
+      "height_mm": "1674-1678",
+      "wheelbase_mm": "2788-2790",
+      "boot_capacity_litres": "340-845",
+      "boot_capacity_litres_5_seat_phev": 910
+    },
+    "powertrains": [
+      {
+        "version": "1.5TSI 150hp DSG mHEV",
+        "type": "Mild Hybrid",
+        "model_code": "PS7_DD",
+        "drivetrain": "4x2",
+        "transmission": "7-speed DSG",
+        "power_kw": 110,
+        "power_hp": 150,
+        "torque_nm": 250,
+        "co2_emissions_g_km": "140-145",
+        "wltp_combined_fuel_consumption_l_100km": "6.1-6.4",
+        "annual_road_tax": "€210",
+        "top_speed_kmh": 205,
+        "acceleration_0_100_kmh_s": 9.9,
+        "max_towing_capacity_braked_kg": 1800,
+        "trims_available": [
+          "Selection",
+          "Selection Plus",
+          "Sportline"
+        ]
+      },
+      {
+        "version": "1.5TSI 202hp DSG PHEV",
+        "type": "PHEV",
+        "model_code": "PS7_WC",
+        "drivetrain": "4x2",
+        "transmission": "6-speed DSG",
+        "power_kw": 110,
+        "power_hp": 202,
+        "torque_nm": 250,
+        "co2_emissions_g_km": "36-37",
+        "wltp_combined_fuel_consumption_l_100km": "1.6-1.7",
+        "annual_road_tax": "€140",
+        "top_speed_kmh": 210,
+        "acceleration_0_100_kmh_s": 8.5,
+        "battery_gross_kwh": 25.7,
+        "battery_capacity_kwh": 19.7,
+        "wltp_range_km": "116-119",
+        "max_towing_capacity_braked_kg": 1800,
+        "charging": {
+          "dc_fast_charger_max_kw": 40,
+          "dc_time_10_80_percent": "25 min",
+          "wallbox_3phase_max_kw": 11,
+          "wallbox_time_0_100_percent": "2 h 30 min"
+        },
+        "trims_available": [
+          "Selection",
+          "Selection Plus",
+          "Sportline"
+        ]
+      },
+      {
+        "version": "2.0TDI 150hp DSG",
+        "type": "Diesel",
+        "model_code": "PS7_4D",
+        "drivetrain": "4x2",
+        "transmission": "7-speed DSG",
+        "power_kw": 110,
+        "power_hp": 150,
+        "torque_nm": 360,
+        "co2_emissions_g_km": "144-149",
+        "wltp_combined_fuel_consumption_l_100km": "5.5-5.7",
+        "annual_road_tax": "€270",
+        "top_speed_kmh": 203,
+        "acceleration_0_100_kmh_s": 9.8,
+        "max_towing_capacity_braked_kg": 2000,
+        "trims_available": [
+          "Selection",
+          "Selection Plus",
+          "Sportline"
+        ]
+      },
+      {
+        "version": "2.0TDI 190hp DSG 4x4",
+        "type": "Diesel",
+        "model_code": "PS7_6Z",
+        "drivetrain": "4x4",
+        "transmission": "7-speed DSG",
+        "power_kw": 142,
+        "power_hp": 190,
+        "torque_nm": 400,
+        "co2_emissions_g_km": "162-168",
+        "wltp_combined_fuel_consumption_l_100km": "6.2-6.4",
+        "annual_road_tax": "€420",
+        "top_speed_kmh": 217,
+        "acceleration_0_100_kmh_s": 8.0,
+        "max_towing_capacity_braked_kg": 2500,
+        "trims_available": [
+          "Selection",
+          "Selection Plus",
+          "Sportline"
+        ]
+      }
+    ]
+  }
+}

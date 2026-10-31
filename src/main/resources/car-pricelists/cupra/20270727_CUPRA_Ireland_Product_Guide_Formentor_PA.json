@@ -1,0 +1,168 @@
+{
+  "model": "CUPRA Formentor",
+  "effective_date": "September 2026",
+  "trims": [
+    {
+      "trim_level": "V1",
+      "pricing": [
+        {
+          "powertrain": "1.5 TSI 150hp",
+          "price": "\u20ac40,120",
+          "co2_emissions_g_km": "136",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "1.5 eTSI 150hp DSG",
+          "price": "\u20ac43,815",
+          "co2_emissions_g_km": "133",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "2.0 TDI 150hp DSG",
+          "price": "\u20ac45,085",
+          "co2_emissions_g_km": "134",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "eHYBRID 204hp DSG",
+          "price": "\u20ac45,735",
+          "co2_emissions_g_km": "32",
+          "annual_road_tax": "\u20ac140"
+        }
+      ],
+      "standard_equipment": {
+        "exterior": [
+          "TEMPEST 18\" Silver Alloy Wheels",
+          "Heat-Insulating and Tinted Rear Windows",
+          "Black Roof Rails",
+          "Front Full LEDs",
+          "Rear 3D LED lights w/Dynamic Turn Signal & Illuminated CUPRA Logo",
+          "Power-Folding, Adjustable and Heated Exterior Mirrors"
+        ],
+        "interior_and_comfort": [
+          "Multi-Function Sports Steering Wheel, Heated w/Satellites (DSG only)",
+          "Climatronic 3-Zone Air Conditioning",
+          "Textile Sport Seats",
+          "CUPRA Drive Profile",
+          "Black Roof Cloth"
+        ],
+        "multimedia": [
+          "10.25\" Digital Cockpit",
+          "12.9\" Infotainment System with Illuminated Sliders",
+          "Wireless Android Auto & Apple CarPlay",
+          "Wireless Charger",
+          "CUPRA CONNECT"
+        ],
+        "safety_and_security": [
+          "Adaptive Cruise Control",
+          "Lane Assist",
+          "Front Assist w/ Cross Traffic Assist",
+          "Advanced Drowsiness Monitor",
+          "XDS Electronic Differential Lock"
+        ]
+      }
+    },
+    {
+      "trim_level": "V2",
+      "pricing": [
+        {
+          "powertrain": "1.5 TSI 150hp",
+          "price": "\u20ac43,125",
+          "co2_emissions_g_km": "139",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "1.5 eTSI 150hp DSG",
+          "price": "\u20ac46,820",
+          "co2_emissions_g_km": "135",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "2.0 TDI 150hp DSG",
+          "price": "\u20ac48,060",
+          "co2_emissions_g_km": "135",
+          "annual_road_tax": "\u20ac210"
+        },
+        {
+          "powertrain": "eHYBRID 204hp DSG",
+          "price": "\u20ac48,360",
+          "co2_emissions_g_km": "32",
+          "annual_road_tax": "\u20ac140"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "SONORA 18\" Machined Wheels in Sport Black & Silver",
+          "Towing Preparation"
+        ],
+        "interior_and_technology_additions": [
+          "Heated Seats in Front",
+          "Smart Interior Wraparound Lighting",
+          "Electric Tailgate & Virtual Pedal",
+          "Rear-View Camera",
+          "Keyless Entry"
+        ]
+      }
+    },
+    {
+      "trim_level": "VZ",
+      "pricing": [
+        {
+          "powertrain": "VZ eHYBRID 272hp DSG",
+          "price": "\u20ac54,510",
+          "co2_emissions_g_km": "36",
+          "annual_road_tax": "\u20ac140"
+        },
+        {
+          "powertrain": "VZ 2.0 TSI 333hp DSG 4WD",
+          "price": "\u20ac75,120",
+          "co2_emissions_g_km": "198",
+          "annual_road_tax": "\u20ac790"
+        }
+      ],
+      "standard_equipment": {
+        "exterior_additions": [
+          "SANDSTORM 19\" Machined Alloy Wheels in Sport Black and Silver"
+        ],
+        "interior_and_technology_additions": [
+          "Electric Driver's Seat",
+          "Dinamica Bucket Seats",
+          "DCC - Dynamic Chassis Control"
+        ]
+      }
+    }
+  ],
+  "technical_specifications": {
+    "dimensions": {
+      "length_mm": 4451,
+      "width_mm": 1839,
+      "height_mm": 1520,
+      "wheelbase_mm": 2679,
+      "boot_capacity_l": 450
+    },
+    "powertrains": [
+      {
+        "name": "1.5 TSI 150hp",
+        "type": "Petrol",
+        "power_hp": 150,
+        "max_power_kw": 110,
+        "torque_nm": 250,
+        "displacement_cc": 1498,
+        "transmission": "6-Speed Manual",
+        "wltp_combined_consumption_l_100km": "6.2",
+        "wltp_combined_co2_g_km": "136"
+      },
+      {
+        "name": "VZ 2.0 TSI 333hp DSG 4WD",
+        "type": "Petrol",
+        "power_hp": 333,
+        "max_power_kw": 245,
+        "torque_nm": 420,
+        "displacement_cc": 1984,
+        "transmission": "7-Speed DSG Automatic",
+        "wltp_combined_consumption_l_100km": "8.7",
+        "wltp_combined_co2_g_km": "198"
+      }
+    ]
+  }
+}
