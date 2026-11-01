@@ -23,7 +23,7 @@ data class DataModelCatalogGenerationResult(
     val outputBytes: Int,
 )
 
-/** Parses every JSON file and links it to a PDF with the identical basename in the same folder. */
+/** Parses every JSON file (source shape or promoted extraction file) and links it to a same-basename PDF. */
 object DataModelCatalogGenerator {
     private val json =
         Json {
@@ -54,7 +54,7 @@ object DataModelCatalogGenerator {
             try {
                 val jsonText = jsonPath.readText()
                 filesRead++
-                val car = CarDataModelParser.parse(jsonText, relativeJsonPath)
+                val car = CatalogSourceParser.parse(jsonText, relativeJsonPath)
                 val matchedPdf = matchPdf(sourceRoot, jsonPath, pdfFiles)
                 val relativePdfPath = DataModelCatalogLoader.relativePath(sourceRoot, matchedPdf)
                 linkedVehicles += car.copy(sourcePdfPath = relativePdfPath)

@@ -66,9 +66,15 @@ tasks.withType<Test>().configureEach {
             excludeTestsMatching("com.sps23.aiworkflow.openrouter.GoogleAiModelsIntegrationTest")
         }
     }
+    if (!providers.gradleProperty("pdfExtractionIntegration").isPresent) {
+        filter {
+            excludeTestsMatching("com.sps23.aiworkflow.catalog.extraction.PdfExtractionIntegrationTest")
+        }
+    }
     if (providers.gradleProperty("skipUiRenderTests").isPresent) {
         filter {
             excludeTestsMatching("com.sps23.aiworkflow.ui.CarPromptScreenTest")
+            excludeTestsMatching("com.sps23.aiworkflow.ui.PdfExtractorScreenTest")
         }
     }
 }
@@ -106,6 +112,14 @@ tasks.register<JavaExec>("googleAiPrompt") {
     description = "Send one standalone prompt to Google AI Studio using GOOGLE_AI_API_KEY and GOOGLE_AI_MODEL."
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass.set("com.sps23.aiworkflow.openrouter.GoogleAiPromptCli")
+}
+
+tasks.register<JavaExec>("extractPdf") {
+    group = "application"
+    description = "Extract one car brochure PDF into <outputDir>/<stem>.json with Gemini (GOOGLE_AI_API_KEY)."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.catalog.extraction.PdfExtractCli")
+    workingDir = projectDir
 }
 
 tasks.matching { it.name.startsWith("spotless") && it.name.endsWith("Check") }.configureEach {

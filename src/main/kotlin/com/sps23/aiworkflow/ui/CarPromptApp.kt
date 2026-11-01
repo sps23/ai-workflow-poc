@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -120,11 +122,48 @@ fun main() =
         ) {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    CarPromptScreen(remember { CarPromptController(manualAnswer = ::answerFromManual, answer = ::answerFromLlm) })
+                    CarCatalogApp(
+                        remember { CarPromptController(manualAnswer = ::answerFromManual, answer = ::answerFromLlm) },
+                        remember { PdfExtractorController() },
+                    )
                 }
             }
         }
     }
+
+enum class AppTab(
+    val label: String,
+) {
+    RECOMMENDER("Recommender"),
+    PDF_EXTRACTOR("PDF Extractor"),
+}
+
+/** Tabs are locked while a request runs: leaving a tab would cancel its in-flight coroutine. */
+@Composable
+fun CarCatalogApp(
+    recommender: CarPromptController,
+    pdfExtractor: PdfExtractorController,
+    initialTab: AppTab = AppTab.RECOMMENDER,
+) {
+    var tab by remember { mutableStateOf(initialTab) }
+    val busy = recommender.state == CarPromptState.Loading || pdfExtractor.extracting
+    Column(Modifier.fillMaxSize()) {
+        TabRow(selectedTabIndex = tab.ordinal) {
+            AppTab.entries.forEach { entry ->
+                Tab(
+                    selected = tab == entry,
+                    onClick = { tab = entry },
+                    enabled = !busy || tab == entry,
+                    text = { Text(entry.label) },
+                )
+            }
+        }
+        when (tab) {
+            AppTab.RECOMMENDER -> CarPromptScreen(recommender)
+            AppTab.PDF_EXTRACTOR -> PdfExtractorScreen(pdfExtractor)
+        }
+    }
+}
 
 @Composable
 fun CarPromptScreen(controller: CarPromptController) {

@@ -17,7 +17,7 @@ object DataModelCatalogLoader {
         val vehicles =
             findDataModelFiles(root).map { file ->
                 val relative = relativePath(root, file)
-                CarDataModelParser.parse(file.readText(), relative)
+                CatalogSourceParser.parse(file.readText(), relative)
             }
         val duplicates = vehicles.groupBy { it.id }.filterValues { it.size > 1 }
         if (duplicates.isNotEmpty()) {

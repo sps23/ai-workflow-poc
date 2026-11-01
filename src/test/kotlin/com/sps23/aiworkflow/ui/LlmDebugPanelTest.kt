@@ -30,6 +30,29 @@ class LlmDebugPanelTest {
         )
 
     @Test
+    fun `PDF extraction uses one request with the same tables and unavailable input estimate`() {
+        val metadata = PdfExtractorFixtures.metadata
+        val tables = debugRequestTables(metadata)
+        assertEquals(1, tables.size)
+        val extraction = tables.single()
+        assertEquals("PDF extraction", extraction.title)
+        assertEquals(
+            listOf("Request details", "Token usage", "Budgets & limits", "Timing & speed"),
+            extraction.tables.map { it.title },
+        )
+        val values = extraction.tables.flatMap { it.columns }.toMap()
+        assertEquals("unavailable", values["Estimated input tokens"])
+        assertEquals("100", values["Input tokens"])
+        assertEquals("50", values["Output tokens"])
+        assertEquals("10", values["Reasoning tokens"])
+        assertEquals("150", values["Total tokens"])
+        val readable = readableDebugData(metadata)
+        assertTrue(readable.contains("PDF extraction"))
+        assertFalse(readable.contains("Translation"))
+        assertFalse(readable.contains("Car recommendation"))
+    }
+
+    @Test
     fun `each request has four logical tables preserving every token and timing field`() {
         val metadata =
             WorkflowMetadata(

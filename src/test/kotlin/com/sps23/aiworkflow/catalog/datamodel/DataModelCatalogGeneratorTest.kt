@@ -134,6 +134,55 @@ class DataModelCatalogGeneratorTest {
         }
     }
 
+    @Test
+    fun `mixed folder links source-shape and promoted extraction files to their PDFs`() {
+        val directory = Files.createTempDirectory("data-model-mixed")
+        try {
+            val source = directory.resolve("cars").createDirectories()
+            writeDataModel(source.resolve("roadster.json"))
+            source.resolve("roadster.pdf").writeText("fixture")
+            val brand = source.resolve("example").createDirectories()
+            brand.resolve("brochure.json").writeText(ExtractionFixtures.text)
+            brand.resolve("brochure.pdf").writeText("fixture")
+            val output = directory.resolve("catalog.json")
+            val logs = mutableListOf<String>()
+
+            val result = DataModelCatalogGenerator.generate(source, output, log = logs::add)
+
+            assertEquals(2, result.jsonFilesRead)
+            assertEquals(2, result.pdfFilesLinked)
+            val artifact = Json.decodeFromString<DataModelCatalogArtifact>(output.toFile().readText())
+            val extracted = ExtractionFixtures.vehicle.toCarDataModel("example/brochure.json", "example/brochure.pdf")
+            assertEquals(
+                mapOf("acme-roadster" to "roadster.pdf", extracted.id to "example/brochure.pdf"),
+                artifact.vehicles.associate { it.id to it.sourcePdfPath },
+            )
+            assertEquals(DataModelCatalogArtifact.from(DataModelCatalog(listOf(extracted))).vehicles.single(), artifact.vehicles.first())
+            assertTrue("LINK example/brochure.json -> example/brochure.pdf" in logs)
+        } finally {
+            directory.toFile().deleteRecursively()
+        }
+    }
+
+    @Test
+    fun `unsupported schemaVersion aborts generation and keeps the previous output`() {
+        val directory = Files.createTempDirectory("data-model-bad-version")
+        try {
+            val source = directory.resolve("cars").createDirectories()
+            source.resolve("brochure.json").writeText(ExtractionFixtures.text.replace("\"schemaVersion\": 1", "\"schemaVersion\": 99"))
+            source.resolve("brochure.pdf").writeText("fixture")
+            val output = directory.resolve("catalog.json")
+            output.writeText("""{"previous":"catalog"}""")
+
+            val exception = assertFailsWith<DataModelParseException> { DataModelCatalogGenerator.generate(source, output, log = {}) }
+
+            assertTrue("brochure.json: unsupported schemaVersion 99" in exception.message!!, exception.message)
+            assertEquals("""{"previous":"catalog"}""", output.toFile().readText())
+        } finally {
+            directory.toFile().deleteRecursively()
+        }
+    }
+
     private fun writeDataModel(path: java.nio.file.Path) {
         path.writeText("""{"model":"Acme Roadster","trims":[]}""")
     }
