@@ -30,7 +30,7 @@ objects, not pointer files.
 
 Requires JDK 25 (a current Eclipse Temurin 25 LTS build is recommended).
 Set `JAVA_HOME` and the IDE's Gradle JVM to that JDK, then use the included
-Gradle 9.3.0 wrapper:
+Gradle 9.8.2 wrapper:
 
 ```sh
 ./gradlew build
@@ -300,6 +300,124 @@ Selecting the test does not bypass `@Ignore`; restore it after the smoke.
 The test checks nonempty text and requested model ID, not recommendation accuracy.
 Normal Google tests use a loopback fake provider and need no key/internet.
 
+### PDF → JSON extraction
+
+Decisions: [`docs/adr/`](docs/adr/); terms: [`docs/glossary.md`](docs/glossary.md).
+**Data:** every run uploads the whole PDF to Google; free-tier content may be used by Google
+to improve its products.
+
+Extract one brochure in the desktop app (stage 5): `./gradlew run`, then open the **PDF Extractor**
+tab. Pick a PDF and an output folder (default `extracted-catalog/`), enter a Google AI key (or use
+`GOOGLE_AI_API_KEY`), choose a model (default `gemini-3.8-flash`) and click **Extract**. If the
+output file exists, a dialog asks before Gemini is called. Success shows trims, variants, options,
+tokens and the path, with **Open folder**. Failure shows the kind, hard violations and the
+auto-saved `<stem>.raw.json` path, with **Copy raw output** and **Open folder**. Tabs are locked
+while either tab is busy.
+
+Below success or failure, expand **DEBUG / Performance metadata** for the single **PDF extraction**
+request using the same tables and readable/JSON copy/download controls as Car search. Model discovery
+has its own timing summary, not a second inference request. The export includes native Gemini token
+usage (output = candidates + thinking), cached input tokens, requested/actual model IDs, HTTP status,
+finish reason, output budget, discovered input/output limits and request/stage/workflow timing.
+Usage survives invalid or truncated output. PDF input-token estimates, unreported usage, cost,
+TTFT and generation speed remain unavailable; throughput is measured over the whole request.
+`inputUtf8Bytes` counts original PDF bytes plus UTF-8 prompts/schema, excluding base64/HTTP overhead.
+Exports contain no PDF contents, paths, prompts, schema, model text or credentials. New extractions
+and PDF-input edits clear previous metadata; declining overwrite makes no call and leaves no DEBUG data.
+
+Extract one brochure from the command line (stage 3):
+
+```sh
+export GOOGLE_AI_API_KEY=...                     # required; GOOGLE_AI_MODEL optional (default gemini-3.8-flash)
+./gradlew extractPdf --args='"src/main/resources/car-pricelists/dacia/dacia jogger.pdf"'
+./gradlew extractPdf --args='brochure.pdf /tmp/out --overwrite'
+```
+
+- Output dir: 2nd argument → `PDF_EXTRACT_OUTPUT_DIR` → `extracted-catalog/` (git-ignored).
+  Relative paths resolve against the repository root.
+- An existing `<stem>.json` is kept unless `--overwrite` is given; then Gemini isn't called.
+- Prints the written path, vehicle summary, model, tokens and latency; soft deviations as warnings.
+- Exit codes: `0` written, `1` extraction failed (hard violations listed, `<stem>.raw.json` saved
+  when the model returned text), `2` usage error or missing key, `3` file exists.
+- Each run uploads the whole PDF to Google and is billed (about USD 0.05 for the Jogger).
+
+Promote a reviewed result by copying it next to its PDF, then regenerate the catalog (stage 4):
+
+```sh
+cp "extracted-catalog/dacia jogger.json" "src/main/resources/car-pricelists/dacia/dacia jogger.json"
+./gradlew generateDataModelCatalog
+```
+
+The generator and `DataModelCatalogLoader` detect the root `schemaVersion` key, strictly decode
+the envelope, re-check hard rules R5–R13/R18 (the file may be hand-edited) and ignore
+`provenance`. Files without `schemaVersion` use the brand source-shape parser. An unsupported
+`schemaVersion` or a rule violation stops generation and leaves the previous catalog unchanged.
+
+Production pieces (`catalog/extraction`, stage 2): `PdfExtractionService.extract(pdf, outputDir,
+overwrite)` reads the PDF, asks `overwrite(path)` if `<stem>.json` exists (before any paid call),
+calls Gemini with the schema, enforces hard rules R1–R13/R18 and atomically writes the envelope:
+
+```json
+{ "schemaVersion": 1,
+  "provenance": { "pdfFileName": "...", "pdfSha256": "...", "model": "...",
+                  "extractedAt": "2026-10-31T12:00:00Z", "inputTokens": 6427, "outputTokens": 11108 },
+  "vehicle": { ...ExtractedVehicle... } }
+```
+
+Invalid or truncated output never writes `<stem>.json`; the raw model text goes to
+`<stem>.raw.json`. The outcome is `Written`, `Declined` or `Failed(kind, …)`. The UI entry point
+follows in stage 5.
+
+The live test below checks extraction quality against a reference JSON.
+
+Opt-in live test that sends one repository PDF to Gemini and checks whether the
+returned JSON fits the Kotlin catalog model (`ExtractedVehicle`: trims, variants,
+prices, options, technical specifications). Plans:
+[`docs/pdf-to-json-extraction-plan.md`](docs/pdf-to-json-extraction-plan.md),
+[`docs/pdf-to-json-implementation-stages.md`](docs/pdf-to-json-implementation-stages.md).
+
+```sh
+git lfs pull                                   # real PDFs, not LFS pointers
+export GOOGLE_AI_API_KEY=...                   # never commit it
+# optional overrides
+export GOOGLE_AI_MODEL=gemini-3.8-flash        # default when unset
+export PDF_EXTRACTION_IT_RESOURCE='toyota/Toyota Yaris - Hybrid Brochure.pdf'  # default: dacia/dacia jogger.pdf
+export PDF_EXTRACTION_IT_TEMPERATURE=0.5       # default: model default (omitted)
+
+./gradlew test -PpdfExtractionIntegration \
+  --tests 'com.sps23.aiworkflow.catalog.extraction.PdfExtractionIntegrationTest'
+```
+
+- **Input:** a PDF path relative to `src/main/resources/car-pricelists/`; a sibling
+  `.json` with the same name is required as a reference for anchor checks.
+- **Request:** the system prompt `src/main/resources/pdf-extraction/system-prompt.md`,
+  then a user message with the model definition
+  (`src/main/resources/pdf-extraction/model-definition.md`) and the inline PDF, sent by
+  `GeminiPdfClient` (main) via native `generateContent` in JSON mode with a
+  `responseJsonSchema` generated from `ExtractedVehicle` by `JsonSchemaGenerator`.
+  `maxOutputTokens` is the lower of 65,536 and the model's output limit. The key goes
+  only in a header. PDFs over 50 MB or without a `%PDF-` header (e.g. LFS pointers) are
+  rejected before the call; HTTP errors map to `FailureKind`.
+- **Checks:** R1–R18 in `ExtractionRequirements` (R18: variant names unique within a trim). Hard checks fail the test: not
+  truncated, a single JSON object, strict decode into `ExtractedVehicle`, no identity
+  keys, plausible prices (in cents), dimensions and ranges, and trim names plus each
+  trim's lowest price matching the reference. Soft deviations (counts, powertrain
+  types, dimensions vs. the reference) are only reported.
+- **Output:** written to `build/pdf-extraction-it/<pdf stem>/`:
+  - `request-meta.json`: model, sizes and config; no key or PDF bytes
+  - `schema.json`: the JSON Schema sent to Gemini
+  - `response.raw.txt`
+  - `vehicle.json`: written only when the response decodes
+  - `report.md`: tokens, estimated USD cost, latency, violations (also written on
+    client failures, with the failure kind)
+- **Cost and data:** the whole PDF goes to Google. A Jogger run used about 18k tokens,
+  roughly USD 0.05 on paid `gemini-3.8-flash`, and took about 2 minutes. Free-tier
+  content may be used by Google to improve its products.
+- Without `-PpdfExtractionIntegration` the live test is excluded. The offline tests
+  (`ExtractionRequirementsTest`, `GeminiPdfClientTest`, `JsonSchemaGeneratorTest`,
+  `PdfExtractionServiceTest`, `PdfExtractCliTest`, `PdfExtractorControllerTest`) always run;
+  `PdfExtractorScreenTest` is skipped with `-PskipUiRenderTests` like the other render tests.
+
 ### Other desktop provider details
 
 OpenAI's `/v1/models` includes models not supported by Chat Completions and does
@@ -547,12 +665,13 @@ the JDK is newer; any performance benefit must be measured for the application.
 
 Build compatibility matters separately from library bytecode compatibility:
 
-- Gradle 8.14.3 was replaced with 9.3.0 because Java 25 support starts at 9.1.
-  The wrapper includes the distribution SHA-256 checksum.
+- Gradle 8.14.3 was initially replaced with 9.3.0 because Java 25 support starts at 9.1.
+  The wrapper now uses 9.8.2 with its distribution SHA-256 checksum.
 - Kotlin JVM, serialization, and Compose compiler plugins were moved together
   from 2.3.10 to 2.3.21. Kotlin 2.3 supports Java 25 bytecode; 2.3.21 also
   officially supports Gradle 9.3.0, whereas 2.3.10's fully supported range ends
-  at Gradle 9.0.0.
+  at Gradle 9.0.0. The existing plugins also pass this repository's build and tests
+  on Gradle 9.8.2; this is a local compatibility check, not an expanded official support claim.
 - Compose Multiplatform stays at 1.7.0: the existing version passed the
   offscreen rendering check, so a UI framework upgrade is not required by this
   JDK change.

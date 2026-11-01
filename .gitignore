@@ -41,3 +41,5 @@ build/
 
 # Keep the Gradle wrapper JAR under version control
 !gradle/wrapper/gradle-wrapper.jar
+# PDF -> JSON extraction output (promote manually into car-pricelists/)
+extracted-catalog/

@@ -28,7 +28,7 @@ deserializes into the Kotlin classes, ready for human review and promotion into 
   schema subset limits of Gemini (keep schema simple, no `$ref` recursion needed), hallucinated values
   (human review before promotion; no auto-promotion).
 
-## Decisions (to become ADRs)
+## Decisions (recorded as ADRs in [`adr/`](adr/), grouped 0001–0008)
 1. Output = normalized Kotlin classes (schema derived from `@Serializable` types; validated by
    deserializing). Not the loose source shape.
 2. UI = new **PDF Extractor** tab in the existing window (tabs: Recommender | PDF Extractor),

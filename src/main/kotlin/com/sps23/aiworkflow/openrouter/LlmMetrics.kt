@@ -31,7 +31,7 @@ data class RequestMetrics(
     val provider: String? = null,
     val responseId: String? = null,
     val inputUtf8Bytes: Long,
-    val estimatedInputTokens: Long,
+    val estimatedInputTokens: Long?,
     val requestedOutputTokens: Long,
     val effectiveOutputTokens: Long? = null,
     val contextLength: Long? = null,
@@ -133,6 +133,42 @@ internal class RequestMetricsRecorder(
                     },
                 reportedGenerationTokensPerSecond = stats.number("tokens_per_second"),
                 reportedTimeToFirstTokenSeconds = stats.number("time_to_first_token"),
+            )
+    }
+
+    fun geminiResponse(
+        root: JsonObject?,
+        status: Int,
+        key: String,
+    ) {
+        val usage = root?.get("usageMetadata") as? JsonObject
+        val candidate = (root?.get("candidates") as? JsonArray)?.firstOrNull() as? JsonObject
+
+        fun text(value: JsonElement?): String? =
+            (value as? JsonPrimitive)
+                ?.takeIf { it.isString }
+                ?.contentOrNull
+                ?.let { redactSecrets(it, key).take(200) }
+                ?.takeIf { it.isNotBlank() }
+
+        val visible = usage.count("candidatesTokenCount")
+        val reasoning = usage.count("thoughtsTokenCount")
+        metrics =
+            metrics.copy(
+                httpStatus = status,
+                responseModelId = text(root?.get("modelVersion")),
+                responseId = text(root?.get("responseId")),
+                finishReason = text(candidate?.get("finishReason")),
+                usage =
+                    usage?.let {
+                        TokenUsage(
+                            promptTokens = it.count("promptTokenCount"),
+                            completionTokens = visible?.let { tokens -> tokens + (reasoning ?: 0) },
+                            totalTokens = it.count("totalTokenCount"),
+                            reasoningTokens = reasoning,
+                            cachedPromptTokens = it.count("cachedContentTokenCount"),
+                        )
+                    },
             )
     }
 }

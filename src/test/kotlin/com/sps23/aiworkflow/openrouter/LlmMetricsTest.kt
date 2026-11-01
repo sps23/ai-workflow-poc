@@ -204,7 +204,7 @@ class LlmMetricsTest {
                 val request = assertNotNull(assertNotNull(error.metadata).stages.last().request)
                 assertFalse(request.dispatched)
                 assertEquals(100, request.contextLength)
-                assertTrue(request.estimatedInputTokens > 100)
+                assertTrue(assertNotNull(request.estimatedInputTokens) > 100)
                 assertNull(request.usage)
                 assertNull(request.httpStatus)
                 assertTrue(server.chatRequests.isEmpty())
