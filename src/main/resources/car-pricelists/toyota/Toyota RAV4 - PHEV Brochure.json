@@ -1,113 +1,500 @@
 {
-  "model": "Toyota RAV4 Plug-in Hybrid (PHEV)",
-  "market": "Ireland",
-  "effective_date": "September 2026",
-  "powertrains": [
-    {
-      "engine_code": "2.5 TNGA PHEV FWD",
-      "displacement_cc": 2487,
-      "max_system_power_hp": 272,
-      "max_torque_Nm": 272,
-      "ev_range_wltp_combined_km": "125 - 137",
-      "transmission": "e-CVT",
-      "performance": {
-        "acceleration_0_100_kmh_sec": 7.5
-      },
-      "environmental": {
-        "fuel_consumption_weighted_l_100km": "1.3 - 1.8",
-        "co2_combined_g_km": "30 - 40",
-        "nox_emissions_mg_km": 3.1
-      }
+    "schemaVersion": 1,
+    "provenance": {
+        "pdfFileName": "Toyota RAV4 - PHEV Brochure.pdf",
+        "pdfSha256": "4ce1936e213d20edb383a77a5ba76691868ac4d920c1167d041704ace0460ecd",
+        "model": "gemini-3.1-flash-lite",
+        "extractedAt": "2026-11-01T12:30:29.198782Z",
+        "inputTokens": 12314,
+        "outputTokens": 3613
     },
-    {
-      "engine_code": "2.5 TNGA PHEV AWD (GR SPORT)",
-      "displacement_cc": 2487,
-      "max_system_power_hp": 309,
-      "ev_range_wltp_combined_km": 121,
-      "transmission": "e-CVT with E-Four Intelligent All-Wheel Drive",
-      "performance": {
-        "acceleration_0_100_kmh_sec": 5.8
-      },
-      "environmental": {
-        "fuel_consumption_weighted_l_100km": 1.6,
-        "co2_combined_g_km": 36,
-        "nox_emissions_mg_km": 2.7
-      },
-      "towing_capacity_braked_kg": 2000
+    "vehicle": {
+        "title": "TOYOTA RAV4 PLUG-IN HYBRID",
+        "make": "Toyota",
+        "model": "RAV4 Plug-in Hybrid",
+        "effectiveDate": "September 2026",
+        "effectivePeriod": "2026-09",
+        "trims": [
+            {
+                "name": "Sol",
+                "variants": [
+                    {
+                        "name": "2.5 TNGA PHEV FWD",
+                        "trimName": "Sol",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "powerHp": 272,
+                        "co2GPerKm": {
+                            "min": 30.0,
+                            "max": 40.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€ 140"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Toyota Safety Sense TSS4",
+                            "Adjustable Speed Limiter (ASL)",
+                            "Anti-Jam Protection on Power Windows",
+                            "Anti-Lock Braking System (ABS) with Electronic Brake Force Distribution (EBD)",
+                            "Blind Spot Monitor (BSM)",
+                            "Brake Assist (BA)",
+                            "Driver Monitoring Camera",
+                            "eCall",
+                            "Emergency Brake-Light Signal (EBS)",
+                            "Emergency Driving Stop System (EDSS)",
+                            "Full-Range Adaptive Cruise Control",
+                            "Hill-Start Assist Control (HAC)",
+                            "Immobiliser",
+                            "Intelligent Clearance Sonar (ICS) (Front and Rear, for Objects, Vehicle and Pedestrian)",
+                            "Front & Rear Parking Sensors",
+                            "Intrusion Alarm",
+                            "Lane Trace Assist (LTA)",
+                            "Lane Change Assist (LCA)",
+                            "Pre-Collision System",
+                            "Front Cross Traffic Alert (FCTA)",
+                            "Rear Cross Traffic Alert (RCTA)",
+                            "Rear Seat Reminder System (RSRS)",
+                            "Rear-View Camera with Dynamic Guide Lines",
+                            "Road Sign Assist (RSA)",
+                            "Safe Exit Assist (SEA)",
+                            "Tyre Pressure Warning System (TPWS)",
+                            "Vehicle Approach Notice"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": false,
+                        "items": [
+                            "12.3\" Coloured TFT Information Display",
+                            "3-Spoke Leather Steering Wheel",
+                            "Console Box 12V Power Outlet",
+                            "Electro-Chromatic Rear-View Mirror",
+                            "Electronic Parking Brake",
+                            "Heated Steering Wheel",
+                            "Illuminated Entry System",
+                            "Manual Telescopic and Tilting Steering Wheel",
+                            "Rear Passenger 12V Power Outlet",
+                            "Rear-View Camera Display in Audio Screen",
+                            "Synthetic Leather Front and Rear Door Armrests",
+                            "Humidity Sensor",
+                            "Paddle Shifts",
+                            "Hands On/Off Sensors on Steering Wheel"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": false,
+                        "items": [
+                            "Black Roof Rails",
+                            "Automatic Rear Flashing Hazard Lights (ARFHL)",
+                            "Bi-Beam LED Headlamps",
+                            "Black Door Mirrors",
+                            "Black Paint Wheel Arch Moulding",
+                            "Daytime Running Lights (LED)",
+                            "Front Fog Lamps (LED)",
+                            "Gloss Black Rear Spoiler",
+                            "LED Rear Brake Lights",
+                            "Privacy Glass",
+                            "Rain Sensor",
+                            "Rear Combination Lamps (LED)",
+                            "Rear Fog Lamps (LED)",
+                            "Fuel Lid Release with Switch"
+                        ]
+                    },
+                    {
+                        "category": "convenience",
+                        "isAddition": false,
+                        "items": [
+                            "Automatically Retractable, Heated Door Mirrors",
+                            "Dual-Zone Automatic Air Conditioning",
+                            "Push-Button Start",
+                            "Power Boot"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": false,
+                        "items": [
+                            "60:40 Split-Folding 2nd Row Rear Seats",
+                            "Adjustable Lumbar Support on Driver Seat",
+                            "Black Fabric Upholstery",
+                            "Heated Driver & Front Passenger Seats",
+                            "ISOFIX Seat Fixing"
+                        ]
+                    },
+                    {
+                        "category": "audio_and_nav",
+                        "isAddition": false,
+                        "items": [
+                            "12.9\" Multimedia Display with Embedded Navigation System",
+                            "6 Speakers",
+                            "Bluetooth Hands-Free System",
+                            "Digital Audio Broadcast (DAB)",
+                            "Smart Voice Assist",
+                            "Smartphone Integration (Wireless Apple CarPlay and Wireless Android Auto)",
+                            "USB Connector (2 x Front Instrument Panel, 1 Centre, 2 x Rear -Type C)",
+                            "Voice Recognition"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": false,
+                        "items": [
+                            "18\" Dark Grey Machined-face Alloy Wheels (5-Spoke)",
+                            "Tyre Repair Kit"
+                        ]
+                    },
+                    {
+                        "category": "performance",
+                        "isAddition": false,
+                        "items": [
+                            "Auto EV/Hybrid Mode"
+                        ]
+                    },
+                    {
+                        "category": "mytoyota",
+                        "isAddition": false,
+                        "items": [
+                            "Digital Key",
+                            "Remote Air Conditioning System",
+                            "Remote Door Lock",
+                            "Remote Hazard Lights System",
+                            "Remote Open Window Notification"
+                        ]
+                    },
+                    {
+                        "category": "ev_charging",
+                        "isAddition": false,
+                        "items": [
+                            "Standard Charger (11kW AC)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Sport",
+                "variants": [
+                    {
+                        "name": "2.5 TNGA PHEV FWD",
+                        "trimName": "Sport",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "powerHp": 272,
+                        "co2GPerKm": {
+                            "min": 38.0,
+                            "max": 38.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€ 140"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "convenience",
+                        "isAddition": true,
+                        "items": [
+                            "Power Back Door with Kick Function"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "Center Tray And Cup Holder Illumination",
+                            "Wireless Charger",
+                            "Painted Insert on Side Air Vents"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "High-Mounted Stop Lamp (LED)",
+                            "Piano Black Front And Rear Bumper"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": true,
+                        "items": [
+                            "20\" Black Alloy Wheels (5-Spoke)",
+                            "Tyre Repair Kit",
+                            "Black Paint Wheel Arch Moulding"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": true,
+                        "items": [
+                            "Synthetic & Ultra Suede Leather Upholstery",
+                            "Driver & Front Passenger Air Conditioned Seats",
+                            "Memory Function on Driver Seat",
+                            "Power-Height-Adjustable Front Passenger Seat",
+                            "Ventilated Front Seats"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Platinum",
+                "variants": [
+                    {
+                        "name": "2.5 TNGA PHEV FWD",
+                        "trimName": "Platinum",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "powerHp": 272,
+                        "co2GPerKm": {
+                            "min": 40.0,
+                            "max": 40.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€ 140"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Panoramic View Monitor with 3D Effect",
+                            "Side-View Camera on Door Mirrors",
+                            "Toyota Teammate Advanced Park",
+                            "Anti-Jam Protection on Panoramic Moon Roof"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "Head Up Display",
+                            "2 Wireless Mobile Phone Chargers"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "Chrome Toyota RAV4 Badge on Tailgate",
+                            "Black Front Bumper",
+                            "Silver Front Under-Run",
+                            "Black Rear Bumper",
+                            "Adaptive High Beam System (AHS)",
+                            "Panoramic Moon Roof",
+                            "Black Wheel Arch Moulding"
+                        ]
+                    },
+                    {
+                        "category": "convenience",
+                        "isAddition": true,
+                        "items": [
+                            "Windshield De-Icer",
+                            "Power Roof Opening"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": true,
+                        "items": [
+                            "20\" Black Machined-Face Alloy Wheels (5-Spoke)"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": true,
+                        "items": [
+                            "Heated Rear Seats"
+                        ]
+                    },
+                    {
+                        "category": "audio_and_nav",
+                        "isAddition": true,
+                        "items": [
+                            "9 Speakers",
+                            "JBL Premium Sound System",
+                            "Subwoofer"
+                        ]
+                    },
+                    {
+                        "category": "ev_charging",
+                        "isAddition": true,
+                        "items": [
+                            "Fast Charger (50kW DC)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "GR SPORT",
+                "variants": [
+                    {
+                        "name": "2.5 TNGA PHEV AWD",
+                        "trimName": "GR SPORT",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "powerHp": 309,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 36.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Downhill Assist Control (DAC)"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "GR-S Synthetic Leather Knee Pads on Rear Console Box",
+                            "Digital Tachometer",
+                            "GR SPORT Aluminium Pedals",
+                            "3-Spoke GR SPORT Leather Steering Wheel"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "GR SPORT Badge on Boot Door",
+                            "GR SPORT Piano Black Front Bumper",
+                            "GR SPORT Black Rear Bumper",
+                            "GR SPORT Rear Under-Run",
+                            "GR SPORT Badge on Upper Front Grille",
+                            "GR SPORT Black Upper Front Grille",
+                            "GR SPORT Upper Front Grille",
+                            "GR SPORT Black Wider Fenders",
+                            "GR SPORT Roof Lining",
+                            "Automatic High Beam (AHB)",
+                            "Glossy Black Toyota RAV4 Badge on Tailgate",
+                            "Red Sports Front & Rear Brake Callipers",
+                            "Moon Roof with Tilt & Slide"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": true,
+                        "items": [
+                            "20\" Machined-Face Alloy Wheels (5-Spoke)"
+                        ]
+                    },
+                    {
+                        "category": "performance",
+                        "isAddition": true,
+                        "items": [
+                            "GR SPORT Front and Rear Suspension"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4600.0,
+                    "max": 4645.0
+                },
+                "widthMm": {
+                    "min": 1855.0,
+                    "max": 1880.0
+                },
+                "heightMm": {
+                    "min": 1680.0,
+                    "max": 1685.0
+                },
+                "wheelbaseMm": {
+                    "min": 2690.0,
+                    "max": 2690.0
+                },
+                "bootCapacityLitres": {
+                    "min": 446.0,
+                    "max": 446.0
+                },
+                "brakedTowingKg": {
+                    "min": 800.0,
+                    "max": 2000.0
+                },
+                "additional": {}
+            },
+            "powertrains": [
+                {
+                    "name": "2.5 TNGA PHEV FWD",
+                    "type": "PLUG_IN_HYBRID",
+                    "powerHp": 272.0,
+                    "trimsAvailable": [
+                        "Sol",
+                        "Sport",
+                        "Platinum"
+                    ],
+                    "charging": {
+                        "standard": "11kW AC"
+                    },
+                    "additional": {}
+                },
+                {
+                    "name": "2.5 TNGA PHEV AWD (GR SPORT)",
+                    "type": "PLUG_IN_HYBRID",
+                    "powerHp": 309.0,
+                    "trimsAvailable": [
+                        "GR SPORT"
+                    ],
+                    "charging": {
+                        "standard": "11kW AC"
+                    },
+                    "additional": {}
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
     }
-  ],
-  "charging_specifications": {
-    "onboard_charger_ac_kw": 11,
-    "dc_fast_charging_kw": "50 (Platinum & GR SPORT)",
-    "wallbox_charging_time": "2 hours at 32A (11 kW)",
-    "household_plug_charging_time": "Up to 6.5 hours at 10A"
-  },
-  "dimensions_weights": {
-    "exterior_length_mm": {
-      "FWD": 4600,
-      "GR_SPORT": 4645
-    },
-    "exterior_width_mm": {
-      "FWD": 1855,
-      "GR_SPORT": 1880
-    },
-    "exterior_height_mm": 1685,
-    "wheelbase_mm": 2690,
-    "boot_capacity_litres_5seat": 446,
-    "fuel_tank_capacity_litres": 55
-  },
-  "grades_and_equipment": [
-    {
-      "grade": "Sol",
-      "hp": 272,
-      "ev_range_km": 137,
-      "standard_features": [
-        "18\" Dark Grey Machined-face Alloy Wheels",
-        "11kW On-Board AC Charger",
-        "12.9\" Touchscreen Multimedia System",
-        "12.3\" Digital Instrument Panel",
-        "Heated Front Seats",
-        "Power Driver Seat",
-        "Smart Entry & Start"
-      ]
-    },
-    {
-      "grade": "Sport",
-      "hp": 272,
-      "ev_range_km": 128,
-      "adds_over_sol": [
-        "20\" Black Alloy Wheels",
-        "Synthetic Leather & Suede Sport Seats",
-        "Hands-Free Power Backdoor",
-        "Bi-tone Exterior Roof"
-      ]
-    },
-    {
-      "grade": "Platinum",
-      "hp": 272,
-      "ev_range_km": 125,
-      "adds_over_sport": [
-        "50kW DC Fast Charging Capability",
-        "20\" Black Machined-Face Alloy Wheels",
-        "JBL Premium Sound System with Subwoofer",
-        "Panoramic Moon Roof",
-        "Toyota Teammate Advanced Park System",
-        "Heated Rear Outer Seats",
-        "Head-Up Display"
-      ]
-    },
-    {
-      "grade": "GR SPORT",
-      "hp": 309,
-      "ev_range_km": 121,
-      "adds_over_platinum": [
-        "E-Four Intelligent All-Wheel Drive (309 HP)",
-        "20\" GR Machined-Face Alloy Wheels",
-        "GR SPORT Dedicated Front & Rear Suspension Tuning",
-        "GR SPORT Styling Kit",
-        "Downhill Assist Control (DAC)",
-        "2,000 kg Braked Towing Capacity"
-      ]
-    }
-  ]
 }

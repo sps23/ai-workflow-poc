@@ -1,0 +1,451 @@
+{
+    "id": "cupra-raval",
+    "sourcePath": "cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.json",
+    "vehicle": {
+        "title": "CUPRA Raval",
+        "make": "CUPRA",
+        "model": "Raval",
+        "effectiveDate": "September 2026",
+        "effectivePeriod": "2026-09",
+        "trims": [
+            {
+                "name": "Urban V1",
+                "variants": [
+                    {
+                        "name": "Raval Urban 37kWh 116hp",
+                        "trimName": "Urban V1",
+                        "modelCode": null,
+                        "powertrainType": "UNKNOWN",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 2349500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€23,495"
+                            },
+                            {
+                                "basis": "RRP_EXCLUDING_GRANTS",
+                                "amount": {
+                                    "minorUnits": 2881000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€28,810"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "17\" 'DARK SHADOW' Alloy Wheels in Matt Black",
+                            "Full LED Headlamps",
+                            "LED Rear Edge to Edge Light",
+                            "Flush Door Handles"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_comfort",
+                        "isAddition": false,
+                        "items": [
+                            "CUPRA Multi-Function Steering",
+                            "Sharp Ambient Cloth Seats",
+                            "1-Zone Climate Control",
+                            "Manual Height Adjustment for Driver"
+                        ]
+                    },
+                    {
+                        "category": "multimedia",
+                        "isAddition": false,
+                        "items": [
+                            "12.9\" Touchscreen Android Infotainment System",
+                            "10.25\" Digital Cockpit",
+                            "Wireless Android Auto & Apple CarPlay",
+                            "CUPRA CONNECT"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Urban V2",
+                "variants": [
+                    {
+                        "name": "Raval Urban 37kWh 135hp",
+                        "trimName": "Urban V2",
+                        "modelCode": null,
+                        "powertrainType": "UNKNOWN",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 2896000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€28,960"
+                            },
+                            {
+                                "basis": "RRP_EXCLUDING_GRANTS",
+                                "amount": {
+                                    "minorUnits": 3464500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€34,645"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Illuminated Exterior Door Handles",
+                            "Rear Tinted Windows"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_technology_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Rear-View Camera",
+                            "2-Zone Climate Control",
+                            "Front Heated Seats",
+                            "Heated Steering Wheel",
+                            "Wireless Phone Charger",
+                            "Vehicle-To-Load (V2L)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Endurance V1 / V2",
+                "variants": [
+                    {
+                        "name": "Raval Endurance 52kWh 211hp (V1)",
+                        "trimName": "Endurance V1 / V2",
+                        "modelCode": null,
+                        "powertrainType": "UNKNOWN",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3212500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€32,125"
+                            },
+                            {
+                                "basis": "RRP_EXCLUDING_GRANTS",
+                                "amount": {
+                                    "minorUnits": 3802000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€38,020"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "Raval Endurance 52kWh 211hp (V2)",
+                        "trimName": "Endurance V1 / V2",
+                        "modelCode": null,
+                        "powertrainType": "UNKNOWN",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3311000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€33,110"
+                            },
+                            {
+                                "basis": "RRP_EXCLUDING_GRANTS",
+                                "amount": {
+                                    "minorUnits": 3907000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€39,070"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior_additions",
+                        "isAddition": true,
+                        "items": [
+                            "18\" 'DEFIER' Alloy Wheel in Matt Black"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "VZ",
+                "variants": [
+                    {
+                        "name": "Raval VZ 52kWh 226hp",
+                        "trimName": "VZ",
+                        "modelCode": null,
+                        "powertrainType": "UNKNOWN",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3682500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€36,825"
+                            },
+                            {
+                                "basis": "RRP_EXCLUDING_GRANTS",
+                                "amount": {
+                                    "minorUnits": 4303500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€43,035"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior_additions",
+                        "isAddition": true,
+                        "items": [
+                            "19\" 'REBEL' Alloy Wheels in Black/Copper"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_technology_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Dinamica Sport Bucket Seats",
+                            "Dynamic Chassis Control (DCC)",
+                            "Vehicle-To-Home (V2H)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4046.0,
+                    "max": 4046.0
+                },
+                "widthMm": {
+                    "min": 1784.0,
+                    "max": 1784.0
+                },
+                "heightMm": {
+                    "min": 1514.0,
+                    "max": 1514.0
+                },
+                "wheelbaseMm": {
+                    "min": 2599.0,
+                    "max": 2599.0
+                },
+                "bootCapacityLitres": null,
+                "maxBootCapacityLitres": null,
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": null,
+                "additional": {
+                    "boot_capacity_l": "441"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "Urban 37kWh 116hp",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": 85.0,
+                    "powerHp": 116.0,
+                    "torqueNm": 264.0,
+                    "topSpeedKmh": 160.0,
+                    "acceleration0To100S": {
+                        "min": 10.7,
+                        "max": 10.7
+                    },
+                    "wltpRangeKm": {
+                        "min": 311.0,
+                        "max": 311.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": 37.0,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [],
+                    "charging": {},
+                    "additional": {}
+                },
+                {
+                    "name": "Endurance 52kWh 211hp",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": 155.0,
+                    "powerHp": 211.0,
+                    "torqueNm": 290.0,
+                    "topSpeedKmh": 160.0,
+                    "acceleration0To100S": {
+                        "min": 7.1,
+                        "max": 7.1
+                    },
+                    "wltpRangeKm": {
+                        "min": 443.0,
+                        "max": 443.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": 52.0,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [],
+                    "charging": {},
+                    "additional": {}
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

@@ -86,10 +86,14 @@ class DataModelCatalogContext private constructor(
                 } catch (exception: SerializationException) {
                     throw IllegalStateException("Bundled data-model catalog is invalid: $BUNDLED_CATALOG_RESOURCE", exception)
                 }
+            return fromArtifact(artifact)
+        }
+
+        fun fromArtifact(artifact: DataModelCatalogArtifact): DataModelCatalogContext {
             require(artifact.schemaVersion == DATA_MODEL_CATALOG_SCHEMA_VERSION) {
                 "Unsupported data-model catalog schema version ${artifact.schemaVersion}."
             }
-            require(artifact.vehicles.isNotEmpty()) { "Bundled data-model catalog contains no vehicles." }
+            require(artifact.vehicles.isNotEmpty()) { "Data-model catalog contains no vehicles." }
 
             val sourcePdfByConfiguration = linkedMapOf<String, String>()
             val detailsByConfiguration = linkedMapOf<String, CatalogConfigurationDetails>()
@@ -147,6 +151,7 @@ class DataModelCatalogContext private constructor(
                 .normalize(value, Normalizer.Form.NFD)
                 .replace(Regex("""\p{M}+"""), "")
                 .lowercase(Locale.ROOT)
+                .replace("+", "-plus-")
                 .replace(Regex("""[^a-z0-9]+"""), "-")
                 .trim('-')
 

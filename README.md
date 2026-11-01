@@ -38,14 +38,15 @@ Gradle 9.8.2 wrapper:
 ./gradlew dependencies --configuration runtimeClasspath
 ```
 
-### Temporarily ignored tests
+### Test coverage and explicit live gates
 
-As of 2026-10-31, 22 tests fail against the current catalog and are temporarily
-annotated with `@Ignore` so GitHub Actions can pass. Before treating the issues
-as resolved, investigate the failures and remove the ignores in
-`CupraRavalDataModelTest`, `Peugeot5008DataModelTest`,
-`ToyotaCorollaCrossDataModelTest`, `DataModelCatalogGeneratorTest`,
-`DataModelCatalogContextTest`, and `RecommendationDetailsTest`.
+Catalog generation, prompt context, and recommendation-detail tests are enabled.
+They use current normalized fixtures rather than stale historical IDs/facts.
+`JdkCompatibilityTest`, `GoogleAiClientIntegrationTest`, and
+`OpenRouterClientIntegrationTest` retain `@Ignore` by explicit user choice.
+Live client tests also require `-PgoogleAiClientIntegration` or
+`-PopenRouterClientIntegration`; selecting a test alone enables neither gate.
+Normal builds require no provider credentials and make no live inference calls.
 
 ## Package for another computer (JDK 25)
 
@@ -132,6 +133,34 @@ The current generated catalog contains four linked source pairs: CUPRA's
 `20260820_CUPRA_Ireland_Product_Guide_Raval`, Peugeot's `5008-spec-sheet`,
 Škoda's `Peaq_MY27_PG_August_CW48_2026`, and Toyota's
 `Toyota Corolla Cross - Brochure` (each with matching `.json` and `.pdf` files).
+
+## Frozen Data Model test fixtures
+
+Every current JSON under `src/main/resources/car-pricelists/` has a normalized
+snapshot at `src/test/resources/data-model-fixtures/<same relative path>`.
+Each contains the frozen identity, source path, and complete normalized vehicle
+(trims, variants, prices, equipment, options, specifications, and additional fields).
+`DataModelFixtures.expected(path)` loads the snapshot without calling the source parser.
+`DataModelFixtureTest` discovers every JSON in `data-model-fixtures` and runs separate
+source-comparison, identity/serialization, production promotion-rule validation
+(R5–R13/R18), and actual catalog-generation tests for each file. Generation wraps
+the frozen vehicle in an extraction envelope and uses a synthetic same-basename
+PDF to check linking and complete artifact equality; it does not test PDF content
+or re-extract brochure facts. Catalog tests
+reject missing/orphaned fixtures and unregistered source files. These are regression
+baselines, not independently verified brochure facts.
+
+Normal tests never regenerate fixtures. After an intentional source/model change:
+
+```sh
+./gradlew spotlessApply generateDataModelTestFixtures
+./gradlew test --tests 'com.sps23.aiworkflow.catalog.datamodel.*'
+```
+
+Review every generated diff before accepting the baseline; update `DataModelFixtures.ALL`
+for added/removed files and explicitly remove obsolete snapshots.
+Model-specific regression tests use only these current normalized fixtures.
+Parser edge cases remain covered by synthetic unit-test inputs.
 
 ## Car prompt CLI (OpenRouter)
 
@@ -222,8 +251,8 @@ This opt-in test asserts a nonempty generation-model catalog and prints IDs/limi
 It makes only model-list requests, not inference; `GOOGLE_AI_MODEL` is not required.
 Normal test runs exclude it. Missing credentials fail explicitly when opted in.
 
-Same workflow in a Compose Desktop window: pick an **API**—**OpenRouter**
-(default), **OpenAI**, **Google AI Studio**, **LM Studio** (`http://localhost:1234/v1`), **llama.cpp**
+Same workflow in a Compose Desktop window: pick an **API**—**OpenRouter**,
+**OpenAI**, **Google AI Studio** (default), **LM Studio** (`http://localhost:1234/v1`), **llama.cpp**
 (`http://localhost:8080/v1`) or **Ollama** (`http://localhost:11434/v1`).
 For remote providers, use **Browse / search models** to open a searchable picker.
 Search by ID/display name inside the popup; searching never changes the selection.
@@ -242,7 +271,7 @@ High > $10. These are UI-defined thresholds, not provider ratings or total-reque
 cost estimates. Free still requires every non-discount charge to be zero.
 Paid or unverified selections show a charge warning. Discovery failures stay
 visible; exact typed IDs remain usable and are reverified on Send.
-**openrouter/free** remains the default; there is no automatic model fallback.
+**openrouter/free** remains OpenRouter's initial selection; there is no automatic model fallback.
 
 For **OpenAI**, enter a masked **OpenAI API key** (blank uses `OPENAI_API_KEY`).
 Keys stay in memory only. The authenticated model list loads after a 600-ms
@@ -256,8 +285,12 @@ exact typed IDs.
 For **Google AI Studio**, enter the masked API key (blank uses
 `GOOGLE_AI_API_KEY`). The authenticated, paginated Google model catalog loads
 after a 600-ms key-entry debounce; **Refresh models** reloads it. Search
-generateContent models by ID/display name or type an exact ID. Selection starts
-blank and remains independent of other APIs; key edits discard stale discovery.
+generateContent models by ID/display name or type an exact ID. Both tabs default to
+**Gemini 3.5 Flash-Lite** (`gemini-3.5-flash-lite`). The picker always starts with
+**Gemini 3.5 Flash-Lite (medium)**, **Gemini 3.1 Flash-Lite (low)**,
+**Gemini 3.8 Flash (high)**, in that order, followed by other discovered models without duplicates.
+These are display-only labels, not thinking settings or price classifications.
+Selections remain independent of other APIs; key edits discard stale discovery.
 Each submission verifies the model and separate input/output limits.
 Specialized generation models may reject compatible chat requests explicitly.
 OpenAI and Google model-list APIs do not report token pricing: their picker rows
@@ -293,7 +326,7 @@ stderr and exits nonzero on failure. It may consume Google quota/incur charges.
 its live hello smoke, remove `@Ignore` locally, set both env variables, then:
 
 ```sh
-./gradlew test --tests 'com.sps23.aiworkflow.openrouter.GoogleAiClientIntegrationTest'
+./gradlew test -PgoogleAiClientIntegration --tests 'com.sps23.aiworkflow.openrouter.GoogleAiClientIntegrationTest'
 ```
 
 Selecting the test does not bypass `@Ignore`; restore it after the smoke.
@@ -303,13 +336,19 @@ Normal Google tests use a loopback fake provider and need no key/internet.
 ### PDF → JSON extraction
 
 Decisions: [`docs/adr/`](docs/adr/); terms: [`docs/glossary.md`](docs/glossary.md).
-**Data:** every run uploads the whole PDF to Google; free-tier content may be used by Google
-to improve its products.
+**Data:** Google receives the whole PDF; free-tier content may be used to improve its products.
+OpenAI, OpenRouter, local LLMs, and Manual API receive only PDFBox-extracted text.
+Images and visual layout are omitted; scanned/image-only PDFs require Google.
+Cloud requests can incur charges. Review output for omitted table/equipment facts.
 
 Extract one brochure in the desktop app (stage 5): `./gradlew run`, then open the **PDF Extractor**
 tab. Pick a PDF and an output folder (default `extracted-catalog/`), enter a Google AI key (or use
-`GOOGLE_AI_API_KEY`), choose a model (default `gemini-3.8-flash`) and click **Extract**. If the
-output file exists, a dialog asks before Gemini is called. Success shows trims, variants, options,
+`GOOGLE_AI_API_KEY`), choose a model (default `gemini-3.5-flash-lite`) and click **Extract**.
+The tab shares Recommender's provider selector, key fields, and searchable model pickers,
+including OpenAI, OpenRouter, LM Studio, llama.cpp, Ollama, and Manual API.
+Local presets use their loaded model; other providers retain independent exact model IDs.
+Desktop defaults ignore CLI model environment overrides. If the output file exists,
+a dialog asks before any inference call. Success shows trims, variants, options,
 tokens and the path, with **Open folder**. Failure shows the kind, hard violations and the
 auto-saved `<stem>.raw.json` path, with **Copy raw output** and **Open folder**. Tabs are locked
 while either tab is busy.
@@ -324,6 +363,9 @@ TTFT and generation speed remain unavailable; throughput is measured over the wh
 `inputUtf8Bytes` counts original PDF bytes plus UTF-8 prompts/schema, excluding base64/HTTP overhead.
 Exports contain no PDF contents, paths, prompts, schema, model text or credentials. New extractions
 and PDF-input edits clear previous metadata; declining overwrite makes no call and leaves no DEBUG data.
+Non-Google extraction uses the selected provider's existing text budgets and context checks,
+capped at 65,536 output tokens. Debug input sizes/estimates describe the text request rather
+than PDF bytes; unavailable provenance output-token usage is stored as null.
 
 Extract one brochure from the command line (stage 3):
 
@@ -600,7 +642,7 @@ its `@Ignore` annotation locally before running against the live API:
 ```sh
 export OPENROUTER_API_KEY=...        # never commit it
 export OPENROUTER_MODEL=vendor/model:free
-./gradlew test --tests 'com.sps23.aiworkflow.openrouter.OpenRouterClientIntegrationTest'
+./gradlew test -PopenRouterClientIntegration --tests 'com.sps23.aiworkflow.openrouter.OpenRouterClientIntegrationTest'
 ```
 
 A pass shows connectivity, not answer quality. Free models can return HTTP 429;

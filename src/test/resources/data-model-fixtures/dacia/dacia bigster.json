@@ -1,0 +1,831 @@
+{
+    "id": "dacia-bigster",
+    "sourcePath": "dacia/dacia bigster.json",
+    "vehicle": {
+        "title": "Dacia Bigster",
+        "make": "Dacia",
+        "model": "Bigster",
+        "effectiveDate": "June 2026",
+        "effectivePeriod": "2026-06",
+        "trims": [
+            {
+                "name": "Essential",
+                "variants": [
+                    {
+                        "name": "MHEV 140",
+                        "trimName": "Essential",
+                        "modelCode": null,
+                        "powertrainType": "MILD_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 121.0,
+                            "max": 121.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 2999000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€29,990"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety_and_security",
+                        "isAddition": false,
+                        "items": [
+                            "Forward emergency with collision alert",
+                            "Emergency braking with pedestrian & cyclist recognition",
+                            "Driver & passenger airbags",
+                            "Front & side airbags",
+                            "Passenger airbag with deactivation function",
+                            "Cruise control with speed limiter",
+                            "Remote central locking",
+                            "LED headlights",
+                            "Driver attention & drowsiness alert",
+                            "Lane keep assist",
+                            "Traffic sign recognition",
+                            "ESC, ASR Traction control and HSA Hill start assist",
+                            "Daytime running lights",
+                            "Rear parking sensors",
+                            "Rear camera",
+                            "Emergency call",
+                            "My Safety Switch"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "17\" Tergan alloy wheels",
+                            "Electrically adjustable & heated door mirrors",
+                            "Longitudinal roof bars",
+                            "Megalith grey door mirrors",
+                            "Megalith grey front & rear skid plates",
+                            "Starkle lower door protector",
+                            "Starkle front/rear cladding & wheelarches"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_comfort",
+                        "isAddition": false,
+                        "items": [
+                            "Auto single zone air conditioning",
+                            "Synthetic leather steering wheel",
+                            "Steel grey front door handles & grey effect dashboard",
+                            "One touch electric front windows",
+                            "Rear pulse electric rear windows",
+                            "Day/Night rear view mirror",
+                            "7\" TFT driver instrument display",
+                            "ISOFIX",
+                            "Manual handbrake",
+                            "Auto lights & manual wipers",
+                            "Roll away parcel shelf"
+                        ]
+                    },
+                    {
+                        "category": "seating_and_upholstery",
+                        "isAddition": false,
+                        "items": [
+                            "Fabric/Velvet seat cover",
+                            "6W height adjustable driver seat",
+                            "4W height adjustable passenger seat",
+                            "60/40 Folding rear bench"
+                        ]
+                    },
+                    {
+                        "category": "multimedia",
+                        "isAddition": false,
+                        "items": [
+                            "10.1\" Media control, Bluetooth, Apple CarPlay & Android Auto"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Expression",
+                "variants": [
+                    {
+                        "name": "MHEV 140",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "MILD_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 121.0,
+                            "max": 121.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3229000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€32,290"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 155",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 103.0,
+                            "max": 103.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3514000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€35,140"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 18000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€180"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 4x4 150",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 129.0,
+                            "max": 129.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3914000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€39,140"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety_and_lights_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Blind spot monitor",
+                            "Front fog lights",
+                            "Auto lights & auto wipers"
+                        ]
+                    },
+                    {
+                        "category": "driving_aids_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Multi-view 360 camera",
+                            "Front & rear parking sensors"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_wheels_additions",
+                        "isAddition": true,
+                        "items": [
+                            "17\" diamond-cut alloy wheels",
+                            "Electrically adjustable/folding & defrosting wing mirrors",
+                            "Grey door mirrors",
+                            "Shark antenna"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_comfort_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Denim effect dashboard & door panels",
+                            "Electronic handbrake",
+                            "Dual zone climate control",
+                            "High centre console with sliding armrest",
+                            "12v socket in the boot",
+                            "False boot floor",
+                            "Keyless entry & exit"
+                        ]
+                    },
+                    {
+                        "category": "seating_and_upholstery_additions",
+                        "isAddition": true,
+                        "items": [
+                            "40/20/40 split rear bench"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Journey",
+                "variants": [
+                    {
+                        "name": "MHEV 140",
+                        "trimName": "Journey",
+                        "modelCode": null,
+                        "powertrainType": "MILD_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 123.0,
+                            "max": 123.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3469000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€34,690"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 155",
+                        "trimName": "Journey",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 106.0,
+                            "max": 106.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3754000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€37,540"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 18000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€180"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 4x4 150",
+                        "trimName": "Journey",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 129.0,
+                            "max": 129.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4154000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€41,540"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety_and_lights_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Intelligent adaptive cruise control (HEV only)",
+                            "Auto main/dipped beam headlight activation"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_wheels_additions",
+                        "isAddition": true,
+                        "items": [
+                            "19\" Rasan diamond-cut alloy wheels",
+                            "Dark tinted rear windows",
+                            "Automatic handsfree tailgate"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_comfort_additions",
+                        "isAddition": true,
+                        "items": [
+                            "10\" TFT driver instrument display",
+                            "Refrigerated cooler box in armrest (HEV only)",
+                            "Wireless smartphone charger",
+                            "Heated steering wheel"
+                        ]
+                    },
+                    {
+                        "category": "seating_and_upholstery_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Special Journey MicroCloud coated textile upholstery",
+                            "6W adjustable driver and passenger seat with lumbar support",
+                            "Heated driver & passenger seats"
+                        ]
+                    },
+                    {
+                        "category": "multimedia_additions",
+                        "isAddition": true,
+                        "items": [
+                            "10.1\" Media Navigation with wireless smartphone replication",
+                            "Arkamys 6 speaker 3D sound system"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Extreme",
+                "variants": [
+                    {
+                        "name": "MHEV 140",
+                        "trimName": "Extreme",
+                        "modelCode": null,
+                        "powertrainType": "MILD_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 124.0,
+                            "max": 124.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3499000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€34,990"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 155",
+                        "trimName": "Extreme",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 106.0,
+                            "max": 106.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3784000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€37,840"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 18000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€180"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "HEV 4x4 150",
+                        "trimName": "Extreme",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": null,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 129.0,
+                            "max": 129.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4184000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€41,840"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety_and_lights_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Intelligent adaptive cruise control (HEV only)",
+                            "Auto main/dipped beam headlight activation",
+                            "Adaptive hill descent control"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_wheels_additions",
+                        "isAddition": true,
+                        "items": [
+                            "18\" Tagasan diamond-cut alloy wheels",
+                            "Dark tinted rear windows",
+                            "Panoramic opening sunroof",
+                            "Copper brown door mirrors",
+                            "Copper brown rear badging",
+                            "Modular roof bars"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_comfort_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Matt Khaki effect dashboard & door panels",
+                            "Copper brown air vents",
+                            "Heated steering wheel",
+                            "Rubber floor mats",
+                            "Rubber boot liner"
+                        ]
+                    },
+                    {
+                        "category": "seating_and_upholstery_additions",
+                        "isAddition": true,
+                        "items": [
+                            "Special Extreme MicroCloud coated textile washable synthetic TEP upholstery",
+                            "6W adjustable driver seat with lumbar",
+                            "6W adjustable passenger seat",
+                            "Heated driver & passenger seats"
+                        ]
+                    },
+                    {
+                        "category": "multimedia_additions",
+                        "isAddition": true,
+                        "items": [
+                            "10.1\" Media Navigation with wireless smartphone replication",
+                            "Arkamys 6 speaker 3D sound system",
+                            "Refrigerated cooler box in armrest (HEV only)",
+                            "Wireless smartphone charger"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": "STANDARD",
+                "name": "Glacier White",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Paint",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "All Trims",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "METALLIC",
+                "name": "Metallic Paint (Pearl Black, Shadow Grey, Terracotta, Cedar Green, Indigo Blue)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Paint",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "All Trims (Varies by trim color availability)",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 74500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€745"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "BI-TONE",
+                "name": "Contrasting (Black) Roof",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Paint",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Journey, Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 40000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€400"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": null,
+                "widthMm": null,
+                "heightMm": null,
+                "wheelbaseMm": null,
+                "bootCapacityLitres": null,
+                "maxBootCapacityLitres": null,
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": null,
+                "additional": {}
+            },
+            "powertrains": [
+                {
+                    "name": "MHEV 140",
+                    "type": "MILD_HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.3,
+                        "max": 5.5
+                    },
+                    "co2GPerKm": {
+                        "min": 121.0,
+                        "max": 124.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1199,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [],
+                    "charging": {},
+                    "additional": {}
+                },
+                {
+                    "name": "HEV 155",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 4.5,
+                        "max": 4.7
+                    },
+                    "co2GPerKm": {
+                        "min": 103.0,
+                        "max": 106.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1789,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [],
+                    "charging": {},
+                    "additional": {}
+                },
+                {
+                    "name": "HEV 4x4 150",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.7,
+                        "max": 5.7
+                    },
+                    "co2GPerKm": {
+                        "min": 129.0,
+                        "max": 129.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1199,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [],
+                    "charging": {},
+                    "additional": {}
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

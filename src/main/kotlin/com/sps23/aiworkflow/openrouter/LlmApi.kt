@@ -32,3 +32,42 @@ interface ChatBackend {
         maxCompletionTokens: Long = this.maxCompletionTokens,
     ): Completion
 }
+
+fun chatBackendFor(
+    api: LlmApi,
+    modelId: String,
+    apiKeyOverride: String?,
+    environment: Map<String, String?>,
+    manualBaseUrl: String = "",
+): ChatBackend =
+    when {
+        api.isLocal -> {
+            LocalLlmClient(LocalLlmConfig.fromEnvironment(environment, api, apiKeyOverride = apiKeyOverride))
+        }
+
+        api == LlmApi.OPENAI -> {
+            OpenAiClient(OpenAiConfig.fromEnvironment(environment, modelId, apiKeyOverride))
+        }
+
+        api == LlmApi.GOOGLE_AI -> {
+            GoogleAiClient(GoogleAiConfig.fromEnvironment(environment, modelId, apiKeyOverride))
+        }
+
+        api == LlmApi.MANUAL -> {
+            ManualApiConfig(
+                manualBaseUrl,
+                apiKeyOverride?.trim()?.takeIf { it.isNotEmpty() },
+                modelId.trim(),
+                completionTokenBudget(environment, MANUAL_MAX_COMPLETION_TOKENS_VARIABLE, 32_768),
+            ).backend()
+        }
+
+        else -> {
+            OpenRouterClient(
+                OpenRouterConfig.fromEnvironment(
+                    environment + (MODEL_VARIABLE to modelId.trim()) +
+                        (apiKeyOverride?.trim()?.takeIf { it.isNotEmpty() }?.let { mapOf(API_KEY_VARIABLE to it) } ?: emptyMap()),
+                ),
+            )
+        }
+    }

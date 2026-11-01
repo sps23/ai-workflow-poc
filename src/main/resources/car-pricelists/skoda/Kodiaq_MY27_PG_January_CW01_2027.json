@@ -1,295 +1,1936 @@
 {
-  "model": "Škoda Kodiaq",
-  "effective_date": "January 2027",
-  "trims": [
-    {
-      "trim_level": "Selection",
-      "pricing": [
-        {
-          "variant": "1.5TSI 150hp DSG mHEV",
-          "model_code": "PS7_DD",
-          "powertrain": "Petrol (Mild Hybrid)",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€210",
-          "price": "€57,690",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "1.5TSI 202hp DSG PHEV",
-          "model_code": "PS7_WC",
-          "powertrain": "Petrol / Electric (PHEV)",
-          "power_kw": 110,
-          "power_hp": 202,
-          "annual_road_tax": "€140",
-          "price": "€54,235",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 150hp DSG",
-          "model_code": "PS7_4D",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€270",
-          "price": "€56,980",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 190hp DSG 4x4",
-          "model_code": "PS7_6Z",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 142,
-          "power_hp": 190,
-          "annual_road_tax": "€420",
-          "price": "€65,360",
-          "drivetrain": "4x4"
-        }
-      ],
-      "standard_equipment": {
-        "exterior": [
-          "18\" Mazeno Alloy Wheels",
-          "LED Headlights & LED Taillights with Dynamic Indicators",
-          "Silver Roof Rails & Chrome Exterior Window Surround Trim"
-        ],
-        "interior_and_comfort": [
-          "3-Zone Climatronic Automatic Air Conditioning",
-          "Smart Dials (Rotary Control Knobs with Integrated Displays)",
-          "Heated Front Seats with Electric Lumbar Support"
-        ],
-        "multimedia_and_convenience": [
-          "13\" Central Infotainment Touchscreen Display",
-          "10.25\" Digital Cockpit Dashboard",
-          "Kessy Keyless Entry & Engine Start System",
-          "Wireless Smartphone Charging (15W with Active Cooling)",
-          "Front & Rear Parking Sensors with Rear View Camera",
-          "Adaptive Cruise Control (ACC)"
-        ],
-        "safety": [
-          "Front Assist, Side Assist & Lane Assist Safety Systems"
-        ]
-      }
+    "schemaVersion": 1,
+    "provenance": {
+        "pdfFileName": "Kodiaq_MY27_PG_January_CW01_2027.pdf",
+        "pdfSha256": "cfa46b62684f5059d2c97915055700af96a9351bcef39e3a7855b42474a128d5",
+        "model": "gemini-3.8-flash",
+        "extractedAt": "2026-11-01T00:24:05.472461Z",
+        "inputTokens": 11250,
+        "outputTokens": 17450
     },
-    {
-      "trim_level": "Selection Plus",
-      "pricing": [
-        {
-          "variant": "1.5TSI 150hp DSG mHEV",
-          "model_code": "PS7_DD",
-          "powertrain": "Petrol (Mild Hybrid)",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€210",
-          "price": "€61,590",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "1.5TSI 202hp DSG PHEV",
-          "model_code": "PS7_WC",
-          "powertrain": "Petrol / Electric (PHEV)",
-          "power_kw": 110,
-          "power_hp": 202,
-          "annual_road_tax": "€140",
-          "price": "€58,595",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 150hp DSG",
-          "model_code": "PS7_4D",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€270",
-          "price": "€62,475",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 190hp DSG 4x4",
-          "model_code": "PS7_6Z",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 142,
-          "power_hp": 190,
-          "annual_road_tax": "€420",
-          "price": "€70,830",
-          "drivetrain": "4x4"
-        }
-      ],
-      "standard_equipment": {
-        "additions_over_selection": [
-          "19\" Soira Alloy Wheels",
-          "Matrix LED Headlights with AFS & Cornering Function",
-          "Full LED Rear Lights with Dynamic Turn Signals and Welcome Effect",
-          "Electrically Adjustable Front Seats with Memory Function",
-          "Leather Lounge Interior Design Selection (Cognac or Black)",
-          "Virtual Pedal Electrically Operated Tailgate",
-          "Adaptive Chassis Control (DCC Plus) with Drive Mode Select"
-        ]
-      }
-    },
-    {
-      "trim_level": "Sportline",
-      "pricing": [
-        {
-          "variant": "1.5TSI 150hp DSG mHEV",
-          "model_code": "PS7_DD",
-          "powertrain": "Petrol (Mild Hybrid)",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€210",
-          "price": "€64,005",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "1.5TSI 202hp DSG PHEV",
-          "model_code": "PS7_WC",
-          "powertrain": "Petrol / Electric (PHEV)",
-          "power_kw": 110,
-          "power_hp": 202,
-          "annual_road_tax": "€140",
-          "price": "€58,995",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 150hp DSG",
-          "model_code": "PS7_4D",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 110,
-          "power_hp": 150,
-          "annual_road_tax": "€270",
-          "price": "€62,740",
-          "drivetrain": "4x2"
-        },
-        {
-          "variant": "2.0TDI 190hp DSG 4x4",
-          "model_code": "PS7_6Z",
-          "powertrain": "Diesel / HVO",
-          "power_kw": 142,
-          "power_hp": 190,
-          "annual_road_tax": "€420",
-          "price": "€73,170",
-          "drivetrain": "4x4"
-        }
-      ],
-      "standard_equipment": {
-        "exterior_additions": [
-          "20\" Talim Alloy Wheels with Anthracite Finish",
-          "Sportline Exterior Styling Pack (Gloss Black Grille, Roof Rails, & Window Trims)",
-          "Sports Front Bumpers & Rear Diffuser",
-          "Matrix LED Headlights & Dynamic LED Taillights"
+    "vehicle": {
+        "title": "Škoda Kodiaq",
+        "make": "Škoda",
+        "model": "Kodiaq",
+        "effectiveDate": "January 2027",
+        "effectivePeriod": "2027-01",
+        "trims": [
+            {
+                "name": "Selection",
+                "variants": [
+                    {
+                        "name": "1.5TSI 150hp DSG mHEV",
+                        "trimName": "Selection",
+                        "modelCode": "PS7_DD",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 140.0,
+                            "max": 145.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5769000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€57,690"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Petrol",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.1 – 6.4 l/100km"
+                        }
+                    },
+                    {
+                        "name": "1.5TSI 202hp DSG PHEV",
+                        "trimName": "Selection",
+                        "modelCode": "PS7_WC",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 19.7,
+                        "powerHp": 202,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 37.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5423500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€54,235"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "5-seats",
+                            "fuel": "Petrol/Electric",
+                            "transmission": "DSG (Auto)",
+                            "gears": "6-speed",
+                            "fuel_consumption": "1.6 – 1.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 150hp DSG",
+                        "trimName": "Selection",
+                        "modelCode": "PS7_4D",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 149.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5698000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€56,980"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "5.5 – 5.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 190hp DSG 4x4",
+                        "trimName": "Selection",
+                        "modelCode": "PS7_6Z",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 190,
+                        "co2GPerKm": {
+                            "min": 162.0,
+                            "max": 168.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6536000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€65,360"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 42000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€420"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.2 – 6.4 l/100km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Advanced driver alert",
+                            "Hill hold control",
+                            "Electrical child safety lock system",
+                            "Seatbelt warning system",
+                            "Electronic stability control (ESC)",
+                            "iSOFIX child seat anchor points (1x co-driver & 2x outer rear)",
+                            "Emergency call (e-call)",
+                            "Tyre pressure monitoring system (TPMS)",
+                            "7 airbags (incl. driver, co-driver, side, front, head + central airbag)",
+                            "Front assist",
+                            "Side assist",
+                            "Lane assist",
+                            "Turn assist",
+                            "Rear cross assist",
+                            "Emergency assist",
+                            "Intelligent speed assist",
+                            "Multi collision brake assist"
+                        ]
+                    },
+                    {
+                        "category": "functional",
+                        "isAddition": false,
+                        "items": [
+                            "Adaptive cruise control",
+                            "‘Kessy Full’ – Keyless entry/go system incl. anti-theft alarm & walkaway locking function",
+                            "Infotainment system incl. 10.4” touchscreen display, Bluetooth & 9 speakers",
+                            "Wireless Smartlink (Apple Carplay & Android Auto)",
+                            "Dual wireless charging ring (subject to device compatibility)",
+                            "Climatronic 3-zone air conditioning",
+                            "USB-C charging points – 2x front/2x rear/1x mirror",
+                            "Digital smart dials",
+                            "Front & rear parking sensors",
+                            "Rear view camera",
+                            "Electric tailgate",
+                            "Trailer hitch preparation",
+                            "Front & rear electric windows",
+                            "Auto-dimming rear-view mirror",
+                            "10.25” digital driver dashboard display",
+                            "Traffic sign recognition",
+                            "Remote access (3-year subscription)"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": false,
+                        "items": [
+                            "Black/Grey ‘Loft’ fabric upholstery",
+                            "Interior ambient lighting incl. footwell lighting",
+                            "Unique Dark Chrome (UDC) decorative inserts",
+                            "2-spoke leather heated multi-function heated steering wheel with tiptronic paddles",
+                            "Heated front seats",
+                            "Electric driver seat incl. height adjustment & lumbar support",
+                            "Front & rear centre armrest incl. storage compartment",
+                            "Front & rear floor mats",
+                            "Luggage compartment lighting incl. storage compartments & 12-volt socket",
+                            "Split folding rear seat & mechanical seat release",
+                            "7 seat configuration (PHEV only available in 5 seats)"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "18\" Soira anthracite alloy wheels",
+                            "Spare wheel, tool kit & jack",
+                            "Body coloured exterior mirrors",
+                            "Electrically adjusted/heated exterior mirrors",
+                            "LED headlights & LED daytime running lights",
+                            "LED taillights",
+                            "All weather lights",
+                            "Black roof rails & window surrounds"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Selection +",
+                "variants": [
+                    {
+                        "name": "1.5TSI 150hp DSG mHEV",
+                        "trimName": "Selection +",
+                        "modelCode": "PS7_DD",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 140.0,
+                            "max": 145.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6159000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€61,590"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Petrol",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.1 – 6.4 l/100km"
+                        }
+                    },
+                    {
+                        "name": "1.5TSI 202hp DSG PHEV",
+                        "trimName": "Selection +",
+                        "modelCode": "PS7_WC",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 19.7,
+                        "powerHp": 202,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 37.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5859500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€58,595"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "5-seats",
+                            "fuel": "Petrol/Electric",
+                            "transmission": "DSG (Auto)",
+                            "gears": "6-speed",
+                            "fuel_consumption": "1.6 – 1.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 150hp DSG",
+                        "trimName": "Selection +",
+                        "modelCode": "PS7_4D",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 149.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6247500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€62,475"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "5.5 – 5.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 190hp DSG 4x4",
+                        "trimName": "Selection +",
+                        "modelCode": "PS7_6Z",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 190,
+                        "co2GPerKm": {
+                            "min": 162.0,
+                            "max": 168.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 7083000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€70,830"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 42000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€420"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.2 – 6.4 l/100km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "key_equipment",
+                        "isAddition": true,
+                        "items": [
+                            "Leather Suite upholstery (Black or Cognac)",
+                            "19\" Halti alloy wheels",
+                            "Matrix LED headlights incl. variable light distribution",
+                            "LED taillights with dynamic indicators",
+                            "Illuminated front grill incl. dark chrome front grille inserts",
+                            "Dynamic welcome/leaving effect animation",
+                            "‘SUNSET’ dark tinted privacy glass",
+                            "Anodized chrome roof rails",
+                            "Scuff plates in door sill"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Sportline",
+                "variants": [
+                    {
+                        "name": "1.5TSI 150hp DSG mHEV",
+                        "trimName": "Sportline",
+                        "modelCode": "PS7_DD",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 140.0,
+                            "max": 145.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6400500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€64,005"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Petrol",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.1 – 6.4 l/100km"
+                        }
+                    },
+                    {
+                        "name": "1.5TSI 202hp DSG PHEV",
+                        "trimName": "Sportline",
+                        "modelCode": "PS7_WC",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 19.7,
+                        "powerHp": 202,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 37.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5899500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€58,995"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "5-seats",
+                            "fuel": "Petrol/Electric",
+                            "transmission": "DSG (Auto)",
+                            "gears": "6-speed",
+                            "fuel_consumption": "1.6 – 1.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 150hp DSG",
+                        "trimName": "Sportline",
+                        "modelCode": "PS7_4D",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 149.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6274000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€62,740"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "5.5 – 5.7 l/100km"
+                        }
+                    },
+                    {
+                        "name": "2.0TDI 190hp DSG 4x4",
+                        "trimName": "Sportline",
+                        "modelCode": "PS7_6Z",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 190,
+                        "co2GPerKm": {
+                            "min": 162.0,
+                            "max": 168.0
+                        },
+                        "prices": [
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 7317000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€73,170"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 42000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€420"
+                            }
+                        ],
+                        "additional": {
+                            "seat_configuration": "7-seats",
+                            "fuel": "Diesel/HVO",
+                            "transmission": "DSG (Auto)",
+                            "gears": "7-speed",
+                            "fuel_consumption": "6.2 – 6.4 l/100km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "key_equipment",
+                        "isAddition": true,
+                        "items": [
+                            "19” ‘Tirsuli Anthracite’ alloy wheels (Not standard on 4x4, see next page)",
+                            "Matrix LED headlights incl. variable light distribution",
+                            "LED tail lights with dynamic indicators",
+                            "Illuminated front grill",
+                            "Panoramic sunroof",
+                            "3-spoke sport multifunction leather heated steering wheel with tiptronic paddles",
+                            "Power folding exterior mirrors – driver incl. auto-dimming, memory function & blind spot illumination",
+                            "Front & rear sports bumpers",
+                            "Black gloss exterior mirrors",
+                            "Black gloss front grille surround",
+                            "Black gloss roof rails",
+                            "Black gloss rear D-pillar",
+                            "Black Suedia & leatherette upholstery",
+                            "Front sports seats",
+                            "Dark interior headliner",
+                            "Aluminium door sills & sports pedals"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
         ],
-        "interior_and_technology_additions": [
-          "Front Sports Seats with Integrated Headrests in Suedia/Leatherette",
-          "3-Spoke Heated Sport Multifunction Leather Steering Wheel with DSG Paddles",
-          "Black Headlining & Carbon-Look Interior Trim Accents",
-          "360-Degree Area View Camera System",
-          "Progressive Steering System"
-        ]
-      }
+        "options": [
+            {
+                "code": "45N",
+                "name": "18\" Soira anthracite alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "53Q",
+                "name": "19” Halti anthracite alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJ2",
+                "name": "19” Rapeto silver alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "53R",
+                "name": "19” Tirsuli anthracite alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJ6",
+                "name": "20” Rila aero alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,127"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,127"
+                        },
+                        "note": "Standard on 4x4 2.0TDI 190 BHP Sportline Engine"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ED",
+                "name": "Loft Design selection",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selections",
+                "items": [
+                    "Black & grey fabric with green & black stitching",
+                    "Black-grey fabric dashboard",
+                    "Black-grey fabric door lining",
+                    "Grey roof liner"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "EV",
+                "name": "Lounge Design selection",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selections",
+                "items": [
+                    "Grey fabric & Suedia with mustard stitching",
+                    "Grey Suedia dashboard",
+                    "Grey Suedia door lining",
+                    "Grey roof liner"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 250000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€ 2,500"
+                        },
+                        "note": "Linked option: PI1"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {
+                    "linked_options": "PI1"
+                }
+            },
+            {
+                "code": "EO",
+                "name": "Suite Black Design selection",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selections",
+                "items": [
+                    "Black leatherette with grey stitching",
+                    "Black leatherette dashboard",
+                    "Black leatherette door lining",
+                    "Grey roof liner"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 272500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€ 2,725"
+                        },
+                        "note": "Linked option: PI2"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {
+                    "linked_options": "PI2"
+                }
+            },
+            {
+                "code": "EW",
+                "name": "Suite Cognac Design selection",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selections",
+                "items": [
+                    "Cognac leatherette with cognac stitching",
+                    "Cognac leatherette dashboard",
+                    "Cognac leatherette door lining",
+                    "Grey roof liner"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 272500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,725"
+                        },
+                        "note": "Linked option: PI3"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {
+                    "linked_options": "PI3"
+                }
+            },
+            {
+                "code": "EA",
+                "name": "Sportline Design selection",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selections",
+                "items": [
+                    "Black suedia & leatherette with grey stitching",
+                    "Black Suedia dashboard",
+                    "Black Suedia door lining",
+                    "Black roof liner"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PWA",
+                "name": "Winter pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "Rear heated seats",
+                    "Heat insulated windshield"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 59600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€596"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 59600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€596"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 59600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€596"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PLB",
+                "name": "Light & View pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "Matrix LED headlights",
+                    "LED taillights with dynamic indicator",
+                    "Illuminated front grill incl. dark chrome front grille inserts"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 225300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,253"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PTA",
+                "name": "Technology pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "13” Display",
+                    "Navigation",
+                    "Display cleaner",
+                    "Remote access + Infotainment Online (YOZ)"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 153000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,530"
+                        },
+                        "note": "requires YOZ"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 153000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,530"
+                        },
+                        "note": "requires YOZ"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 153000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,530"
+                        },
+                        "note": "requires YOZ"
+                    }
+                ],
+                "additional": {
+                    "requirement": "requires YOZ"
+                }
+            },
+            {
+                "code": "PTD",
+                "name": "Technology pack plus",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "13” Display",
+                    "Navigation",
+                    "Display cleaner",
+                    "Head up display (HUD)",
+                    "Remote access + Infotainment Online"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 223100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,231"
+                        },
+                        "note": "requires YOZ"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 223100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,231"
+                        },
+                        "note": "requires YOZ"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 223100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,231"
+                        },
+                        "note": "requires YOZ"
+                    }
+                ],
+                "additional": {
+                    "requirement": "requires YOZ"
+                }
+            },
+            {
+                "code": "PXC",
+                "name": "Optic pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "Anodized chrome roof rails",
+                    "Unique dark chrome D pillar",
+                    "Scuff plates in door sill"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€647"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PPP",
+                "name": "Performance pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "Dynamic Chassis Control (DCC)",
+                    "Progressive steering",
+                    "Hill start assist"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 134000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,340"
+                        },
+                        "note": "4x4 only"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 134000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,340"
+                        },
+                        "note": "4x4 only"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 134000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,340"
+                        },
+                        "note": "4x4 only"
+                    }
+                ],
+                "additional": {
+                    "limitation": "4x4 only"
+                }
+            },
+            {
+                "code": "PAC",
+                "name": "Assisted drive pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "360-degree camera",
+                    "Remote park assist",
+                    "Trained parking"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 128700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,287"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 128700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,287"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 128700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,287"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WCA",
+                "name": "Convenience pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "items": [
+                    "Power seat adjustment for both front seats, with memory feature and seat cushion depth adjustment",
+                    "Pneumatically adjustable lumbar support on both sides",
+                    "Canton sound system",
+                    "Virtual pedal – foot operated sensor"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 158400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,584"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 158400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,584"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 158400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,584"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "3FU",
+                "name": "Panoramic sunroof",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 174700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,747"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "4KF",
+                "name": "‘SUNSET’ dark tinted privacy glass",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 33000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€330"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PK0",
+                "name": "Tow bar – electrically retractable",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 113500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,135"
+                        },
+                        "note": "PHEV only"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 113500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,135"
+                        },
+                        "note": "PHEV only"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 113500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,135"
+                        },
+                        "note": "PHEV only"
+                    }
+                ],
+                "additional": {
+                    "limitation": "PHEV only"
+                }
+            },
+            {
+                "code": "6NW",
+                "name": "Black fabric ceiling",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 11000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€110"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 11000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€110"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "YOZ",
+                "name": "Remote Access & Infotainment Online (3-year subscription)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        },
+                        "note": "requires PTA/PTD"
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        },
+                        "note": "requires PTA/PTD"
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        },
+                        "note": "requires PTA/PTD"
+                    }
+                ],
+                "additional": {
+                    "requirement": "requires PTA/PTD"
+                }
+            },
+            {
+                "code": "EA9",
+                "name": "Extended warranty (5 year / max. 150,000km)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Options",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,123"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,123"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,123"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "K4K4",
+                "name": "Energy Blue",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Solid",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€0"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "M3M3",
+                "name": "Steel Grey",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Solid",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Metallic",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Metallic",
+                "items": [
+                    "Bronx Gold (P4P4 – Metallic)",
+                    "Moon White (2Y2Y – Metallic)",
+                    "Black Magic (1Z1Z – Metallic)",
+                    "Graphite Grey (5X5X – Metallic)",
+                    "Smokey Diamond Silver (B3B3 – Metallic)",
+                    "Race Blue (8X8X – Metallic)"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 100000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,000"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "K1K1",
+                "name": "Velvet Red",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Exclusive",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 160000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,600"
+                        }
+                    },
+                    {
+                        "scope": "Selection +",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 160000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,600"
+                        }
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 160000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,600"
+                        }
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4758.0,
+                    "max": 4758.0
+                },
+                "widthMm": {
+                    "min": 1864.0,
+                    "max": 1864.0
+                },
+                "heightMm": {
+                    "min": 1674.0,
+                    "max": 1678.0
+                },
+                "wheelbaseMm": {
+                    "min": 2788.0,
+                    "max": 2790.0
+                },
+                "bootCapacityLitres": {
+                    "min": 340.0,
+                    "max": 910.0
+                },
+                "maxBootCapacityLitres": {
+                    "min": 845.0,
+                    "max": 845.0
+                },
+                "brakedTowingKg": {
+                    "min": 1800.0,
+                    "max": 2500.0
+                },
+                "additional": {
+                    "turning_circle_m": "11.2",
+                    "luggage_capacity_notes": "340 – 845 l (7 seat configuration) / 910 l (PHEV - 5 seat configuration)"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "1.5TSI 150hp m-HEV DSG",
+                    "type": "MILD_HYBRID",
+                    "modelCode": "PS7_DD",
+                    "drivetrain": "Front wheel drive",
+                    "transmission": "DSG (Auto) 7-speed",
+                    "powerKw": 110.0,
+                    "powerHp": 150.0,
+                    "torqueNm": 250.0,
+                    "topSpeedKmh": 205.0,
+                    "acceleration0To100S": {
+                        "min": 9.9,
+                        "max": 9.9
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 6.1,
+                        "max": 6.4
+                    },
+                    "co2GPerKm": {
+                        "min": 140.0,
+                        "max": 145.0
+                    },
+                    "displacementCc": 1498,
+                    "grossVehicleWeightKg": 2273.0,
+                    "brakedTowingKg": 1800.0,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Selection +",
+                        "Sportline"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "cylinders": "4",
+                        "fuel_tank_capacity_litres": "55"
+                    }
+                },
+                {
+                    "name": "2.0TDI 150hp DSG",
+                    "type": "DIESEL",
+                    "modelCode": "PS7_4D",
+                    "drivetrain": "Front wheel drive",
+                    "transmission": "DSG (Auto) 7-speed",
+                    "powerKw": 110.0,
+                    "powerHp": 150.0,
+                    "torqueNm": 360.0,
+                    "topSpeedKmh": 203.0,
+                    "acceleration0To100S": {
+                        "min": 9.8,
+                        "max": 9.8
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.5,
+                        "max": 5.7
+                    },
+                    "co2GPerKm": {
+                        "min": 144.0,
+                        "max": 149.0
+                    },
+                    "displacementCc": 1968,
+                    "grossVehicleWeightKg": 2411.0,
+                    "brakedTowingKg": 2000.0,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Selection +",
+                        "Sportline"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "cylinders": "4",
+                        "fuel_tank_capacity_litres": "55"
+                    }
+                },
+                {
+                    "name": "2.0TDI 190hp DSG 4x4",
+                    "type": "DIESEL",
+                    "modelCode": "PS7_6Z",
+                    "drivetrain": "All wheel drive",
+                    "transmission": "DSG (Auto) 7-speed",
+                    "powerKw": 142.0,
+                    "powerHp": 190.0,
+                    "torqueNm": 400.0,
+                    "topSpeedKmh": 217.0,
+                    "acceleration0To100S": {
+                        "min": 8.0,
+                        "max": 8.0
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 6.2,
+                        "max": 6.4
+                    },
+                    "co2GPerKm": {
+                        "min": 162.0,
+                        "max": 168.0
+                    },
+                    "displacementCc": 1968,
+                    "grossVehicleWeightKg": 2510.0,
+                    "brakedTowingKg": 2500.0,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Selection +",
+                        "Sportline"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "cylinders": "4",
+                        "fuel_tank_capacity_litres": "58"
+                    }
+                },
+                {
+                    "name": "1.5TSI 202hp PHEV DSG",
+                    "type": "PLUG_IN_HYBRID",
+                    "modelCode": "PS7_WC",
+                    "drivetrain": "Front wheel drive",
+                    "transmission": "DSG (Auto) 6-speed",
+                    "powerHp": 202.0,
+                    "torqueNm": 250.0,
+                    "topSpeedKmh": 210.0,
+                    "acceleration0To100S": {
+                        "min": 8.5,
+                        "max": 8.5
+                    },
+                    "wltpRangeKm": {
+                        "min": 116.0,
+                        "max": 119.0
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 1.6,
+                        "max": 1.7
+                    },
+                    "co2GPerKm": {
+                        "min": 36.0,
+                        "max": 37.0
+                    },
+                    "batteryCapacityKwh": 19.7,
+                    "batteryGrossKwh": 25.0,
+                    "batteryType": "Lithium-ion",
+                    "displacementCc": 1498,
+                    "dcMaxChargingKw": 40.0,
+                    "grossVehicleWeightKg": 2450.0,
+                    "brakedTowingKg": 1800.0,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Selection +",
+                        "Sportline"
+                    ],
+                    "charging": {
+                        "dc_charging_power": "40 kW",
+                        "dc_charging_soc": "10–80%",
+                        "dc_charging_time": "25 min.",
+                        "ac_charging_11kw_soc": "0–100%",
+                        "ac_charging_11kw_time": "2 h 30 min.",
+                        "ac_charging_2_3kw_soc": "0–100%",
+                        "ac_charging_2_3kw_time": "11 h 15 min.",
+                        "mode_3": "standard"
+                    },
+                    "additional": {
+                        "cylinders": "4",
+                        "petrol_engine_kw": "110",
+                        "phev_motor_kw": "40",
+                        "fuel_tank_capacity_litres": "45"
+                    }
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {
+            "hvo_compatibility": "Compatible with HVO (Hydrotreated Vegetable Oil) meeting standard EN 15940 for diesel models"
+        }
     }
-  ],
-  "technical_specifications": {
-    "dimensions": {
-      "length_mm": 4758,
-      "width_mm": 1864,
-      "height_mm": "1674-1678",
-      "wheelbase_mm": "2788-2790",
-      "boot_capacity_litres": "340-845",
-      "boot_capacity_litres_5_seat_phev": 910
-    },
-    "powertrains": [
-      {
-        "version": "1.5TSI 150hp DSG mHEV",
-        "type": "Mild Hybrid",
-        "model_code": "PS7_DD",
-        "drivetrain": "4x2",
-        "transmission": "7-speed DSG",
-        "power_kw": 110,
-        "power_hp": 150,
-        "torque_nm": 250,
-        "co2_emissions_g_km": "140-145",
-        "wltp_combined_fuel_consumption_l_100km": "6.1-6.4",
-        "annual_road_tax": "€210",
-        "top_speed_kmh": 205,
-        "acceleration_0_100_kmh_s": 9.9,
-        "max_towing_capacity_braked_kg": 1800,
-        "trims_available": [
-          "Selection",
-          "Selection Plus",
-          "Sportline"
-        ]
-      },
-      {
-        "version": "1.5TSI 202hp DSG PHEV",
-        "type": "PHEV",
-        "model_code": "PS7_WC",
-        "drivetrain": "4x2",
-        "transmission": "6-speed DSG",
-        "power_kw": 110,
-        "power_hp": 202,
-        "torque_nm": 250,
-        "co2_emissions_g_km": "36-37",
-        "wltp_combined_fuel_consumption_l_100km": "1.6-1.7",
-        "annual_road_tax": "€140",
-        "top_speed_kmh": 210,
-        "acceleration_0_100_kmh_s": 8.5,
-        "battery_gross_kwh": 25.7,
-        "battery_capacity_kwh": 19.7,
-        "wltp_range_km": "116-119",
-        "max_towing_capacity_braked_kg": 1800,
-        "charging": {
-          "dc_fast_charger_max_kw": 40,
-          "dc_time_10_80_percent": "25 min",
-          "wallbox_3phase_max_kw": 11,
-          "wallbox_time_0_100_percent": "2 h 30 min"
-        },
-        "trims_available": [
-          "Selection",
-          "Selection Plus",
-          "Sportline"
-        ]
-      },
-      {
-        "version": "2.0TDI 150hp DSG",
-        "type": "Diesel",
-        "model_code": "PS7_4D",
-        "drivetrain": "4x2",
-        "transmission": "7-speed DSG",
-        "power_kw": 110,
-        "power_hp": 150,
-        "torque_nm": 360,
-        "co2_emissions_g_km": "144-149",
-        "wltp_combined_fuel_consumption_l_100km": "5.5-5.7",
-        "annual_road_tax": "€270",
-        "top_speed_kmh": 203,
-        "acceleration_0_100_kmh_s": 9.8,
-        "max_towing_capacity_braked_kg": 2000,
-        "trims_available": [
-          "Selection",
-          "Selection Plus",
-          "Sportline"
-        ]
-      },
-      {
-        "version": "2.0TDI 190hp DSG 4x4",
-        "type": "Diesel",
-        "model_code": "PS7_6Z",
-        "drivetrain": "4x4",
-        "transmission": "7-speed DSG",
-        "power_kw": 142,
-        "power_hp": 190,
-        "torque_nm": 400,
-        "co2_emissions_g_km": "162-168",
-        "wltp_combined_fuel_consumption_l_100km": "6.2-6.4",
-        "annual_road_tax": "€420",
-        "top_speed_kmh": 217,
-        "acceleration_0_100_kmh_s": 8.0,
-        "max_towing_capacity_braked_kg": 2500,
-        "trims_available": [
-          "Selection",
-          "Selection Plus",
-          "Sportline"
-        ]
-      }
-    ]
-  }
 }

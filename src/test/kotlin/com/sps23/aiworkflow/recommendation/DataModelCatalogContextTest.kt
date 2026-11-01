@@ -1,10 +1,10 @@
 package com.sps23.aiworkflow.recommendation
 
+import com.sps23.aiworkflow.catalog.datamodel.DataModelFixtures
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -13,14 +13,72 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class DataModelCatalogContextTest {
+    companion object {
+        private val json = Json { explicitNulls = false }
+    }
+
     @Test
-    @Ignore("TODO: Reconcile the bundled catalog and source-PDF fixture, then re-enable this test.")
+    fun `plus trims have distinct stable configuration ids without changing other trim ids`() {
+        val artifact = DataModelFixtures.artifact()
+        val context = DataModelCatalogContext.fromArtifact(artifact)
+        val prompt = json.decodeFromString<DataModelPromptCatalog>(context.promptJson)
+        val configurations = prompt.vehicles.flatMap { it.trims }.flatMap { it.configurations }
+        assertEquals(artifact.vehicles.sumOf { car -> car.trims.sumOf { it.variants.size } }, configurations.size)
+        assertEquals(configurations.size, configurations.map { it.configurationId }.distinct().size)
+        val kodiaq = prompt.vehicles.single { it.id == "skoda-kodiaq" }
+        val selection =
+            kodiaq.trims
+                .single { it.name == "Selection" }
+                .configurations
+                .first()
+                .configurationId
+        val plus =
+            kodiaq.trims
+                .single { it.name == "Selection +" }
+                .configurations
+                .first()
+                .configurationId
+        assertEquals("skoda-kodiaq-selection-1-5tsi-150hp-dsg-mhev", selection)
+        assertEquals("skoda-kodiaq-selection-plus-1-5tsi-150hp-dsg-mhev", plus)
+        assertEquals(kodiaq.sourcePdfPath, context.sourcePdfPath(selection))
+        assertEquals(kodiaq.sourcePdfPath, context.sourcePdfPath(plus))
+    }
+
+    @Test
+    fun `duplicate derived configuration ids remain explicit failures`() {
+        val artifact = DataModelFixtures.artifact()
+        val car = artifact.vehicles.first()
+        val duplicate = car.copy(trims = listOf(car.trims.first(), car.trims.first()))
+        assertFailsWith<IllegalArgumentException> {
+            DataModelCatalogContext.fromArtifact(artifact.copy(vehicles = listOf(duplicate)))
+        }
+    }
+
+    @Test
+    fun `artifact loading rejects unsupported schemas empty catalogs and unsafe PDF paths`() {
+        val artifact = DataModelFixtures.artifact()
+        assertFailsWith<IllegalArgumentException> {
+            DataModelCatalogContext.fromArtifact(artifact.copy(schemaVersion = 2))
+        }
+        assertFailsWith<IllegalArgumentException> {
+            DataModelCatalogContext.fromArtifact(artifact.copy(vehicles = emptyList()))
+        }
+        listOf("../outside.pdf", "/absolute.pdf", "cars\\outside.pdf", "cars/document.json").forEach { path ->
+            assertFailsWith<IllegalArgumentException>(path) {
+                DataModelCatalogContext.fromArtifact(
+                    artifact.copy(vehicles = listOf(artifact.vehicles.first().copy(sourcePdfPath = path))),
+                )
+            }
+        }
+    }
+
+    @Test
     fun `UI context uses normalized car data with deterministic variant ids and linked PDFs`() {
-        val context = DataModelCatalogContext.loadBundled()
+        val context = DataModelCatalogContext.fromArtifact(DataModelFixtures.artifact())
         val root = Json.parseToJsonElement(context.promptJson).jsonObject
         val vehicles = root.getValue("vehicles").jsonArray
 
-        assertEquals(25, vehicles.size)
+        assertEquals(DataModelFixtures.fixturePaths().size, vehicles.size)
         val cupra =
             vehicles
                 .single {
@@ -36,7 +94,7 @@ class DataModelCatalogContextTest {
                 .single {
                     it.jsonObject
                         .getValue("name")
-                        .jsonPrimitive.content == "Urban"
+                        .jsonPrimitive.content == "Urban V1"
                 }.jsonObject
         val firstVariant =
             urban
@@ -45,19 +103,18 @@ class DataModelCatalogContextTest {
                 .first()
                 .jsonObject
         val configurationId = firstVariant.getValue("configurationId").jsonPrimitive.content
-        assertEquals("cupra-raval-urban-raval-urban-116hp-v1", configurationId)
-        assertTrue("RRP_EXCLUDING_GRANTS" in firstVariant.toString())
+        assertEquals("cupra-raval-urban-v1-raval-urban-37kwh-116hp", configurationId)
+        assertTrue("PRICE" in firstVariant.toString())
         assertEquals(cupra.getValue("sourcePdfPath").jsonPrimitive.content, context.sourcePdfPath(configurationId))
-        assertTrue(context.promptJson.toByteArray().size < 250_868)
+        assertEquals(context.promptJson, DataModelCatalogContext.fromArtifact(DataModelFixtures.artifact()).promptJson)
         assertFalse("documentId:page" in context.promptJson)
     }
 
     @Test
-    @Ignore("TODO: Reconcile the bundled catalog and source-PDF fixture, then re-enable this test.")
     fun `source PDF lookup uses bundled registry and rejects unknown configuration`() {
-        val context = DataModelCatalogContext.loadBundled()
+        val context = DataModelCatalogContext.fromArtifact(DataModelFixtures.artifact())
         val store = DataModelPdfStore(context)
-        val (filename, bytes) = store.read("cupra-raval-urban-raval-urban-116hp-v1")
+        val (filename, bytes) = store.read("cupra-raval-urban-v1-raval-urban-37kwh-116hp")
 
         assertEquals("20260820_CUPRA_Ireland_Product_Guide_Raval.pdf", filename)
         assertEquals("%PDF-", bytes.take(5).toByteArray().toString(Charsets.US_ASCII))

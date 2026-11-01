@@ -130,7 +130,7 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   appear as the error message.
 - **Footer:** under the answer show the response model ID (or the requested ID
   when unreported) and `PROTOTYPE_DISCLAIMER`, matching the CLI.
-- **API choice:** an API dropdown lists `LlmApi` entries: OpenRouter (default), OpenAI,
+- **API choice:** an API dropdown lists `LlmApi` entries: OpenRouter, OpenAI, Google AI Studio (default),
   LM Studio `http://localhost:1234/v1`, llama.cpp `http://localhost:8080/v1`,
   Ollama `http://localhost:11434/v1`. Local APIs hide the model dropdown and use
   `LocalLlmClient`: OpenAI-compatible `POST <baseUrl>/chat/completions`. Other local presets use no
@@ -145,6 +145,11 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   existing byte heuristic, not model tokenization; server rejection stays visible.
   All APIs use the generated Data Model catalog context; output IDs/citations
   and source download behavior remain unchanged.
+  Configuration slugging preserves `+` as `plus` (approved 2026-11-01), so
+  Kodiaq `Selection` and `Selection +` remain distinct. Other IDs stay unchanged;
+  remaining duplicate derived IDs are explicit errors. `fromArtifact` shares the
+  same schema/path/configuration validation as bundled loading, allowing offline
+  recommendation tests to consume current normalized fixtures directly.
   Changing API with
   unchanged input reuses the cached translation. Disabled while a request runs.
   The `carPrompt` CLI stays OpenRouter-only.
@@ -169,7 +174,7 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   other provider charges may apply. Typed exact IDs need not be in the fetched
   catalog. Discovery failure shows an explicit error while leaving typed IDs usable.
   Selection/refresh never changes the selected ID implicitly.
-  `openrouter/free` remains the initial ID; the UI ignores `OPENROUTER_MODEL`.
+  `openrouter/free` remains OpenRouter's initial ID; the UI ignores `OPENROUTER_MODEL`.
   Every submission rechecks exact listing, text output, nonnegative pricing and
   context limits. Free-labelled IDs require zero pricing; arbitrary verified paid
   IDs are authorized in desktop and CLI. Paid selections show a charge warning
@@ -211,7 +216,7 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   library. The UI shows a masked key, overriding `GOOGLE_AI_API_KEY` when nonblank.
   Blank uses env. Keys remain in memory and excluded from logs/exports.
   Debounce discovery 600 ms, with Refresh, cancellation cleanup and key-version
-  checks preventing stale results. Retain a separate initially blank Google ID
+  checks preventing stale results. Retain a separate Google ID, initially `gemini-3.5-flash-lite`,
   and unchanged-input translation across provider/model/key switches.
   Native `GET /v1beta/models` uses `x-goog-api-key`, never a query-string key;
   follow all `nextPageToken` pages, rejecting repeated tokens. List models with
@@ -236,8 +241,10 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   using required `GOOGLE_AI_API_KEY` and `GOOGLE_AI_MODEL` env variables.
   `GoogleAiClientIntegrationTest` is `@Ignore` from creation; its only live smoke
   sends a hello prompt, checks nonempty text and exact requested model, and requires
-  those env vars. Remove `@Ignore` locally to opt in; test selection alone never
-  bypasses the ignore. Normal tests stay offline. No live smoke is run automatically.
+  those env vars. Remove `@Ignore` locally and pass `-PgoogleAiClientIntegration`
+  to opt in; test selection alone enables neither gate. Normal tests stay offline.
+  OpenRouter live client tests likewise require `-PopenRouterClientIntegration`
+  after explicitly removing their retained ignore. No live smoke runs automatically.
 - **Launch:** `compose.desktop.application` with `mainClass` and
   `--enable-native-access=ALL-UNNAMED`; run with `./gradlew run`. Only
   `OPENROUTER_API_KEY` is required for OpenRouter, read per request;
@@ -412,3 +419,13 @@ without changing manual inference/configuration.
 Done when `ModelPickerTest` covers exact batch sizes, full-catalog search, search vs
 selection isolation, reopening, keyboard boundaries and price-tier boundaries offline,
 and popup/screen rendering plus existing provider/controller regressions pass.
+
+**Approved 2026-11-01:** both desktop tabs share provider/key/model controls and start
+with Google AI Studio + `gemini-3.5-flash-lite`, independently of CLI environment model
+selection. Google's picker prepends these display-only presets, retaining discovery,
+exact entry, and live inference verification:
+`Gemini 3.5 Flash-Lite (medium)`, `Gemini 3.1 Flash-Lite (low)`,
+`Gemini 3.8 Flash (high)`. Labels configure neither thinking levels nor pricing.
+Discovery preserves the order and deduplicates preset IDs; presets remain selectable
+without credentials/discovery. No fallback if a preset is unavailable.
+PDF provider behavior is defined in [ADR 0002](adr/0002-gemini-native-generatecontent.md).

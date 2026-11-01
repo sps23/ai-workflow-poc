@@ -2,7 +2,6 @@ package com.sps23.aiworkflow.ui
 
 import com.sps23.aiworkflow.catalog.extraction.ExtractedVehicle
 import com.sps23.aiworkflow.catalog.extraction.ExtractionProvenance
-import com.sps23.aiworkflow.catalog.extraction.GEMINI_PDF_DEFAULT_MODEL
 import com.sps23.aiworkflow.catalog.extraction.GeminiUsage
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_DEFAULT_OUTPUT_DIR
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_OUTPUT_DIR_VARIABLE
@@ -14,6 +13,7 @@ import com.sps23.aiworkflow.catalog.extraction.Violation
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.GOOGLE_AI_MODEL_VARIABLE
 import com.sps23.aiworkflow.openrouter.GoogleAiModel
+import com.sps23.aiworkflow.openrouter.LlmApi
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
 import com.sps23.aiworkflow.openrouter.RequestMetrics
 import com.sps23.aiworkflow.openrouter.StageMetrics
@@ -80,6 +80,49 @@ internal object PdfExtractorFixtures {
 }
 
 class PdfExtractorControllerTest {
+    @Test
+    fun `non-Google selections forward independent keys models and freeze controls during extraction`() =
+        runBlocking {
+            val calls = mutableListOf<Triple<LlmApi, String, String?>>()
+            lateinit var controller: PdfExtractorController
+            controller =
+                PdfExtractorController(
+                    environment = emptyMap(),
+                    textExtractAction = { _, dir, api, model, key, url, _ ->
+                        calls += Triple(api, model, key)
+                        controller.providerSelection.selectApi(LlmApi.GOOGLE_AI)
+                        controller.providerSelection.selectModel("blocked")
+                        controller.providerSelection.updateOpenAiApiKey("blocked")
+                        assertEquals(api, controller.providerSelection.selectedApi)
+                        assertEquals(model, controller.modelId)
+                        if (api == LlmApi.MANUAL) assertEquals("https://example.test/v1", url)
+                        PdfExtractorFixtures.written(dir.resolve("brochure.json"))
+                    },
+                )
+            val selection = controller.providerSelection
+            controller.updatePdfPath("/brochure.pdf")
+            selection.updateOpenAiApiKey("openai-key")
+            selection.updateLocalApiKey("local-key")
+            selection.updateManualApiKey("manual-key")
+            selection.updateManualBaseUrl("https://example.test/v1")
+            for (api in listOf(LlmApi.OPENAI, LlmApi.OPENROUTER, LlmApi.LM_STUDIO, LlmApi.LLAMA_CPP, LlmApi.OLLAMA, LlmApi.MANUAL)) {
+                selection.selectApi(api)
+                if (!api.isLocal) selection.selectModel("exact-${api.name}")
+                controller.extract()
+                assertIs<PdfExtractorState.Done>(controller.state)
+                assertFalse(selection.controlsLocked)
+            }
+            assertEquals(
+                listOf("openai-key", null, "local-key", "local-key", "local-key", "manual-key"),
+                calls.map { it.third },
+            )
+            selection.selectApi(LlmApi.GOOGLE_AI)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, controller.modelId)
+            selection.selectApi(LlmApi.OPENAI)
+            assertEquals("exact-OPENAI", controller.modelId)
+            assertEquals("openai-key", selection.openAiApiKey)
+        }
+
     private class Call(
         val pdf: Path,
         val outputDir: Path,
@@ -106,16 +149,17 @@ class PdfExtractorControllerTest {
     )
 
     @Test
-    fun `defaults come from the environment, then built-in defaults`() {
+    fun `UI defaults use Google and Flash Lite regardless of CLI model environment`() {
         val plain = controller()
         assertEquals(PDF_EXTRACT_DEFAULT_OUTPUT_DIR, plain.outputDir)
-        assertEquals(GEMINI_PDF_DEFAULT_MODEL, plain.modelId)
+        assertEquals(DEFAULT_GOOGLE_UI_MODEL, plain.modelId)
+        assertEquals(LlmApi.GOOGLE_AI, plain.providerSelection.selectedApi)
         assertFalse(plain.canExtract)
 
         val configured =
             controller(mapOf(PDF_EXTRACT_OUTPUT_DIR_VARIABLE to " /tmp/out ", GOOGLE_AI_MODEL_VARIABLE to "models/gemini-other"))
         assertEquals("/tmp/out", configured.outputDir)
-        assertEquals("gemini-other", configured.modelId)
+        assertEquals(DEFAULT_GOOGLE_UI_MODEL, configured.modelId)
     }
 
     @Test
@@ -257,7 +301,7 @@ class PdfExtractorControllerTest {
             controller.reset()
             assertEquals("/cars/jogger.pdf", controller.pdfPath)
             assertEquals(PDF_EXTRACT_DEFAULT_OUTPUT_DIR, controller.outputDir)
-            assertEquals(GEMINI_PDF_DEFAULT_MODEL, controller.modelId)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, controller.modelId)
             assertEquals("", controller.apiKey)
             controller.extract()
             release.complete(Unit)

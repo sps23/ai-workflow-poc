@@ -1,0 +1,510 @@
+{
+    "id": "toyota-yaris",
+    "sourcePath": "toyota/Toyota Yaris - Hybrid Brochure.json",
+    "vehicle": {
+        "title": "Toyota Yaris",
+        "make": "Toyota",
+        "model": "Yaris",
+        "effectiveDate": "March 2026",
+        "effectivePeriod": "2026-03",
+        "trims": [
+            {
+                "name": "Luna",
+                "variants": [
+                    {
+                        "name": "Luna Hybrid 115",
+                        "trimName": "Luna",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 116,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 87.0,
+                            "max": 87.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 16000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€160"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Toyota Safety Sense 3",
+                            "Acceleration suppression at low speed on Pre-Collision system (day)",
+                            "Anti-jam protection on power windows",
+                            "Anti-lock Braking System (ABS) with Electronic Brake force Distribution (EBD)",
+                            "Driver & passenger central, front and side airbag",
+                            "Driver Monitor Camera",
+                            "eCall emergency call system",
+                            "Emergency Driving Stop System (EDSS)",
+                            "Emergency Steering Assist on Pre-Collision system (day)",
+                            "Front seat belt reminder",
+                            "Full-range Adaptive Cruise Control",
+                            "Hill-start Assist Control (HAC)",
+                            "Immobiliser",
+                            "Intersection Turn Assist on Pre-Collision system (day)",
+                            "Lane Trace Assist (LTA)",
+                            "Pre-Collision System with Pedestrian and Cyclist Detection",
+                            "Rear seat belt reminder",
+                            "Rear-view camera",
+                            "Road Sign Assist (RSA)",
+                            "Speed limiter",
+                            "Tyre Pressure Warning System (TPWS)",
+                            "Vehicle Stability Control (VSC)"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": false,
+                        "items": [
+                            "Automatic High Beam (AHB)",
+                            "Black door belt moulding",
+                            "Black upper & lower front grille",
+                            "Body-coloured door handles",
+                            "Daytime running light (LED bulb)",
+                            "Dusk sensor",
+                            "Follow-me-home headlights",
+                            "Front fog lamps (halogen)",
+                            "High-mounted stop lamp (LED)",
+                            "Projector halogen headlamps",
+                            "Rain sensor",
+                            "Rear combination lamps (bulb)",
+                            "Rear spoiler",
+                            "Shark-fin antenna",
+                            "Auto-fold door mirrors"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": false,
+                        "items": [
+                            "Black fabric, black stitching upholstery",
+                            "Manually height-adjustable front seats",
+                            "ISOFIX seat fixing",
+                            "60:40 split-folding 2nd row rear seats"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": false,
+                        "items": [
+                            "Driver & front passenger fabric floor mats with Yaris logo",
+                            "3-spoke leather steering wheel",
+                            "Adaptive Cruise Control switch on steering wheel",
+                            "Audio switches on steering wheel",
+                            "Automatic High Beam (AHB) on/off switch",
+                            "Black interior door handles",
+                            "Electronic parking brake",
+                            "Fabric front door trim",
+                            "Information display switches on steering wheel",
+                            "Lane Departure Alert switch on steering wheel",
+                            "Leather gear shift knob",
+                            "Manual day/night rear-view mirror",
+                            "Manual telescopic steering wheel",
+                            "Manual tilting steering wheel",
+                            "Speed Limiter switch on steering wheel",
+                            "Voice recognition switch on steering wheel"
+                        ]
+                    },
+                    {
+                        "category": "audio_and_nav",
+                        "isAddition": false,
+                        "items": [
+                            "9\" Touch multimedia display with Apple CarPlay & Android Auto",
+                            "6 speakers",
+                            "USB connector (Type C)",
+                            "Bluetooth hands-free system",
+                            "Voice recognition"
+                        ]
+                    },
+                    {
+                        "category": "convenience",
+                        "isAddition": false,
+                        "items": [
+                            "Automatic air conditioning",
+                            "Front and rear power windows",
+                            "Power-adjustable, manually retractable, heated door mirrors",
+                            "One touch auto up & down function on all power windows",
+                            "Smart Entry & Start System"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": false,
+                        "items": [
+                            "15\" silver alloy wheels (5-double-spoke)",
+                            "Temporary spare wheel"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Luna Sport",
+                "variants": [
+                    {
+                        "name": "Luna Sport Hybrid 115",
+                        "trimName": "Luna Sport",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 116,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 97.0,
+                            "max": 97.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 17000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€170"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "Piano black upper front grille",
+                            "Daytime running light (LED light guide)",
+                            "Front fog lamps (LED)",
+                            "LED headlamps",
+                            "Rear combination lamps (LED)",
+                            "Turning signal (LED)",
+                            "Privacy glass on rear windows"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "7\" TFT information display",
+                            "Digital speedometer (km/h)",
+                            "White ambient foot lamp, centre console and front door",
+                            "Wireless charger"
+                        ]
+                    },
+                    {
+                        "category": "mytoyota",
+                        "isAddition": true,
+                        "items": [
+                            "Remote air conditioning system",
+                            "Remote door lock"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": true,
+                        "items": [
+                            "17\" black machined-face alloys wheels (10-double-spoke)"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": true,
+                        "items": [
+                            "Black embossed fabric with dark grey bolsters and silver stitching upholstery"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Platinum",
+                "variants": [
+                    {
+                        "name": "Platinum Hybrid 115",
+                        "trimName": "Platinum",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 116,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 97.0,
+                            "max": 97.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 17000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€170"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "audio_and_nav",
+                        "isAddition": true,
+                        "items": [
+                            "10.5\" Touch multimedia display with Apple CarPlay & Android Auto"
+                        ]
+                    },
+                    {
+                        "category": "convenience",
+                        "isAddition": true,
+                        "items": [
+                            "Dual-zone automatic air conditioning",
+                            "Nanoe-X air purifier",
+                            "Panoramic roof with manual sunshade"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": true,
+                        "items": [
+                            "Manually height-adjustable front passenger seat",
+                            "Black partial synthetic leather with grey stitching upholstery",
+                            "Power-adjustable lumbar support on driver seat"
+                        ]
+                    },
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "Piano black door belt moulding",
+                            "Piano black lower front grille",
+                            "Dark chrome surround on lower front grille"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "12.3\" screen for information display",
+                            "Electrochromatic rear-view mirror",
+                            "Panoramic black roof lining"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": true,
+                        "items": [
+                            "17\" black machined-face alloy wheels (5-spoke)",
+                            "Tyre repair kit"
+                        ]
+                    },
+                    {
+                        "category": "mytoyota",
+                        "isAddition": true,
+                        "items": [
+                            "Digital Key"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "GR Sport",
+                "variants": [
+                    {
+                        "name": "GR Sport Hybrid 130",
+                        "trimName": "GR Sport",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 130,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 99.0,
+                            "max": 99.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 17000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€170"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior_and_visibility",
+                        "isAddition": true,
+                        "items": [
+                            "Dark chrome lower front grille",
+                            "Black surround on lower front grille",
+                            "Meshed lower and upper front grille",
+                            "Full bitone exterior"
+                        ]
+                    },
+                    {
+                        "category": "interior_and_instrumentation",
+                        "isAddition": true,
+                        "items": [
+                            "Driver & front passenger floor mats",
+                            "3-spoke partially perforated leather steering wheel",
+                            "Black roof lining",
+                            "GR SPORT logo on floor mats",
+                            "GR SPORT door scuff plates",
+                            "Gunmetal side air vents",
+                            "Piano black insert on side air vents",
+                            "Red stitching on gear shift boot",
+                            "Red stitching on steering wheel"
+                        ]
+                    },
+                    {
+                        "category": "performance",
+                        "isAddition": true,
+                        "items": [
+                            "GR SPORT suspension tuning"
+                        ]
+                    },
+                    {
+                        "category": "seats",
+                        "isAddition": true,
+                        "items": [
+                            "Black perforated Ultrasuede with leather-like bolsters and red stitching"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 3940.0,
+                    "max": 3940.0
+                },
+                "widthMm": {
+                    "min": 1745.0,
+                    "max": 1745.0
+                },
+                "heightMm": {
+                    "min": 1500.0,
+                    "max": 1500.0
+                },
+                "wheelbaseMm": {
+                    "min": 2560.0,
+                    "max": 2560.0
+                },
+                "bootCapacityLitres": {
+                    "min": 286.0,
+                    "max": 286.0
+                },
+                "maxBootCapacityLitres": null,
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": {
+                    "min": 450.0,
+                    "max": 450.0
+                },
+                "additional": {}
+            },
+            "powertrains": [
+                {
+                    "name": "Hybrid 115",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1490,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Luna",
+                        "Luna Sport",
+                        "Platinum"
+                    ],
+                    "charging": {},
+                    "additional": {}
+                },
+                {
+                    "name": "Hybrid 130",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1490,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "GR Sport"
+                    ],
+                    "charging": {},
+                    "additional": {}
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

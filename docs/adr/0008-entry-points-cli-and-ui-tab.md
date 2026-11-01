@@ -10,7 +10,9 @@ Extraction is occasional, one brochure at a time, and billed per run.
 - CLI: Gradle `extractPdf` (`PdfExtractCli`), non-interactive. Exit codes: 0 written, 1 failed,
   2 usage error or missing key, 3 target exists without `--overwrite`.
 - UI: a **PDF Extractor** tab in the existing window (`CarCatalogApp`, `TabRow`: Recommender |
-  PDF Extractor), with its own Google key and model fields and picker.
+  PDF Extractor), with independent in-memory keys and selections through shared
+  provider controls; current defaults follow the
+  [desktop plan](../openrouter-desktop-ui-plan.md).
 - Both report tokens only, with no cost estimate (prices change; see 0002).
 - The PDF tab reuses Car search's DEBUG panel and metadata export for one native Gemini extraction
   request plus a separate model-discovery timing summary, on success and failure. PDF input-token

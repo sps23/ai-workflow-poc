@@ -1,268 +1,1554 @@
 {
-  "model": "Volkswagen ID.7 & ID.7 Tourer MY27",
-  "effective_date": "October 2026",
-  "trims": [
-    {
-      "trim_level": "Pure Plus",
-      "body_styles": [
-        {
-          "body_style": "Fastback",
-          "model_code": "ED22EH",
-          "powertrain": "59kWh (204HP)",
-          "range_wltp_km": 470,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 14.3,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac54,990",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac56,615"
-        },
-        {
-          "body_style": "Tourer",
-          "model_code": "ED52EH",
-          "powertrain": "59kWh (204HP)",
-          "range_wltp_km": 460,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 14.7,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac55,790",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac57,415"
-        }
-      ],
-      "highlights": [
-        "19\" Hudson Alloy Wheels",
-        "15\" Infotainment Display",
-        "Area View incl. Rear View Camera System",
-        "IQ.Light - LED Matrix Headlamps",
-        "Illuminated Front & Rear Logos",
-        "Heated Front Seats with Massage Programs",
-        "Rear Tinted Windows",
-        "Head-up Display",
-        "Easy Open & Close Package",
-        "Wireless Smartphone Charging",
-        "Lane Assist, Travel Assist & Emergency Assist",
-        "3 Zone Climatronic with enhanced air filter",
-        "IDA Voice Assistant",
-        "Keyless Access with SAFELOCK"
-      ]
+    "schemaVersion": 1,
+    "provenance": {
+        "pdfFileName": "ID7_MY27.pdf",
+        "pdfSha256": "9c1f27b8367e7b2ff99b73033c4e52243e360b55a250be12edf1bd7201673482",
+        "model": "gemini-3.8-flash",
+        "extractedAt": "2026-11-01T00:40:21.467988Z",
+        "inputTokens": 10116,
+        "outputTokens": 17683
     },
-    {
-      "trim_level": "Pro S Plus",
-      "body_styles": [
-        {
-          "body_style": "Fastback",
-          "model_code": "ED24QM",
-          "powertrain": "86kWh (286HP)",
-          "range_wltp_km": 702,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 13.7,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac61,190",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac62,815"
+    "vehicle": {
+        "title": "ID.7",
+        "make": "Volkswagen",
+        "model": "ID.7",
+        "effectiveDate": "October 2026",
+        "effectivePeriod": "2026-10",
+        "trims": [
+            {
+                "name": "Pure Plus",
+                "variants": [
+                    {
+                        "name": "59kWh (204HP) Fastback",
+                        "trimName": "Pure Plus",
+                        "modelCode": "ED22EH",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 59.0,
+                        "powerHp": 204,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 470.0,
+                            "max": 470.0
+                        },
+                        "electricConsumptionKwhPer100Km": 14.3,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5499000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€54,990"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5661500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€56,615"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Fastback",
+                            "delivery_and_service": "€1,625"
+                        }
+                    },
+                    {
+                        "name": "59kWh (204HP) Tourer",
+                        "trimName": "Pure Plus",
+                        "modelCode": "ED52EH",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 59.0,
+                        "powerHp": 204,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 460.0,
+                            "max": 460.0
+                        },
+                        "electricConsumptionKwhPer100Km": 14.7,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5579000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€55,790"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5741500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€57,415"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Tourer",
+                            "delivery_and_service": "€1,625"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "alloy_wheels",
+                        "isAddition": false,
+                        "items": [
+                            "19” Hudson Alloy Wheels"
+                        ]
+                    },
+                    {
+                        "category": "exterior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Metallic Paint",
+                            "IQ.Light - LED Matrix Headlamps",
+                            "Illuminated Front & Rear Logo",
+                            "Illuminated Door Handle Recesses",
+                            "Illuminated Strip Moulding in front",
+                            "LED Rear Lights with Dynamic Indicators",
+                            "Heated Windscreen",
+                            "Power Adjustable & Heated Wing Mirrors",
+                            "Black Exterior Mirror Casing",
+                            "Rear Tinted Windows",
+                            "‘ID.7’ nameplate in white"
+                        ]
+                    },
+                    {
+                        "category": "interior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Comfort ArtVelours Eco Microfleece Seats",
+                            "Pneumatically-adjustable lumbar support in front",
+                            "ergoActive front seats with power adjustment",
+                            "Multifunction heated steering wheel",
+                            "Heated front seats",
+                            "Front massage seats",
+                            "Floor Mats",
+                            "30-Colour Ambient Surround Lighting",
+                            "Play and Pause Pedals"
+                        ]
+                    },
+                    {
+                        "category": "functional_equipment",
+                        "isAddition": false,
+                        "items": [
+                            "15” Infotainment Screen",
+                            "App Connect Wireless",
+                            "2 USB-C ports in front / 2 USB-C ports in rear",
+                            "Navigation System ‘Innovision’",
+                            "Wireless Charging Pad for smart phone",
+                            "Area View incl. rear view camera system",
+                            "DAB+ Radio",
+                            "IDA voice assistant",
+                            "Keyless Access with SAFELOCK",
+                            "Electric Boot Closing",
+                            "3 Zone Climatronic w/ enhanced air filter",
+                            "Head-up display",
+                            "Charging cable mode 3 type 2, 32 A"
+                        ]
+                    },
+                    {
+                        "category": "safety_features",
+                        "isAddition": false,
+                        "items": [
+                            "3 Year Warranty / max 90,000km",
+                            "Anti Theft Alarm",
+                            "Emergency Call Button",
+                            "Tyre Pressure Monitoring System",
+                            "Tool Kit",
+                            "3 ISOFIX points ( 1 front, 2 rear)",
+                            "Front & Passenger & Curtain Airbags",
+                            "Side airbags in front, Centre Airbag",
+                            "Front Passenger Airbag deactivation"
+                        ]
+                    },
+                    {
+                        "category": "driver_assistance_systems",
+                        "isAddition": false,
+                        "items": [
+                            "Front Assist (Pedestrian & Cyclist)",
+                            "Park Assist Plus with Park Distance Control",
+                            "Memory Feature for Park Assist",
+                            "Front Cross Traffic Assist",
+                            "Travel Assist & Emergency Assist",
+                            "Side Assist",
+                            "Rear Traffic Alert",
+                            "Lane Assist",
+                            "Adaptive Cruise Control",
+                            "Dynamic Road Sign Display",
+                            "Automatic headlight control",
+                            "Dynamic Light Assist",
+                            "Predictive Speed Limiter",
+                            "Advanced Driver Attention Monitor"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Pro S Plus",
+                "variants": [
+                    {
+                        "name": "86kWh (286HP) Fastback",
+                        "trimName": "Pro S Plus",
+                        "modelCode": "ED24QM",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 86.0,
+                        "powerHp": 286,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 702.0,
+                            "max": 702.0
+                        },
+                        "electricConsumptionKwhPer100Km": 13.7,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6119000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€61,190"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6281500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€62,815"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Fastback",
+                            "delivery_and_service": "€1,625"
+                        }
+                    },
+                    {
+                        "name": "86kWh (286HP) Tourer",
+                        "trimName": "Pro S Plus",
+                        "modelCode": "ED54QM",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 86.0,
+                        "powerHp": 286,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 681.0,
+                            "max": 681.0
+                        },
+                        "electricConsumptionKwhPer100Km": 14.2,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6199000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€61,990"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6361500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€63,615"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Tourer",
+                            "delivery_and_service": "€1,625"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "alloy_wheels",
+                        "isAddition": false,
+                        "items": [
+                            "19” Hudson Alloy Wheels"
+                        ]
+                    },
+                    {
+                        "category": "exterior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Metallic Paint",
+                            "IQ.Light - LED Matrix Headlamps",
+                            "Illuminated Front & Rear Logo",
+                            "Illuminated Door Handle Recesses",
+                            "Illuminated Strip Moulding in front",
+                            "LED Rear Lights with Dynamic Indicators",
+                            "Heated Windscreen",
+                            "Power Adjustable & Heated Wing Mirrors",
+                            "Black Exterior Mirror Casing",
+                            "Rear Tinted Windows",
+                            "‘ID.7’ nameplate in white"
+                        ]
+                    },
+                    {
+                        "category": "interior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Comfort ArtVelours Eco Microfleece Seats",
+                            "Pneumatically-adjustable lumbar support in front",
+                            "ergoActive front seats with power adjustment",
+                            "Multifunction heated steering wheel",
+                            "Heated front seats",
+                            "Front massage seats",
+                            "Floor Mats",
+                            "30-Colour Ambient Surround Lighting",
+                            "Play and Pause Pedals"
+                        ]
+                    },
+                    {
+                        "category": "functional_equipment",
+                        "isAddition": false,
+                        "items": [
+                            "15” Infotainment Screen",
+                            "App Connect Wireless",
+                            "2 USB-C ports in front / 2 USB-C ports in rear",
+                            "Navigation System ‘Innovision’",
+                            "Wireless Charging Pad for smart phone",
+                            "Area View incl. rear view camera system",
+                            "DAB+ Radio",
+                            "IDA voice assistant",
+                            "Keyless Access with SAFELOCK",
+                            "Electric Boot Closing",
+                            "3 Zone Climatronic w/ enhanced air filter",
+                            "Head-up display",
+                            "Charging cable mode 3 type 2, 32 A"
+                        ]
+                    },
+                    {
+                        "category": "safety_features",
+                        "isAddition": false,
+                        "items": [
+                            "3 Year Warranty / max 90,000km",
+                            "Anti Theft Alarm",
+                            "Emergency Call Button",
+                            "Tyre Pressure Monitoring System",
+                            "Tool Kit",
+                            "3 ISOFIX points ( 1 front, 2 rear)",
+                            "Front & Passenger & Curtain Airbags",
+                            "Side airbags in front, Centre Airbag",
+                            "Front Passenger Airbag deactivation"
+                        ]
+                    },
+                    {
+                        "category": "driver_assistance_systems",
+                        "isAddition": false,
+                        "items": [
+                            "Front Assist (Pedestrian & Cyclist)",
+                            "Park Assist Plus with Park Distance Control",
+                            "Memory Feature for Park Assist",
+                            "Front Cross Traffic Assist",
+                            "Travel Assist & Emergency Assist",
+                            "Side Assist",
+                            "Rear Traffic Alert",
+                            "Lane Assist",
+                            "Adaptive Cruise Control",
+                            "Dynamic Road Sign Display",
+                            "Automatic headlight control",
+                            "Dynamic Light Assist",
+                            "Predictive Speed Limiter",
+                            "Advanced Driver Attention Monitor"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "GTX Plus",
+                "variants": [
+                    {
+                        "name": "86kWh (340HP) Fastback",
+                        "trimName": "GTX Plus",
+                        "modelCode": "ED29PM",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 86.0,
+                        "powerHp": 340,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 597.0,
+                            "max": 597.0
+                        },
+                        "electricConsumptionKwhPer100Km": 16.3,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6789000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€67,890"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6951500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€69,515"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Fastback",
+                            "delivery_and_service": "€1,625"
+                        }
+                    },
+                    {
+                        "name": "86kWh (340HP) Tourer",
+                        "trimName": "GTX Plus",
+                        "modelCode": "ED59PM",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 86.0,
+                        "powerHp": 340,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 585.0,
+                            "max": 585.0
+                        },
+                        "electricConsumptionKwhPer100Km": 16.6,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6869000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€68,690"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 7031500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€70,315"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {
+                            "body_style": "Tourer",
+                            "delivery_and_service": "€1,625"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "highlights_in_addition_to_pure_plus_pro_s_plus",
+                        "isAddition": true,
+                        "items": [
+                            "20” Skagen Alloy Wheels",
+                            "Panoramic Smart Glass Roof",
+                            "Heated Rear Outer Seats",
+                            "Harmon Kardon Sound System",
+                            "Active Climate Seats in Front",
+                            "Upgraded GTX perforated Art Velours seats",
+                            "Adaptive Chassis Control (DCC)",
+                            "GTX Sports Style Bumpers"
+                        ]
+                    },
+                    {
+                        "category": "alloy_wheels",
+                        "isAddition": false,
+                        "items": [
+                            "20” Skegan Alloy Wheels"
+                        ]
+                    },
+                    {
+                        "category": "exterior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Metallic Paint",
+                            "IQ.Light - LED Matrix Headlamps",
+                            "Illuminated Front & Rear Logo",
+                            "Illuminated Door Handle Recesses",
+                            "Illuminated Strip Moulding in front",
+                            "LED Rear Lights with Dynamic Indicators",
+                            "Heated Windscreen",
+                            "Power Adjustable & Heated Wing Mirrors",
+                            "Black Exterior Mirror Casing",
+                            "Rear Tinted Windows",
+                            "‘ID.7’ nameplate in black",
+                            "GTX Sports Style Bumpers",
+                            "Black Roof",
+                            "Panoramic Smart Glass Roof"
+                        ]
+                    },
+                    {
+                        "category": "interior_highlights",
+                        "isAddition": false,
+                        "items": [
+                            "Comfort ArtVelours Eco Microfleece Seats (perforated / GTX)",
+                            "Pneumatically-adjustable lumbar support in front",
+                            "ergoActive front seats with power adjustment",
+                            "Multifunction heated steering wheel",
+                            "Heated front seats",
+                            "Heated rear outer seats",
+                            "Front massage seats",
+                            "Active climate seats in front",
+                            "Floor Mats",
+                            "30-Colour Ambient Surround Lighting",
+                            "Play and Pause Pedals"
+                        ]
+                    },
+                    {
+                        "category": "functional_equipment",
+                        "isAddition": false,
+                        "items": [
+                            "15” Infotainment Screen",
+                            "App Connect Wireless",
+                            "2 USB-C ports in front / 2 USB-C ports in rear",
+                            "Navigation System ‘Innovision’",
+                            "Wireless Charging Pad for smart phone",
+                            "Area View incl. rear view camera system",
+                            "DAB+ Radio",
+                            "IDA voice assistant",
+                            "Keyless Access with SAFELOCK",
+                            "Electric Boot Closing",
+                            "3 Zone Climatronic w/ enhanced air filter",
+                            "Head-up display",
+                            "Harman Kardon sound system, 12 speakers + 1",
+                            "Adaptive Chassis Control (DCC)",
+                            "Charging cable mode 3 type 2, 32 A"
+                        ]
+                    },
+                    {
+                        "category": "safety_features",
+                        "isAddition": false,
+                        "items": [
+                            "3 Year Warranty / max 90,000km",
+                            "Anti Theft Alarm",
+                            "Emergency Call Button",
+                            "Tyre Pressure Monitoring System",
+                            "Tool Kit",
+                            "3 ISOFIX points ( 1 front, 2 rear)",
+                            "Front & Passenger & Curtain Airbags",
+                            "Side airbags in front, Centre Airbag",
+                            "Side airbags in rear",
+                            "Front Passenger Airbag deactivation"
+                        ]
+                    },
+                    {
+                        "category": "driver_assistance_systems",
+                        "isAddition": false,
+                        "items": [
+                            "Front Assist (Pedestrian & Cyclist)",
+                            "Park Assist Plus with Park Distance Control",
+                            "Memory Feature for Park Assist",
+                            "Front Cross Traffic Assist",
+                            "Travel Assist & Emergency Assist",
+                            "Side Assist",
+                            "Rear Traffic Alert",
+                            "Lane Assist",
+                            "Adaptive Cruise Control",
+                            "Dynamic Road Sign Display",
+                            "Automatic headlight control",
+                            "Dynamic Light Assist",
+                            "Predictive Speed Limiter",
+                            "Advanced Driver Attention Monitor"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": "WBT",
+                "name": "19” Bergen Alloy Wheels (included w/ Black Package)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PI3",
+                "name": "20” Trondheim Alloy Wheels (Airstop Tyres)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJ7",
+                "name": "20” Montreal Alloy Wheels (Airstop Tyres)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJ3",
+                "name": "20” Skagen Alloy Wheels (Black)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJ6",
+                "name": "21” Mataro Alloy Wheels (Airstop Tyres)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P25",
+                "name": "Exterior Package Plus incl Panoramic Smart Glass Roof",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "items": [
+                    "Adaptive Cruise Control DCC incl. Driving Profile Selection",
+                    "Dynamic Headlight Range Control, with Dynamic Cornering Light",
+                    "Dynamic Light Assist Advanced High-Beam Control",
+                    "Illuminated VW Logo in front, illuminated molding between headlamps and door handle recesses",
+                    "IQ.Light – LED Matrix Headlamps",
+                    "Panoramic Sunroof with Smart Glass"
+                ],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PBF",
+                "name": "Interior Package Plus",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "items": [
+                    "30-Colour Ambient Lighting",
+                    "Active Climate Seats in Front with Massage Functionality",
+                    "Harmon Kardon Sound System",
+                    "Heated Front Seats and Outer Rear Seats",
+                    "Perforated ArtVelours ECO Microfleece",
+                    "Comfort Seats in Front",
+                    "Comfort Dashboard"
+                ],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WBT",
+                "name": "Exterior Black Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "items": [
+                    "19” Bergen Alloy Wheels",
+                    "Black Nameplate set in Base Trim",
+                    "Dynamic Wheel Center Caps with Self-Aligning VW Logo",
+                    "Tinted Rear Windows"
+                ],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "FF1",
+                "name": "V2L Adapter (Bi-Directional Charging)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WPW",
+                "name": "Heat Pump",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "1M6",
+                "name": "Folding Trailer Hitch with Electric Release",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P03",
+                "name": "Park Assist Pro",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PD4",
+                "name": "Park Assist Pro & Digital Key",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "C2C2",
+                "name": "Moonstone Grey (Solid)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Solid",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "C2A1"
+                }
+            },
+            {
+                "code": "0E0E",
+                "name": "Grenadilla Black (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "8H8H",
+                "name": "Aquamarine Blue (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "8HA1"
+                }
+            },
+            {
+                "code": "2Y2Y",
+                "name": "Glacier White (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "2YA1"
+                }
+            },
+            {
+                "code": "P8P8",
+                "name": "Kings Red (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "P8A1"
+                }
+            },
+            {
+                "code": "1T1T",
+                "name": "Scale Silver (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "1TA1"
+                }
+            },
+            {
+                "code": "5Y5Y",
+                "name": "Stonewashed Blue (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": "Metallic",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "OPTIONAL"
+                    }
+                ],
+                "additional": {
+                    "code_black_roof": "5YA1"
+                }
+            },
+            {
+                "code": "ZN",
+                "name": "Soul Black",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ZQ",
+                "name": "Soul Black / Red / GTX",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ZO",
+                "name": "Soul Black (in combination with Interior Package Plus)",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ZP",
+                "name": "Mistral / Soul Black (in combination with Interior Package Plus)",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "AK",
+                "name": "Mistral / Soul Black / Grey with white steering wheel (in combination with Interior Package Plus)",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "‘ID.7’ nameplate in black",
+                "category": "OTHER",
+                "categoryLabel": "Exterior Highlights",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Black Roof",
+                "category": "ROOF_COLOUR",
+                "categoryLabel": "Exterior Highlights",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Panoramic Smart Glass Roof",
+                "category": "OTHER",
+                "categoryLabel": "Exterior Highlights",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Heated rear outer seats",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Highlights",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Active climate seats in front",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Highlights",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Harman Kardon sound system, 12 speakers + 1",
+                "category": "OTHER",
+                "categoryLabel": "Functional Equipment",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Adaptive Chassis Control (DCC)",
+                "category": "OTHER",
+                "categoryLabel": "Functional Equipment",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Side airbags in rear",
+                "category": "OTHER",
+                "categoryLabel": "Safety Features",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Pure Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "Pro S Plus",
+                        "state": "OPTIONAL"
+                    },
+                    {
+                        "scope": "GTX Plus",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4961.0,
+                    "max": 4961.0
+                },
+                "widthMm": {
+                    "min": 2141.0,
+                    "max": 2141.0
+                },
+                "heightMm": {
+                    "min": 1536.0,
+                    "max": 1551.0
+                },
+                "wheelbaseMm": {
+                    "min": 2971.0,
+                    "max": 2971.0
+                },
+                "bootCapacityLitres": {
+                    "min": 532.0,
+                    "max": 605.0
+                },
+                "maxBootCapacityLitres": {
+                    "min": 1586.0,
+                    "max": 1714.0
+                },
+                "brakedTowingKg": {
+                    "min": 1000.0,
+                    "max": 1800.0
+                },
+                "additional": {
+                    "open_boot_height_fastback": "2,280 mm",
+                    "open_boot_height_tourer": "2,130 mm",
+                    "headroom_front_rear": "1,030 mm / 961 mm",
+                    "elbow_width_front_rear": "1,518 mm / 1,507 mm"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "59kWh (204HP)",
+                    "type": "ELECTRIC",
+                    "powerHp": 204.0,
+                    "topSpeedKmh": 160.0,
+                    "acceleration0To100S": {
+                        "min": 7.9,
+                        "max": 8.0
+                    },
+                    "wltpRangeKm": {
+                        "min": 460.0,
+                        "max": 470.0
+                    },
+                    "electricConsumptionKwhPer100Km": {
+                        "min": 14.3,
+                        "max": 14.7
+                    },
+                    "co2GPerKm": {
+                        "min": 0.0,
+                        "max": 0.0
+                    },
+                    "batteryCapacityKwh": 59.0,
+                    "dcMaxChargingKw": 160.0,
+                    "grossVehicleWeightKg": 2540.0,
+                    "brakedTowingKg": 1000.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "Pure Plus"
+                    ],
+                    "charging": {
+                        "charging_time_11kw_ac_0_to_100": "06.30 h",
+                        "charging_time_dc_10_to_80": "00.27 h",
+                        "runtime_10_min_dc": "160 km - 165 km"
+                    },
+                    "additional": {
+                        "rated_voltage": "397.4 V",
+                        "unladen_weight_eu_standard": "2,062 kg - 2,072 kg",
+                        "turning_circle": "ca. 10.9 m"
+                    }
+                },
+                {
+                    "name": "86kWh (286HP)",
+                    "type": "ELECTRIC",
+                    "powerHp": 286.0,
+                    "topSpeedKmh": 180.0,
+                    "acceleration0To100S": {
+                        "min": 6.6,
+                        "max": 6.7
+                    },
+                    "wltpRangeKm": {
+                        "min": 681.0,
+                        "max": 702.0
+                    },
+                    "electricConsumptionKwhPer100Km": {
+                        "min": 13.7,
+                        "max": 14.2
+                    },
+                    "co2GPerKm": {
+                        "min": 0.0,
+                        "max": 0.0
+                    },
+                    "batteryCapacityKwh": 86.0,
+                    "dcMaxChargingKw": 199.0,
+                    "grossVehicleWeightKg": 2700.0,
+                    "brakedTowingKg": 1000.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "Pro S Plus"
+                    ],
+                    "charging": {
+                        "charging_time_11kw_ac_0_to_100": "09:00 h",
+                        "charging_time_dc_10_to_80": "00:28 h",
+                        "runtime_10_min_dc": "229 km - 237 km"
+                    },
+                    "additional": {
+                        "rated_voltage": "382.7 V",
+                        "unladen_weight_eu_standard": "2,227 kg - 2,235 kg",
+                        "turning_circle": "ca. 10.9 m"
+                    }
+                },
+                {
+                    "name": "86kWh (340HP)",
+                    "type": "ELECTRIC",
+                    "powerHp": 340.0,
+                    "topSpeedKmh": 200.0,
+                    "acceleration0To100S": {
+                        "min": 5.4,
+                        "max": 5.5
+                    },
+                    "wltpRangeKm": {
+                        "min": 585.0,
+                        "max": 597.0
+                    },
+                    "electricConsumptionKwhPer100Km": {
+                        "min": 16.3,
+                        "max": 16.6
+                    },
+                    "co2GPerKm": {
+                        "min": 0.0,
+                        "max": 0.0
+                    },
+                    "batteryCapacityKwh": 86.0,
+                    "dcMaxChargingKw": 199.0,
+                    "grossVehicleWeightKg": 2790.0,
+                    "brakedTowingKg": 1800.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "GTX Plus"
+                    ],
+                    "charging": {
+                        "charging_time_11kw_ac_0_to_100": "09:00 h",
+                        "charging_time_dc_10_to_80": "00:28 h",
+                        "runtime_10_min_dc": "197 km - 201 km"
+                    },
+                    "additional": {
+                        "rated_voltage": "382.7 V",
+                        "unladen_weight_eu_standard": "2,325 kg",
+                        "turning_circle": "ca. 12.3 m"
+                    }
+                }
+            ],
+            "additional": {}
         },
-        {
-          "body_style": "Tourer",
-          "model_code": "ED54QM",
-          "powertrain": "86kWh (286HP)",
-          "range_wltp_km": 681,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 14.2,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac61,990",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac63,615"
-        }
-      ],
-      "highlights": [
-        "19\" Hudson Alloy Wheels",
-        "86kWh Extended Range Battery (Up to 702km WLTP)",
-        "15\" Infotainment Display",
-        "Area View incl. Rear View Camera System",
-        "IQ.Light - LED Matrix Headlamps",
-        "Illuminated Front & Rear Logos",
-        "Heated Front Seats with Massage Programs",
-        "Head-up Display",
-        "Lane Assist, Travel Assist & Emergency Assist",
-        "Predictive Speed Limiter & Dynamic Road Sign Display"
-      ]
-    },
-    {
-      "trim_level": "GTX Plus",
-      "body_styles": [
-        {
-          "body_style": "Fastback",
-          "model_code": "ED29PM",
-          "powertrain": "86kWh (340HP)",
-          "range_wltp_km": 597,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 16.3,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac67,890",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac69,515"
-        },
-        {
-          "body_style": "Tourer",
-          "model_code": "ED59PM",
-          "powertrain": "86kWh (340HP)",
-          "range_wltp_km": 585,
-          "co2_emissions_g_km": 0,
-          "vrt_rate": "7%",
-          "consumption_kwh_100km": 16.6,
-          "annual_road_tax": "\u20ac120",
-          "rrp": "\u20ac68,690",
-          "delivery_and_service": "\u20ac1,625",
-          "rotr_price": "\u20ac70,315"
-        }
-      ],
-      "highlights": [
-        "20\" Skagen Alloy Wheels (Black)",
-        "Panoramic Smart Glass Roof",
-        "Heated Rear Outer Seats",
-        "Active Climate Seats in Front",
-        "Upgraded GTX Perforated ArtVelours Seats",
-        "Adaptive Chassis Control (DCC)",
-        "Harman Kardon Sound System (12 Speakers + 1 Subwoofer)",
-        "GTX Sports Style Bumpers",
-        "GTX Interior & Exterior Styling Accents"
-      ]
+        "additional": {}
     }
-  ],
-  "optional_equipment": [
-    {
-      "category": "Alloy Wheels",
-      "options": [
-        {
-          "code": "WBT",
-          "description": "19\" Bergen Alloy Wheels (included w/ Black Package)",
-          "price": "Optional on Pure Plus & Pro S Plus"
-        },
-        {
-          "code": "P13",
-          "description": "20\" Trondheim Alloy Wheels (Airstop Tyres)",
-          "price": "Optional on Pure Plus & Pro S Plus"
-        },
-        {
-          "code": "PJ7",
-          "description": "20\" Montreal Alloy Wheels (Airstop Tyres)",
-          "price": "Optional on all trims"
-        },
-        {
-          "code": "PJ3",
-          "description": "20\" Skagen Alloy Wheels (Black)",
-          "price": "Standard on GTX Plus"
-        },
-        {
-          "code": "PJ6",
-          "description": "21\" Mataro Alloy Wheels (Airstop Tyres)",
-          "price": "Optional on Pro S Plus & GTX Plus"
-        }
-      ]
-    },
-    {
-      "category": "Styling & Packages",
-      "options": [
-        {
-          "code": "P25",
-          "description": "Exterior Package Plus incl. Panoramic Smart Glass Roof & DCC",
-          "price": "Optional on Pure Plus & Pro S Plus"
-        },
-        {
-          "code": "PBF",
-          "description": "Interior Package Plus incl. Active Climate Seats & Harman Kardon",
-          "price": "Optional on Pure Plus & Pro S Plus"
-        },
-        {
-          "code": "WBT",
-          "description": "Exterior Black Package",
-          "price": "Optional"
-        }
-      ]
-    },
-    {
-      "category": "Functional & Technology",
-      "options": [
-        {
-          "code": "FF1",
-          "description": "V2L Adapter (Bi-Directional Charging)",
-          "price": "Optional on all trims"
-        },
-        {
-          "code": "WPW",
-          "description": "Heat Pump",
-          "price": "Optional on Pure Plus & Pro S Plus"
-        },
-        {
-          "code": "1M6",
-          "description": "Folding Trailer Hitch with Electric Release",
-          "price": "Optional on all trims"
-        },
-        {
-          "code": "P03",
-          "description": "Park Assist Pro",
-          "price": "Optional"
-        },
-        {
-          "code": "PD4",
-          "description": "Park Assist Pro & Digital Key",
-          "price": "Optional"
-        }
-      ]
-    }
-  ],
-  "technical_specifications": {
-    "dimensions": {
-      "length_mm": 4961,
-      "width_with_mirrors_mm": 2141,
-      "height_fastback_mm": 1536,
-      "height_tourer_mm": 1551,
-      "wheelbase_mm": 2971,
-      "boot_capacity_fastback_litres": 532,
-      "boot_capacity_tourer_litres": 605,
-      "max_boot_capacity_fastback_litres": 1586,
-      "max_boot_capacity_tourer_litres": 1714
-    },
-    "powertrains": [
-      {
-        "name": "59kWh (204HP)",
-        "battery_capacity": "59kWh (204HP)",
-        "net_battery_capacity_kwh": 59,
-        "max_power_hp": 204,
-        "ac_charging_11kw_time": "06:30 h",
-        "dc_charging_max_kw": 160,
-        "dc_charge_10_80_percent_mins": "27 mins",
-        "top_speed_kmh": 160,
-        "acceleration_0_100_kmh_s": "7.9s (Fastback) / 8.0s (Tourer)"
-      },
-      {
-        "name": "86kWh (286HP)",
-        "battery_capacity": "86kWh (286HP)",
-        "net_battery_capacity_kwh": 86,
-        "max_power_hp": 286,
-        "ac_charging_11kw_time": "09:00 h",
-        "dc_charging_max_kw": 199,
-        "dc_charge_10_80_percent_mins": "28 mins",
-        "top_speed_kmh": 180,
-        "acceleration_0_100_kmh_s": "6.6s (Fastback) / 6.7s (Tourer)"
-      },
-      {
-        "name": "86kWh (340HP GTX)",
-        "battery_capacity": "86kWh (340HP GTX)",
-        "net_battery_capacity_kwh": 86,
-        "max_power_hp": 340,
-        "ac_charging_11kw_time": "09:00 h",
-        "dc_charging_max_kw": 199,
-        "dc_charge_10_80_percent_mins": "28 mins",
-        "top_speed_kmh": 200,
-        "acceleration_0_100_kmh_s": "5.4s (Fastback) / 5.5s (Tourer)"
-      }
-    ]
-  }
 }

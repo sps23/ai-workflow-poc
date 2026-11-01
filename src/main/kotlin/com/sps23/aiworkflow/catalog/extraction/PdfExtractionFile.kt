@@ -16,7 +16,7 @@ data class ExtractionProvenance(
     val extractedAt: String,
     val inputTokens: Long?,
     /** Billed output: visible candidates plus thinking tokens. */
-    val outputTokens: Long,
+    val outputTokens: Long?,
 )
 
 /** On-disk extraction envelope written as `<pdf stem>.json`. */
@@ -35,7 +35,9 @@ data class PdfExtractionFile(
                 ignoreUnknownKeys = false
             }
 
-        fun encode(file: PdfExtractionFile): String = json.encodeToString(serializer(), file) + "\n"
+        private val outputJson = Json(json) { explicitNulls = true }
+
+        fun encode(file: PdfExtractionFile): String = outputJson.encodeToString(serializer(), file) + "\n"
 
         fun decode(text: String): PdfExtractionFile = json.decodeFromString(serializer(), text)
     }

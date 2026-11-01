@@ -102,10 +102,10 @@ class CarPromptController(
 
     val metadataJson: String? get() = metadata?.let(WorkflowMetadataCodec::encode)
 
-    var selectedModel: String by mutableStateOf(models.first())
+    var selectedModel: String by mutableStateOf(if (LlmApi.GOOGLE_AI in apis) DEFAULT_GOOGLE_UI_MODEL else models.first())
         private set
 
-    var selectedApi: LlmApi by mutableStateOf(apis.first())
+    var selectedApi: LlmApi by mutableStateOf(LlmApi.GOOGLE_AI.takeIf { it in apis } ?: apis.first())
         private set
 
     var localApiKey: String by mutableStateOf("")
@@ -121,7 +121,10 @@ class CarPromptController(
         private set
     private var googleDiscoveryVersion = 0
     private var googleDiscoveryAttempted = false
-    private var googleModelId = ""
+    private var googleModelId = DEFAULT_GOOGLE_UI_MODEL
+
+    internal var controlsLocked: Boolean by mutableStateOf(false)
+    private val busy: Boolean get() = controlsLocked || state == CarPromptState.Loading
 
     val matchingGoogleModels: List<GoogleAiModel>
         get() =
@@ -132,7 +135,7 @@ class CarPromptController(
         get() = googleModels.firstOrNull { it.id == selectedModel.trim().removePrefix("models/") }
 
     fun updateGoogleApiKey(value: String) {
-        if (state == CarPromptState.Loading || value == googleApiKey) return
+        if (busy || value == googleApiKey) return
         googleApiKey = value
         googleDiscoveryVersion++
         googleDiscoveryAttempted = false
@@ -142,7 +145,7 @@ class CarPromptController(
     }
 
     suspend fun loadGoogleModels(refresh: Boolean = false) {
-        if (state == CarPromptState.Loading || googleModelsLoading || (!refresh && googleDiscoveryAttempted)) return
+        if (busy || googleModelsLoading || (!refresh && googleDiscoveryAttempted)) return
         val version = googleDiscoveryVersion
         googleDiscoveryAttempted = true
         googleModelsLoading = true
@@ -185,13 +188,13 @@ class CarPromptController(
         get() = manualModels.filter { it.contains(selectedModel, ignoreCase = true) }
 
     fun updateManualBaseUrl(value: String) {
-        if (state == CarPromptState.Loading || value == manualBaseUrl) return
+        if (busy || value == manualBaseUrl) return
         manualBaseUrl = value
         invalidateManualDiscovery()
     }
 
     fun updateManualApiKey(value: String) {
-        if (state == CarPromptState.Loading || value == manualApiKey) return
+        if (busy || value == manualApiKey) return
         manualApiKey = value
         invalidateManualDiscovery()
     }
@@ -205,7 +208,7 @@ class CarPromptController(
     }
 
     suspend fun loadManualModels(refresh: Boolean = false) {
-        if (state == CarPromptState.Loading || manualModelsLoading || (!refresh && manualDiscoveryAttempted)) return
+        if (busy || manualModelsLoading || (!refresh && manualDiscoveryAttempted)) return
         val version = manualDiscoveryVersion
         manualDiscoveryAttempted = true
         manualModelsLoading = true
@@ -252,7 +255,7 @@ class CarPromptController(
         get() = openAiModels.filter { it.contains(selectedModel, ignoreCase = true) }
 
     fun updateOpenAiApiKey(value: String) {
-        if (state == CarPromptState.Loading || value == openAiApiKey) return
+        if (busy || value == openAiApiKey) return
         openAiApiKey = value
         openAiDiscoveryVersion++
         openAiDiscoveryAttempted = false
@@ -262,7 +265,7 @@ class CarPromptController(
     }
 
     suspend fun loadOpenAiModels(refresh: Boolean = false) {
-        if (state == CarPromptState.Loading || openAiModelsLoading || (!refresh && openAiDiscoveryAttempted)) return
+        if (busy || openAiModelsLoading || (!refresh && openAiDiscoveryAttempted)) return
         val version = openAiDiscoveryVersion
         openAiDiscoveryAttempted = true
         openAiModelsLoading = true
@@ -310,7 +313,7 @@ class CarPromptController(
         get() = availableModels.firstOrNull { it.id == selectedModel.trim() }
 
     suspend fun loadModels(refresh: Boolean = false) {
-        if (modelsLoading || (!refresh && discoveryAttempted)) return
+        if (busy || modelsLoading || (!refresh && discoveryAttempted)) return
         discoveryAttempted = true
         modelsLoading = true
         modelsError = null
@@ -328,7 +331,7 @@ class CarPromptController(
     }
 
     fun updateLocalApiKey(value: String) {
-        if (state != CarPromptState.Loading) localApiKey = value
+        if (!busy) localApiKey = value
     }
 
     var prompt: String by mutableStateOf("")
@@ -337,7 +340,7 @@ class CarPromptController(
     private var translatedRequest: LlmRequest? = null
 
     fun updatePrompt(value: String) {
-        if (state == CarPromptState.Loading || value == prompt) return
+        if (busy || value == prompt) return
         prompt = value
         translatedRequest = null
         translatedRequestJson = null
@@ -347,7 +350,7 @@ class CarPromptController(
     }
 
     fun selectModel(modelId: String) {
-        if (state == CarPromptState.Loading) return
+        if (busy) return
         selectedModel = modelId
         if (selectedApi == LlmApi.OPENAI) {
             openAiModelId = modelId
@@ -362,7 +365,7 @@ class CarPromptController(
 
     /** Keeps the cached translation: an unchanged prompt reruns only the recommendation stage. */
     fun selectApi(api: LlmApi) {
-        if (state == CarPromptState.Loading) return
+        if (busy) return
         require(api in apis) { "Unknown API: $api" }
         selectedApi = api
         selectedModel =
@@ -375,7 +378,7 @@ class CarPromptController(
     }
 
     suspend fun submit(prompt: String) {
-        if (state == CarPromptState.Loading) return
+        if (busy) return
         updatePrompt(prompt)
         val requestedApi = selectedApi
         val requestedModel = selectedModel.trim()

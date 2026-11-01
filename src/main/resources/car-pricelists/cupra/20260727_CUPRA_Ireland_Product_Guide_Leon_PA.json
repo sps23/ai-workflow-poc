@@ -1,401 +1,2926 @@
 {
-  "model": "CUPRA Leon & Leon Sportstourer (SP)",
-  "effective_date": "September 2026",
-  "trims": [
-    {
-      "trim_level": "V1",
-      "pricing": [
-        {
-          "body_style": "5D",
-          "powertrain": "1.5 TSI 150hp",
-          "price": "\u20ac34,995",
-          "co2_emissions_g_km": "131",
-          "annual_road_tax": "\u20ac210"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "1.5 eTSI 150hp DSG",
-          "price": "\u20ac37,585",
-          "co2_emissions_g_km": "122",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "2.0 TDI 150hp DSG",
-          "price": "\u20ac39,800",
-          "co2_emissions_g_km": "127",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "e-Hybrid 204hp DSG",
-          "price": "\u20ac44,425",
-          "co2_emissions_g_km": "28",
-          "annual_road_tax": "\u20ac140"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 1.5 TSI 150hp",
-          "price": "\u20ac37,120",
-          "co2_emissions_g_km": "133",
-          "annual_road_tax": "\u20ac210"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 1.5 eTSI 150hp DSG",
-          "price": "\u20ac39,505",
-          "co2_emissions_g_km": "124",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 2.0 TDI 150hp DSG",
-          "price": "\u20ac41,795",
-          "co2_emissions_g_km": "128",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP e-Hybrid 204hp DSG",
-          "price": "\u20ac46,690",
-          "co2_emissions_g_km": "29",
-          "annual_road_tax": "\u20ac140"
-        }
-      ],
-      "standard_equipment": {
-        "exterior": [
-          "GARBI 18\" Alloy Wheels in Sport Black",
-          "Heat-Insulating and Tinted Rear Windows",
-          "Front and Rear Power Windows",
-          "Black Roof Rails (SP Only)",
-          "Front Full LEDs",
-          "Rear 3D LED lights w/Dynamic Turn Signal & Illuminated CUPRA Logo",
-          "Dynamic Headlight Range Control Self-Adjusting While Driving",
-          "Front LED Fog Lamps with Cornering Function",
-          "Welcome Light in Exterior Mirrors",
-          "Power-Folding, Adjustable and Heated Exterior Mirrors w/ Front Passenger Mirror Lowering Function",
-          "CUPRA Sport Suspension",
-          "Black Contrast Moulding in Black"
-        ],
-        "interior_and_comfort": [
-          "Multi-Function Sports Steering Wheel, Heated w/ Satellites (DSG Only)",
-          "Climatronic 3-Zone Air Conditioning",
-          "Textile Sport Seats",
-          "Progressive Steering",
-          "CUPRA Drive Profile",
-          "Manually Adjustable Height and Lumbar Support for Front Seats",
-          "Aluminium Pedals (Automatic Only)",
-          "Black Roof Cloth",
-          "Auto Dimming Interior Mirror",
-          "Front Centre Armrest"
-        ],
-        "multimedia": [
-          "10.25\" Digital Cockpit",
-          "12.9\" Infotainment System with Illuminated Sliders",
-          "USB-C Sockets (2x Front | 2x Rear)",
-          "7 Speakers",
-          "Voice Control",
-          "Wireless Android Auto & Apple CarPlay",
-          "Wireless Charger",
-          "CUPRA CONNECT"
-        ],
-        "safety_and_security": [
-          "Adaptive Cruise Control",
-          "Lane Assist",
-          "Front Assist with Cross Traffic Assist",
-          "Intelligent Speed Assist",
-          "Traffic Sign Recognition",
-          "Attention Drowsiness Monitor w/ Driver Monitoring System",
-          "High Beam Control",
-          "Emergency Call",
-          "XDS Electronic Differential Lock with Dynamic Traction Support"
-        ]
-      }
+    "schemaVersion": 1,
+    "provenance": {
+        "pdfFileName": "20260727_CUPRA_Ireland_Product_Guide_Leon_PA.pdf",
+        "pdfSha256": "5216553611deb75adebec1569c02a970d0d841316661c04d47b76af88dd30c95",
+        "model": "gemini-3.8-flash",
+        "extractedAt": "2026-10-31T23:46:24.075626Z",
+        "inputTokens": 16038,
+        "outputTokens": 30219
     },
-    {
-      "trim_level": "V2",
-      "pricing": [
-        {
-          "body_style": "5D",
-          "powertrain": "1.5 TSI 150hp",
-          "price": "\u20ac36,735",
-          "co2_emissions_g_km": "131",
-          "annual_road_tax": "\u20ac210"
+    "vehicle": {
+        "title": "CUPRA LEON",
+        "make": "CUPRA",
+        "model": "Leon",
+        "effectiveDate": "01.09.2026",
+        "effectivePeriod": "2026-09",
+        "trims": [
+            {
+                "name": "LEON V1",
+                "variants": [
+                    {
+                        "name": "Leon 1.5 TSI 150hp",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUGBNX",
+                        "powertrainType": "PETROL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 131.0,
+                            "max": 131.0
+                        },
+                        "vrtRatePercent": 19.25,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3499500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€34,995"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 3627500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€36,275"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "5.8 l/100km",
+                            "nox": "25.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon 1.5 eTSI 150hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUGB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 122.0,
+                            "max": 122.0
+                        },
+                        "vrtRatePercent": 16.75,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3758500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€37,585"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 3886500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€38,865"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "11.6mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon 2.0TDI 150hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUGBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 127.0,
+                            "max": 127.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3980000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€39,800"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4108000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€41,080"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "4.8 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon e-hybrid 204hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUGB0Y",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 204,
+                        "powerKw": 150,
+                        "co2GPerKm": {
+                            "min": 28.0,
+                            "max": 28.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 132.0,
+                            "max": 132.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4442500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€44,425"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4570500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€45,705"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "1.3 l/100km",
+                            "nox": "5.9 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 1.5 TSI 150hp",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUDBNX",
+                        "powertrainType": "PETROL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 133.0,
+                            "max": 133.0
+                        },
+                        "vrtRatePercent": 19.25,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3712000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€37,120"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 3840000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€38,400"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "5.8 l/100km",
+                            "nox": "25.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 1.5 eTSI 150hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUDB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 124.0,
+                            "max": 124.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3950500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€39,505"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4078500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€40,785"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "11.6 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 2.0TDI 150hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUDBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 128.0,
+                            "max": 128.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4179500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€41,795"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4307500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€43,075"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "4.9 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP e-hybrid 204hp DSG",
+                        "trimName": "LEON V1",
+                        "modelCode": "KUDB0Y",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 204,
+                        "powerKw": 150,
+                        "co2GPerKm": {
+                            "min": 29.0,
+                            "max": 29.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 131.0,
+                            "max": 131.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4669000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€46,690"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4797000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€47,970"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "1.3 l/100km",
+                            "nox": "5.9 mg/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "GARBI 18\" Alloy Wheels in Sport Black",
+                            "Heat-Insulating and Tinted Rear Windows",
+                            "Front and Rear Power Windows",
+                            "Black Roof Rails",
+                            "Front Full LEDs",
+                            "Rear 3D LED lights w/Dynamic Turn Signal & Illuminated CUPRA Logo",
+                            "Dynamic Headlight Range Control Self-Adjusting While Driving",
+                            "Front LED Fog Lamps with Cornering Function",
+                            "Welcome Light in Exterior Mirrors",
+                            "Exterior mirrors, Power-Folding, Adjustable and Heated with Front Passenger Exterior Mirror Lowering Function",
+                            "Separate Daytime Running Light w/Automatic Headlight Control & Coming and Leaving Home Feature",
+                            "CUPRA Sport Suspension",
+                            "Black Contrast Moulding in Black"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": false,
+                        "items": [
+                            "Multi-Function Sports Steering Wheel, Heated w/Satellites (DSG Only)",
+                            "Illuminated CUPRA Lettering in Door Apertures",
+                            "Progressive Steering",
+                            "Textile Sport Seats",
+                            "CUPRA Drive Profile",
+                            "Manually Adjustable Height and Lumbar Support for Front Seats",
+                            "Mechanical Rear Seat Release",
+                            "Two Reading Lights in Front and Two in the Rear",
+                            "Climatronic 3-Zone Air Conditioning",
+                            "Aluminium Pedals (Automatic Only)",
+                            "Black Roof Cloth",
+                            "Auto Dimming Interior Mirror",
+                            "Front Centre Armrest"
+                        ]
+                    },
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "XDS Electronic Differential Lock with Dynamic Traction Support",
+                            "i-Size and Top Tether Child Seat Anchors in Rear and Front Passenger Seats",
+                            "Front Assist with Cross Traffic Assist",
+                            "Lane Assist",
+                            "Intelligent Speed Assist",
+                            "Traffic Sign Recognition",
+                            "Attention Drowsiness Monitor w/ Driver Monitoring System",
+                            "Driver & Passneger Airbags",
+                            "Side Airbag, Curtain & Interaction Airbag in Front",
+                            "Emergency Steering Support & Turn Assist",
+                            "3-point safety Belts for Front and Rear Seats, with Visual and Acoustic Reminder",
+                            "Adaptive Cruise Control",
+                            "High Beam Control",
+                            "Emergency Call"
+                        ]
+                    },
+                    {
+                        "category": "technology",
+                        "isAddition": false,
+                        "items": [
+                            "Keyless Go",
+                            "10.25\" Digital cockpit",
+                            "12.9\" Infotainment System with Iluminated Sliders",
+                            "USB-C (2x Front | 2x Rear)",
+                            "7 Speakers",
+                            "Voice Control",
+                            "Wireless Android Auto & Apple CarPlay",
+                            "DAB Radio",
+                            "CUPRA CONNECT",
+                            "Wireless Charger",
+                            "Heat Insulating Windshield",
+                            "Start - Stop system",
+                            "Rain & Light sensor",
+                            "Front & Rear Parking Sensors",
+                            "Electric Tailgate (SP Only)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "LEON V2",
+                "variants": [
+                    {
+                        "name": "Leon 1.5 TSI 150hp",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUGBNX",
+                        "powertrainType": "PETROL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 131.0,
+                            "max": 131.0
+                        },
+                        "vrtRatePercent": 19.25,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3673500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€36,735"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 3801500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€38,015"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "5.8 l/100km",
+                            "nox": "25.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon 1.5 eTSI 150hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUGB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 122.0,
+                            "max": 122.0
+                        },
+                        "vrtRatePercent": 16.75,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3927500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€39,275"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4055500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€40,555"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "11.6mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon 2.0TDI 150hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUGBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 127.0,
+                            "max": 127.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4150500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€41,505"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4278500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€42,785"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "4.8 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon e-hybrid 204hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUGB0Y",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 204,
+                        "powerKw": 150,
+                        "co2GPerKm": {
+                            "min": 28.0,
+                            "max": 28.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 132.0,
+                            "max": 132.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4576000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€45,760"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4704000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€47,040"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "1.3 l/100km",
+                            "nox": "5.9 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 1.5 TSI 150hp",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUDBNX",
+                        "powertrainType": "PETROL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 133.0,
+                            "max": 133.0
+                        },
+                        "vrtRatePercent": 19.25,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3919000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€39,190"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4047000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€40,470"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "5.9 l/100km",
+                            "nox": "25.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 1.5 eTSI 150hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUDB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 124.0,
+                            "max": 124.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4152000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€41,520"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4280000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€42,800"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "11.6 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 2.0TDI 150hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUDBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 128.0,
+                            "max": 128.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4382500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€43,825"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4510500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€45,105"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "4.9 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP e-hybrid 204hp DSG",
+                        "trimName": "LEON V2",
+                        "modelCode": "KUDB0Y",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 204,
+                        "powerKw": 150,
+                        "co2GPerKm": {
+                            "min": 29.0,
+                            "max": 29.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 131.0,
+                            "max": 131.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4851500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€48,515"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4979500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€49,795"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "1.3 l/100km",
+                            "nox": "5.9 mg/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior",
+                        "isAddition": true,
+                        "items": [
+                            "WINDSTORM 18\" Machined Sport in Black/Silver",
+                            "Towing Preperation"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": true,
+                        "items": [
+                            "Seat Heaters in Front",
+                            "Smart Interior Wraparound Lighting"
+                        ]
+                    },
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Alarm",
+                            "Virtual Pedal (SP Only)"
+                        ]
+                    },
+                    {
+                        "category": "technology",
+                        "isAddition": true,
+                        "items": [
+                            "Rear View Camera",
+                            "Keyless Advanced"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "LEON VZ",
+                "variants": [
+                    {
+                        "name": "Leon VZ e-Hybrid 272hp DSG",
+                        "trimName": "LEON VZ",
+                        "modelCode": "KUGC1Y",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 272,
+                        "powerKw": 200,
+                        "co2GPerKm": {
+                            "min": 33.0,
+                            "max": 33.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 124.0,
+                            "max": 124.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4901000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€49,010"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5029000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€50,290"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "1.5 l/100km",
+                            "nox": "10.3 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon VZ 2.0TSI 300hp DSG",
+                        "trimName": "LEON VZ",
+                        "modelCode": "KUGC3S",
+                        "powertrainType": "PETROL",
+                        "powerHp": 300,
+                        "powerKw": 221,
+                        "co2GPerKm": {
+                            "min": 172.0,
+                            "max": 172.0
+                        },
+                        "vrtRatePercent": 35.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5950000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€59,500"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6078000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€60,780"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 60000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€600"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "7.7 l/100km",
+                            "nox": "14.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP VZ e-Hybrid 272hp DSG",
+                        "trimName": "LEON VZ",
+                        "modelCode": "KUGC1YA",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": 25.8,
+                        "powerHp": 272,
+                        "powerKw": 200,
+                        "co2GPerKm": {
+                            "min": 34.0,
+                            "max": 34.0
+                        },
+                        "wltpRangeKm": {
+                            "min": 122.0,
+                            "max": 122.0
+                        },
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5089500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€50,895"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5217500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€52,175"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "0.4 l/100km",
+                            "nox": "10.3 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP VZ 2.0TSI 333hp DSG 4WD",
+                        "trimName": "LEON VZ",
+                        "modelCode": "KUGCIZA",
+                        "powertrainType": "PETROL",
+                        "powerHp": 333,
+                        "powerKw": 245,
+                        "co2GPerKm": {
+                            "min": 188.0,
+                            "max": 188.0
+                        },
+                        "vrtRatePercent": 35.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6267500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€62,675"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6395500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€63,955"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 60000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€600"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "8.3 l/100km",
+                            "nox": "24.2 mg/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior",
+                        "isAddition": true,
+                        "items": [
+                            "POLAR 19\" Machined Alloy Wheels in Sport Black/Silver"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": true,
+                        "items": [
+                            "Electric Drivers Seat",
+                            "Dinamica Bucket Seats",
+                            "Smart Wraparound Interior Lighting"
+                        ]
+                    },
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Alarm",
+                            "Virtual Pedal (SP Only)"
+                        ]
+                    },
+                    {
+                        "category": "technology",
+                        "isAddition": true,
+                        "items": [
+                            "DCC - Dynamic chassis control",
+                            "Rear View Camera",
+                            "Keyless Advanced"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "TRIBE EDITION",
+                "variants": [
+                    {
+                        "name": "Leon 1.5 eTSI 150hp DSG",
+                        "trimName": "TRIBE EDITION",
+                        "modelCode": "KUGB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 127.0,
+                            "max": 127.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4164000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€41,640"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4292000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€42,920"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "13.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon 2.0TDI 150hp DSG",
+                        "trimName": "TRIBE EDITION",
+                        "modelCode": "KUGBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 127.0,
+                            "max": 127.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4355500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€43,555"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4483500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€44,835"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "5D",
+                            "fuel_economy_wltp": "4.8 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 1.5 eTSI 150hp DSG",
+                        "trimName": "TRIBE EDITION",
+                        "modelCode": "KUDB5Z",
+                        "powertrainType": "MILD_HYBRID",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 129.0,
+                            "max": 129.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4393500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€43,935"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4521500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€45,215"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "5.5 l/100km",
+                            "nox": "13.7 mg/km"
+                        }
+                    },
+                    {
+                        "name": "Leon SP 2.0TDI 150hp DSG",
+                        "trimName": "TRIBE EDITION",
+                        "modelCode": "KUDBLZ",
+                        "powertrainType": "DIESEL",
+                        "powerHp": 150,
+                        "powerKw": 110,
+                        "co2GPerKm": {
+                            "min": 129.0,
+                            "max": 129.0
+                        },
+                        "vrtRatePercent": 17.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 4590500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€45,905"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 4718500,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€47,185"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 20000,
+                                    "currency": "EUR"
+                                },
+                                "rawText": "€200"
+                            }
+                        ],
+                        "additional": {
+                            "body_type": "SP",
+                            "fuel_economy_wltp": "4.9 l/100km",
+                            "nox": "23.8 mg/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "exterior",
+                        "isAddition": true,
+                        "items": [
+                            "TRIBE 19\" Machined Wheels in Sport Black & Sulphur (eTSI Only)",
+                            "WINDSTORM 18\" Machined Sport in Black/Silver (TDI Only)",
+                            "CUPRA Side Skirts in Black"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": true,
+                        "items": [
+                            "Heated Seats in Front",
+                            "Smart Interior Wraparound Lighting",
+                            "3D Knitted Bucket Seats with Green Stitching",
+                            "Power Adjusting Front Seats with Memory Function"
+                        ]
+                    },
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Alarm",
+                            "Virtual Pedal (SP Only)"
+                        ]
+                    },
+                    {
+                        "category": "technology",
+                        "isAddition": true,
+                        "items": [
+                            "Keyless Advanced",
+                            "Rear-View Camera",
+                            "Dynamic Chassis Control (DCC)"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": "R8E",
+                "name": "GARBI COPPER - 18\" wheels Machined in Copper",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 48500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€485"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "R9E",
+                "name": "POLAR COPPER - 19\" wheels Machined in Sport Black/Copper",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 48500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€485"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "R9C",
+                "name": "MISTRAL - 19\" wheels Machined in Sport Black/Silver",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 93500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€935"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "R9G",
+                "name": "MISTRAL COPPER - 19\" wheels Machined in Sport Black/Copper",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 124700,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,247"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P02",
+                "name": "MISTRAL SHADOW - 19\" wheels Machined in Sport Matt Black",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "R9I",
+                "name": "HAILSTORM - 19\" wheels Machined in Sport Black/Silver",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 128900,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,289"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "R9M",
+                "name": "HAILSTORM COPPER - 19\" wheels Machined in Sport Black/Copper",
+                "category": "WHEELS",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 193900,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,939"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PD1",
+                "name": "Driving Performance (DCC* & 19\" POLAR)",
+                "category": "PACKAGE",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 136400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,364"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PD2",
+                "name": "Driving Performance (DCC* & 19\" POLAR COPPER)",
+                "category": "PACKAGE",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 175100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,751"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PD3",
+                "name": "Driving Performance (DCC* & 19\" MISTRAL)",
+                "category": "PACKAGE",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 160800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,608"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PD4",
+                "name": "Driving Performance (DCC* & 19\" MISTRAL COPPER)",
+                "category": "PACKAGE",
+                "categoryLabel": "ALLOY WHEELS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 198000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,980"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P",
+                "name": "Soft Paint",
+                "category": "PAINT",
+                "categoryLabel": "PAINT FINISHES",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "M",
+                "name": "Metallic Paint",
+                "category": "PAINT",
+                "categoryLabel": "PAINT FINISHES",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 92000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€920"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 92000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€920"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 92000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€920"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 92000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€920"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "C",
+                "name": "Special Paint",
+                "category": "PAINT",
+                "categoryLabel": "PAINT FINISHES",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 133200,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,332"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 133200,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,332"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 133200,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,332"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "T",
+                "name": "Matt Paint",
+                "category": "PAINT",
+                "categoryLabel": "PAINT FINISHES",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 266600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,666"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 266600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,666"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 266600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,666"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 266600,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,666"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "AQ",
+                "name": "Sharp Ambient",
+                "category": "INTERIOR",
+                "categoryLabel": "LEATHER INTERIOR",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "CG + PS2",
+                "name": "Dynamic Ambient",
+                "category": "INTERIOR",
+                "categoryLabel": "LEATHER INTERIOR",
+                "items": [
+                    "Dinamica Bucket Seats",
+                    "Power Adjustment with Memory for Driver"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 97500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€975"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "KE + PR2",
+                "name": "Progressive Ambient",
+                "category": "INTERIOR",
+                "categoryLabel": "LEATHER INTERIOR",
+                "items": [
+                    "Leather Bucket Seats",
+                    "Power Adjustment with Memory for both front Seats"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 204200,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€2,042"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 133300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,333"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "JF",
+                "name": "Tribe Edition Bucket Seats",
+                "category": "INTERIOR",
+                "categoryLabel": "LEATHER INTERIOR",
+                "items": [
+                    "3D Knitted Bucket Seats",
+                    "Power Adjustment with Memory for both front Seats"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PA1",
+                "name": "Immersive by Sennheiser (PA1)",
+                "category": "PACKAGE",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [
+                    "11x Speaker & 1x Subwoofer Premium Sound System"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 71500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€715"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 71500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€715"
+                        }
+                    }
+                ],
+                "additional": {
+                    "requirement": "Requires PG6 (except PHEV)"
+                }
+            },
+            {
+                "code": "PA2",
+                "name": "Immersive by Sennheiser (PA2)",
+                "category": "PACKAGE",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [
+                    "11x Speaker & 1x Subwoofer Premium Sound System"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 71500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€715"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {
+                    "requirement": "Requires PG6 (except PHEV)"
+                }
+            },
+            {
+                "code": "PP2",
+                "name": "Pure Performance",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [
+                    "Matrix LED Ultra w/signature & w/ ceromony"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 145100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1451"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 145100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1451"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 145100,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1451"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WF1",
+                "name": "Intelligent Drive Lite MQ [Only for Manual]",
+                "category": "PACKAGE",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [
+                    "Side & Exit Assist",
+                    "Pre-Crash Assist"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 56800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€568"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WF2",
+                "name": "Intellgent Drive DQ [Only for DSG]",
+                "category": "PACKAGE",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [
+                    "Side & Exit Assist",
+                    "Pre-Crash Assist",
+                    "Travel Assist 3.0",
+                    "Lane Keeping System Plus, Semi Auto Control in Emergency",
+                    "Traffic Jam Assist",
+                    "Trained Park Assist",
+                    "Intelligent Park Assist"
+                ],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 102400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1024"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 102400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1024"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 102400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1024"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PTC",
+                "name": "Skyline - Panoramic Sunroof",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 120000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,200"
+                        },
+                        "note": "Leon SP PHEV V2 adding PTC removes Towbar Prep (Wiring). Not Compatible with PRP"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 120000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,200"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 120000,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€1,200"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "RN4",
+                "name": "Navigation System",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 78300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€783"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 78300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€783"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 78300,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€783"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PFE",
+                "name": "Mirrors in Carbon Fibre Black",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 78800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€788"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 78800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€788"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PFI",
+                "name": "Mirrors in Carbon Fibre Copper",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 84800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€848"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 84800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€848"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PG6",
+                "name": "Emergency Spare Wheel (18\")",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 11500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€115"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 11500,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€115"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "NOT_AVAILABLE"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "YOS",
+                "name": "CUPRA CONNECT Plus [Required with Intelligent Drive Packs]",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "rawText": "No Cost"
+                        }
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PQ6",
+                "name": "CUPRA Side Skirts",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "NOT_AVAILABLE"
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 42400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€424"
+                        }
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 42400,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€424"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "STANDARD"
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PRP",
+                "name": "Towing Preperation [Wiring]",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "SPECIAL ITEMS",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "LEON V1",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 14800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€148"
+                        }
+                    },
+                    {
+                        "scope": "LEON V2",
+                        "state": "STANDARD"
+                    },
+                    {
+                        "scope": "LEON VZ",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 14800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€148"
+                        }
+                    },
+                    {
+                        "scope": "TRIBE EDITION",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "RRP_FROM",
+                            "amount": {
+                                "minorUnits": 14800,
+                                "currency": "EUR"
+                            },
+                            "rawText": "€148"
+                        }
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4398.0,
+                    "max": 4659.0
+                },
+                "widthMm": {
+                    "min": 1799.0,
+                    "max": 1799.0
+                },
+                "heightMm": {
+                    "min": 1438.0,
+                    "max": 1467.0
+                },
+                "wheelbaseMm": {
+                    "min": 2686.0,
+                    "max": 2686.0
+                },
+                "bootCapacityLitres": {
+                    "min": 270.0,
+                    "max": 620.0
+                },
+                "brakedTowingKg": {
+                    "min": 1500.0,
+                    "max": 1700.0
+                },
+                "additional": {
+                    "width_with_mirrors_mm": "1992"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "1.5 TSI 150hp",
+                    "type": "PETROL",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "Manual",
+                    "powerKw": 110.0,
+                    "powerHp": 150.0,
+                    "torqueNm": 250.0,
+                    "topSpeedKmh": 216.0,
+                    "acceleration0To100S": {
+                        "min": 8.9,
+                        "max": 9.2
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.8,
+                        "max": 5.9
+                    },
+                    "co2GPerKm": {
+                        "min": 131.0,
+                        "max": 133.0
+                    },
+                    "displacementCc": 1498,
+                    "brakedTowingKg": 1500.0,
+                    "unbrakedTowingKg": 720.0,
+                    "trimsAvailable": [
+                        "LEON V1",
+                        "LEON V2"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "aspiration": "Turbocharged",
+                        "fuel_type": "Petrol (ROZ 95)"
+                    }
+                },
+                {
+                    "name": "1.5 eTSI 150hp DSG",
+                    "type": "MILD_HYBRID",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 110.0,
+                    "powerHp": 150.0,
+                    "torqueNm": 250.0,
+                    "topSpeedKmh": 216.0,
+                    "acceleration0To100S": {
+                        "min": 8.7,
+                        "max": 9.0
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.5,
+                        "max": 5.5
+                    },
+                    "co2GPerKm": {
+                        "min": 122.0,
+                        "max": 129.0
+                    },
+                    "displacementCc": 1498,
+                    "brakedTowingKg": 1500.0,
+                    "unbrakedTowingKg": 740.0,
+                    "trimsAvailable": [
+                        "LEON V1",
+                        "LEON V2",
+                        "TRIBE EDITION"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "aspiration": "Turbocharged",
+                        "fuel_type": "Petrol (ROZ 95)"
+                    }
+                },
+                {
+                    "name": "2.0 TDI 150hp DSG",
+                    "type": "DIESEL",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 110.0,
+                    "powerHp": 150.0,
+                    "torqueNm": 360.0,
+                    "topSpeedKmh": 214.0,
+                    "acceleration0To100S": {
+                        "min": 8.5,
+                        "max": 8.7
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 4.8,
+                        "max": 4.9
+                    },
+                    "co2GPerKm": {
+                        "min": 127.0,
+                        "max": 129.0
+                    },
+                    "displacementCc": 1968,
+                    "brakedTowingKg": 1600.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "LEON V1",
+                        "LEON V2",
+                        "TRIBE EDITION"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "aspiration": "Turbocharged",
+                        "fuel_type": "DIESEL"
+                    }
+                },
+                {
+                    "name": "e-Hybrid 204hp DSG",
+                    "type": "PLUG_IN_HYBRID",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 150.0,
+                    "powerHp": 204.0,
+                    "torqueNm": 350.0,
+                    "topSpeedKmh": 220.0,
+                    "acceleration0To100S": {
+                        "min": 7.7,
+                        "max": 7.7
+                    },
+                    "wltpRangeKm": {
+                        "min": 131.0,
+                        "max": 132.0
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 1.3,
+                        "max": 1.3
+                    },
+                    "co2GPerKm": {
+                        "min": 28.0,
+                        "max": 29.0
+                    },
+                    "batteryCapacityKwh": 25.8,
+                    "batteryGrossKwh": 25.8,
+                    "batteryType": "Li-ion",
+                    "displacementCc": 1498,
+                    "dcMaxChargingKw": 50.0,
+                    "brakedTowingKg": 1700.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "LEON V1",
+                        "LEON V2"
+                    ],
+                    "charging": {
+                        "ac_11kw_0_to_100_percent": "2 hrs 30 mins",
+                        "dc_50kw_10_to_80_percent": "26 mins"
+                    },
+                    "additional": {
+                        "battery_net_kwh": "20 net"
+                    }
+                },
+                {
+                    "name": "VZ e-Hybrid 272hp DSG",
+                    "type": "PLUG_IN_HYBRID",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 200.0,
+                    "powerHp": 272.0,
+                    "torqueNm": 400.0,
+                    "topSpeedKmh": 229.0,
+                    "acceleration0To100S": {
+                        "min": 7.1,
+                        "max": 7.3
+                    },
+                    "wltpRangeKm": {
+                        "min": 122.0,
+                        "max": 124.0
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 0.4,
+                        "max": 1.5
+                    },
+                    "co2GPerKm": {
+                        "min": 33.0,
+                        "max": 34.0
+                    },
+                    "batteryCapacityKwh": 25.8,
+                    "batteryGrossKwh": 25.8,
+                    "batteryType": "Li-ion",
+                    "displacementCc": 1498,
+                    "dcMaxChargingKw": 50.0,
+                    "brakedTowingKg": 1700.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "LEON VZ"
+                    ],
+                    "charging": {
+                        "ac_11kw_0_to_100_percent": "2 hrs 30 mins",
+                        "dc_50kw_10_to_80_percent": "26 mins"
+                    },
+                    "additional": {
+                        "battery_net_kwh": "20 net"
+                    }
+                },
+                {
+                    "name": "VZ 2.0 TSI 300hp DSG",
+                    "type": "PETROL",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 221.0,
+                    "powerHp": 300.0,
+                    "torqueNm": 400.0,
+                    "topSpeedKmh": 250.0,
+                    "acceleration0To100S": {
+                        "min": 5.7,
+                        "max": 5.7
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 7.7,
+                        "max": 7.7
+                    },
+                    "co2GPerKm": {
+                        "min": 172.0,
+                        "max": 172.0
+                    },
+                    "displacementCc": 1984,
+                    "brakedTowingKg": 1600.0,
+                    "unbrakedTowingKg": 740.0,
+                    "trimsAvailable": [
+                        "LEON VZ"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "aspiration": "Turbocharged",
+                        "fuel_type": "Petrol (ROZ 95)"
+                    }
+                },
+                {
+                    "name": "VZ 2.0 TSI 333hp DSG 4WD",
+                    "type": "PETROL",
+                    "drivetrain": "Front Wheel Drive",
+                    "transmission": "DSG (Automatic)",
+                    "powerKw": 245.0,
+                    "powerHp": 333.0,
+                    "torqueNm": 420.0,
+                    "topSpeedKmh": 250.0,
+                    "acceleration0To100S": {
+                        "min": 4.8,
+                        "max": 4.8
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 8.3,
+                        "max": 8.3
+                    },
+                    "co2GPerKm": {
+                        "min": 188.0,
+                        "max": 188.0
+                    },
+                    "displacementCc": 1984,
+                    "brakedTowingKg": 1700.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "LEON VZ"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "aspiration": "Turbocharged",
+                        "fuel_type": "Petrol (ROZ 95)"
+                    }
+                }
+            ],
+            "additional": {}
         },
-        {
-          "body_style": "5D",
-          "powertrain": "1.5 eTSI 150hp DSG",
-          "price": "\u20ac39,275",
-          "co2_emissions_g_km": "122",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "2.0 TDI 150hp DSG",
-          "price": "\u20ac41,505",
-          "co2_emissions_g_km": "127",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "e-Hybrid 204hp DSG",
-          "price": "\u20ac45,760",
-          "co2_emissions_g_km": "28",
-          "annual_road_tax": "\u20ac140"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 1.5 TSI 150hp",
-          "price": "\u20ac39,190",
-          "co2_emissions_g_km": "133",
-          "annual_road_tax": "\u20ac210"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 1.5 eTSI 150hp DSG",
-          "price": "\u20ac41,520",
-          "co2_emissions_g_km": "124",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 2.0 TDI 150hp DSG",
-          "price": "\u20ac43,825",
-          "co2_emissions_g_km": "128",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP e-Hybrid 204hp DSG",
-          "price": "\u20ac48,515",
-          "co2_emissions_g_km": "29",
-          "annual_road_tax": "\u20ac140"
+        "additional": {
+            "rotr_note": "Recommended on the road price is RRP including delivery charges of €1,280 as recommended by CUPRA Ireland.",
+            "warranty": "5 year (100,000km) manufacturer's warranty as standard for all cars registered from 01.01.2026"
         }
-      ],
-      "standard_equipment": {
-        "exterior_additions": [
-          "WINDSTORM 18\" Machined Sport Alloy Wheels in Black/Silver"
-        ],
-        "interior_and_comfort_additions": [
-          "Front Heated Seats",
-          "Smart Interior Wraparound Lighting"
-        ],
-        "safety_and_technology_additions": [
-          "Rear View Camera",
-          "Keyless Advanced",
-          "Alarm",
-          "Virtual Pedal (SP Only)",
-          "Towing Preparation"
-        ]
-      }
-    },
-    {
-      "trim_level": "VZ",
-      "pricing": [
-        {
-          "body_style": "5D",
-          "powertrain": "VZ e-Hybrid 272hp DSG",
-          "price": "\u20ac49,010",
-          "co2_emissions_g_km": "33",
-          "annual_road_tax": "\u20ac140"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "VZ 2.0 TSI 300hp DSG",
-          "price": "\u20ac59,500",
-          "co2_emissions_g_km": "172",
-          "annual_road_tax": "\u20ac600"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP VZ e-Hybrid 272hp DSG",
-          "price": "\u20ac50,895",
-          "co2_emissions_g_km": "34",
-          "annual_road_tax": "\u20ac140"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP VZ 2.0 TSI 333hp DSG 4WD",
-          "price": "\u20ac62,675",
-          "co2_emissions_g_km": "188",
-          "annual_road_tax": "\u20ac600"
-        }
-      ],
-      "standard_equipment": {
-        "exterior_additions": [
-          "POLAR 19\" Machined Alloy Wheels in Sport Black/Silver"
-        ],
-        "interior_and_comfort_additions": [
-          "Electric Driver's Seat",
-          "Dinamica Bucket Seats"
-        ],
-        "technology_additions": [
-          "DCC - Dynamic Chassis Control"
-        ]
-      }
-    },
-    {
-      "trim_level": "Tribe Edition",
-      "pricing": [
-        {
-          "body_style": "5D",
-          "powertrain": "1.5 eTSI 150hp DSG",
-          "price": "\u20ac41,640",
-          "co2_emissions_g_km": "127",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "5D",
-          "powertrain": "2.0 TDI 150hp DSG",
-          "price": "\u20ac43,555",
-          "co2_emissions_g_km": "127",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 1.5 eTSI 150hp DSG",
-          "price": "\u20ac43,935",
-          "co2_emissions_g_km": "129",
-          "annual_road_tax": "\u20ac200"
-        },
-        {
-          "body_style": "SP",
-          "powertrain": "SP 2.0 TDI 150hp DSG",
-          "price": "\u20ac45,905",
-          "co2_emissions_g_km": "129",
-          "annual_road_tax": "\u20ac200"
-        }
-      ],
-      "standard_equipment": {
-        "exterior_additions": [
-          "TRIBE 19\" Machined Wheels in Sport Black & Sulphur (eTSI)",
-          "WINDSTORM 18\" Machined Sport in Black/Silver (TDI)",
-          "CUPRA Side Skirts in Black"
-        ],
-        "interior_and_comfort_additions": [
-          "3D Knitted Bucket Seats with Green Stitching",
-          "Power Adjusting Front Seats with Memory Function",
-          "Heated Seats in Front"
-        ]
-      }
     }
-  ],
-  "optional_equipment": [
-    {
-      "category": "Alloy Wheels",
-      "options": [
-        {
-          "code": "R8E",
-          "description": "GARBI COPPER - 18\" Machined in Copper",
-          "price": "\u20ac485",
-          "availability": "Optional on V2"
-        },
-        {
-          "code": "R9E",
-          "description": "POLAR COPPER - 19\" Machined in Sport Black/Copper",
-          "price": "\u20ac485",
-          "availability": "Optional on VZ"
-        },
-        {
-          "code": "R9C",
-          "description": "MISTRAL - 19\" Machined in Sport Black/Silver",
-          "price": "\u20ac935",
-          "availability": "Optional on VZ"
-        },
-        {
-          "code": "R9G",
-          "description": "MISTRAL COPPER - 19\" Machined in Sport Black/Copper",
-          "price": "\u20ac1,247",
-          "availability": "Optional on VZ"
-        }
-      ]
-    },
-    {
-      "category": "Paint Finishes",
-      "options": [
-        {
-          "code": "P",
-          "description": "Soft Paint (Fiord Blue)",
-          "price": "\u20ac0",
-          "availability": "All Trims"
-        },
-        {
-          "code": "M",
-          "description": "Metallic Paint (Glacial White, Midnight Black, Magnetic Tech)",
-          "price": "\u20ac920",
-          "availability": "All Trims"
-        },
-        {
-          "code": "C",
-          "description": "Special/Premium Metallic Paint (Graphene Grey, Taiga Grey, Dark Void)",
-          "price": "\u20ac1,332",
-          "availability": "All Trims"
-        },
-        {
-          "code": "T",
-          "description": "Matt Paint (Century Bronze, Enceladus Grey, Manganese Green)",
-          "price": "\u20ac2,666",
-          "availability": "Optional on VZ / Tribe Edition"
-        }
-      ]
-    }
-  ],
-  "technical_specifications": {
-    "dimensions": {
-      "length_mm": 4398,
-      "width_mm": 1799,
-      "height_mm": 1444,
-      "wheelbase_mm": 2686,
-      "boot_capacity_l": 380,
-      "sp_length_mm": 4656,
-      "sp_boot_capacity_l": 620
-    },
-    "powertrains": [
-      {
-        "name": "1.5 TSI 150hp",
-        "type": "Petrol",
-        "power_hp": 150,
-        "max_power_kw": 110,
-        "torque_nm": 250,
-        "displacement_cc": 1498,
-        "transmission": "6-Speed Manual",
-        "wltp_combined_consumption_l_100km": "5.8",
-        "wltp_combined_co2_g_km": "131"
-      },
-      {
-        "name": "1.5 eTSI 150hp DSG",
-        "type": "Mild Hybrid Petrol",
-        "power_hp": 150,
-        "max_power_kw": 110,
-        "torque_nm": 250,
-        "displacement_cc": 1498,
-        "transmission": "7-Speed DSG Automatic",
-        "wltp_combined_consumption_l_100km": "5.5",
-        "wltp_combined_co2_g_km": "122"
-      },
-      {
-        "name": "2.0 TDI 150hp DSG",
-        "type": "Diesel",
-        "power_hp": 150,
-        "max_power_kw": 110,
-        "torque_nm": 360,
-        "displacement_cc": 1968,
-        "transmission": "7-Speed DSG Automatic",
-        "wltp_combined_consumption_l_100km": "4.8",
-        "wltp_combined_co2_g_km": "127"
-      },
-      {
-        "name": "e-Hybrid 204hp DSG",
-        "type": "Plug-in Hybrid",
-        "power_hp": 204,
-        "max_power_kw": 150,
-        "torque_nm": 350,
-        "usable_battery_capacity_kwh": 20.0,
-        "gross_battery_capacity_kwh": 25.8,
-        "transmission": "6-Speed DSG Automatic",
-        "wltp_mixed_range_km": "132",
-        "wltp_combined_consumption_l_100km": "1.3"
-      }
-    ]
-  }
 }
