@@ -4,6 +4,10 @@ Parent plan: [`pdf-to-json-extraction-plan.md`](pdf-to-json-extraction-plan.md) 
 costs). This document orders the work into stages. Each stage ends with
 `./gradlew spotlessApply build test` green and leaves the app releasable.
 
+Current desktop provider/default behavior supersedes the historical stage notes below:
+[desktop plan](openrouter-desktop-ui-plan.md) and
+[ADR 0002](adr/0002-gemini-native-generatecontent.md), approved 2026-11-01.
+
 | Stage | Goal | Live API? | Parent todos |
 |---|---|---|---|
 | 0 | Integration-test spike: PDF resource + prompt + model definition → JSON string → validated | yes (opt-in) | – |

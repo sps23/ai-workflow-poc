@@ -33,7 +33,7 @@ class GoogleAiControllerTest {
                     resolveGoogleKey = { GoogleAiConfig.apiKey(mapOf("GOOGLE_AI_API_KEY" to "env-key"), it) },
                 ) { _, _, _, _, _, _ -> error("unused") }
             controller.selectApi(LlmApi.GOOGLE_AI)
-            assertEquals("", controller.selectedModel)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, controller.selectedModel)
             controller.loadGoogleModels()
             controller.loadGoogleModels()
             assertEquals(listOf("env-key"), keys)
@@ -101,6 +101,7 @@ class GoogleAiControllerTest {
                     CarAnswer(FakeOpenRouterServer.CAR_OUTPUT, id, null)
                 }
             controller.updateGoogleApiKey("google-key")
+            controller.selectApi(LlmApi.OPENROUTER)
             controller.submit("x")
             controller.selectApi(LlmApi.GOOGLE_AI)
             controller.selectModel("gemini-test")

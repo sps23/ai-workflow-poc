@@ -87,6 +87,8 @@ data class GeminiPdfResult(
 /** Model call used by [PdfExtractionService]; failures are [OpenRouterWorkflowException]s. */
 interface PdfExtractionClient {
     val modelId: String
+    val metadataNotes: String
+        get() = "Native PDF input; PDF input tokens are not estimated. Google's input and output limits are independent."
 
     /** Verifies the model is available and returns its output-token limit. */
     suspend fun outputTokenLimit(): Long

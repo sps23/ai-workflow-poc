@@ -1,7 +1,6 @@
 package com.sps23.aiworkflow.ui
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +20,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,11 +28,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.sps23.aiworkflow.catalog.datamodel.DataModelCatalogLoader
 import com.sps23.aiworkflow.catalog.extraction.GeminiUsage
-import kotlinx.coroutines.delay
+import com.sps23.aiworkflow.openrouter.LlmApi
 import kotlinx.coroutines.launch
 import java.awt.Desktop
 import java.io.File
@@ -47,18 +44,12 @@ import javax.swing.filechooser.FileNameExtensionFilter
 fun PdfExtractorScreen(controller: PdfExtractorController) {
     val scope = rememberCoroutineScope()
     val busy = controller.extracting
-    LaunchedEffect(controller, controller.apiKey, busy) {
-        if (!busy) {
-            delay(600)
-            controller.loadModels()
-        }
-    }
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text("Extract a car brochure PDF into catalog JSON with Google Gemini", style = MaterialTheme.typography.titleMedium)
+        Text("Extract a car brochure PDF into catalog JSON", style = MaterialTheme.typography.titleMedium)
         PathRow(
             value = controller.pdfPath,
             onValueChange = controller::updatePdfPath,
@@ -77,23 +68,15 @@ fun PdfExtractorScreen(controller: PdfExtractorController) {
         ) {
             chooseFile(controller.outputDir, directories = true)?.let(controller::updateOutputDir)
         }
-        OutlinedTextField(
-            value = controller.apiKey,
-            onValueChange = controller::updateApiKey,
-            enabled = !busy,
-            label = { Text("Google AI Studio API key") },
-            visualTransformation = PasswordVisualTransformation(),
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Text("Blank uses GOOGLE_AI_API_KEY. Typed keys stay in memory only.", style = MaterialTheme.typography.bodySmall)
-        GeminiModelPicker(controller, enabled = !busy)
-        Text(
-            "The whole PDF is uploaded to Google; paid-tier charges apply (about USD 0.05 per brochure). " +
-                "Free-tier content may be used by Google to improve its products.",
-            color = MaterialTheme.colorScheme.error,
-            style = MaterialTheme.typography.bodySmall,
-        )
+        LlmProviderControls(controller.providerSelection, enabled = !busy, pdfExtraction = true)
+        if (controller.providerSelection.selectedApi != LlmApi.GOOGLE_AI) {
+            Text(
+                "Only extracted PDF text is sent to the selected endpoint; images and visual layout are omitted. " +
+                    "Scanned/image-only PDFs require Google Gemini. Review the JSON for missing table or equipment facts.",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
             Button(onClick = { scope.launch { controller.extract() } }, enabled = controller.canExtract) { Text("Extract") }
             if (busy) CircularProgressIndicator(modifier = Modifier.size(24.dp))
@@ -125,7 +108,7 @@ private fun ExtractionResult(controller: PdfExtractorController) {
         }
 
         is PdfExtractorState.Declined -> {
-            Text("Kept existing ${state.file.toAbsolutePath()}; Gemini was not called.")
+            Text("Kept existing ${state.file.toAbsolutePath()}; no model was called.")
         }
 
         is PdfExtractorState.Done -> {
@@ -197,48 +180,6 @@ private fun ExtractionResult(controller: PdfExtractorController) {
 }
 
 @Composable
-private fun GeminiModelPicker(
-    controller: PdfExtractorController,
-    enabled: Boolean,
-) {
-    val scope = rememberCoroutineScope()
-    var expanded by remember { mutableStateOf(false) }
-    LaunchedEffect(enabled) { if (!enabled) expanded = false }
-    OutlinedTextField(
-        value = controller.modelId,
-        onValueChange = controller::selectModel,
-        enabled = enabled,
-        label = { Text("Gemini model ID") },
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(),
-    )
-    Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Box {
-            OutlinedButton(onClick = { expanded = true }, enabled = enabled) { Text("Browse / search models") }
-            if (expanded && enabled) {
-                ModelPickerPopup(
-                    choices = controller.models.map { ModelChoice(it.id, it.name) },
-                    onDismiss = { expanded = false },
-                    onSelect = {
-                        controller.selectModel(it)
-                        expanded = false
-                    },
-                )
-            }
-        }
-        OutlinedButton(
-            onClick = { scope.launch { controller.loadModels(refresh = true) } },
-            enabled = enabled && !controller.modelsLoading,
-        ) { Text("Refresh models") }
-        if (controller.modelsLoading) CircularProgressIndicator(modifier = Modifier.size(24.dp))
-    }
-    controller.modelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
-    controller.selectedModel?.let {
-        Text("Output limit: ${it.outputTokenLimit} tokens (capped at 65,536).", style = MaterialTheme.typography.bodySmall)
-    }
-}
-
-@Composable
 private fun PathRow(
     value: String,
     onValueChange: (String) -> Unit,
@@ -277,7 +218,9 @@ private fun OpenFolderButton(folder: Path?) {
 }
 
 private fun tokenSummary(usage: GeminiUsage): String =
-    "input ${usage.promptTokens ?: "n/a"}, output ${usage.outputTokens} (thinking ${usage.thoughtsTokens ?: 0}), " +
+    "input ${usage.promptTokens ?: "n/a"}, " +
+        "output ${if (usage.candidatesTokens == null && usage.thoughtsTokens == null) "n/a" else usage.outputTokens} " +
+        "(thinking ${usage.thoughtsTokens ?: "n/a"}), " +
         "total ${usage.totalTokens ?: "n/a"}"
 
 /** Swing chooser; starts at the current value, else the bundled car-pricelists folder when present. */

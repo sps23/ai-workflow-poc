@@ -8,6 +8,7 @@ import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.renderComposeScene
 import androidx.compose.ui.use
+import com.sps23.aiworkflow.openrouter.GoogleAiModel
 import com.sps23.aiworkflow.openrouter.ModelLimits
 import com.sps23.aiworkflow.openrouter.OpenRouterModel
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,27 @@ import kotlin.test.assertTrue
 
 class ModelPickerTest {
     private val choices = (1..25).map { ModelChoice("model-$it", "Display $it") }
+
+    @Test
+    fun `Google presets stay ordered available offline and deduplicated after discovery`() {
+        val fetched =
+            listOf(
+                GoogleAiModel("gemini-3.8-flash", "Discovered Flash", 1000, 1000),
+                GoogleAiModel("gemini-other", "Other Gemini", 1000, 1000),
+                GoogleAiModel(DEFAULT_GOOGLE_UI_MODEL, "Discovered Lite", 1000, 1000),
+            )
+        assertEquals(GOOGLE_MODEL_PRESETS, googleModelChoices(emptyList()))
+        val merged = googleModelChoices(fetched)
+        assertEquals(
+            listOf("Gemini 3.5 Flash-Lite (medium)", "Gemini 3.1 Flash-Lite (low)", "Gemini 3.8 Flash (high)", "Other Gemini"),
+            merged.map { it.name },
+        )
+        assertEquals(merged.size, merged.map { it.id }.distinct().size)
+        assertTrue(merged.all { it.tier == ModelPriceTier.UNKNOWN })
+        val search = ModelPickerState(merged)
+        search.search("low")
+        assertEquals("gemini-3.1-flash-lite", search.highlighted()?.id)
+    }
 
     @Test
     fun `initial batch contains exactly ten models and further batches reach the full catalog`() {

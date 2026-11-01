@@ -114,7 +114,7 @@ class PdfExtractionService(
                 if (!report.passed || vehicle == null) {
                     return PdfExtractionOutcome.Failed(
                         FailureKind.INVALID_RESPONSE,
-                        "Gemini output violates ${report.hardViolations.size} hard requirement(s); $target was not written.",
+                        "Model output violates ${report.hardViolations.size} hard requirement(s); $target was not written.",
                         report.violations,
                         writeRaw(rawTarget, result.text),
                         result.usage,
@@ -129,7 +129,10 @@ class PdfExtractionService(
                                 model = result.modelVersion ?: client.modelId,
                                 extractedAt = Instant.now(clock).toString(),
                                 inputTokens = result.usage.promptTokens,
-                                outputTokens = result.usage.outputTokens,
+                                outputTokens =
+                                    result.usage.outputTokens.takeIf {
+                                        result.usage.candidatesTokens != null || result.usage.thoughtsTokens != null
+                                    },
                             ),
                         vehicle = vehicle,
                     )
@@ -163,9 +166,10 @@ class PdfExtractionService(
                 elapsedMillis = elapsedMillis(started),
                 stages = stages.toList(),
                 notes =
-                    "Metadata only; null means unavailable. PDF input tokens are not estimated. " +
-                        "inputUtf8Bytes includes original PDF bytes plus UTF-8 prompts and schema, not base64 or HTTP overhead. " +
-                        "Context limit is Google's independent input-token limit. Output tokens include candidates plus thinking; " +
+                    "Metadata only; null means unavailable. ${client.metadataNotes} " +
+                        "For native PDF requests, inputUtf8Bytes includes PDF bytes plus UTF-8 prompts and schema, " +
+                        "not base64 or HTTP overhead. " +
+                        "Output tokens include candidates plus thinking; " +
                         "reasoning and cached input are subsets, not additional totals. " +
                         "Request time includes serialization, transport and response processing; " +
                         "output tokens per second is whole-request throughput, not generation speed. " +

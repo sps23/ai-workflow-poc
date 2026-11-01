@@ -43,17 +43,11 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.sps23.aiworkflow.openrouter.CarAnswer
-import com.sps23.aiworkflow.openrouter.GoogleAiClient
-import com.sps23.aiworkflow.openrouter.GoogleAiConfig
 import com.sps23.aiworkflow.openrouter.LOCAL_API_KEY_VARIABLE
 import com.sps23.aiworkflow.openrouter.LlmApi
-import com.sps23.aiworkflow.openrouter.LocalLlmConfig
-import com.sps23.aiworkflow.openrouter.MODEL_VARIABLE
 import com.sps23.aiworkflow.openrouter.ManualApiConfig
-import com.sps23.aiworkflow.openrouter.OpenAiClient
-import com.sps23.aiworkflow.openrouter.OpenAiConfig
 import com.sps23.aiworkflow.openrouter.OpenRouterCarWorkflow
-import com.sps23.aiworkflow.openrouter.OpenRouterConfig
+import com.sps23.aiworkflow.openrouter.chatBackendFor
 import com.sps23.aiworkflow.recommendation.CarSelection
 import com.sps23.aiworkflow.recommendation.DataModelCatalogContext
 import com.sps23.aiworkflow.recommendation.DataModelPdfStore
@@ -69,6 +63,7 @@ import java.io.IOException
 import java.nio.file.Files
 import javax.swing.JFileChooser
 import javax.swing.JOptionPane
+import kotlin.time.Duration.Companion.milliseconds
 
 private val dataModelCatalog by lazy { DataModelCatalogContext.loadBundled() }
 private val catalogJson: String by lazy { dataModelCatalog.promptJson }
@@ -86,16 +81,7 @@ private suspend fun answerFromLlm(
     onTranslated: suspend (LlmRequest) -> Unit,
 ): CarAnswer =
     withContext(Dispatchers.IO) {
-        val workflow =
-            if (api.isLocal) {
-                OpenRouterCarWorkflow(LocalLlmConfig.fromEnvironment(System.getenv(), api, apiKeyOverride = apiKeyOverride), catalogJson)
-            } else if (api == LlmApi.OPENAI) {
-                OpenRouterCarWorkflow(OpenAiClient(OpenAiConfig.fromEnvironment(System.getenv(), modelId, apiKeyOverride)), catalogJson)
-            } else if (api == LlmApi.GOOGLE_AI) {
-                OpenRouterCarWorkflow(GoogleAiClient(GoogleAiConfig.fromEnvironment(System.getenv(), modelId, apiKeyOverride)), catalogJson)
-            } else {
-                OpenRouterCarWorkflow(OpenRouterConfig.fromEnvironment(System.getenv() + (MODEL_VARIABLE to modelId)), catalogJson)
-            }
+        val workflow = OpenRouterCarWorkflow(chatBackendFor(api, modelId, apiKeyOverride, System.getenv()), catalogJson)
         workflow.answer(prompt, cachedRequest) {
             withContext(Dispatchers.Main) { onTranslated(it) }
         }
@@ -166,34 +152,36 @@ fun CarCatalogApp(
 }
 
 @Composable
-fun CarPromptScreen(controller: CarPromptController) {
-    val scope = rememberCoroutineScope()
-    val state = controller.state
-    val loading = state == CarPromptState.Loading
-    LaunchedEffect(controller, controller.selectedApi) {
-        if (controller.selectedApi == LlmApi.OPENROUTER) controller.loadModels()
+internal fun LlmProviderControls(
+    controller: CarPromptController,
+    enabled: Boolean,
+    pdfExtraction: Boolean = false,
+) {
+    val loading = !enabled
+    LaunchedEffect(controller, controller.selectedApi, loading) {
+        if (controller.selectedApi == LlmApi.OPENROUTER && !loading) controller.loadModels()
     }
     LaunchedEffect(controller, controller.selectedApi, controller.openAiApiKey, loading) {
         if (controller.selectedApi == LlmApi.OPENAI && !loading) {
-            delay(600)
+            delay(600.milliseconds)
             controller.loadOpenAiModels()
         }
     }
     LaunchedEffect(controller, controller.selectedApi, controller.manualBaseUrl, controller.manualApiKey, loading) {
         if (controller.selectedApi == LlmApi.MANUAL && !loading && controller.manualBaseUrl.isNotBlank()) {
-            delay(600)
+            delay(600.milliseconds)
             controller.loadManualModels()
         }
     }
     LaunchedEffect(controller, controller.selectedApi, controller.googleApiKey, loading) {
         if (controller.selectedApi == LlmApi.GOOGLE_AI && !loading) {
-            delay(600)
+            delay(600.milliseconds)
             controller.loadGoogleModels()
         }
     }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
@@ -212,7 +200,7 @@ fun CarPromptScreen(controller: CarPromptController) {
             Text(
                 "Uses the model loaded in ${controller.selectedApi.label} at ${controller.selectedApi.baseUrl}. " +
                     "Blank key uses $LOCAL_API_KEY_VARIABLE if set; typed keys stay in memory only. " +
-                    "The full catalog needs a large context window.",
+                    "${if (pdfExtraction) "PDF text" else "The full catalog"} needs a large context window.",
                 style = MaterialTheme.typography.bodySmall,
             )
         } else {
@@ -270,8 +258,21 @@ fun CarPromptScreen(controller: CarPromptController) {
                     style = MaterialTheme.typography.bodySmall,
                 )
             }
-            RemoteModelPicker(controller, enabled = !loading)
+            RemoteModelPicker(controller, enabled = !loading, pdfExtraction = pdfExtraction)
         }
+    }
+}
+
+@Composable
+fun CarPromptScreen(controller: CarPromptController) {
+    val scope = rememberCoroutineScope()
+    val state = controller.state
+    val loading = state == CarPromptState.Loading
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        LlmProviderControls(controller, enabled = !loading)
         OutlinedTextField(
             value = controller.prompt,
             onValueChange = controller::updatePrompt,
@@ -326,6 +327,7 @@ fun CarPromptScreen(controller: CarPromptController) {
 internal fun RemoteModelPicker(
     controller: CarPromptController,
     enabled: Boolean,
+    pdfExtraction: Boolean = false,
 ) {
     val scope = rememberCoroutineScope()
     val openAi = controller.selectedApi == LlmApi.OPENAI
@@ -342,7 +344,7 @@ internal fun RemoteModelPicker(
     val choices =
         when {
             manual -> controller.manualModels.map { ModelChoice(it) }
-            google -> controller.googleModels.map { ModelChoice(it.id, it.name) }
+            google -> googleModelChoices(controller.googleModels)
             openAi -> controller.openAiModels.map { ModelChoice(it) }
             else -> controller.availableModels.map { it.toModelChoice() }.sortedWith(compareBy<ModelChoice> { it.tier }.thenBy { it.id })
         }
@@ -390,7 +392,7 @@ internal fun RemoteModelPicker(
         if (google) {
             Text(
                 "Browse all Google generateContent models; search inside the picker or enter an exact ID. " +
-                    "Selected models and input/output limits are reverified on Send. Some specialized models may reject chat requests.",
+                    "Selected models and limits are reverified before inference. Preset labels are display-only, not thinking settings or prices.",
                 style = MaterialTheme.typography.bodySmall,
             )
             controller.googleModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
@@ -401,7 +403,9 @@ internal fun RemoteModelPicker(
                 )
             }
             Text(
-                "Pricing is not reported by model discovery. Prompt/catalog go to Google; quota limits and charges may apply. No fallback.",
+                "Pricing is not reported by model discovery. " +
+                    "${if (pdfExtraction) "The whole PDF goes" else "Prompt/catalog go"} to Google; " +
+                    "quota limits and charges may apply. Free-tier content may be used to improve Google products. No fallback.",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
             )
@@ -413,7 +417,8 @@ internal fun RemoteModelPicker(
             )
             controller.manualModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             Text(
-                "Prompt and full catalog are sent to this endpoint; charges may apply. Review the URL before sending. No automatic fallback.",
+                "${if (pdfExtraction) "Extracted PDF text" else "Prompt and full catalog"} " +
+                    "are sent to this endpoint; charges may apply. Review the URL before sending. No automatic fallback.",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
             )
@@ -426,7 +431,9 @@ internal fun RemoteModelPicker(
             )
             controller.openAiModelsError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             Text(
-                "Paid API: prompt and full catalog are sent to OpenAI. Both workflow stages may incur charges. No automatic fallback.",
+                "Paid API: " +
+                    "${if (pdfExtraction) "extracted PDF text is" else "prompt and full catalog are"} sent to OpenAI. " +
+                    "Requests may incur charges. No automatic fallback.",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
             )
@@ -451,7 +458,14 @@ internal fun RemoteModelPicker(
                     if (model == null) {
                         "Pricing unverified: this ID may incur charges. Live metadata checks run on Send; no automatic fallback."
                     } else {
-                        "Paid model: OpenRouter charges apply to translation and full-catalog recommendation requests."
+                        "Paid model: OpenRouter charges apply to " +
+                            (
+                                if (pdfExtraction) {
+                                    "PDF text extraction requests."
+                                } else {
+                                    "translation and full-catalog recommendation requests."
+                                }
+                            )
                     },
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,

@@ -44,6 +44,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation("org.apache.pdfbox:pdfbox:3.0.6")
 
     implementation(compose.desktop.currentOs)
     implementation(compose.material3)
@@ -61,6 +62,16 @@ compose.desktop {
 tasks.withType<Test>().configureEach {
     dependsOn("spotlessCheck")
     jvmArgs("--enable-native-access=ALL-UNNAMED")
+    if (!providers.gradleProperty("googleAiClientIntegration").isPresent) {
+        filter {
+            excludeTestsMatching("com.sps23.aiworkflow.openrouter.GoogleAiClientIntegrationTest")
+        }
+    }
+    if (!providers.gradleProperty("openRouterClientIntegration").isPresent) {
+        filter {
+            excludeTestsMatching("com.sps23.aiworkflow.openrouter.OpenRouterClientIntegrationTest")
+        }
+    }
     if (!providers.gradleProperty("googleAiModelsIntegration").isPresent) {
         filter {
             excludeTestsMatching("com.sps23.aiworkflow.openrouter.GoogleAiModelsIntegrationTest")
@@ -98,6 +109,15 @@ tasks.register<JavaExec>("generateDataModelCatalog") {
         "src/main/resources/car-pricelists",
         "src/main/resources/vehicle-catalog/data-model-catalog.json",
     )
+}
+
+tasks.register<JavaExec>("generateDataModelTestFixtures") {
+    group = "verification"
+    description = "Regenerate frozen normalized test fixtures; review changes before accepting the new baseline."
+    dependsOn("testClasses")
+    classpath = sourceSets.test.get().runtimeClasspath
+    mainClass.set("com.sps23.aiworkflow.catalog.datamodel.GenerateDataModelTestFixtures")
+    args("src/main/resources/car-pricelists", "src/test/resources/data-model-fixtures")
 }
 
 tasks.register<JavaExec>("carPrompt") {

@@ -142,7 +142,7 @@ class OpenAiControllerTest {
             controller.submit("x")
             assertEquals(
                 listOf(
-                    Triple(LlmApi.OPENROUTER, "openrouter/free", null),
+                    Triple(LlmApi.GOOGLE_AI, DEFAULT_GOOGLE_UI_MODEL, null),
                     Triple(LlmApi.OPENAI, "gpt-custom", "openai-key"),
                     Triple(LlmApi.OPENAI, "gpt-custom", "second-key"),
                     Triple(LlmApi.LM_STUDIO, "openrouter/free", "local-key"),

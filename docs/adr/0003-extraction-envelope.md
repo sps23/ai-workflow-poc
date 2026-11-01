@@ -18,7 +18,8 @@ model, and evolvable.
 - `schemaVersion` is the integer `PDF_EXTRACTION_SCHEMA_VERSION` (1). Its presence at the root
   marks a file as an extraction file.
 - `model` is the response's `modelVersion` when present, else the requested model ID.
-- `outputTokens` = candidate tokens + thinking tokens (what is billed as output).
+- `outputTokens` = candidate tokens + thinking tokens (what is billed as output);
+  null when usage is unavailable (approved for non-Google providers, 2026-11-01).
 - Identity (`id`, `sourcePath`, `sourcePdfPath`) is computed by code at promotion, never by the
   model.
 

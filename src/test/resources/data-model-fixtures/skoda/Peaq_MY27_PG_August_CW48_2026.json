@@ -1,0 +1,1793 @@
+{
+    "id": "skoda-peaq",
+    "sourcePath": "skoda/Peaq_MY27_PG_August_CW48_2026.json",
+    "vehicle": {
+        "title": "Škoda Peaq",
+        "make": "Škoda",
+        "model": "Peaq",
+        "effectiveDate": "August 2026",
+        "effectivePeriod": "2026-08",
+        "trims": [
+            {
+                "name": "Selection",
+                "variants": [
+                    {
+                        "name": "60",
+                        "trimName": "Selection",
+                        "modelCode": "PZ7DF2",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 63.0,
+                        "powerHp": null,
+                        "powerKw": 150,
+                        "co2GPerKm": null,
+                        "wltpRangeKm": {
+                            "min": 452.0,
+                            "max": 452.0
+                        },
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5499600,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€54,996"
+                            },
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5499600,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€54,996"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            },
+                            {
+                                "basis": "VRT_REBATE",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            },
+                            {
+                                "basis": "SEAI_GRANT",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            }
+                        ],
+                        "additional": {
+                            "consumption_wltp": "150.1 Wh/km"
+                        }
+                    },
+                    {
+                        "name": "90",
+                        "trimName": "Selection",
+                        "modelCode": "PZ7DP2",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 91.0,
+                        "powerHp": null,
+                        "powerKw": 210,
+                        "co2GPerKm": null,
+                        "wltpRangeKm": {
+                            "min": 637.0,
+                            "max": 637.0
+                        },
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5815000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€58,150"
+                            },
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5815000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€58,150"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            },
+                            {
+                                "basis": "VRT_REBATE",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            },
+                            {
+                                "basis": "SEAI_GRANT",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            }
+                        ],
+                        "additional": {
+                            "consumption_wltp": "152.3 Wh/km"
+                        }
+                    },
+                    {
+                        "name": "90X",
+                        "trimName": "Selection",
+                        "modelCode": "PZ7DT4",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 91.0,
+                        "powerHp": null,
+                        "powerKw": 220,
+                        "co2GPerKm": null,
+                        "wltpRangeKm": {
+                            "min": 602.0,
+                            "max": 602.0
+                        },
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5965000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€59,650"
+                            },
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 5965000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€59,650"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            },
+                            {
+                                "basis": "VRT_REBATE",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            },
+                            {
+                                "basis": "SEAI_GRANT",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            }
+                        ],
+                        "additional": {
+                            "consumption_wltp": "161.4 Wh/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Side Assist – blind spot monitoring system",
+                            "Crew protect assist",
+                            "Driver monitoring system",
+                            "One pedal driving technology",
+                            "Mobile digital key incl. 2x physical keys",
+                            "Adaptive lane assist incl. emergency assist",
+                            "iSOFIX child seat anchor points",
+                            "Turn assist incl. crossroad assist",
+                            "Tyre pressure monitoring system",
+                            "Front & rear side airbag with front curtain airbag",
+                            "Driver & front passenger airbags",
+                            "Front assist: Forward collision warning incl. emergency brake & pedestrian recognition"
+                        ]
+                    },
+                    {
+                        "category": "functional",
+                        "isAddition": false,
+                        "items": [
+                            "Climatronic 3-zone air conditioning",
+                            "Adaptive cruise control incl. traffic jam assist",
+                            "Kessy Full – keyless entry/go system",
+                            "Front & Rear parking sensors",
+                            "Rear view camera",
+                            "Drive mode select",
+                            "Virtual pedal – electric tailgate",
+                            "Power folding exterior mirrors",
+                            "Automatic rain & light sensors",
+                            "Auto-dimming rear view mirror",
+                            "Vehicle to load (V2L) readiness (adaptor required)",
+                            "3-pin boot socket with vehicle to load capability",
+                            "35 litre front trunk",
+                            "Dual wireless charging ring (subject to device compatibility)",
+                            "13.6” vertical touchscreen display",
+                            "Navigation system",
+                            "Bluetooth & Voice control",
+                            "Smartlink (Apple Carplay / Android Auto)",
+                            "2x USB-C ports & 8 speakers",
+                            "Online services (10-years subscription)",
+                            "10GB monthly data pack (3-year subscription)"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": false,
+                        "items": [
+                            "Heated front seats",
+                            "‘Suite’ design selection upholstery",
+                            "Front centre armrest",
+                            "Split folding rear seats incl. rear centre armrest",
+                            "Electric front seats incl. memory function",
+                            "Front & rear floor mats",
+                            "Storage compartment in boot",
+                            "Leatherette heated steering wheel (2-spoke)",
+                            "LED ambient lighting",
+                            "LED footwell lights",
+                            "‘Welcome’ logo projection"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "19” ‘Whale’ alloy wheels",
+                            "Flush exterior door handles",
+                            "LED headlights",
+                            "LED tail light",
+                            "Tech deck front grill",
+                            "Škoda UDC inscription on D-pillar"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Sportline",
+                "variants": [
+                    {
+                        "name": "90",
+                        "trimName": "Sportline",
+                        "modelCode": "PZ7RP2",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 91.0,
+                        "powerHp": null,
+                        "powerKw": 210,
+                        "co2GPerKm": null,
+                        "wltpRangeKm": {
+                            "min": 630.0,
+                            "max": 630.0
+                        },
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6155000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€61,550"
+                            },
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6155000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€61,550"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            },
+                            {
+                                "basis": "VRT_REBATE",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            },
+                            {
+                                "basis": "SEAI_GRANT",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            }
+                        ],
+                        "additional": {
+                            "consumption_wltp": "154.3 Wh/km"
+                        }
+                    },
+                    {
+                        "name": "90X",
+                        "trimName": "Sportline",
+                        "modelCode": "PZ7RT4",
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 91.0,
+                        "powerHp": null,
+                        "powerKw": 220,
+                        "co2GPerKm": null,
+                        "wltpRangeKm": {
+                            "min": 596.0,
+                            "max": 596.0
+                        },
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6305000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€63,050"
+                            },
+                            {
+                                "basis": "RRP_FROM",
+                                "amount": {
+                                    "minorUnits": 6305000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€63,050"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            },
+                            {
+                                "basis": "VRT_REBATE",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            },
+                            {
+                                "basis": "SEAI_GRANT",
+                                "amount": {
+                                    "minorUnits": 0,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€0"
+                            }
+                        ],
+                        "additional": {
+                            "consumption_wltp": "163.1 Wh/km"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Side Assist – blind spot monitoring system",
+                            "Crew protect assist",
+                            "Driver monitoring system",
+                            "One pedal driving technology",
+                            "Mobile digital key incl. 2x physical keys",
+                            "Adaptive lane assist incl. emergency assist",
+                            "iSOFIX child seat anchor points",
+                            "Turn assist incl. crossroad assist",
+                            "Tyre pressure monitoring system",
+                            "Front & rear side airbag with front curtain airbag",
+                            "Driver & front passenger airbags",
+                            "Front assist: Forward collision warning incl. emergency brake & pedestrian recognition"
+                        ]
+                    },
+                    {
+                        "category": "functional",
+                        "isAddition": false,
+                        "items": [
+                            "Climatronic 3-zone air conditioning",
+                            "Adaptive cruise control incl. traffic jam assist",
+                            "Kessy Full – keyless entry/go system",
+                            "Front & Rear parking sensors",
+                            "Area view 360 degree camera",
+                            "Drive mode select",
+                            "Virtual pedal – electric tailgate",
+                            "Power folding exterior mirrors",
+                            "Automatic rain & light sensors",
+                            "Auto-dimming rear view mirror",
+                            "Vehicle to load (V2L) readiness (adaptor required)",
+                            "3-pin boot socket with vehicle to load capability",
+                            "35 litre front trunk",
+                            "Dual wireless charging ring (subject to device compatibility)",
+                            "13.6” vertical touchscreen display",
+                            "Navigation system",
+                            "Bluetooth & Voice control",
+                            "Smartlink (Apple Carplay / Android Auto)",
+                            "2x USB-C ports & 8 speakers",
+                            "Online services (10-years subscription)",
+                            "10GB monthly data pack (3-year subscription)"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": false,
+                        "items": [
+                            "Heated front seats",
+                            "Front centre armrest",
+                            "Split folding rear seats incl. rear centre armrest",
+                            "Electric front seats incl. memory function",
+                            "Front & rear floor mats",
+                            "Storage compartment in boot",
+                            "Leatherette heated sports steering wheel (3-spoke) incl. regeneration paddles",
+                            "LED ambient lighting",
+                            "LED footwell lights",
+                            "‘Welcome’ logo projection",
+                            "Suedia & leatherette upholstery",
+                            "Front sport seats",
+                            "Dark interior headliner",
+                            "Leatherette wrapped dashboard",
+                            "Carbon/Black decorative inserts",
+                            "Aluminium sport pedals"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "20” ‘Okapi’ alloy wheels",
+                            "Crystal face 2.0",
+                            "Flush exterior door handles",
+                            "Matrix LED headlights",
+                            "LED tail lights",
+                            "‘SUNSET’ dark tinted privacy glass",
+                            "Tech deck front grill",
+                            "Black window surrounds",
+                            "Black ŠKODA lettering"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": "V95",
+                "name": "19” ‘Whale’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "F55",
+                "name": "19” ‘Gharial’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PV1",
+                "name": "20” ‘Mustela’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 66600,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€666"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PV2",
+                "name": "20” ‘Kouprey’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 77900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€779"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "CM5",
+                "name": "20” ‘Okapi’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PW1",
+                "name": "21” ‘Javan’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 158100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,581"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PW2",
+                "name": "21” ‘Dugong’ alloy wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 91500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€915"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ZH",
+                "name": "Suite Black",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selection – Upholstery & Decorative trim",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {
+                    "upholstery": "Black leather & Leatherette",
+                    "decorative_trim": "Carbon/black decor",
+                    "door_lining": "Techtona Black",
+                    "roof_liner": "Grey"
+                }
+            },
+            {
+                "code": "YE",
+                "name": "Suite Ceramique",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selection – Upholstery & Decorative trim",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {
+                    "upholstery": "Grey Techona Leatherette",
+                    "decorative_trim": "Carbon/grey decor",
+                    "door_lining": "Techtona Ceramique",
+                    "roof_liner": "Grey"
+                }
+            },
+            {
+                "code": "YM",
+                "name": "Sportline",
+                "category": "INTERIOR",
+                "categoryLabel": "Design Selection – Upholstery & Decorative trim",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {
+                    "upholstery": "Black Suedia & Leatherette",
+                    "decorative_trim": "Carbon/black decor",
+                    "door_lining": "Suedia Black",
+                    "roof_liner": "Black"
+                }
+            },
+            {
+                "code": "P1B",
+                "name": "Tech pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Matrix LED headlights",
+                    "LED taillights incl. dynamic indicators",
+                    "Crystal face 2.0",
+                    "Area view 360-degree camera"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 180600,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,806"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P2C",
+                "name": "Assist pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Intelligent parking assist, Remote park assist and Reverse assist",
+                    "Trained Parking"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 59900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€599"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 59900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€599"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P1D",
+                "name": "Relax pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Massage front seats",
+                    "Electrically adjustable footrest",
+                    "‘SONOS’ sound system",
+                    "Folding table in centre console",
+                    "2x black attachable headrest pillows"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 176100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,761"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 176100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,761"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P2D",
+                "name": "Relax pack with seat ventilation",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Ventilated front seats",
+                    "Massage front seats",
+                    "Electrically adjustable footrest",
+                    "‘SONOS’ sound system",
+                    "Folding table in centre console",
+                    "2x black attachable headrest pillows"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 216000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€2,160"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P1F",
+                "name": "Simply Clever pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Tablet holder",
+                    "Detachable rubbish bin",
+                    "Cable cleaner",
+                    "2nd Umbrella in passenger’s door"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 6900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€69"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 6900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€69"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "P1E",
+                "name": "Winter pack",
+                "category": "PACKAGE",
+                "categoryLabel": "Packages",
+                "type": null,
+                "items": [
+                    "Heated windshield",
+                    "Heated rear seats"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 60400,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€604"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 60400,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€604"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "3FP",
+                "name": "Panoramic fixed glass sunroof with dynamic shade control",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 217800,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€2,178"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 217800,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€2,178"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "W2B",
+                "name": "Ventilated front seats",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 39900,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€399"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "3CX",
+                "name": "Net partition",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 19100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€191"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 19100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€191"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "1M6",
+                "name": "Tow bar - electrically retractable",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 82000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€820"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 82000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€820"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PHC",
+                "name": "Heat pump",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 127100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,271"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 127100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,271"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PFD",
+                "name": "Adaptive chassis control & 3-spoke leatherette heated steering wheel with Tiptronic paddles",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 120500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,205"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 94400,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€944"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "7AL",
+                "name": "Interior anti-theft alarm",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 27200,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€272"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 27200,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€272"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PA2",
+                "name": "SUNSET dark tinted privacy glass",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 25300,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€253"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "6NW",
+                "name": "Black interior fabric ceiling",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 9700,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€97"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "EA9",
+                "name": "Extended warranty (5 year / max 150,000km)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Single Options",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 78100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€781"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 78100,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€781"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "K4K4",
+                "name": "Solid: Energy Blue",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Solid",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "M3M3",
+                "name": "Solid: Steel Grey",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Solid",
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 87700,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€877"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 87700,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€877"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Metallic",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Metallic",
+                "items": [
+                    "Moon White (2Y2Y – Metallic)",
+                    "Smokey Diamond Silver (B3B3 – Metallic)",
+                    "Black Magic (1Z1Z – Metallic)",
+                    "Graphite Grey (5X5X – Metallic)",
+                    "Race Blue (8X8X – Metallic)"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 87700,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€877"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 87700,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€877"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Exclusive: Rosewood Beige, Olibo Green, Velvet Red",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colours",
+                "type": "Exclusive",
+                "items": [
+                    "Rosewood Beige (4P4P – Exclusive)",
+                    "Olibo Green (R2R2 - Exclusive)",
+                    "Velvet Red (K1K1 – Exclusive)"
+                ],
+                "availability": [
+                    {
+                        "scope": "Selection",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 118200,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,182"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Sportline",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 118200,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,182"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Škoda EV Plan",
+                "category": "ACCESSORY_PACK",
+                "categoryLabel": "Škoda EV Plan",
+                "type": null,
+                "items": [
+                    "Replacement Tyres - As required €1,250",
+                    "Mode 2 Charging Cable for backup/domestic charging (supplied at delivery) -€274",
+                    "Inspection 1 & 2 - Electronic Vehicle Health Check, Functionality and Fault Assessment -€70",
+                    "Routine Service Maintenance - High Voltage Component Check, Running Gear Assessment, High Voltage Battery Status, Brake Fluid Change, Pollen Filter Replacement, Top-up Cooling System Levels - €209",
+                    "Brake Pad Replacement - As required -€175",
+                    "Wiper Blade Replacement - As required -€96"
+                ],
+                "availability": [
+                    {
+                        "scope": "All Trims",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 125000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,250"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {
+                    "total_value_if_purchased_separately": "€2,064",
+                    "saving": "39%"
+                }
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4874.0,
+                    "max": 4874.0
+                },
+                "widthMm": {
+                    "min": 1867.0,
+                    "max": 1867.0
+                },
+                "heightMm": {
+                    "min": 1674.0,
+                    "max": 1674.0
+                },
+                "wheelbaseMm": {
+                    "min": 2970.0,
+                    "max": 2970.0
+                },
+                "bootCapacityLitres": null,
+                "maxBootCapacityLitres": {
+                    "min": 890.0,
+                    "max": 890.0
+                },
+                "frontTrunkCapacityLitres": {
+                    "min": 35.0,
+                    "max": 35.0
+                },
+                "brakedTowingKg": {
+                    "min": 1800.0,
+                    "max": 2000.0
+                },
+                "additional": {
+                    "width_with_mirrors_mm": "2119",
+                    "height_with_roof_rails_mm": "1664",
+                    "front_overhang_mm": "897",
+                    "rear_overhang_mm": "1012",
+                    "front_track_mm": "1587",
+                    "rear_track_mm": "1557"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "60",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": "4x2",
+                    "transmission": null,
+                    "powerKw": 150.0,
+                    "powerHp": null,
+                    "torqueNm": 350.0,
+                    "topSpeedKmh": 160.0,
+                    "acceleration0To100S": {
+                        "min": 8.4,
+                        "max": 8.4
+                    },
+                    "wltpRangeKm": {
+                        "min": 452.0,
+                        "max": 452.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": 59.0,
+                    "batteryGrossKwh": 63.0,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": 160.0,
+                    "grossVehicleWeightKg": 2700.0,
+                    "brakedTowingKg": 1800.0,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Selection"
+                    ],
+                    "charging": {
+                        "home_socket_charging_power": "Max 2.3 kW",
+                        "home_socket_charging_time_0_100": ">24 hours",
+                        "home_socket_cable": "Mode 2",
+                        "wallbox_3_phase_charging_power": "Max 11 kW",
+                        "wallbox_3_phase_charging_time_0_100": "6hr 30 min",
+                        "wallbox_3_phase_cable": "Mode 3",
+                        "dc_fast_charger_charging_power": "Max 160 kW",
+                        "dc_fast_charger_charging_time_10_80": "27 mins",
+                        "dc_fast_charger_cable": "Mode 4 – part of charging station"
+                    },
+                    "additional": {
+                        "max_towing_capacity_braked_at_12_percent_kg": "1,800"
+                    }
+                },
+                {
+                    "name": "90",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": "4x2",
+                    "transmission": null,
+                    "powerKw": 210.0,
+                    "powerHp": null,
+                    "torqueNm": 545.0,
+                    "topSpeedKmh": 180.0,
+                    "acceleration0To100S": {
+                        "min": 7.1,
+                        "max": 7.1
+                    },
+                    "wltpRangeKm": {
+                        "min": 630.0,
+                        "max": 637.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": 86.0,
+                    "batteryGrossKwh": 91.0,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": 199.0,
+                    "grossVehicleWeightKg": 2909.0,
+                    "brakedTowingKg": 1800.0,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Sportline"
+                    ],
+                    "charging": {
+                        "home_socket_charging_power": "Max 2.3 kW",
+                        "home_socket_charging_time_0_100": ">24 hours",
+                        "home_socket_cable": "Mode 2",
+                        "wallbox_3_phase_charging_power": "Max 11 kW",
+                        "wallbox_3_phase_charging_time_0_100": "9 hours",
+                        "wallbox_3_phase_cable": "Mode 3",
+                        "dc_fast_charger_charging_power": "Max 199 kW",
+                        "dc_fast_charger_charging_time_10_80": "28 mins",
+                        "dc_fast_charger_cable": "Mode 4 – part of charging station"
+                    },
+                    "additional": {
+                        "max_towing_capacity_braked_at_12_percent_kg": "1,800"
+                    }
+                },
+                {
+                    "name": "90X",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": "4x4",
+                    "transmission": null,
+                    "powerKw": 220.0,
+                    "powerHp": null,
+                    "torqueNm": null,
+                    "topSpeedKmh": 180.0,
+                    "acceleration0To100S": {
+                        "min": 6.7,
+                        "max": 6.7
+                    },
+                    "wltpRangeKm": {
+                        "min": 596.0,
+                        "max": 602.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": null,
+                    "batteryCapacityKwh": 77.0,
+                    "batteryGrossKwh": 91.0,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": 199.0,
+                    "grossVehicleWeightKg": 2990.0,
+                    "brakedTowingKg": 2000.0,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Selection",
+                        "Sportline"
+                    ],
+                    "charging": {
+                        "home_socket_charging_power": "Max 2.3 kW",
+                        "home_socket_charging_time_0_100": ">24 hours",
+                        "home_socket_cable": "Mode 2",
+                        "wallbox_3_phase_charging_power": "Max 11 kW",
+                        "wallbox_3_phase_charging_time_0_100": "9 hours",
+                        "wallbox_3_phase_cable": "Mode 3",
+                        "dc_fast_charger_charging_power": "Max 199 kW",
+                        "dc_fast_charger_charging_time_10_80": "28 mins",
+                        "dc_fast_charger_cable": "Mode 4 – part of charging station"
+                    },
+                    "additional": {
+                        "max_torque_front_nm": "162",
+                        "max_torque_rear_nm": "350",
+                        "max_towing_capacity_braked_at_12_percent_kg": "2,000"
+                    }
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

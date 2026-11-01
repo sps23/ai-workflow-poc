@@ -43,7 +43,8 @@ class CarPromptControllerTest {
             controller.loadModels()
             controller.loadModels()
             assertEquals(1, calls)
-            assertEquals("openrouter/free", controller.selectedModel)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, controller.selectedModel)
+            controller.selectApi(LlmApi.OPENROUTER)
             controller.selectModel("FRIENDLY")
             assertEquals(listOf("vendor/paid"), controller.matchingModels.map { it.id })
             controller.selectModel("zero-COST")
@@ -97,6 +98,7 @@ class CarPromptControllerTest {
                     CarAnswer(raw, "model", null)
                 }
             controller.updateLocalApiKey("local-secret")
+            controller.selectApi(LlmApi.OPENROUTER)
             controller.submit("x")
             assertNull(keys[0])
             assertEquals("local-secret", controller.localApiKey)
@@ -216,6 +218,7 @@ class CarPromptControllerTest {
                 CarPromptController { _, _, _, _, _, _ ->
                     throw OpenRouterWorkflowException(FailureKind.RATE_LIMIT, "Slow down.")
                 }
+            controller.selectApi(LlmApi.OPENROUTER)
 
             controller.submit("x")
 
@@ -288,7 +291,7 @@ class CarPromptControllerTest {
         }
 
     @Test
-    fun `first free model is selected by default and sent with the prompt`() =
+    fun `Google Flash Lite is selected by default and sent with the prompt`() =
         runBlocking {
             var sentModel: String? = null
             val controller =
@@ -299,8 +302,9 @@ class CarPromptControllerTest {
 
             controller.submit("x")
 
-            assertEquals(OPENROUTER_MODELS.first(), controller.selectedModel)
-            assertEquals("openrouter/free", sentModel)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, controller.selectedModel)
+            assertEquals(DEFAULT_GOOGLE_UI_MODEL, sentModel)
+            assertEquals(LlmApi.GOOGLE_AI, controller.selectedApi)
         }
 
     @Test
@@ -441,10 +445,10 @@ class CarPromptControllerTest {
         }
 
     @Test
-    fun `openrouter is the default api and local presets use common local urls`() {
+    fun `Google is the default api and local presets use common local urls`() {
         val controller = CarPromptController { _, _, _, _, _, _ -> error("unused") }
 
-        assertEquals(LlmApi.OPENROUTER, controller.selectedApi)
+        assertEquals(LlmApi.GOOGLE_AI, controller.selectedApi)
         assertEquals(
             listOf("http://localhost:1234/v1", "http://localhost:8080/v1", "http://localhost:11434/v1"),
             listOf(LlmApi.LM_STUDIO, LlmApi.LLAMA_CPP, LlmApi.OLLAMA).map { it.baseUrl },
@@ -467,7 +471,7 @@ class CarPromptControllerTest {
             controller.selectApi(LlmApi.LM_STUDIO)
             controller.submit("seven seats")
 
-            assertEquals(LlmApi.OPENROUTER to null, calls[0])
+            assertEquals(LlmApi.GOOGLE_AI to null, calls[0])
             assertEquals(LlmApi.LM_STUDIO, calls[1].first)
             assertEquals("seven seats", calls[1].second?.originalRequest)
             val details = assertIs<CarPromptState.Failed>(controller.state).message

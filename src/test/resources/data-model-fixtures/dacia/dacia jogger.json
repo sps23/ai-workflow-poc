@@ -1,0 +1,862 @@
+{
+    "id": "dacia-jogger",
+    "sourcePath": "dacia/dacia jogger.json",
+    "vehicle": {
+        "title": "Dacia Jogger",
+        "make": "Dacia",
+        "model": "Jogger",
+        "effectiveDate": "August 2026",
+        "effectivePeriod": "2026-08",
+        "trims": [
+            {
+                "name": "Essential",
+                "variants": [
+                    {
+                        "name": "TCe 110",
+                        "trimName": "Essential",
+                        "modelCode": null,
+                        "powertrainType": "PETROL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 110,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 135.0,
+                            "max": 135.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 2699000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€26,990"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "998",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "6",
+                            "nox_mg_per_km": "8.3"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": false,
+                        "items": [
+                            "Driver & passenger airbags",
+                            "Passenger airbag with deactivation function",
+                            "Front & side airbag",
+                            "ESC & ASR traction control with HSA Hill start assist",
+                            "Emergency brake assist",
+                            "Lane keep assist",
+                            "Traffic sign recognition",
+                            "Forward collision warning",
+                            "Urban forward advanced emergency braking",
+                            "Driver attention alert",
+                            "Rear parking sensors",
+                            "New signature daytime running lights",
+                            "LED headlamps",
+                            "Emergency call",
+                            "My Safety to manage driver assistance systems"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": false,
+                        "items": [
+                            "7 seats",
+                            "ISOFIX",
+                            "Cruise control with speed limiter",
+                            "Manual air conditioning",
+                            "Auto lights & wipers",
+                            "Electric front windows",
+                            "Manual rear windows",
+                            "Manually adjustable wing mirrors",
+                            "Day/Night manual rear view mirror",
+                            "Steering wheel with height adjustment",
+                            "Height adjustable driver seat",
+                            "TFT instrument panel with analogue display",
+                            "Gear shift indicator",
+                            "Media control, Bluetooth with Smartphone app"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": false,
+                        "items": [
+                            "16” steel wheels with ‘Erelia’ trim",
+                            "Longitudinal roof bars",
+                            "Tinted side and rear windows",
+                            "Whip/Rod antenna"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Expression",
+                "variants": [
+                    {
+                        "name": "TCe 110 (999 CC)",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "PETROL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 110,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 132.0,
+                            "max": 132.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 2789000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€27,890"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "999",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "5.8",
+                            "nox_mg_per_km": "23.0"
+                        }
+                    },
+                    {
+                        "name": "TCe 110 (998 CC)",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "PETROL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 110,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 135.0,
+                            "max": 135.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 2849000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€28,490"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "998",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "6",
+                            "nox_mg_per_km": "20.1"
+                        }
+                    },
+                    {
+                        "name": "HEV 155",
+                        "trimName": "Expression",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 155,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 104.0,
+                            "max": 104.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3159000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€31,590"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 18000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€180"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "1789",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "4.6",
+                            "nox_mg_per_km": "8.3"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Rear view camera"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": true,
+                        "items": [
+                            "Keyless entry",
+                            "Gear shift indicator",
+                            "High centre console with armrest",
+                            "Access Media control with wireless Apple CarPlay & Android Auto",
+                            "Leather steering wheel"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": true,
+                        "items": [
+                            "16” steel wheel with ‘Erelia’ trim",
+                            "Roof bars with modular functionality",
+                            "Electrically adjustable & defrosting wing mirrors",
+                            "Body coloured mirrors",
+                            "Shark fin antenna"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Extreme",
+                "variants": [
+                    {
+                        "name": "TCe 110",
+                        "trimName": "Extreme",
+                        "modelCode": null,
+                        "powertrainType": "PETROL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 110,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 135.0,
+                            "max": 135.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 2999000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€29,990"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "998",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "6",
+                            "nox_mg_per_km": "20.1"
+                        }
+                    },
+                    {
+                        "name": "HEV 155",
+                        "trimName": "Extreme",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 155,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 104.0,
+                            "max": 104.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 3309000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€33,090"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 18000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€180"
+                            }
+                        ],
+                        "additional": {
+                            "displacement_cc": "1789",
+                            "doors": "5DR",
+                            "fuel_consumption_l_per_100km": "4.6",
+                            "nox_mg_per_km": "8.3"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety",
+                        "isAddition": true,
+                        "items": [
+                            "Blind spot warning",
+                            "High beam assist",
+                            "Front & rear parking sensors",
+                            "Multi-view 360 degree camera"
+                        ]
+                    },
+                    {
+                        "category": "interior",
+                        "isAddition": true,
+                        "items": [
+                            "Automatic air conditioning",
+                            "Electronic parking brake",
+                            "7” TFT digital driver display",
+                            "Satellite navigation with wireless Apple CarPlay & Android Auto",
+                            "Wireless smartphone charger",
+                            "Height adjustable driver seat",
+                            "Split folding rear seat",
+                            "Keyless entry",
+                            "Heated steering wheel",
+                            "Heated seats",
+                            "Boot floor mat"
+                        ]
+                    },
+                    {
+                        "category": "exterior",
+                        "isAddition": true,
+                        "items": [
+                            "16” ‘Tamia’ alloy wheels",
+                            "Front fog lights",
+                            "Megalith grey door mirrors"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": null,
+                "name": "Glacier White",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Pearl Black",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Shadow Grey",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Dusty Green",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Sandstone",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Urban Grey",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": null,
+                "name": "Terracotta",
+                "category": "PAINT",
+                "categoryLabel": "Optional Paint Colours (Glacier White is standard equipment)",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Essential",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Expression",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "Extreme",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 64500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€645"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": null,
+                "widthMm": null,
+                "heightMm": null,
+                "wheelbaseMm": null,
+                "bootCapacityLitres": null,
+                "maxBootCapacityLitres": null,
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": null,
+                "additional": {}
+            },
+            "powertrains": [
+                {
+                    "name": "TCe 110 (999 CC)",
+                    "type": "PETROL",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": 110.0,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.8,
+                        "max": 5.8
+                    },
+                    "co2GPerKm": {
+                        "min": 132.0,
+                        "max": 132.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 999,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Expression"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "doors": "5DR",
+                        "nox_mg_per_km": "23.0"
+                    }
+                },
+                {
+                    "name": "TCe 110 (998 CC)",
+                    "type": "PETROL",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": 110.0,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 6.0,
+                        "max": 6.0
+                    },
+                    "co2GPerKm": {
+                        "min": 135.0,
+                        "max": 135.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 998,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Essential",
+                        "Expression",
+                        "Extreme"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "doors": "5DR",
+                        "nox_mg_per_km": "8.3 (Essential), 20.1 (Expression / Extreme)"
+                    }
+                },
+                {
+                    "name": "HEV 155",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": null,
+                    "powerKw": null,
+                    "powerHp": 155.0,
+                    "torqueNm": null,
+                    "topSpeedKmh": null,
+                    "acceleration0To100S": null,
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 4.6,
+                        "max": 4.6
+                    },
+                    "co2GPerKm": {
+                        "min": 104.0,
+                        "max": 104.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1789,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": null,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "Expression",
+                        "Extreme"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "doors": "5DR",
+                        "nox_mg_per_km": "8.3"
+                    }
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

@@ -3,7 +3,6 @@ package com.sps23.aiworkflow.ui
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.sps23.aiworkflow.catalog.extraction.GEMINI_PDF_DEFAULT_MODEL
 import com.sps23.aiworkflow.catalog.extraction.GeminiPdfClient
 import com.sps23.aiworkflow.catalog.extraction.GeminiPdfConfig
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_DEFAULT_OUTPUT_DIR
@@ -11,15 +10,18 @@ import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_OUTPUT_DIR_VARIABLE
 import com.sps23.aiworkflow.catalog.extraction.PdfExtractionOutcome
 import com.sps23.aiworkflow.catalog.extraction.PdfExtractionService
 import com.sps23.aiworkflow.catalog.extraction.Severity
+import com.sps23.aiworkflow.catalog.extraction.TextPdfClient
 import com.sps23.aiworkflow.catalog.extraction.Violation
 import com.sps23.aiworkflow.openrouter.FailureKind
-import com.sps23.aiworkflow.openrouter.GOOGLE_AI_MODEL_VARIABLE
 import com.sps23.aiworkflow.openrouter.GoogleAiConfig
 import com.sps23.aiworkflow.openrouter.GoogleAiModel
+import com.sps23.aiworkflow.openrouter.LlmApi
+import com.sps23.aiworkflow.openrouter.OpenAiConfig
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
 import com.sps23.aiworkflow.openrouter.StageMetrics
 import com.sps23.aiworkflow.openrouter.WorkflowMetadata
 import com.sps23.aiworkflow.openrouter.WorkflowMetadataCodec
+import com.sps23.aiworkflow.openrouter.chatBackendFor
 import com.sps23.aiworkflow.openrouter.elapsedMillis
 import com.sps23.aiworkflow.openrouter.fetchGoogleAiModels
 import kotlinx.coroutines.CancellationException
@@ -70,13 +72,34 @@ private val defaultExtract: PdfExtractAction = { pdf, outputDir, apiKey, modelId
     PdfExtractionService(GeminiPdfClient(GeminiPdfConfig(apiKey, modelId))).extract(pdf, outputDir, confirm)
 }
 
+typealias PdfTextExtractAction = suspend (
+    pdf: Path,
+    outputDir: Path,
+    api: LlmApi,
+    modelId: String,
+    apiKey: String?,
+    baseUrl: String,
+    confirmOverwrite: suspend (Path) -> Boolean,
+) -> PdfExtractionOutcome
+
 /** State for the PDF Extractor tab: one PDF -> `<outputDir>/<stem>.json` via [PdfExtractionService]. */
 class PdfExtractorController(
     environment: Map<String, String?> = System.getenv(),
     private val extractAction: PdfExtractAction = defaultExtract,
-    private val discoverModels: suspend (String) -> List<GoogleAiModel> = { fetchGoogleAiModels(it) },
+    discoverModels: suspend (String) -> List<GoogleAiModel> = { fetchGoogleAiModels(it) },
     private val resolveKey: (String) -> String = { GoogleAiConfig.apiKey(environment, it) },
+    private val textExtractAction: PdfTextExtractAction = { pdf, dir, api, model, key, url, confirm ->
+        val backend = chatBackendFor(api, model, key, environment, url)
+        PdfExtractionService(TextPdfClient(model, backend)).extract(pdf, dir, confirm)
+    },
 ) {
+    val providerSelection =
+        CarPromptController(
+            discoverGoogleModels = discoverModels,
+            resolveGoogleKey = resolveKey,
+            resolveOpenAiKey = { OpenAiConfig.apiKey(environment, it) },
+        ) { _, _, _, _, _, _ -> error("PDF provider controls do not run car recommendations.") }
+
     var state: PdfExtractorState by mutableStateOf(PdfExtractorState.Idle)
         private set
     val extracting: Boolean get() = state is PdfExtractorState.Extracting
@@ -90,21 +113,11 @@ class PdfExtractorController(
         environment[PDF_EXTRACT_OUTPUT_DIR_VARIABLE]?.trim()?.takeIf { it.isNotEmpty() } ?: PDF_EXTRACT_DEFAULT_OUTPUT_DIR,
     )
         private set
-    var apiKey: String by mutableStateOf("")
-        private set
-    var modelId: String by mutableStateOf(
-        environment[GOOGLE_AI_MODEL_VARIABLE]?.trim()?.removePrefix("models/")?.takeIf { it.isNotEmpty() } ?: GEMINI_PDF_DEFAULT_MODEL,
-    )
-        private set
-
-    var models: List<GoogleAiModel> by mutableStateOf(emptyList())
-        private set
-    var modelsLoading: Boolean by mutableStateOf(false)
-        private set
-    var modelsError: String? by mutableStateOf(null)
-        private set
-    private var discoveryVersion = 0
-    private var discoveryAttempted = false
+    val apiKey: String get() = providerSelection.googleApiKey
+    val modelId: String get() = providerSelection.selectedModel
+    val models: List<GoogleAiModel> get() = providerSelection.googleModels
+    val modelsLoading: Boolean get() = providerSelection.googleModelsLoading
+    val modelsError: String? get() = providerSelection.googleModelsError
 
     /** Non-null while the overwrite dialog is open. */
     var pendingOverwrite: Path? by mutableStateOf(null)
@@ -112,7 +125,10 @@ class PdfExtractorController(
     private var overwriteAnswer: CompletableDeferred<Boolean>? = null
 
     val selectedModel: GoogleAiModel? get() = models.firstOrNull { it.id == modelId.trim().removePrefix("models/") }
-    val canExtract: Boolean get() = !extracting && pdfPath.isNotBlank() && outputDir.isNotBlank() && modelId.isNotBlank()
+    val canExtract: Boolean
+        get() =
+            !extracting && pdfPath.isNotBlank() && outputDir.isNotBlank() &&
+                (providerSelection.selectedApi.isLocal || modelId.isNotBlank())
 
     fun updatePdfPath(value: String) {
         if (!extracting && value != pdfPath) {
@@ -126,43 +142,15 @@ class PdfExtractorController(
     }
 
     fun selectModel(value: String) {
-        if (!extracting) modelId = value
+        if (!extracting) providerSelection.selectModel(value)
     }
 
     fun updateApiKey(value: String) {
-        if (extracting || value == apiKey) return
-        apiKey = value
-        discoveryVersion++
-        discoveryAttempted = false
-        models = emptyList()
-        modelsError = null
-        modelsLoading = false
+        if (!extracting) providerSelection.updateGoogleApiKey(value)
     }
 
     suspend fun loadModels(refresh: Boolean = false) {
-        if (extracting || modelsLoading || (!refresh && discoveryAttempted)) return
-        val version = discoveryVersion
-        discoveryAttempted = true
-        modelsLoading = true
-        modelsError = null
-        try {
-            val fetched = discoverModels(resolveKey(apiKey))
-            if (version == discoveryVersion) models = fetched
-        } catch (e: CancellationException) {
-            if (version == discoveryVersion) discoveryAttempted = false
-            throw e
-        } catch (e: OpenRouterWorkflowException) {
-            if (version == discoveryVersion) {
-                modelsError =
-                    when (e.kind) {
-                        FailureKind.CONFIGURATION -> "Enter a Google AI key or set GOOGLE_AI_API_KEY, then Refresh models."
-                        FailureKind.AUTHENTICATION -> "Google AI model discovery authentication failed. Check the key."
-                        else -> "Google AI model discovery failed [${e.kind}]. The model is reverified on Extract."
-                    }
-            }
-        } finally {
-            if (version == discoveryVersion) modelsLoading = false
-        }
+        if (!extracting) providerSelection.loadGoogleModels(refresh)
     }
 
     fun answerOverwrite(replace: Boolean) {
@@ -201,7 +189,8 @@ class PdfExtractorController(
                 notes = "Metadata only; null means unavailable. No PDF token estimate is available.",
             )
 
-        val model = modelId.trim().removePrefix("models/")
+        val api = providerSelection.selectedApi
+        val model = if (api == LlmApi.GOOGLE_AI) modelId.trim().removePrefix("models/") else modelId.trim()
         val (pdf, dir) =
             try {
                 Path.of(pdfPath.trim()) to Path.of(outputDir.trim())
@@ -211,10 +200,23 @@ class PdfExtractorController(
                 return
             }
         state = PdfExtractorState.Extracting(pdf.fileName?.toString() ?: pdfPath, model)
+        providerSelection.controlsLocked = true
         state =
             try {
-                val key = resolveKey(apiKey)
-                when (val outcome = extractAction(pdf, dir, key, model, ::confirmOverwrite)) {
+                val outcome =
+                    if (api == LlmApi.GOOGLE_AI) {
+                        extractAction(pdf, dir, resolveKey(apiKey), model, ::confirmOverwrite)
+                    } else {
+                        val key =
+                            when {
+                                api.isLocal -> providerSelection.localApiKey
+                                api == LlmApi.OPENAI -> providerSelection.openAiApiKey
+                                api == LlmApi.MANUAL -> providerSelection.manualApiKey
+                                else -> ""
+                            }.takeIf { it.isNotBlank() }
+                        textExtractAction(pdf, dir, api, model, key, providerSelection.manualBaseUrl, ::confirmOverwrite)
+                    }
+                when (outcome) {
                     is PdfExtractionOutcome.Written -> {
                         metadata = outcome.metadata
                         PdfExtractorState.Done(outcome)
@@ -245,6 +247,7 @@ class PdfExtractorController(
                 metadata = failedMetadata(FailureKind.PROVIDER)
                 PdfExtractorState.Failed(FailureKind.PROVIDER, "PDF extraction failed: ${e.javaClass.simpleName}")
             } finally {
+                providerSelection.controlsLocked = false
                 pendingOverwrite = null
                 overwriteAnswer = null
             }

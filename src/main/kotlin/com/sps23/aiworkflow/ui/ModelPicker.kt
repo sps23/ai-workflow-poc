@@ -30,6 +30,7 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import com.sps23.aiworkflow.openrouter.GoogleAiModel
 import com.sps23.aiworkflow.openrouter.OpenRouterModel
 import kotlinx.coroutines.flow.collectLatest
 import java.math.BigDecimal
@@ -50,6 +51,18 @@ internal data class ModelChoice(
     val tier: ModelPriceTier = ModelPriceTier.UNKNOWN,
     val priceText: String = "Price unavailable",
 )
+
+const val DEFAULT_GOOGLE_UI_MODEL = "gemini-3.5-flash-lite"
+
+internal val GOOGLE_MODEL_PRESETS =
+    listOf(
+        ModelChoice(DEFAULT_GOOGLE_UI_MODEL, "Gemini 3.5 Flash-Lite (medium)"),
+        ModelChoice("gemini-3.1-flash-lite", "Gemini 3.1 Flash-Lite (low)"),
+        ModelChoice("gemini-3.8-flash", "Gemini 3.8 Flash (high)"),
+    )
+
+internal fun googleModelChoices(models: List<GoogleAiModel>): List<ModelChoice> =
+    (GOOGLE_MODEL_PRESETS + models.map { ModelChoice(it.id, it.name) }).distinctBy { it.id }
 
 internal fun OpenRouterModel.toModelChoice(): ModelChoice {
     val input = promptPrice.toBigDecimal().multiply(BigDecimal(1_000_000))

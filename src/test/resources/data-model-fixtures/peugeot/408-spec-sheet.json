@@ -1,0 +1,862 @@
+{
+    "id": "peugeot-408",
+    "sourcePath": "peugeot/408-spec-sheet.json",
+    "vehicle": {
+        "title": "PEUGEOT 408",
+        "make": "PEUGEOT",
+        "model": "408",
+        "effectiveDate": "November 2026",
+        "effectivePeriod": "2026-11",
+        "trims": [
+            {
+                "name": "ALLURE",
+                "variants": [
+                    {
+                        "name": "HYBRID 145 Auto",
+                        "trimName": "ALLURE",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 145,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 114.0,
+                            "max": 115.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A6",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3799500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€37,995**"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 19000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€190"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "Electric 210 (58 kWh) (Stock Only)",
+                        "trimName": "ALLURE",
+                        "modelCode": null,
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 58.0,
+                        "powerHp": 210,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 3855000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€38,550***"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "safety_and_security",
+                        "isAddition": false,
+                        "items": [
+                            "PEUGEOT Open & Go (Keyless entry with 'proximity' locking and unlocking)",
+                            "Safety Plus Pack & Drive Assist",
+                            "Active lane keeping assist",
+                            "Driver attention alert",
+                            "Adaptive cruise control with stop & go function"
+                        ]
+                    },
+                    {
+                        "category": "comfort_and_convenience",
+                        "isAddition": false,
+                        "items": [
+                            "Dual-zone automatic air conditioning",
+                            "Wireless smartphone charging"
+                        ]
+                    },
+                    {
+                        "category": "driver_assistance",
+                        "isAddition": false,
+                        "items": [
+                            "Front & rear parking sensors & VisioPark 1"
+                        ]
+                    },
+                    {
+                        "category": "wheels",
+                        "isAddition": false,
+                        "items": [
+                            "17' alloy wheels (Hybrid 145) Stock units",
+                            "19\" 'ADAKITE' Diamond-cut Alloy Wheels"
+                        ]
+                    },
+                    {
+                        "category": "infotainment",
+                        "isAddition": false,
+                        "items": [
+                            "Wireless Mirror Screen with 10\" Touchscreen with i-Toggles"
+                        ]
+                    },
+                    {
+                        "category": "lighting_and_visibility",
+                        "isAddition": false,
+                        "items": [
+                            "Peugeot Full LED Technology headlamps with 3-claw LED daytime running lights in the high position",
+                            "'PEUGEOT Smartbeam' – High Beam Assist",
+                            "Red illuminated 'PEUGEOT' lettering across rear connector strip"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "GT",
+                "variants": [
+                    {
+                        "name": "HYBRID 145 Auto",
+                        "trimName": "GT",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 145,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 114.0,
+                            "max": 115.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A6",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4199500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€41,995**"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 19000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€190"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "Electric 210 (58 kWh) (Stock Only)",
+                        "trimName": "GT",
+                        "modelCode": null,
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 58.0,
+                        "powerHp": 210,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4355000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€43,550***"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "equipment_in_addition_to_the_allure",
+                        "isAddition": true,
+                        "items": [
+                            "Front & rear parking sensors",
+                            "'Uzila fabric upholstery",
+                            "Driver Sport Pack",
+                            "Ambient Lighting - choice of 8 colours",
+                            "19\" 'ADAKITE' Diamond-cut Alloy Wheels",
+                            "PEUGEOT Virtual i-Toggles® – customisable",
+                            "Pack Drive Assist Plus",
+                            "Semi-autonomous driving (level 2)",
+                            "Adaptive cruise control with Stop & Go function, lane keeping assist",
+                            "Peugeot Matrix LED Technology headlights",
+                            "Powered Electric Tailgate",
+                            "Electrochromic rear-view mirror",
+                            "Acoustic laminated front side windows",
+                            "PEUGEOT 'Lion' shield badging on front doors"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "GT Exclusive",
+                "variants": [
+                    {
+                        "name": "HYBRID 145 Auto",
+                        "trimName": "GT Exclusive",
+                        "modelCode": null,
+                        "powertrainType": "HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 145,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 114.0,
+                            "max": 115.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A6",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4399500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€43,995**"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 19000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€190"
+                            }
+                        ],
+                        "additional": {}
+                    },
+                    {
+                        "name": "Electric 210 (58 kWh) (Stock Only)",
+                        "trimName": "GT Exclusive",
+                        "modelCode": null,
+                        "powertrainType": "ELECTRIC",
+                        "batteryCapacityKwh": 58.0,
+                        "powerHp": 210,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": "A",
+                        "vrtRatePercent": null,
+                        "prices": [
+                            {
+                                "basis": "PRICE",
+                                "amount": {
+                                    "minorUnits": 4646500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€46,465***"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 12000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€120"
+                            }
+                        ],
+                        "additional": {}
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "equipment_in_addition_to_the_gt",
+                        "isAddition": true,
+                        "items": [
+                            "Pack Vision 360°",
+                            "VisioPark 360° (4 cameras)",
+                            "Rear Traffic Detection",
+                            "Peugeot i-Cockpit® with customisable 10\" 3D digital instrument cluster",
+                            "Perimeter, volume, anti-lift alarm",
+                            "Clean Cabin",
+                            "Alcantara® Upholstery",
+                            "Alcantara® tri-material upholstery, Electric, heated, massaging front seats",
+                            "AGR driver's seat",
+                            "Heated steering wheel",
+                            "Focal® 10-speaker premium Hi-Fi system",
+                            "Powered Electric Tailgate – foot operated with pedestrian detection"
+                        ]
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "options": [
+            {
+                "code": "M0F9",
+                "name": "Metallic Paint – Flare Green (Standard Colour)",
+                "category": "PAINT",
+                "categoryLabel": "EXTERIOR PAINT",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 0,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€0"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "M0-",
+                "name": "Metallic Paint",
+                "category": "PAINT",
+                "categoryLabel": "EXTERIOR PAINT",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 90000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€900"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 90000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€900"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 90000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€900"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "M6-",
+                "name": "Premium Paint",
+                "category": "PAINT",
+                "categoryLabel": "EXTERIOR PAINT",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,125"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,125"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,125"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "6F04",
+                "name": "FOCAL® Premium HIFI System",
+                "category": "PACKAGE",
+                "categoryLabel": "OPTION PACKS:",
+                "type": null,
+                "items": [
+                    "FOCAL® 10 Speaker Premium Hi-Fi System",
+                    "2 woofers in front door panels",
+                    "2 tweeters in front pillars",
+                    "2 woofers + 2 tweeters in rear door panels",
+                    "1 central speaker in dashboard (medium)",
+                    "1 sub-woofer (in boot)"
+                ],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 130000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,300"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 130000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,300"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "1G18",
+                "name": "360° Vision (4 Digital Cameras)=> Visio Park 3",
+                "category": "PACKAGE",
+                "categoryLabel": "OPTION PACKS:",
+                "type": null,
+                "items": [
+                    "360° Colour 4 Camera System",
+                    "Front Parking Sensors",
+                    "Drive Assist Pack – Rear Cross Traffic Alert, Adaptive Cruise Control with Stop & Go function & Long-Range Blind Spot Detection"
+                ],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 112500,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,125"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "J60C",
+                "name": "Visio Park 360° 4 cameras + front & rear parking sensors",
+                "category": "PACKAGE",
+                "categoryLabel": "OPTION PACKS:",
+                "type": null,
+                "items": [
+                    "360° Colour 4 Camera System",
+                    "Drive Assist Pack Plus (ZVM8) – Rear Cross Traffic Alert, Adaptive Cruise Control with Stop & Go function, Long Range Blind Spot Detection & Lane Position Assist",
+                    "Clean Cabin (O301)",
+                    "3D Digital Instrument Panel (GMAW)"
+                ],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 146000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,460"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "STANDARD",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 146000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,460"
+                        },
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "J3LF",
+                "name": "Sunroof Pack",
+                "category": "PACKAGE",
+                "categoryLabel": "OPTION PACKS:",
+                "type": null,
+                "items": [
+                    "The Hands-free module (foot sensor) for the electric tailgate (D501) is included with the sunroof option on GT trim. This feature is standard on GT Exclusive trim"
+                ],
+                "availability": [
+                    {
+                        "scope": "ALLURE",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "GT",
+                        "state": "OPTIONAL",
+                        "price": {
+                            "basis": "OPTION",
+                            "amount": {
+                                "minorUnits": 146000,
+                                "currency": "EUR"
+                            },
+                            "maxAmount": null,
+                            "rawText": "€1,460"
+                        },
+                        "note": null
+                    },
+                    {
+                        "scope": "GT Exclusive",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4690.0,
+                    "max": 4690.0
+                },
+                "widthMm": {
+                    "min": 1850.0,
+                    "max": 1850.0
+                },
+                "heightMm": {
+                    "min": 1480.0,
+                    "max": 1490.0
+                },
+                "wheelbaseMm": {
+                    "min": 2790.0,
+                    "max": 2790.0
+                },
+                "bootCapacityLitres": {
+                    "min": 415.0,
+                    "max": 536.0
+                },
+                "maxBootCapacityLitres": null,
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": {
+                    "min": 1290.0,
+                    "max": 1300.0
+                },
+                "additional": {}
+            },
+            "powertrains": [
+                {
+                    "name": "Electric 210 hp battery 58 kWh",
+                    "type": "ELECTRIC",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": "1 gear reductor",
+                    "powerKw": 157.0,
+                    "powerHp": 210.0,
+                    "torqueNm": 345.0,
+                    "topSpeedKmh": 160.0,
+                    "acceleration0To100S": {
+                        "min": 7.2,
+                        "max": 7.2
+                    },
+                    "wltpRangeKm": {
+                        "min": 448.0,
+                        "max": 455.0
+                    },
+                    "electricConsumptionKwhPer100Km": {
+                        "min": 14.8,
+                        "max": 15.1
+                    },
+                    "fuelConsumptionLPer100Km": null,
+                    "co2GPerKm": {
+                        "min": 0.0,
+                        "max": 0.0
+                    },
+                    "batteryCapacityKwh": 58.2,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": null,
+                    "dcMaxChargingKw": 120.0,
+                    "grossVehicleWeightKg": 2250.0,
+                    "brakedTowingKg": null,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "ALLURE",
+                        "GT",
+                        "GT Exclusive"
+                    ],
+                    "charging": {
+                        "maxAcCapacityKw": "11",
+                        "maxDcCapacityKw": "120"
+                    },
+                    "additional": {}
+                },
+                {
+                    "name": "Plug-in Hybrid 225 hp e-DCS7",
+                    "type": "PLUG_IN_HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": "7",
+                    "powerKw": 165.0,
+                    "powerHp": 225.0,
+                    "torqueNm": null,
+                    "topSpeedKmh": 233.0,
+                    "acceleration0To100S": {
+                        "min": 7.5,
+                        "max": 7.5
+                    },
+                    "wltpRangeKm": {
+                        "min": 80.0,
+                        "max": 84.0
+                    },
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 2.7,
+                        "max": 3.0
+                    },
+                    "co2GPerKm": {
+                        "min": 57.0,
+                        "max": 61.0
+                    },
+                    "batteryCapacityKwh": 14.6,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1598,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": 2210.0,
+                    "brakedTowingKg": 1290.0,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "ALLURE",
+                        "GT",
+                        "GT Exclusive"
+                    ],
+                    "charging": {
+                        "maxAcCapacityKw": "3.7 / 7.4 (Option)"
+                    },
+                    "additional": {}
+                },
+                {
+                    "name": "Hybrid 145 Auto",
+                    "type": "HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": "6",
+                    "powerKw": 107.0,
+                    "powerHp": 145.0,
+                    "torqueNm": null,
+                    "topSpeedKmh": 205.0,
+                    "acceleration0To100S": {
+                        "min": 9.4,
+                        "max": 9.4
+                    },
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.1,
+                        "max": 5.2
+                    },
+                    "co2GPerKm": {
+                        "min": 114.0,
+                        "max": 117.0
+                    },
+                    "batteryCapacityKwh": 0.43,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1199,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": 2000.0,
+                    "brakedTowingKg": 1300.0,
+                    "unbrakedTowingKg": null,
+                    "trimsAvailable": [
+                        "ALLURE",
+                        "GT",
+                        "GT Exclusive"
+                    ],
+                    "charging": {},
+                    "additional": {}
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

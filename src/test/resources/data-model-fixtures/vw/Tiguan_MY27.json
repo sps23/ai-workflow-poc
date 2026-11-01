@@ -1,0 +1,2665 @@
+{
+    "id": "volkswagen-tiguan",
+    "sourcePath": "vw/Tiguan_MY27.json",
+    "vehicle": {
+        "title": "Tiguan",
+        "make": "Volkswagen",
+        "model": "Tiguan",
+        "effectiveDate": "October 2026",
+        "effectivePeriod": "2026-10",
+        "trims": [
+            {
+                "name": "Life",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "Life",
+                        "modelCode": "CT1CZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 32.0,
+                            "max": 32.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5075000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€50,750"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5293000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€52,930"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.4",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "Life",
+                        "modelCode": "CT1C4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 139.0,
+                            "max": 139.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 20.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5169000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€51,690"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5387000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€53,870"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.3",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "highlights",
+                        "isAddition": false,
+                        "items": [
+                            "17” Venezia Alloy Wheels",
+                            "12.9” Infotainment Display",
+                            "Rear View Camera",
+                            "LED Headlamps (Basic)",
+                            "10–Colour Ambient Surround Lighting (dash only)",
+                            "Wireless Charging Pad for 2 smart phones",
+                            "App Connect Wireless",
+                            "3 Zone Climatronic w/ enhanced air filter",
+                            "Park Assist Plus with Park Distance Control",
+                            "Digital Cockpit Pro Screen / adjustable config.",
+                            "Front Cross Traffic Assist"
+                        ]
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "name": "Edition 75",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "Edition 75",
+                        "modelCode": "CT1CZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 32.0,
+                            "max": 32.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5108000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€51,080"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5326000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€53,260"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.4",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "Edition 75",
+                        "modelCode": "CT1C4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 139.0,
+                            "max": 139.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 20.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5202000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€52,020"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5420000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€54,200"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.3",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "specification",
+                        "isAddition": true,
+                        "items": [
+                            "Metallic Paint",
+                            "Heated Front Seats",
+                            "Heated Multifunction Steering Wheel",
+                            "Area View Camera",
+                            "LED Plus Headlamps with ambient light strip",
+                            "Illuminated Front & Rear Logo",
+                            "LED Plus 3D Taillamps (1X Animation)",
+                            "Electric Boot Closing",
+                            "Silver Roof Rails",
+                            "Rear Tinted Windows",
+                            "10-Colour Ambient Surround Lighting (dash/doors)",
+                            "Travel Assist / Emergency Assist"
+                        ]
+                    }
+                ],
+                "additional": {
+                    "addition_base": "Life"
+                }
+            },
+            {
+                "name": "20th Anniversary",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "20th Anniversary",
+                        "modelCode": "CT1CZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 32.0,
+                            "max": 32.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5549500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€55,495"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5767500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€57,675"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.6",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "20th Anniversary",
+                        "modelCode": "CT1C4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 144.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 21.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5799500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€57,995"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6017500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€60,175"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 21000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€210"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.5",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "specification",
+                        "isAddition": true,
+                        "items": [
+                            "19” Coventry Alloy Wheels",
+                            "R-Line Exterior Design Package",
+                            "Black Roof Rails",
+                            "High-Gloss Black Window Trims, mirror caps and Tiguan logo on rear",
+                            "Anniversary ‘20’ logo detailing on B-Pillar, steering wheel & logo projector in doors",
+                            "Exclusive seat design with red decorative stitching on dash panel and door trim"
+                        ]
+                    }
+                ],
+                "additional": {
+                    "addition_base": "Edition 75"
+                }
+            },
+            {
+                "name": "Style",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "Style",
+                        "modelCode": "CT1DZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 34.0,
+                            "max": 34.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5499500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€54,995"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5717500,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€57,175"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.5",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "Style",
+                        "modelCode": "CT1D4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 142.0,
+                            "max": 142.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 21.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6075000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€60,750"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6293000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€62,930"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.4",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "specification",
+                        "isAddition": true,
+                        "items": [
+                            "18” Napoli Alloy Wheels",
+                            "Front Seats with Massage Feature",
+                            "Sports Comfort Seats in front",
+                            "30-Colour Ambient lighting (dash/doors)",
+                            "Seat Trim Covers in ArtVelours Microfleece",
+                            "Exterior bumper ‘Style’"
+                        ]
+                    }
+                ],
+                "additional": {
+                    "addition_base": "Life"
+                }
+            },
+            {
+                "name": "R-Line",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "R-Line",
+                        "modelCode": "CT1EZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 36.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5665000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€56,650"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 5883000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€58,830"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.6",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "R-Line",
+                        "modelCode": "CT1E4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 144.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 21.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6245000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€62,450"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6463000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€64,630"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.5",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "specification",
+                        "isAddition": true,
+                        "items": [
+                            "R-Line Equipment",
+                            "Silver-anodized Roof Rails",
+                            "Speed-related Steering Assist",
+                            "Heated Leather Sports Steering Wheel Touch Controls and Shift Paddles",
+                            "Sports Comfort Seats in Front"
+                        ]
+                    }
+                ],
+                "additional": {
+                    "addition_base": "Life"
+                }
+            },
+            {
+                "name": "R-Line 75",
+                "variants": [
+                    {
+                        "name": "1.5 eHybrid 204HP DSG",
+                        "trimName": "R-Line 75",
+                        "modelCode": "CT1EZY",
+                        "powertrainType": "PLUG_IN_HYBRID",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 204,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 36.0,
+                            "max": 36.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 7.0,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 5868000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€58,680"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6086000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€60,860"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 14000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€140"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "1.6",
+                            "delivery_and_service": "€2,180"
+                        }
+                    },
+                    {
+                        "name": "2.0 TDI 150HP DSG",
+                        "trimName": "R-Line 75",
+                        "modelCode": "CT1E4Z",
+                        "powertrainType": "DIESEL",
+                        "batteryCapacityKwh": null,
+                        "powerHp": 150,
+                        "powerKw": null,
+                        "co2GPerKm": {
+                            "min": 144.0,
+                            "max": 144.0
+                        },
+                        "wltpRangeKm": null,
+                        "electricConsumptionKwhPer100Km": null,
+                        "taxBand": null,
+                        "vrtRatePercent": 21.5,
+                        "prices": [
+                            {
+                                "basis": "RRP",
+                                "amount": {
+                                    "minorUnits": 6448000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€64,480"
+                            },
+                            {
+                                "basis": "ON_THE_ROAD",
+                                "amount": {
+                                    "minorUnits": 6666000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€66,660"
+                            },
+                            {
+                                "basis": "ANNUAL_ROAD_TAX",
+                                "amount": {
+                                    "minorUnits": 27000,
+                                    "currency": "EUR"
+                                },
+                                "maxAmount": null,
+                                "rawText": "€270"
+                            }
+                        ],
+                        "additional": {
+                            "consumption": "5.5",
+                            "delivery_and_service": "€2,180"
+                        }
+                    }
+                ],
+                "standardEquipment": [
+                    {
+                        "category": "specification",
+                        "isAddition": true,
+                        "items": [
+                            "20” Leeds Alloy Wheels",
+                            "Metallic Paint",
+                            "15” Infotainment Screen",
+                            "Area View Camera",
+                            "LED HD Matrix Headlamps",
+                            "Head-Up Display",
+                            "LED Plus Taillamps (3X Animation) with Dynamic Indicators",
+                            "Dynamic Light Assist",
+                            "Memory Feature for Park Assist",
+                            "Travel Assist / Emergency Assist",
+                            "Car2X"
+                        ]
+                    }
+                ],
+                "additional": {
+                    "addition_base": "R-Line"
+                }
+            }
+        ],
+        "options": [
+            {
+                "code": "PJW",
+                "name": "17” Zurich Alloys",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJN",
+                "name": "18” Napoli Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJP",
+                "name": "18” Bologna Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJQ",
+                "name": "19” Catania Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJS",
+                "name": "20” Cannes Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJT",
+                "name": "20” Leeds Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJR",
+                "name": "20” York Alloy Wheels (Fully Black Finish)",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PJU",
+                "name": "20” York Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "F43",
+                "name": "19” Coventry Alloy Wheels",
+                "category": "WHEELS",
+                "categoryLabel": "Alloy Wheels",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PS1",
+                "name": "Life Design Dark Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PL5",
+                "name": "Varenna Leather Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "type": null,
+                "items": [
+                    "Active Climate Seats*",
+                    "ErgoActive Seats in front with Memory Function & Adjustable Thigh Support"
+                ],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "WBQ",
+                "name": "R-Line Black Styling Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Styling",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PAB",
+                "name": "Folding Trailer Hitch",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "1M9",
+                "name": "Folding Trailer Hitch (PHEV)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PLB",
+                "name": "IQ. HD Matrix Headlights",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "3FU",
+                "name": "Panoramic Sunroof",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PRA",
+                "name": "Space & Weight Saving Spare Wheel (TDI only)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "3CX",
+                "name": "Net Partition",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PCA",
+                "name": "Harmon Kardon Sound System",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PHB",
+                "name": "Technology Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [
+                    "Area View Camera*",
+                    "Travel Assist",
+                    "Memory Feature for Park Assist"
+                ],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PHC",
+                "name": "Premium Technology Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [
+                    "Travel Assist",
+                    "Area View Camera",
+                    "LED HD Matrix Headlamps",
+                    "15” Infotainment Upgrade",
+                    "Augmented Reality HUD*",
+                    "Proactive occupant protection system"
+                ],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "PW6",
+                "name": "Premium Winter Package",
+                "category": "PACKAGE",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "70D",
+                "name": "Charging Cable with 3 pin plug, Mode 2, Type 2 (PHEV)",
+                "category": "SINGLE_OPTION",
+                "categoryLabel": "Functional",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "5K5K",
+                "name": "Urano Grey (Solid)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "0Q0Q",
+                "name": "Pure White (Solid)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "0E0E",
+                "name": "Grenadilla Black (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "H8H8",
+                "name": "Maple Red (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "F0F0",
+                "name": "Oyster Silver (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "V2V2",
+                "name": "Nightshade Blue (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "B0B0",
+                "name": "Dolphin Grey (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "D4D4",
+                "name": "Cipressino Green (Metallic)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "0R0R",
+                "name": "Oryx White (Pearl)",
+                "category": "PAINT",
+                "categoryLabel": "Exterior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "AO",
+                "name": "Melange Grey",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "AP",
+                "name": "Soul Black / Black Ceramique",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "AQ",
+                "name": "Mistral Grey / Soul Black",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "OPTIONAL",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "ZN",
+                "name": "Soul Black",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            },
+            {
+                "code": "42",
+                "name": "Black Melange-Soul-Black",
+                "category": "INTERIOR",
+                "categoryLabel": "Interior Colour",
+                "type": null,
+                "items": [],
+                "availability": [
+                    {
+                        "scope": "Life",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Edition 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "20th Anniversary",
+                        "state": "STANDARD",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "Style",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    },
+                    {
+                        "scope": "R-Line 75",
+                        "state": "NOT_AVAILABLE",
+                        "price": null,
+                        "note": null
+                    }
+                ],
+                "additional": {}
+            }
+        ],
+        "technicalSpecifications": {
+            "dimensions": {
+                "lengthMm": {
+                    "min": 4539.0,
+                    "max": 4539.0
+                },
+                "widthMm": {
+                    "min": 1859.0,
+                    "max": 1859.0
+                },
+                "heightMm": {
+                    "min": 1658.0,
+                    "max": 1658.0
+                },
+                "wheelbaseMm": {
+                    "min": 2677.0,
+                    "max": 2679.0
+                },
+                "bootCapacityLitres": {
+                    "min": 490.0,
+                    "max": 652.0
+                },
+                "maxBootCapacityLitres": {
+                    "min": 1486.0,
+                    "max": 1650.0
+                },
+                "frontTrunkCapacityLitres": null,
+                "brakedTowingKg": {
+                    "min": 1800.0,
+                    "max": 2000.0
+                },
+                "additional": {
+                    "turning_circle": "ca. 11.7 m",
+                    "elbow_width_front_rear": "1,501 mm / 1,491 mm"
+                }
+            },
+            "powertrains": [
+                {
+                    "name": "2.0 TDI 150HP DSG",
+                    "type": "DIESEL",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": "7 speed DSG",
+                    "powerKw": null,
+                    "powerHp": 150.0,
+                    "torqueNm": 360.0,
+                    "topSpeedKmh": 210.0,
+                    "acceleration0To100S": {
+                        "min": 9.4,
+                        "max": 9.4
+                    },
+                    "wltpRangeKm": null,
+                    "electricConsumptionKwhPer100Km": null,
+                    "fuelConsumptionLPer100Km": {
+                        "min": 5.3,
+                        "max": 5.7
+                    },
+                    "co2GPerKm": {
+                        "min": 139.0,
+                        "max": 150.0
+                    },
+                    "batteryCapacityKwh": null,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1968,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": 2240.0,
+                    "brakedTowingKg": 2000.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "Life",
+                        "Edition 75",
+                        "20th Anniversary",
+                        "Style",
+                        "R-Line",
+                        "R-Line 75"
+                    ],
+                    "charging": {},
+                    "additional": {
+                        "consumption_low": "7.3 – 7.5",
+                        "consumption_medium": "5.3 – 5.6",
+                        "consumption_high": "4.5 – 4.9",
+                        "consumption_extrahigh": "5.3 – 5.9",
+                        "fuel_tank_capacity": "55 Litres",
+                        "emission_class": "EURO 6 EB",
+                        "nox_emissions": "20.1 mg/km",
+                        "unladen_weight_minimum": "1,710 kg",
+                        "axle_load_limit_front_rear": "1,200 kg / 1,090 kg"
+                    }
+                },
+                {
+                    "name": "1.5 eHybrid 204HP DSG",
+                    "type": "PLUG_IN_HYBRID",
+                    "modelCode": null,
+                    "drivetrain": null,
+                    "transmission": "6 speed DSG",
+                    "powerKw": null,
+                    "powerHp": 204.0,
+                    "torqueNm": 250.0,
+                    "topSpeedKmh": 210.0,
+                    "acceleration0To100S": {
+                        "min": 8.2,
+                        "max": 8.2
+                    },
+                    "wltpRangeKm": {
+                        "min": 118.0,
+                        "max": 121.0
+                    },
+                    "electricConsumptionKwhPer100Km": {
+                        "min": 13.7,
+                        "max": 14.1
+                    },
+                    "fuelConsumptionLPer100Km": {
+                        "min": 1.4,
+                        "max": 1.7
+                    },
+                    "co2GPerKm": {
+                        "min": 32.0,
+                        "max": 39.0
+                    },
+                    "batteryCapacityKwh": 19.7,
+                    "batteryGrossKwh": null,
+                    "batteryType": null,
+                    "displacementCc": 1498,
+                    "dcMaxChargingKw": null,
+                    "grossVehicleWeightKg": 2410.0,
+                    "brakedTowingKg": 1800.0,
+                    "unbrakedTowingKg": 750.0,
+                    "trimsAvailable": [
+                        "Life",
+                        "Edition 75",
+                        "20th Anniversary",
+                        "Style",
+                        "R-Line",
+                        "R-Line 75"
+                    ],
+                    "charging": {
+                        "charging_time_ac_2_3_kw": "12:00 h",
+                        "charging_time_ac_11_kw": "02:30 h"
+                    },
+                    "additional": {
+                        "fuel_tank_capacity": "45 Litres",
+                        "emission_class": "EURO 6 EB",
+                        "nox_emissions": "6.1 mg/km",
+                        "unladen_weight_minimum": "1,866 kg",
+                        "axle_load_limit_front_rear": "1,180 kg / 1,280 kg"
+                    }
+                }
+            ],
+            "additional": {}
+        },
+        "additional": {}
+    }
+}

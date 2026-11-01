@@ -4,7 +4,6 @@ import kotlinx.serialization.json.Json
 import java.nio.file.Files
 import kotlin.io.path.createDirectories
 import kotlin.io.path.writeText
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -13,7 +12,6 @@ import kotlin.test.assertTrue
 
 class DataModelCatalogGeneratorTest {
     @Test
-    @Ignore("TODO: Update the bundled-catalog expectations and re-enable this test.")
     fun `bundled car JSON files are normalized and linked to same-basename PDFs`() {
         val outputDirectory = Files.createTempDirectory("data-model-catalog")
         try {
@@ -26,24 +24,17 @@ class DataModelCatalogGeneratorTest {
                     log = logs::add,
                 )
 
-            assertEquals(4, result.jsonFilesRead)
-            assertEquals(4, result.pdfFilesLinked)
+            val expected = DataModelFixtures.artifact()
+            assertEquals(expected.vehicles.size, result.jsonFilesRead)
+            assertEquals(expected.vehicles.size, result.pdfFilesLinked)
             assertTrue(result.outputBytes > 0)
             val artifact = Json.decodeFromString<DataModelCatalogArtifact>(output.toFile().readText())
             assertEquals(DATA_MODEL_CATALOG_SCHEMA_VERSION, artifact.schemaVersion)
-            assertEquals(
-                mapOf(
-                    "cupra-raval" to "cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.pdf",
-                    "peugeot-5008" to "peugeot/5008-spec-sheet.pdf",
-                    "skoda-peaq" to "skoda/Peaq_MY27_PG_August_CW48_2026.pdf",
-                    "toyota-corolla-cross" to "toyota/Toyota Corolla Cross - Brochure.pdf",
-                ),
-                artifact.vehicles.associate { it.id to it.sourcePdfPath },
-            )
+            assertEquals(expected, artifact)
             assertEquals("2026-09", artifact.vehicles.single { it.id == "cupra-raval" }.effectivePeriod)
-            assertTrue(logs.any { it == "JSON files read: 4" })
-            assertTrue(logs.any { it == "PDFs linked: 4" })
-            assertTrue(logs.any { it.startsWith("Vehicles in memory: 4") })
+            assertTrue(logs.any { it == "JSON files read: ${expected.vehicles.size}" })
+            assertTrue(logs.any { it == "PDFs linked: ${expected.vehicles.size}" })
+            assertTrue(logs.any { it == "Vehicles in memory: ${expected.vehicles.size}" })
         } finally {
             outputDirectory.toFile().deleteRecursively()
         }

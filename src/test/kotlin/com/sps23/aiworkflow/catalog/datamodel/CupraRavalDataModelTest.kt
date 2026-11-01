@@ -1,128 +1,154 @@
 package com.sps23.aiworkflow.catalog.datamodel
 
-import com.sps23.aiworkflow.catalog.datamodel.DataModelFixtures.euros
+import com.sps23.aiworkflow.catalog.extraction.ExtractionRequirements
+import com.sps23.aiworkflow.catalog.extraction.Severity
 import java.time.YearMonth
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class CupraRavalDataModelTest {
-    private val car = DataModelFixtures.load(DataModelFixtures.CUPRA_RAVAL)
+    private val fixture = DataModelFixtures.frozen(DataModelFixtures.CUPRA_RAVAL)
+    private val car = fixture.toModel()
+    private val trims = listOf("Urban V1", "Urban V2", "Endurance V1 / V2", "VZ")
 
     @Test
-    fun `identity and effective period are parsed`() {
+    fun `fixture contains published identity and effective period`() {
         assertEquals("cupra-raval", car.id)
+        assertEquals("cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.json", car.sourcePath)
+        assertEquals("CUPRA Raval", car.title)
         assertEquals("CUPRA", car.make)
         assertEquals("Raval", car.model)
+        assertEquals("September 2026", car.effectiveDate)
         assertEquals(YearMonth.of(2026, 9), car.effectivePeriod)
+        assertNull(car.sourcePdfPath)
         assertEquals(emptyMap(), car.additional)
     }
 
     @Test
-    @Ignore("TODO: Investigate the current catalog mismatch and re-enable this test.")
-    fun `trims and variants carry typed prices and electric figures`() {
-        assertEquals(listOf("Urban", "Endurance", "VZ"), car.trims.map { it.name })
-        assertEquals(5, car.variants.size)
-        assertTrue(car.variants.all { it.powertrainType == PowertrainType.ELECTRIC && it.additional.isEmpty() })
-
-        val urbanV1 = car.variants.single { it.name == "Raval Urban 116hp V1" }
-        assertEquals("Urban", urbanV1.trimName)
-        assertEquals("KS1AAF", urbanV1.modelCode)
-        assertEquals(37.0, urbanV1.batteryCapacityKwh)
-        assertEquals(116, urbanV1.powerHp)
-        assertEquals(NumericRange(0.0), urbanV1.co2GPerKm)
-        assertEquals(NumericRange(311.0), urbanV1.wltpRangeKm)
-        assertEquals(13.5, urbanV1.electricConsumptionKwhPer100Km)
-        assertEquals(7.0, urbanV1.vrtRatePercent)
-        assertEquals(euros(23_495), urbanV1.price(PriceBasis.RRP_EXCLUDING_GRANTS)?.amount)
-        assertEquals(euros(28_810), urbanV1.price(PriceBasis.RRP_INCLUDING_GRANTS)?.amount)
-        assertEquals(euros(24_775), urbanV1.price(PriceBasis.ON_THE_ROAD)?.amount)
-        assertEquals(euros(120), urbanV1.price(PriceBasis.ANNUAL_ROAD_TAX)?.amount)
-
-        val vz = car.trim("VZ")!!.variants.single()
-        assertEquals(euros(38_105), vz.price(PriceBasis.ON_THE_ROAD)?.amount)
-    }
-
-    @Test
-    @Ignore("TODO: Investigate the current catalog mismatch and re-enable this test.")
-    fun `nested V1 base and V2 additions equipment is flattened`() {
-        val urban = car.trim("Urban")!!
+    fun `all five variants retain current types prices and source emissions`() {
+        assertEquals(trims, car.trims.map { it.name })
         assertEquals(
-            listOf("v1_base/exterior", "v1_base/interior", "v1_base/safety", "v1_base/technology", "v2_additions"),
-            urban.standardEquipment.map { it.category },
+            listOf(
+                variant("Raval Urban 37kWh 116hp", "Urban V1", 23_495, 28_810),
+                variant("Raval Urban 37kWh 135hp", "Urban V2", 28_960, 34_645),
+                variant("Raval Endurance 52kWh 211hp (V1)", "Endurance V1 / V2", 32_125, 38_020),
+                variant("Raval Endurance 52kWh 211hp (V2)", "Endurance V1 / V2", 33_110, 39_070),
+                variant("Raval VZ 52kWh 226hp", "VZ", 36_825, 43_035),
+            ),
+            car.variants,
         )
-        assertEquals(listOf(false, false, false, false, true), urban.standardEquipment.map { it.isAddition })
-        assertTrue("Vehicle-To-Load (V2L)" in urban.standardEquipment.last().items)
+        assertTrue(car.variants.all { it.powertrainType == PowertrainType.UNKNOWN })
+        assertTrue(car.variants.all { it.modelCode == null && it.additional.isEmpty() })
+    }
+
+    @Test
+    fun `equipment preserves sections additions and trim specific features`() {
+        val expectedSections =
+            listOf(
+                linkedMapOf("exterior" to 4, "interior_and_comfort" to 4, "multimedia" to 4),
+                linkedMapOf("exterior_additions" to 2, "interior_and_technology_additions" to 6),
+                linkedMapOf("exterior_additions" to 1),
+                linkedMapOf("exterior_additions" to 1, "interior_and_technology_additions" to 3),
+            )
+        car.trims.forEachIndexed { index, trim ->
+            assertEquals(expectedSections[index].keys.toList(), trim.standardEquipment.map { it.category }, trim.name)
+            assertEquals(expectedSections[index].values.toList(), trim.standardEquipment.map { it.items.size }, trim.name)
+            assertTrue(trim.standardEquipment.all { it.isAddition == (index > 0) }, trim.name)
+            assertTrue(trim.allEquipmentItems.all(String::isNotBlank), trim.name)
+        }
+        assertTrue("Full LED Headlamps" in car.trim("Urban V1")!!.allEquipmentItems)
+        assertTrue("Vehicle-To-Load (V2L)" in car.trim("Urban V2")!!.allEquipmentItems)
+        assertTrue("18\" 'DEFIER' Alloy Wheel in Matt Black" in car.trim("Endurance V1 / V2")!!.allEquipmentItems)
+        assertTrue("Dynamic Chassis Control (DCC)" in car.trim("VZ")!!.allEquipmentItems)
+    }
+
+    @Test
+    fun `latest fixture has no normalized options or colours`() {
+        assertTrue(car.options.isEmpty())
+        assertTrue(car.colours.isEmpty())
+    }
+
+    @Test
+    fun `dimensions preserve measurements and retain unmapped boot capacity`() {
         assertEquals(
-            listOf("exterior", "interior", "safety", "technology"),
-            car.trim("VZ")!!.standardEquipment.map { it.category },
+            Dimensions(
+                lengthMm = NumericRange(4046.0),
+                widthMm = NumericRange(1784.0),
+                heightMm = NumericRange(1514.0),
+                wheelbaseMm = NumericRange(2599.0),
+                bootCapacityLitres = null,
+                maxBootCapacityLitres = null,
+                frontTrunkCapacityLitres = null,
+                brakedTowingKg = null,
+                additional = mapOf("boot_capacity_l" to "441"),
+            ),
+            car.technicalSpecifications.dimensions,
         )
     }
 
     @Test
-    @Ignore("TODO: Investigate the current catalog mismatch and re-enable this test.")
-    fun `options are normalized with per-scope availability`() {
-        assertEquals(8, car.options.count { it.category == OptionCategory.WHEELS })
-        assertEquals(4, car.options.count { it.category == OptionCategory.INTERIOR })
-        assertEquals(7, car.options.count { it.category == OptionCategory.PAINT })
-        assertEquals(2, car.options.count { it.category == OptionCategory.ROOF_COLOUR })
-        assertEquals(7, car.options.count { it.category == OptionCategory.PACKAGE })
-        assertEquals(3, car.options.count { it.category == OptionCategory.SINGLE_OPTION })
-        assertEquals(9, car.colours.size)
-
-        val winterPack = car.option("PW2/PW4")!!
-        assertEquals(listOf("Heat Pump", "Heated Steering Wheel"), winterPack.items)
-        assertEquals(listOf("V1", "V2", "VZ"), winterPack.availability.map { it.scope })
-        assertTrue(winterPack.availability.all { it.state == FitmentState.OPTIONAL && it.price?.amount == euros(1_119) })
-
-        val sulphurRebel = car.option("SULPHUR_REBEL")!!
-        assertEquals(FitmentState.NOT_AVAILABLE, sulphurRebel.availabilityFor("V1")!!.state)
-        assertNull(sulphurRebel.availabilityFor("V1")!!.price)
-        val vzSulphur = sulphurRebel.availabilityFor("VZ")!!
-        assertEquals(FitmentState.OPTIONAL, vzSulphur.state)
-        assertEquals("Ahead Pack", vzSulphur.note)
-        assertNull(vzSulphur.price!!.amount)
-        assertEquals("Part of Ahead Pack", vzSulphur.price.rawText)
-
-        val endurance = car.option("STANDARD_ENDURANCE")!!.availabilityFor("V2")!!
-        assertEquals(FitmentState.STANDARD, endurance.state)
-        assertEquals("Endurance", endurance.note)
-
-        val fiordBlue = car.colours.single { it.name == "Fiord Blue" }
-        assertEquals(Money(0), fiordBlue.availabilityFor("V1")!!.price!!.amount)
-
-        val carePack = car.option("CUPRA_CARE")!!
-        assertNull(carePack.availabilityFor("V1")!!.price!!.amount)
-        assertEquals("€19.99 / month", carePack.availabilityFor("V1")!!.price!!.rawText)
-    }
-
-    @Test
-    @Ignore("TODO: Investigate the current catalog mismatch and re-enable this test.")
-    fun `technical specifications are typed and keep unparsed text`() {
-        val dimensions = car.technicalSpecifications.dimensions
-        assertEquals(NumericRange(4046.0), dimensions.lengthMm)
-        assertEquals(NumericRange(441.0), dimensions.bootCapacityLitres)
-        assertEquals(mapOf("front_track_mm" to "1538", "rear_track_mm" to "1536"), dimensions.additional)
-
+    fun `technical powertrains preserve typed electric specifications`() {
         val powertrains = car.technicalSpecifications.powertrains
-        assertEquals(4, powertrains.size)
+        assertEquals(listOf("Urban 37kWh 116hp", "Endurance 52kWh 211hp"), powertrains.map { it.name })
         assertTrue(powertrains.all { it.type == PowertrainType.ELECTRIC })
-
-        val urbanV1 = powertrains.single { it.name == "Urban V1 116hp" }
-        assertEquals("KS1EAF", urbanV1.modelCode)
-        assertEquals(85.0, urbanV1.powerKw)
-        assertEquals(116.0, urbanV1.powerHp)
-        assertEquals(264.0, urbanV1.torqueNm)
-        assertEquals(NumericRange(13.5, 14.5), urbanV1.electricConsumptionKwhPer100Km)
-        assertEquals(500.0, urbanV1.brakedTowingKg)
-        assertEquals(mapOf("ac_11kw_0_100_percent" to "4 hrs", "dc_50kw_10_80_percent" to "23 min"), urbanV1.charging)
-        assertEquals("85 kW (116 HP) / 3075-7000 rpm", urbanV1.additional["max_power"])
-
-        val vz = powertrains.single { it.name == "VZ 226hp" }
-        assertEquals(NumericRange(379.0, 440.0), vz.wltpRangeKm)
-        assertEquals("NMC", vz.batteryType)
-        assertEquals("240-408", vz.additional["battery_voltage"])
+        assertEquals(listOf(85.0, 155.0), powertrains.map { it.powerKw })
+        assertEquals(listOf(116.0, 211.0), powertrains.map { it.powerHp })
+        assertEquals(listOf(264.0, 290.0), powertrains.map { it.torqueNm })
+        assertEquals(listOf(160.0, 160.0), powertrains.map { it.topSpeedKmh })
+        assertEquals(listOf(NumericRange(10.7), NumericRange(7.1)), powertrains.map { it.acceleration0To100S })
+        assertEquals(listOf(NumericRange(311.0), NumericRange(443.0)), powertrains.map { it.wltpRangeKm })
+        assertEquals(listOf(37.0, 52.0), powertrains.map { it.batteryCapacityKwh })
+        assertTrue(powertrains.all { it.electricConsumptionKwhPer100Km == null && it.charging.isEmpty() })
+        assertEquals(emptyList(), powertrains.map { it.trimsAvailable }.flatten())
+        assertEquals(emptyMap(), car.technicalSpecifications.additional)
     }
+
+    @Test
+    fun `full fixture matches current source and satisfies catalog generation rules`() {
+        assertEquals(DataModelFixtures.load(DataModelFixtures.CUPRA_RAVAL), car)
+        val violations = ExtractionRequirements.validateVehicle(fixture.vehicle).filter { it.severity == Severity.HARD }
+        assertTrue(violations.isEmpty(), violations.joinToString("\n") { "${it.rule}: ${it.message}" })
+        val artifact =
+            DataModelCatalogArtifact.from(
+                DataModelCatalog(listOf(car.copy(sourcePdfPath = "cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.pdf"))),
+            )
+        val encoded = DataModelFixtures.json.encodeToString(DataModelCatalogArtifact.serializer(), artifact)
+        assertEquals(artifact, DataModelFixtures.json.decodeFromString(DataModelCatalogArtifact.serializer(), encoded))
+    }
+
+    private fun variant(
+        name: String,
+        trim: String,
+        price: Long,
+        rrpExcludingGrants: Long,
+    ): TrimVariant =
+        TrimVariant(
+            name = name,
+            trimName = trim,
+            modelCode = null,
+            powertrainType = PowertrainType.UNKNOWN,
+            batteryCapacityKwh = null,
+            powerHp = null,
+            powerKw = null,
+            co2GPerKm = NumericRange(0.0),
+            wltpRangeKm = null,
+            electricConsumptionKwhPer100Km = null,
+            taxBand = null,
+            vrtRatePercent = null,
+            prices =
+                listOf(
+                    price(PriceBasis.PRICE, price),
+                    price(PriceBasis.RRP_EXCLUDING_GRANTS, rrpExcludingGrants),
+                    price(PriceBasis.ANNUAL_ROAD_TAX, 120),
+                ),
+        )
+
+    private fun euros(amount: Long): Money = Money(amount * 100)
+
+    private fun price(
+        basis: PriceBasis,
+        amount: Long,
+    ): PriceFact = PriceFact(basis, euros(amount), rawText = "€" + "%,d".format(java.util.Locale.US, amount))
 }

@@ -33,7 +33,9 @@ deserializes into the Kotlin classes, ready for human review and promotion into 
    deserializing). Not the loose source shape.
 2. UI = new **PDF Extractor** tab in the existing window (tabs: Recommender | PDF Extractor),
    reusing Google AI key + model picker.
-3. Default model `gemini-3.8-flash`; overridable via picker / `GOOGLE_AI_MODEL`.
+3. Desktop default Google AI Studio + `gemini-3.5-flash-lite`; ordered presets and shared
+   provider controls follow the [desktop plan](openrouter-desktop-ui-plan.md).
+   CLI default stays `gemini-3.8-flash`, overridden with `GOOGLE_AI_MODEL`.
 4. Output folder: `extracted-catalog/` (cwd, git-ignored), override `PDF_EXTRACT_OUTPUT_DIR` and a
    folder chooser; file = `<pdf stem>.json`; overwrite requires confirmation.
 5. Invalid/truncated output → visible error, offer save/copy raw as `<stem>.raw.json`; never write an
@@ -47,6 +49,10 @@ deserializes into the Kotlin classes, ready for human review and promotion into 
    `car-pricelists/<brand>/`; `DataModelCatalogGenerator` detects `schemaVersion` and deserializes
    directly, otherwise falls back to `CarDataModelParser`. Provenance ignored by generator.
 9. Native `generateContent` REST via Ktor (no SDK dependency).
+10. Approved 2026-11-01: desktop non-Google extraction sends PDFBox-extracted text
+    through existing chat backends; see [ADR 0002](adr/0002-gemini-native-generatecontent.md).
+    Images/layout are omitted; textless PDFs fail explicitly. Output token provenance
+    may be null when the provider omits usage.
 
 ## Implementation todos
 Staged execution order (starting with a live integration-test spike):
