@@ -60,18 +60,24 @@ computer (or CI runner) matching the target platform.
 
 ### Build and run the JAR
 
-First download the real PDFs and refresh the bundled catalog, then package:
+The desktop workspace flow does not require bundled catalog data or Git LFS
+PDFs. Package the application directly:
 
 ```sh
-git lfs pull
-./gradlew generateDataModelCatalog packageUberJarForCurrentOS
+./gradlew packageUberJarForCurrentOS
 ```
+
+The packaged JAR may contain bundled developer resources, but the desktop app
+does not use them as a workspace fallback. To use the separate resource-backed
+CLI workflow, download the real PDFs and generate its catalog as described
+below.
 
 On Windows, use `.\gradlew.bat` instead of `./gradlew`.
 The resulting JAR is under `build/compose/jars/`; use that file, not the
 ordinary JAR under `build/libs/`, which does not bundle runtime dependencies.
-The packaged JAR contains the application, its dependencies, catalog and source
-PDF resources, but not a JDK.
+The packaged JAR contains the application and runtime dependencies, but not a
+JDK. Any bundled catalog/PDF resources are developer resources, not the desktop
+workspace or a runtime fallback.
 
 Copy the JAR to the other computer. In a terminal in its directory, confirm
 `java -version` reports Java 25, then launch it (replace the example filename
@@ -341,17 +347,138 @@ OpenAI, OpenRouter, local LLMs, and Manual API receive only PDFBox-extracted tex
 Images and visual layout are omitted; scanned/image-only PDFs require Google.
 Cloud requests can incur charges. Review output for omitted table/equipment facts.
 
-Extract one brochure in the desktop app (stage 5): `./gradlew run`, then open the **PDF Extractor**
-tab. Pick a PDF and an output folder (default `extracted-catalog/`), enter a Google AI key (or use
-`GOOGLE_AI_API_KEY`), choose a model (default `gemini-3.5-flash-lite`) and click **Extract**.
-The tab shares Recommender's provider selector, key fields, and searchable model pickers,
+Launch the desktop app with `./gradlew run`. On first launch, choose a workspace
+(default `~/CarCatalogAssistant`); the app creates `input/` and `data/` and
+remembers the absolute path in per-user settings. If the saved workspace becomes
+unavailable, the app offers retry, locate, or replacement setup rather than
+silently switching data. Workspace PDFs and catalog files are separate from the
+repository and persist across launches.
+
+Open **PDF Extractor**, choose a PDF, configure a provider, then click **Extract**.
+**Choose PDF…** opens the operating system's native file picker for folder
+navigation. On macOS, use the Finder sidebar or **Cmd+Shift+G** to jump to a
+folder; you can also paste a PDF's full path directly into the app's PDF field.
+The output destination is fixed to the workspace `input/` folder. The original
+PDF is copied only after Extract is clicked; successful JSON is written beside
+the imported PDF. Identical PDFs require confirmation before re-extraction;
+different PDFs with colliding names receive unique filenames. Invalid provider
+output is retained as an excluded diagnostic envelope, while earlier validated
+JSON remains available after a failed retry.
+
+Open **Build Catalog** to review the recursively discovered sources, refresh the
+inventory, and explicitly build the complete catalog at
+`data/data-model-catalog.json`. Invalid included sources block publication;
+replacement is confirmed and the prior catalog is preserved on failure. A
+successful build activates the catalog immediately. Later extractions update the
+inventory but do not change search results until the next successful build.
+**Assistant** uses only this workspace catalog; missing or invalid catalogs
+disable Send and explain the required action. Source-PDF downloads resolve from
+registered workspace paths, not bundled resource files.
+Recommendation instructions treat direct "with" conditions as requirements and
+preserve alternatives such as "electric or hybrid". They require catalog-confirmed
+matches for each configuration; applicable optional equipment may qualify unless
+standard fitment is requested, with packages/conditions disclosed. Unknown required
+features do not qualify. Matching remains model-guided, not independently verified
+by the JSON validator. Responses must contain only `cars` at the root; citation
+`sources` arrays belong inside each requested option.
+
+### Reviewing prompts and query defaults
+
+Fixed prompts are packaged UTF-8 Markdown files:
+
+| File under `src/main/resources/` | Purpose |
+|---|---|
+| `prompts/request-translation.md` | Stage one: user text to structured query, interpretation defaults and JSON examples |
+| `prompts/recommendation.md` | Stage two: catalog evidence, matching, measurement basis and response contract |
+| `pdf-extraction/system-prompt.md` | PDF extraction rules, including retaining printed measurement qualifications |
+| `pdf-extraction/model-definition.md` | Extraction model/field reference |
+| `pdf-extraction/task.md` | PDF extraction task |
+| `pdf-extraction/text-input.md` | Non-Google extraction template wrapping generated schema and PDF text |
+
+The desktop loads these files once at startup and keeps them in memory; Markdown
+is sent as plain prompt text, not rendered. There is no per-request file read.
+Edit the source files, then rebuild/restart (`./gradlew run` for development).
+Packaged JARs need rebuilding; these are not editable workspace overrides.
+Missing or empty prompt resources fail explicitly.
+
+Translated terms export `metric`, `scope`, `fitment` and `measurementBasis`
+alongside the original fields. Optional/nice-to-have leather goes in `preferences`,
+whether standard, paid-option, unavailable or unknown. Unqualified heated seats
+means front seats. Plain “over”/“under” bounds are inclusive; explicit strict
+comparisons remain strict. Length normalizes to mm; boot capacity to L with all
+fitted seats upright (behind row three in a seven-seater). Range defaults to
+WLTP combined electric range; fuel use to WLTP combined L/100km, keeping PHEV
+weighted and battery-depleted figures distinct. Missing catalog seating/test
+basis cannot confirm a required match. Existing catalogs may need reviewed
+source corrections and a rebuild to supply that evidence; prompts do not invent it.
+
+### Workspace diagnostic logs
+
+The desktop creates `<workspace>/logs/` on setup or when reopening an existing
+workspace. Fixed prompts are logged as used, so each request retains the prompt
+version that produced its result.
+
+| File in `logs/` | Contents |
+|---|---|
+| `log_yyyyMMddHHmmss_assistant.log` | One file per translation or recommendation inference attempt |
+| `log_yyyyMMddHHmmss_extractor.log` | One file per PDF extraction attempt reaching the extraction service |
+| `log_yyyyMMddHHmmss_builder.log` | One file per catalog build, including rejected/declined builds; no LLM is called |
+| `application.log` | App-owned INFO/ERROR events: workspace/catalog lifecycle, imports, operation outcomes and log filenames |
+
+Dates use local time and a 24-hour clock. Same-second collisions add a counter
+before the component, for example `log_20261101232855_1_assistant.log`; existing
+files are never overwritten. Cached translation creates no new translation file.
+Pre-inference model/size failures are recorded in the associated attempt log.
+Cancelled attempts have a `CANCELLED` terminal event; process termination may
+leave only a `STARTED`/intermediate record.
+
+Files use UTF-8 **JSON Lines**: each line is an independent JSON object with event,
+timestamp, stage, elapsed time and details. Request records contain system/user
+prompts, structured request and catalog JSON as applicable. Response records retain
+both model-authored text and parsed JSON (null when invalid). Results include
+requested/reported model IDs, available request/workflow performance metadata,
+extraction schema, validation violations, output paths and diagnostic errors.
+Text extraction also logs the actual PDF text sent; native extraction records
+PDF filename, byte count and hash, **not PDF bytes/base64**. Builder records include
+source inventory/hashes, consumed source JSON and the normalized published catalog.
+These are semantic request/response logs, not HTTP packet dumps; headers, binary
+PDF payloads, private reasoning and unexposed provider fields are not captured.
+
+**Logs contain sensitive user text and catalog/PDF-derived content.** Known
+environment/typed API keys, bearer tokens and credential-labelled JSON fields are
+redacted. Other personal or confidential content remains: review before sharing.
+New POSIX log directories/files use owner-only permissions (700/600); other
+platforms inherit filesystem ACLs. Symlink log directories/files are rejected.
+No automatic rotation/deletion is implemented: logs accumulate across restarts;
+manage disk space and delete specific old log files when no longer needed.
+
+Logging uses Java file APIs plus existing JSON serialization, with exclusive file
+creation and locked append—no logging dependency or extra provider call.
+Writes are flushed to disk. Log persistence failures are explicit errors, not
+silently ignored; if final logging fails after publication, check the artifacts
+before retrying a paid operation. Library SLF4J output remains on the console;
+`application.log` is not a copy of all third-party console output.
+Existing resource-backed CLI commands do not start workspace request logging.
+Sanitized UI error reports and metadata-only exports keep their existing content
+restrictions, independently of these richer on-disk diagnostic logs.
+
+### Provider and extraction behavior
+
+The workspace UI and extraction provider behavior do not modify environment
+variables. Google AI keys may be entered in memory or supplied through
+`GOOGLE_AI_API_KEY`; other providers retain their documented key configuration.
+For the resource-backed CLI extraction workflow, use its output folder and
+manual promotion instructions below.
+
+The tab shares Assistant's provider selector, key fields, and searchable model pickers,
 including OpenAI, OpenRouter, LM Studio, llama.cpp, Ollama, and Manual API.
 Local presets use their loaded model; other providers retain independent exact model IDs.
-Desktop defaults ignore CLI model environment overrides. If the output file exists,
-a dialog asks before any inference call. Success shows trims, variants, options,
-tokens and the path, with **Open folder**. Failure shows the kind, hard violations and the
-auto-saved `<stem>.raw.json` path, with **Copy raw output** and **Open folder**. Tabs are locked
-while either tab is busy.
+Desktop defaults ignore CLI model environment overrides. Workspace extraction
+uses the captured imported-PDF bytes for identity and provenance. Success shows
+the imported PDF, extraction path, trims, variants, options, tokens, and warnings.
+Failure reports whether the copied PDF and prior validated extraction remain
+available; raw diagnostics can be copied from the UI. Tabs are locked while an
+operation is busy.
 
 Below success or failure, expand **DEBUG / Performance metadata** for the single **PDF extraction**
 request using the same tables and readable/JSON copy/download controls as Car search. Model discovery

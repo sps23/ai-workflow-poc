@@ -100,6 +100,15 @@ interface PdfExtractionClient {
         responseSchema: JsonObject?,
         maxOutputTokens: Long,
     ): GeminiPdfResult
+
+    suspend fun extractLogged(
+        pdf: ByteArray,
+        systemPrompt: String,
+        userPrompt: String,
+        responseSchema: JsonObject?,
+        maxOutputTokens: Long,
+        operation: com.sps23.aiworkflow.logging.WorkspaceLogs.Operation?,
+    ): GeminiPdfResult = extract(pdf, systemPrompt, userPrompt, responseSchema, maxOutputTokens)
 }
 
 /**

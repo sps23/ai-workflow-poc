@@ -34,14 +34,18 @@ import com.sps23.aiworkflow.catalog.extraction.GeminiUsage
 import com.sps23.aiworkflow.openrouter.LlmApi
 import kotlinx.coroutines.launch
 import java.awt.Desktop
+import java.awt.FileDialog
+import java.awt.Frame
 import java.io.File
 import java.io.IOException
 import java.nio.file.Path
 import javax.swing.JFileChooser
-import javax.swing.filechooser.FileNameExtensionFilter
 
 @Composable
-fun PdfExtractorScreen(controller: PdfExtractorController) {
+fun PdfExtractorScreen(
+    controller: PdfExtractorController,
+    workspaceInput: Path? = null,
+) {
     val scope = rememberCoroutineScope()
     val busy = controller.extracting
 
@@ -57,16 +61,28 @@ fun PdfExtractorScreen(controller: PdfExtractorController) {
             buttonLabel = "Choose PDF…",
             enabled = !busy,
         ) {
-            chooseFile(controller.pdfPath, directories = false)?.let(controller::updatePdfPath)
+            chooseFile(controller.pdfPath, directories = false, useBundledFallback = workspaceInput == null)
+                ?.let(controller::updatePdfPath)
         }
-        PathRow(
-            value = controller.outputDir,
-            onValueChange = controller::updateOutputDir,
-            label = "Output folder (<pdf name>.json is written here)",
-            buttonLabel = "Choose folder…",
-            enabled = !busy,
-        ) {
-            chooseFile(controller.outputDir, directories = true)?.let(controller::updateOutputDir)
+        if (workspaceInput == null) {
+            PathRow(
+                value = controller.outputDir,
+                onValueChange = controller::updateOutputDir,
+                label = "Output folder (<pdf name>.json is written here)",
+                buttonLabel = "Choose folder…",
+                enabled = !busy,
+            ) {
+                chooseFile(controller.outputDir, directories = true)?.let(controller::updateOutputDir)
+            }
+        } else {
+            OutlinedTextField(
+                value = workspaceInput.toString(),
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Workspace input folder") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
         LlmProviderControls(controller.providerSelection, enabled = !busy, pdfExtraction = true)
         if (controller.providerSelection.selectedApi != LlmApi.GOOGLE_AI) {
@@ -81,6 +97,13 @@ fun PdfExtractorScreen(controller: PdfExtractorController) {
             Button(onClick = { scope.launch { controller.extract() } }, enabled = controller.canExtract) { Text("Extract") }
             if (busy) CircularProgressIndicator(modifier = Modifier.size(24.dp))
         }
+        if (workspaceInput != null) {
+            Text(
+                "The selected PDF is copied into the workspace only after Extract is clicked. " +
+                    "The app searches using the last built catalog; build it again after extracting.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
         ExtractionResult(controller)
         controller.metadata?.let { DebugMetadataPanel(it) }
     }
@@ -89,7 +112,16 @@ fun PdfExtractorScreen(controller: PdfExtractorController) {
         AlertDialog(
             onDismissRequest = { controller.answerOverwrite(false) },
             title = { Text("Replace existing file?") },
-            text = { Text("${target.toAbsolutePath()} already exists. Replacing it runs a new paid extraction.") },
+            text = {
+                if (controller.workspaceInputPath != null) {
+                    Text(
+                        "An identical PDF is already in the workspace at ${target.toAbsolutePath()}. " +
+                            "Re-extract into its sibling JSON? This runs a new paid extraction; the PDF is kept.",
+                    )
+                } else {
+                    Text("${target.toAbsolutePath()} already exists. Replacing it runs a new paid extraction.")
+                }
+            },
             confirmButton = { Button(onClick = { controller.answerOverwrite(true) }) { Text("Replace") } },
             dismissButton = { TextButton(onClick = { controller.answerOverwrite(false) }) { Text("Keep existing") } },
         )
@@ -124,6 +156,7 @@ private fun ExtractionResult(controller: PdfExtractorController) {
                     SelectionContainer {
                         Column {
                             Text("File: ${outcome.file.toAbsolutePath()}")
+                            state.importedPdfPath?.let { Text("Imported PDF: ${it.toAbsolutePath()}") }
                             Text("Vehicle: ${vehicle.title} (${vehicle.make} ${vehicle.model})")
                             Text(
                                 "${vehicle.trims.size} trims, ${vehicle.trims.sumOf { it.variants.size }} variants, " +
@@ -138,10 +171,15 @@ private fun ExtractionResult(controller: PdfExtractorController) {
                         Text("Warnings:", style = MaterialTheme.typography.titleSmall)
                         outcome.softViolations.forEach { Text("${it.rule}: ${it.message}", style = MaterialTheme.typography.bodySmall) }
                     }
-                    Text(
-                        "Review the JSON, then copy it next to its PDF under car-pricelists/<brand>/ and run generateDataModelCatalog.",
-                        style = MaterialTheme.typography.bodySmall,
-                    )
+                    if (controller.workspaceInputPath != null) {
+                        Text("Extraction is ready. Refresh Build Catalog, then explicitly rebuild to make it searchable.")
+                        state.warnings.forEach { Text(it, color = MaterialTheme.colorScheme.error) }
+                    } else {
+                        Text(
+                            "Review the JSON, then copy it next to its PDF under car-pricelists/<brand>/ and run generateDataModelCatalog.",
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                    }
                     OpenFolderButton(outcome.file.toAbsolutePath().parent)
                 }
             }
@@ -167,6 +205,13 @@ private fun ExtractionResult(controller: PdfExtractorController) {
                                 )
                             }
                             state.rawPath?.let { Text("Raw model output saved to ${it.toAbsolutePath()}") }
+                            state.pdfPath?.let { Text("Imported PDF: ${it.toAbsolutePath()}") }
+                            state.diagnosticPath?.let { Text("Diagnostic saved to ${it.toAbsolutePath()}") }
+                            if (state.previousExtractionAvailable) {
+                                Text("The previous validated extraction remains available at ${state.extractionPath}.")
+                            } else if (state.pdfPath != null) {
+                                Text("The imported PDF remains available for retry; no validated extraction was written.")
+                            }
                         }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -223,21 +268,36 @@ private fun tokenSummary(usage: GeminiUsage): String =
         "(thinking ${usage.thoughtsTokens ?: "n/a"}), " +
         "total ${usage.totalTokens ?: "n/a"}"
 
-/** Swing chooser; starts at the current value, else the bundled car-pricelists folder when present. */
 private fun chooseFile(
     current: String,
     directories: Boolean,
+    useBundledFallback: Boolean = true,
 ): String? {
     val start =
         current.takeIf { it.isNotBlank() }?.let { File(it.trim()) }?.let { if (it.isDirectory) it else it.parentFile }
-            ?: File("src/main/resources${DataModelCatalogLoader.DEFAULT_RESOURCE_ROOT}").takeIf { it.isDirectory }
+            ?: if (useBundledFallback) {
+                File("src/main/resources${DataModelCatalogLoader.DEFAULT_RESOURCE_ROOT}").takeIf { it.isDirectory }
+            } else {
+                File(System.getProperty("user.home"))
+            }
+    if (!directories) {
+        val dialog =
+            FileDialog(null as Frame?, "Choose a PDF brochure", FileDialog.LOAD).apply {
+                directory = start?.absolutePath
+                setFilenameFilter { directory, name ->
+                    File(directory, name).isDirectory || name.endsWith(".pdf", ignoreCase = true)
+                }
+            }
+        return try {
+            dialog.isVisible = true
+            dialog.file?.let { File(dialog.directory, it).absolutePath }
+        } finally {
+            dialog.dispose()
+        }
+    }
     val chooser =
         JFileChooser(start).apply {
-            if (directories) {
-                fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
-            } else {
-                fileFilter = FileNameExtensionFilter("PDF documents", "pdf")
-            }
+            fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
         }
     return if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) chooser.selectedFile.absolutePath else null
 }

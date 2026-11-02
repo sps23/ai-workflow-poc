@@ -92,7 +92,9 @@ Prompt/context live in `src/main/resources` so stages 1–5 reuse them unchanged
   (€26,990 → 2699000); always keep the printed text in `rawText`; non-numeric prices →
   `amount: null`.
 - `PriceBasis` choice table (e.g. "RRP excl. grants" → `RRP_EXCLUDING_GRANTS`, OTR/ROTR →
-  `ON_THE_ROAD`, unlabelled → `PRICE`).
+  `ON_THE_ROAD`, unlabelled → `PRICE`, subsidised/after-grant price → `RRP_INCLUDING_GRANTS`).
+- Grants/reliefs (`VRT_REBATE`, `SEAI_GRANT`) are reductions stored as positive magnitudes
+  ("-€3,500" → 350000); the full retail price keeps its own basis and is never derived.
 - One `Trim` per published trim level; one `TrimVariant` per priced row; `trimName` equals the
   parent trim `name`.
 - `PowertrainType` mapping table (BEV → `ELECTRIC`, PHEV → `PLUG_IN_HYBRID`, HEV/self-charging →

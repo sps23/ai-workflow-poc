@@ -349,6 +349,15 @@ class CarPromptController(
         state = CarPromptState.Idle
     }
 
+    fun clearCatalogDependentState() {
+        if (busy) return
+        translatedRequest = null
+        translatedRequestJson = null
+        progressLabel = ""
+        metadata = null
+        state = CarPromptState.Idle
+    }
+
     fun selectModel(modelId: String) {
         if (busy) return
         selectedModel = modelId
@@ -480,7 +489,13 @@ class CarPromptController(
                     )
                 CarPromptState.Failed(
                     "Error: ${e.javaClass.simpleName}: " +
-                        (if (e is IllegalArgumentException) e.message else "Unexpected application failure.") +
+                        (
+                            if (e is IllegalArgumentException || e is com.sps23.aiworkflow.logging.WorkspaceLoggingException) {
+                                e.message
+                            } else {
+                                "Unexpected application failure."
+                            }
+                        ) +
                         "\nAPI: ${requestedApi.label}\nModel: $targetLabel\nStage: Application" +
                         "\nSuggested action: Check configuration and input; " +
                         "report this error if it persists.",

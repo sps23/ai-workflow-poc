@@ -45,6 +45,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("org.apache.pdfbox:pdfbox:3.0.6")
+    runtimeOnly("org.slf4j:slf4j-simple:2.0.17")
 
     implementation(compose.desktop.currentOs)
     implementation(compose.material3)

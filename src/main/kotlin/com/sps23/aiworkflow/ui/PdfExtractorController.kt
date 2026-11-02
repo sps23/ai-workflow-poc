@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.sps23.aiworkflow.catalog.extraction.GeminiPdfClient
 import com.sps23.aiworkflow.catalog.extraction.GeminiPdfConfig
+import com.sps23.aiworkflow.catalog.extraction.ManagedPdfExtractionOutcome
+import com.sps23.aiworkflow.catalog.extraction.ManagedPdfExtractionService
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_DEFAULT_OUTPUT_DIR
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_OUTPUT_DIR_VARIABLE
 import com.sps23.aiworkflow.catalog.extraction.PdfExtractionOutcome
@@ -12,6 +14,7 @@ import com.sps23.aiworkflow.catalog.extraction.PdfExtractionService
 import com.sps23.aiworkflow.catalog.extraction.Severity
 import com.sps23.aiworkflow.catalog.extraction.TextPdfClient
 import com.sps23.aiworkflow.catalog.extraction.Violation
+import com.sps23.aiworkflow.logging.WorkspaceLogs
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.GoogleAiConfig
 import com.sps23.aiworkflow.openrouter.GoogleAiModel
@@ -24,6 +27,7 @@ import com.sps23.aiworkflow.openrouter.WorkflowMetadataCodec
 import com.sps23.aiworkflow.openrouter.chatBackendFor
 import com.sps23.aiworkflow.openrouter.elapsedMillis
 import com.sps23.aiworkflow.openrouter.fetchGoogleAiModels
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +47,8 @@ sealed interface PdfExtractorState {
 
     data class Done(
         val outcome: PdfExtractionOutcome.Written,
+        val importedPdfPath: Path? = null,
+        val warnings: List<String> = emptyList(),
     ) : PdfExtractorState
 
     /** The user kept the existing [file]; Gemini was not called. */
@@ -56,6 +62,10 @@ sealed interface PdfExtractorState {
         val hardViolations: List<Violation> = emptyList(),
         val rawPath: Path? = null,
         val rawText: String? = null,
+        val pdfPath: Path? = null,
+        val diagnosticPath: Path? = null,
+        val extractionPath: Path? = null,
+        val previousExtractionAvailable: Boolean = false,
     ) : PdfExtractorState
 }
 
@@ -82,17 +92,38 @@ typealias PdfTextExtractAction = suspend (
     confirmOverwrite: suspend (Path) -> Boolean,
 ) -> PdfExtractionOutcome
 
+typealias ManagedPdfExtractAction = suspend (
+    pdf: Path,
+    paths: WorkspacePaths,
+    api: LlmApi,
+    modelId: String,
+    apiKey: String?,
+    baseUrl: String,
+    confirmReextract: suspend (Path) -> Boolean,
+) -> ManagedPdfExtractionOutcome
+
 /** State for the PDF Extractor tab: one PDF -> `<outputDir>/<stem>.json` via [PdfExtractionService]. */
 class PdfExtractorController(
     environment: Map<String, String?> = System.getenv(),
     private val extractAction: PdfExtractAction = defaultExtract,
     discoverModels: suspend (String) -> List<GoogleAiModel> = { fetchGoogleAiModels(it) },
     private val resolveKey: (String) -> String = { GoogleAiConfig.apiKey(environment, it) },
+    private val managedExtractAction: ManagedPdfExtractAction = { pdf, paths, api, model, key, url, confirm ->
+        val client =
+            if (api == LlmApi.GOOGLE_AI) {
+                GeminiPdfClient(GeminiPdfConfig(requireNotNull(key), model))
+            } else {
+                TextPdfClient(model, chatBackendFor(api, model, key, environment, url))
+            }
+        val logs = WorkspaceLogs(paths, WorkspaceLogs.credentials(environment, key))
+        ManagedPdfExtractionService(paths, PdfExtractionService(client, logs = logs), logs = logs).extract(pdf, confirm)
+    },
     private val textExtractAction: PdfTextExtractAction = { pdf, dir, api, model, key, url, confirm ->
         val backend = chatBackendFor(api, model, key, environment, url)
         PdfExtractionService(TextPdfClient(model, backend)).extract(pdf, dir, confirm)
     },
 ) {
+    private val loggingSecrets = WorkspaceLogs.credentials(environment)
     val providerSelection =
         CarPromptController(
             discoverGoogleModels = discoverModels,
@@ -109,6 +140,8 @@ class PdfExtractorController(
 
     var pdfPath: String by mutableStateOf("")
         private set
+    private var workspacePaths: WorkspacePaths? = null
+    var workspaceChanged: () -> Unit = {}
     var outputDir: String by mutableStateOf(
         environment[PDF_EXTRACT_OUTPUT_DIR_VARIABLE]?.trim()?.takeIf { it.isNotEmpty() } ?: PDF_EXTRACT_DEFAULT_OUTPUT_DIR,
     )
@@ -127,8 +160,16 @@ class PdfExtractorController(
     val selectedModel: GoogleAiModel? get() = models.firstOrNull { it.id == modelId.trim().removePrefix("models/") }
     val canExtract: Boolean
         get() =
-            !extracting && pdfPath.isNotBlank() && outputDir.isNotBlank() &&
+            !extracting && pdfPath.isNotBlank() &&
+                (workspacePaths != null || outputDir.isNotBlank()) &&
                 (providerSelection.selectedApi.isLocal || modelId.isNotBlank())
+
+    fun configureWorkspace(paths: WorkspacePaths?) {
+        workspacePaths = paths
+        if (paths != null) outputDir = paths.input.toString()
+    }
+
+    val workspaceInputPath: String? get() = workspacePaths?.input?.toString()
 
     fun updatePdfPath(value: String) {
         if (!extracting && value != pdfPath) {
@@ -138,7 +179,7 @@ class PdfExtractorController(
     }
 
     fun updateOutputDir(value: String) {
-        if (!extracting) outputDir = value
+        if (!extracting && workspacePaths == null) outputDir = value
     }
 
     fun selectModel(value: String) {
@@ -196,7 +237,7 @@ class PdfExtractorController(
                 Path.of(pdfPath.trim()) to Path.of(outputDir.trim())
             } catch (e: InvalidPathException) {
                 metadata = failedMetadata(FailureKind.CONFIGURATION)
-                state = PdfExtractorState.Failed(FailureKind.CONFIGURATION, "Invalid path: ${e.message}")
+                state = PdfExtractorState.Failed(FailureKind.CONFIGURATION, logFailure("Invalid path: ${e.message}"))
                 return
             }
         state = PdfExtractorState.Extracting(pdf.fileName?.toString() ?: pdfPath, model)
@@ -204,7 +245,57 @@ class PdfExtractorController(
         state =
             try {
                 val outcome =
-                    if (api == LlmApi.GOOGLE_AI) {
+                    if (workspacePaths != null) {
+                        val key =
+                            when {
+                                api == LlmApi.GOOGLE_AI -> resolveKey(apiKey)
+                                api.isLocal -> providerSelection.localApiKey
+                                api == LlmApi.OPENAI -> providerSelection.openAiApiKey
+                                api == LlmApi.MANUAL -> providerSelection.manualApiKey
+                                else -> ""
+                            }.takeIf { it.isNotBlank() }
+                        when (
+                            val managed =
+                                managedExtractAction(
+                                    pdf,
+                                    requireNotNull(workspacePaths),
+                                    api,
+                                    model,
+                                    key,
+                                    providerSelection.manualBaseUrl,
+                                    ::confirmOverwrite,
+                                )
+                        ) {
+                            is ManagedPdfExtractionOutcome.Written -> {
+                                state = PdfExtractorState.Done(managed.extraction, managed.pdfPath, managed.warnings)
+                                metadata = managed.extraction.metadata
+                                workspaceChanged()
+                                return
+                            }
+
+                            is ManagedPdfExtractionOutcome.Declined -> {
+                                state = PdfExtractorState.Declined(managed.pdfPath)
+                                return
+                            }
+
+                            is ManagedPdfExtractionOutcome.Failed -> {
+                                metadata = managed.metadata
+                                state =
+                                    PdfExtractorState.Failed(
+                                        managed.kind,
+                                        managed.message,
+                                        managed.violations.filter { it.severity == Severity.HARD },
+                                        rawText = managed.rawText,
+                                        pdfPath = managed.pdfPath,
+                                        diagnosticPath = managed.diagnosticPath,
+                                        extractionPath = managed.extractionPath,
+                                        previousExtractionAvailable = managed.previousExtractionAvailable,
+                                    )
+                                if (managed.pdfPath != null) workspaceChanged()
+                                return
+                            }
+                        }
+                    } else if (api == LlmApi.GOOGLE_AI) {
                         extractAction(pdf, dir, resolveKey(apiKey), model, ::confirmOverwrite)
                     } else {
                         val key =
@@ -242,15 +333,43 @@ class PdfExtractorController(
                 throw e
             } catch (e: OpenRouterWorkflowException) {
                 metadata = failedMetadata(e.kind, e)
-                PdfExtractorState.Failed(e.kind, e.message ?: e.kind.name)
+                PdfExtractorState.Failed(e.kind, logFailure(e.message ?: e.kind.name))
             } catch (e: Exception) {
                 metadata = failedMetadata(FailureKind.PROVIDER)
-                PdfExtractorState.Failed(FailureKind.PROVIDER, "PDF extraction failed: ${e.javaClass.simpleName}")
+                PdfExtractorState.Failed(
+                    FailureKind.PROVIDER,
+                    logFailure(
+                        if (e is com.sps23.aiworkflow.logging.WorkspaceLoggingException) {
+                            e.message.orEmpty()
+                        } else {
+                            "PDF extraction failed: ${e.javaClass.simpleName}"
+                        },
+                    ),
+                )
             } finally {
                 providerSelection.controlsLocked = false
                 pendingOverwrite = null
                 overwriteAnswer = null
             }
+    }
+
+    private fun logFailure(message: String): String {
+        val paths = workspacePaths ?: return message
+        return try {
+            WorkspaceLogs(
+                paths,
+                loggingSecrets +
+                    listOf(
+                        providerSelection.googleApiKey,
+                        providerSelection.openAiApiKey,
+                        providerSelection.localApiKey,
+                        providerSelection.manualApiKey,
+                    ),
+            ).error("PDF extraction failed: $message")
+            message
+        } catch (exception: IOException) {
+            "$message\nLogging also failed: ${exception.message}"
+        }
     }
 
     private suspend fun confirmOverwrite(target: Path): Boolean {

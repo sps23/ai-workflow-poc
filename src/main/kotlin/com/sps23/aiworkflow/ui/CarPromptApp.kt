@@ -42,12 +42,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import com.sps23.aiworkflow.logging.WorkspaceLogs
 import com.sps23.aiworkflow.openrouter.CarAnswer
 import com.sps23.aiworkflow.openrouter.LOCAL_API_KEY_VARIABLE
 import com.sps23.aiworkflow.openrouter.LlmApi
 import com.sps23.aiworkflow.openrouter.ManualApiConfig
 import com.sps23.aiworkflow.openrouter.OpenRouterCarWorkflow
 import com.sps23.aiworkflow.openrouter.chatBackendFor
+import com.sps23.aiworkflow.prompts.AppPrompts
 import com.sps23.aiworkflow.recommendation.CarSelection
 import com.sps23.aiworkflow.recommendation.DataModelCatalogContext
 import com.sps23.aiworkflow.recommendation.DataModelPdfStore
@@ -55,6 +57,7 @@ import com.sps23.aiworkflow.recommendation.LlmRequest
 import com.sps23.aiworkflow.recommendation.PROTOTYPE_DISCLAIMER
 import com.sps23.aiworkflow.recommendation.displayLabel
 import com.sps23.aiworkflow.recommendation.toReadableText
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -64,9 +67,6 @@ import java.nio.file.Files
 import javax.swing.JFileChooser
 import javax.swing.JOptionPane
 import kotlin.time.Duration.Companion.milliseconds
-
-private val dataModelCatalog by lazy { DataModelCatalogContext.loadBundled() }
-private val catalogJson: String by lazy { dataModelCatalog.promptJson }
 
 /**
  * Reads keys per request so a missing key surfaces as a UI error, not a startup crash.
@@ -78,10 +78,27 @@ private suspend fun answerFromLlm(
     modelId: String,
     apiKeyOverride: String?,
     cachedRequest: LlmRequest?,
+    catalog: DataModelCatalogContext,
+    paths: WorkspacePaths,
     onTranslated: suspend (LlmRequest) -> Unit,
 ): CarAnswer =
     withContext(Dispatchers.IO) {
-        val workflow = OpenRouterCarWorkflow(chatBackendFor(api, modelId, apiKeyOverride, System.getenv()), catalogJson)
+        val logs = WorkspaceLogs(paths, WorkspaceLogs.credentials(System.getenv(), apiKeyOverride))
+        val backend =
+            try {
+                chatBackendFor(api, modelId, apiKeyOverride, System.getenv())
+            } catch (exception: com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException) {
+                logs.error("Assistant configuration failed for ${api.label} / $modelId: ${exception.message}")
+                throw exception
+            }
+        val workflow =
+            OpenRouterCarWorkflow(
+                backend,
+                catalog.promptJson,
+                logs,
+                modelId,
+                api.label,
+            )
         workflow.answer(prompt, cachedRequest) {
             withContext(Dispatchers.Main) { onTranslated(it) }
         }
@@ -91,15 +108,24 @@ private suspend fun answerFromManual(
     prompt: String,
     config: ManualApiConfig,
     cachedRequest: LlmRequest?,
+    catalog: DataModelCatalogContext,
+    paths: WorkspacePaths,
     onTranslated: suspend (LlmRequest) -> Unit,
 ): CarAnswer =
     withContext(Dispatchers.IO) {
-        OpenRouterCarWorkflow(config.backend(), catalogJson).answer(prompt, cachedRequest) {
+        OpenRouterCarWorkflow(
+            config.backend(),
+            catalog.promptJson,
+            WorkspaceLogs(paths, WorkspaceLogs.credentials(System.getenv(), config.apiKey)),
+            config.modelId,
+            LlmApi.MANUAL.label,
+        ).answer(prompt, cachedRequest) {
             withContext(Dispatchers.Main) { onTranslated(it) }
         }
     }
 
-fun main() =
+fun main() {
+    AppPrompts.initialize()
     application {
         Window(
             onCloseRequest = ::exitApplication,
@@ -108,20 +134,55 @@ fun main() =
         ) {
             MaterialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    CarCatalogApp(
-                        remember { CarPromptController(manualAnswer = ::answerFromManual, answer = ::answerFromLlm) },
-                        remember { PdfExtractorController() },
-                    )
+                    val workspace = remember { WorkspaceDesktopController.forCurrentUser() }
+                    val recommender =
+                        remember(workspace) {
+                            CarPromptController(
+                                manualAnswer = { prompt, config, cached, translated ->
+                                    answerFromManual(
+                                        prompt,
+                                        config,
+                                        cached,
+                                        requireNotNull(workspace.catalogContext) { "Build a workspace catalog before searching." },
+                                        requireNotNull(workspace.paths),
+                                        translated,
+                                    )
+                                },
+                                answer = { prompt, api, model, key, cached, translated ->
+                                    answerFromLlm(
+                                        prompt,
+                                        api,
+                                        model,
+                                        key,
+                                        cached,
+                                        requireNotNull(workspace.catalogContext) { "Build a workspace catalog before searching." },
+                                        requireNotNull(workspace.paths),
+                                        translated,
+                                    )
+                                },
+                            )
+                        }
+                    val extractor =
+                        remember(workspace) {
+                            PdfExtractorController().also {
+                                it.workspaceChanged = {
+                                    workspace.markSourcesChanged()
+                                }
+                            }
+                        }
+                    CarCatalogApp(recommender, extractor, workspace = workspace)
                 }
             }
         }
     }
+}
 
 enum class AppTab(
     val label: String,
 ) {
-    RECOMMENDER("Recommender"),
     PDF_EXTRACTOR("PDF Extractor"),
+    BUILD_CATALOG("Build Catalog"),
+    ASSISTANT("Assistant"),
 }
 
 /** Tabs are locked while a request runs: leaving a tab would cancel its in-flight coroutine. */
@@ -129,13 +190,73 @@ enum class AppTab(
 fun CarCatalogApp(
     recommender: CarPromptController,
     pdfExtractor: PdfExtractorController,
-    initialTab: AppTab = AppTab.RECOMMENDER,
+    initialTab: AppTab = AppTab.ASSISTANT,
+    workspace: WorkspaceDesktopController? = null,
 ) {
     var tab by remember { mutableStateOf(initialTab) }
-    val busy = recommender.state == CarPromptState.Loading || pdfExtractor.extracting
+    val activePaths = workspace?.paths
+    LaunchedEffect(activePaths) { pdfExtractor.configureWorkspace(activePaths) }
+    LaunchedEffect(workspace, pdfExtractor.state) {
+        if (workspace != null &&
+            (pdfExtractor.state is PdfExtractorState.Done || pdfExtractor.state is PdfExtractorState.Failed)
+        ) {
+            workspace.refreshSources()
+        }
+    }
+    LaunchedEffect(workspace?.catalogGeneration) {
+        if ((workspace?.catalogGeneration ?: 0) > 0) recommender.clearCatalogDependentState()
+    }
+    LaunchedEffect(workspace?.state) {
+        val active = workspace?.state as? WorkspaceDesktopState.Active
+        if (active != null && tab == AppTab.ASSISTANT && workspace.catalogContext == null) {
+            tab = AppTab.PDF_EXTRACTOR
+        }
+    }
+    val busy =
+        recommender.state == CarPromptState.Loading || pdfExtractor.extracting ||
+            (workspace?.state as? WorkspaceDesktopState.Active)?.building == true
+    if (workspace != null) {
+        when (val state = workspace.state) {
+            is WorkspaceDesktopState.Setup -> {
+                WorkspaceSetupScreen(workspace)
+                return
+            }
+
+            is WorkspaceDesktopState.Recovery -> {
+                WorkspaceRecoveryScreen(workspace)
+                return
+            }
+
+            is WorkspaceDesktopState.Unavailable -> {
+                WorkspaceUnavailableScreen(state.reason)
+                return
+            }
+
+            is WorkspaceDesktopState.Active -> {
+                Unit
+            }
+        }
+    }
+    val visibleTabs = if (workspace == null) listOf(AppTab.PDF_EXTRACTOR, AppTab.ASSISTANT) else AppTab.entries
     Column(Modifier.fillMaxSize()) {
-        TabRow(selectedTabIndex = tab.ordinal) {
-            AppTab.entries.forEach { entry ->
+        if (workspace != null) {
+            val paths = requireNotNull(workspace.paths)
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Text(
+                    "Workspace: ${paths.root}",
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                WorkspaceOpenFolderButton(paths.root)
+            }
+        }
+        val selectedIndex = visibleTabs.indexOf(tab).coerceAtLeast(0)
+        TabRow(selectedTabIndex = selectedIndex) {
+            visibleTabs.forEach { entry ->
                 Tab(
                     selected = tab == entry,
                     onClick = { tab = entry },
@@ -145,8 +266,25 @@ fun CarCatalogApp(
             }
         }
         when (tab) {
-            AppTab.RECOMMENDER -> CarPromptScreen(recommender)
-            AppTab.PDF_EXTRACTOR -> PdfExtractorScreen(pdfExtractor)
+            AppTab.ASSISTANT -> {
+                if (workspace == null) {
+                    CarPromptScreen(recommender)
+                } else {
+                    val active = workspace.state as? WorkspaceDesktopState.Active
+                    val context = workspace.catalogContext
+                    CarPromptScreen(recommender, context, active?.catalogError) {
+                        if (workspace.reloadCatalog()) recommender.submit(recommender.prompt)
+                    }
+                }
+            }
+
+            AppTab.PDF_EXTRACTOR -> {
+                PdfExtractorScreen(pdfExtractor, workspace?.paths?.input)
+            }
+
+            AppTab.BUILD_CATALOG -> {
+                if (workspace != null) BuildCatalogScreen(workspace)
+            }
         }
     }
 }
@@ -185,7 +323,14 @@ internal fun LlmProviderControls(
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            Selector("API:", controller.selectedApi.label, controller.apis, { it.label }, controller::selectApi, enabled = !loading)
+            Selector(
+                "API:",
+                controller.selectedApi.label,
+                controller.apis,
+                { it.label },
+                controller::selectApi,
+                enabled = !loading,
+            )
         }
         if (controller.selectedApi.isLocal) {
             OutlinedTextField(
@@ -264,15 +409,28 @@ internal fun LlmProviderControls(
 }
 
 @Composable
-fun CarPromptScreen(controller: CarPromptController) {
+fun CarPromptScreen(
+    controller: CarPromptController,
+    catalog: DataModelCatalogContext? = null,
+    catalogError: String? = null,
+    onSubmit: (suspend () -> Unit)? = null,
+) {
     val scope = rememberCoroutineScope()
     val state = controller.state
     val loading = state == CarPromptState.Loading
+    val displayCatalog =
+        catalog ?: if (onSubmit == null) remember { DataModelCatalogContext.loadBundled() } else null
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         LlmProviderControls(controller, enabled = !loading)
+        if (onSubmit != null && displayCatalog == null) {
+            Text(
+                catalogError ?: "No active workspace catalog. Build Catalog after adding at least one source.",
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
         OutlinedTextField(
             value = controller.prompt,
             onValueChange = controller::updatePrompt,
@@ -282,7 +440,10 @@ fun CarPromptScreen(controller: CarPromptController) {
             modifier = Modifier.fillMaxWidth().heightIn(min = 96.dp),
         )
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            Button(onClick = { scope.launch { controller.submit(controller.prompt) } }, enabled = !loading) {
+            Button(
+                onClick = { scope.launch { if (onSubmit != null) onSubmit() else controller.submit(controller.prompt) } },
+                enabled = !loading && (onSubmit == null || displayCatalog != null),
+            ) {
                 Text("Send")
             }
             if (loading) CircularProgressIndicator(modifier = Modifier.size(24.dp))
@@ -296,11 +457,11 @@ fun CarPromptScreen(controller: CarPromptController) {
                     CopyButton("Copy raw JSON", state.rawOutput)
                     CopyButton(
                         "Copy readable output",
-                        "${state.selection.toReadableText(dataModelCatalog)}\n\nModel: ${state.modelLabel}\n$PROTOTYPE_DISCLAIMER",
+                        "${state.selection.toReadableText(displayCatalog)}\n\nModel: ${state.modelLabel}\n$PROTOTYPE_DISCLAIMER",
                     )
                 }
                 SelectionContainer {
-                    CarTables(state.selection)
+                    CarTables(state.selection, displayCatalog)
                 }
                 HorizontalDivider()
                 Text("Model: ${state.modelLabel}", style = MaterialTheme.typography.bodySmall)
@@ -310,7 +471,10 @@ fun CarPromptScreen(controller: CarPromptController) {
             is CarPromptState.Failed -> {
                 ErrorPanel(state.message)
                 state.rawOutput?.let {
-                    Text("Raw model output may contain request data. Review before sharing.", style = MaterialTheme.typography.bodySmall)
+                    Text(
+                        "Raw model output may contain request data. Review before sharing.",
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                     CopyButton("Copy raw model output", it)
                 }
             }
@@ -343,10 +507,23 @@ internal fun RemoteModelPicker(
         }
     val choices =
         when {
-            manual -> controller.manualModels.map { ModelChoice(it) }
-            google -> googleModelChoices(controller.googleModels)
-            openAi -> controller.openAiModels.map { ModelChoice(it) }
-            else -> controller.availableModels.map { it.toModelChoice() }.sortedWith(compareBy<ModelChoice> { it.tier }.thenBy { it.id })
+            manual -> {
+                controller.manualModels.map { ModelChoice(it) }
+            }
+
+            google -> {
+                googleModelChoices(controller.googleModels)
+            }
+
+            openAi -> {
+                controller.openAiModels.map { ModelChoice(it) }
+            }
+
+            else -> {
+                controller.availableModels
+                    .map { it.toModelChoice() }
+                    .sortedWith(compareBy<ModelChoice> { it.tier }.thenBy { it.id })
+            }
         }
     var expanded by remember(controller.selectedApi) { mutableStateOf(false) }
     LaunchedEffect(enabled) { if (!enabled) expanded = false }
@@ -541,7 +718,10 @@ internal fun JsonExportButtons(
 }
 
 @Composable
-private fun CarTables(selection: CarSelection) {
+private fun CarTables(
+    selection: CarSelection,
+    catalog: DataModelCatalogContext?,
+) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         if (selection.cars.isEmpty()) Text("No cars returned.")
         selection.cars.groupBy { it.car }.forEach { (model, configurations) ->
@@ -551,12 +731,23 @@ private fun CarTables(selection: CarSelection) {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("Trim: ${car.trim ?: "Unknown"}")
                         Text("Configuration: ${car.configurationId}", style = MaterialTheme.typography.bodySmall)
-                        val details = dataModelCatalog.details(car)
+                        val details =
+                            catalog?.details(car)
+                                ?: com.sps23.aiworkflow.recommendation.RecommendationDetails(
+                                    "Engine: unavailable",
+                                    listOf("Price: unavailable"),
+                                )
                         Text(details.engine)
                         details.priceLines.forEach { Text(it) }
                         OptionTableRow("Requested option", "Availability", "Details", header = true)
                         if (car.options.isEmpty()) {
-                            OptionTableRow("No requested options returned.", "", "", configurationId = car.configurationId)
+                            OptionTableRow(
+                                "No requested options returned.",
+                                "",
+                                "",
+                                configurationId = car.configurationId,
+                                catalog = catalog,
+                            )
                         } else {
                             car.options.forEach { option ->
                                 HorizontalDivider()
@@ -565,6 +756,7 @@ private fun CarTables(selection: CarSelection) {
                                     option.status.displayLabel(),
                                     option.details,
                                     configurationId = car.configurationId,
+                                    catalog = catalog,
                                 )
                             }
                         }
@@ -582,6 +774,7 @@ private fun OptionTableRow(
     details: String,
     header: Boolean = false,
     configurationId: String? = null,
+    catalog: DataModelCatalogContext? = null,
 ) {
     val style = if (header) MaterialTheme.typography.titleSmall else MaterialTheme.typography.bodyMedium
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -592,14 +785,17 @@ private fun OptionTableRow(
             if (header) {
                 Text("PDF Source", style = style)
             } else if (configurationId != null) {
-                DataModelSourcePdfLink(configurationId)
+                if (catalog != null) DataModelSourcePdfLink(configurationId, catalog)
             }
         }
     }
 }
 
 @Composable
-private fun DataModelSourcePdfLink(configurationId: String) {
+private fun DataModelSourcePdfLink(
+    configurationId: String,
+    catalog: DataModelCatalogContext,
+) {
     val scope = rememberCoroutineScope()
     var saving by remember(configurationId) { mutableStateOf(false) }
     var message by remember(configurationId) { mutableStateOf<String?>(null) }
@@ -614,7 +810,7 @@ private fun DataModelSourcePdfLink(configurationId: String) {
                 try {
                     val (filename, bytes) =
                         withContext(Dispatchers.IO) {
-                            DataModelPdfStore(dataModelCatalog).read(configurationId)
+                            DataModelPdfStore(catalog).read(configurationId)
                         }
                     val chooser = JFileChooser().apply { selectedFile = java.io.File(filename) }
                     if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {

@@ -12,6 +12,11 @@ Fidelity rules
 - A printed fact that has no dedicated field goes into the nearest `additional` map as a string,
   keyed by a short snake_case label, value in the source wording.
 - Keep source wording for names, trims, option names and equipment items.
+- Preserve printed measurement qualifications in the nearest `additional` map: seating capacity and
+  boot volume with all rows upright versus rows folded (including behind the third row for seven seats);
+  WLTP combined versus city range/consumption; PHEV weighted-combined versus battery-depleted fuel use.
+  Keep the published scope, variant applicability and test basis next to the corresponding facts.
+  A field name alone does not establish those qualifications; leave missing qualifications unknown.
 
 Prices
 - `currency` is `"EUR"` unless the PDF prints another currency; use the ISO 4217 code.
@@ -24,8 +29,16 @@ Prices
   - "RRP" -> `RRP`; "from €..." / "RRP from" -> `RRP_FROM`
   - RRP excluding grants/SEAI -> `RRP_EXCLUDING_GRANTS`; RRP including grants -> `RRP_INCLUDING_GRANTS`
   - on the road / OTR / ROTR -> `ON_THE_ROAD`
-  - VRT rebate -> `VRT_REBATE`; SEAI grant -> `SEAI_GRANT`; annual road/motor tax -> `ANNUAL_ROAD_TAX`
+  - price after grants/reliefs ("subsidised retail price", "price after SEAI grant", "net of VRT relief")
+    -> `RRP_INCLUDING_GRANTS`; never put it in `additional`
+  - VRT rebate/relief -> `VRT_REBATE`; SEAI grant -> `SEAI_GRANT`; annual road/motor tax -> `ANNUAL_ROAD_TAX`
   - price of an option or pack -> `OPTION`
+- Grants and reliefs (`VRT_REBATE`, `SEAI_GRANT`) are reductions; the basis carries the sign.
+  `minorUnits` is always the positive magnitude, even when printed negative or in brackets:
+  "-€3,500" / "(€3,500)" -> 350000, `rawText` "-€3,500". Never output a negative `minorUnits`.
+- The full retail price before any grant or relief keeps its printed basis (`RRP`, `PRICE`,
+  `RRP_EXCLUDING_GRANTS`, ...). Never subtract reductions yourself and never use a reduction as the
+  variant price.
 
 Trims and variants
 - One `Trim` per published trim level (grade). One `TrimVariant` per priced row of that trim

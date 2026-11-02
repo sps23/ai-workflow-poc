@@ -86,7 +86,9 @@ boundary for this screen only. Reuses `OpenRouterCarWorkflow` and
   text plus model label and prototype disclaimer. Both confirm copying.
   Invalid JSON or truncated output remains an explicit failure with a separate
   **Copy raw model output** button. Raw content is not included in the sanitized
-  error report or logs; review before sharing because it may repeat request data.
+  error report or metadata exports; review before sharing because it may repeat
+  request data. Approved workspace diagnostic logs retain credential-redacted
+  model text under `user-workflow-plan.md`'s logging policy.
 - **Performance metadata:** collapsed **DEBUG / Performance metadata** below
   results/errors, available after success or failure. Expand to see per-stage
   outcome/time and API/model. Translation (first request) and recommendation

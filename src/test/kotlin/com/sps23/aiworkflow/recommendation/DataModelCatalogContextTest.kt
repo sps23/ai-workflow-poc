@@ -1,10 +1,16 @@
 package com.sps23.aiworkflow.recommendation
 
+import com.sps23.aiworkflow.catalog.datamodel.DATA_MODEL_CATALOG_SCHEMA_VERSION
+import com.sps23.aiworkflow.catalog.datamodel.DataModelCatalogArtifact
 import com.sps23.aiworkflow.catalog.datamodel.DataModelFixtures
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Path
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -86,7 +92,10 @@ class DataModelCatalogContextTest {
                         .getValue("id")
                         .jsonPrimitive.content == "cupra-raval"
                 }.jsonObject
-        assertEquals("cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.pdf", cupra.getValue("sourcePdfPath").jsonPrimitive.content)
+        assertEquals(
+            "cupra/20260820_CUPRA_Ireland_Product_Guide_Raval.pdf",
+            cupra.getValue("sourcePdfPath").jsonPrimitive.content,
+        )
         val urban =
             cupra
                 .getValue("trims")
@@ -118,7 +127,7 @@ class DataModelCatalogContextTest {
 
         assertEquals("20260820_CUPRA_Ireland_Product_Guide_Raval.pdf", filename)
         assertEquals("%PDF-", bytes.take(5).toByteArray().toString(Charsets.US_ASCII))
-        assertFailsWith<java.io.IOException> { store.read("model-authored-path") }
+        assertFailsWith<IOException> { store.read("model-authored-path") }
     }
 
     @Test
@@ -135,5 +144,108 @@ class DataModelCatalogContextTest {
             assertFalse("sources" in option.jsonObject)
         }
         assertNotNull(vehicles.first().jsonObject["sourcePdfPath"])
+    }
+
+    @Test
+    fun `workspace context loads catalog and resolves PDF from input root`() =
+        withTempDirectory { directory ->
+            val paths = WorkspacePaths.at(directory.resolve("workspace"))
+            Files.createDirectories(paths.input.resolve("nested"))
+            Files.createDirectories(paths.data)
+            val pdfBytes = "%PDF-workspace".toByteArray()
+            Files.write(paths.input.resolve("nested/source.pdf"), pdfBytes)
+            writeWorkspaceCatalog(paths, "nested/source.pdf")
+
+            val context = DataModelCatalogContext.loadWorkspace(paths)
+            val prompt = json.decodeFromString<DataModelPromptCatalog>(context.promptJson)
+            val configurationId =
+                prompt.vehicles
+                    .single()
+                    .trims
+                    .flatMap { it.configurations }
+                    .first()
+                    .configurationId
+            val (filename, resolvedBytes) = DataModelPdfStore(context).read(configurationId)
+
+            assertEquals("source.pdf", filename)
+            assertEquals(pdfBytes.toList(), resolvedBytes.toList())
+            assertEquals("nested/source.pdf", context.sourcePdfPath(configurationId))
+        }
+
+    @Test
+    fun `workspace context reports missing invalid and unsupported catalogs`() =
+        withTempDirectory { directory ->
+            val paths = WorkspacePaths.at(directory.resolve("workspace"))
+            Files.createDirectories(paths.input)
+            Files.createDirectories(paths.data)
+            assertFailsWith<IOException> { DataModelCatalogContext.loadWorkspace(paths) }
+
+            Files.writeString(paths.data.resolve("data-model-catalog.json"), "not-json")
+            assertFailsWith<IOException> { DataModelCatalogContext.loadWorkspace(paths) }
+
+            val invalidSchema = DataModelFixtures.artifact().copy(schemaVersion = DATA_MODEL_CATALOG_SCHEMA_VERSION + 1)
+            Files.writeString(
+                paths.data.resolve("data-model-catalog.json"),
+                DataModelFixtures.json.encodeToString(DataModelCatalogArtifact.serializer(), invalidSchema),
+            )
+            assertFailsWith<IOException> { DataModelCatalogContext.loadWorkspace(paths) }
+        }
+
+    @Test
+    fun `workspace PDF store rejects missing invalid and escaping PDF paths`() =
+        withTempDirectory { directory ->
+            val paths = WorkspacePaths.at(directory.resolve("workspace"))
+            Files.createDirectories(paths.input.resolve("nested"))
+            Files.createDirectories(paths.data)
+            writeWorkspaceCatalog(paths, "nested/source.pdf")
+            val context = DataModelCatalogContext.loadWorkspace(paths)
+            val prompt = json.decodeFromString<DataModelPromptCatalog>(context.promptJson)
+            val configurationId =
+                prompt.vehicles
+                    .single()
+                    .trims
+                    .flatMap { it.configurations }
+                    .first()
+                    .configurationId
+            val store = DataModelPdfStore(context)
+
+            assertFailsWith<IOException> { store.read(configurationId) }
+            Files.writeString(paths.input.resolve("nested/source.pdf"), "not a pdf")
+            assertFailsWith<IOException> { store.read(configurationId) }
+
+            val outside = directory.resolve("outside")
+            Files.createDirectories(outside)
+            Files.write(outside.resolve("source.pdf"), "%PDF-outside".toByteArray())
+            Files.delete(paths.input.resolve("nested/source.pdf"))
+            Files.delete(paths.input.resolve("nested"))
+            Files.createSymbolicLink(paths.input.resolve("nested"), outside)
+            assertFailsWith<IOException> { store.read(configurationId) }
+        }
+
+    private fun writeWorkspaceCatalog(
+        paths: WorkspacePaths,
+        pdfPath: String,
+    ) {
+        val vehicle =
+            DataModelFixtures.artifact().vehicles.first().copy(
+                sourcePath = pdfPath.substringBeforeLast('.') + ".json",
+                sourcePdfPath = pdfPath,
+            )
+        val artifact = DataModelCatalogArtifact(vehicles = listOf(vehicle))
+        Files.writeString(
+            paths.data.resolve("data-model-catalog.json"),
+            DataModelFixtures.json.encodeToString(DataModelCatalogArtifact.serializer(), artifact),
+        )
+    }
+
+    private fun withTempDirectory(block: (Path) -> Unit) {
+        val directory = Files.createTempDirectory("workspace-catalog-context-test")
+        try {
+            block(directory)
+        } finally {
+            Files.walk(directory).use { paths ->
+                paths.sorted(Comparator.reverseOrder()).forEach(Files::deleteIfExists)
+            }
+        }
     }
 }

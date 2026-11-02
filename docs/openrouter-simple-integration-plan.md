@@ -154,7 +154,9 @@ prompt-building functions together rather than introducing a framework.
   truncated-response, and invalid-JSON/contract failures. Preserve model text
   separately for explicit UI clipboard export, including invalid/truncated text.
   Propagate cancellation and close clients.
-  Avoid logging headers, prompt/catalog bodies, or raw responses.
+  Keep headers/credentials out of logs. Desktop workspace diagnostic logging is
+  the approved exception for prompt/catalog bodies and exposed raw model text;
+  its storage/redaction rules live in `user-workflow-plan.md`.
 
 Done when offline request capture verifies zero pricing for free-labelled models
 and arbitrary verified paid IDs, prompt/data
@@ -212,7 +214,8 @@ write counts, plus provider-reported cost; never infer missing values or totals.
 Preserve Koog inference: its Ktor base client's response validator extracts an
 allowlisted metadata subset before Koog deserialization, including actual model
 ID and nested usage details that Koog standard metadata drops. Local JSON uses
-the same extractor. Response bodies are neither retained in telemetry nor logged.
+the same extractor. HTTP response bodies are not retained in telemetry. Separately,
+desktop workspace logs retain exposed model text, not HTTP response envelopes.
 Never add a generation-details API request or retry just to fetch metadata.
 Optional malformed numeric fields become unavailable, not zero; underlying
 response validation/error behavior remains authoritative.
@@ -239,8 +242,9 @@ JSON export are defined in `openrouter-desktop-ui-plan.md`.
 
 ### LlmRequest translation contract
 
-`recommendation/LlmRequest.kt` owns the serializable model and fixed translator
-instructions. Fields: `originalRequest`, `requirements`, `preferences`,
+`recommendation/LlmRequest.kt` owns the serializable model; the fixed translator
+instructions live in `src/main/resources/prompts/request-translation.md`.
+Fields: `originalRequest`, `requirements`, `preferences`,
 `requestedAttributes`, `unresolvedPhrases`; all required. Term objects contain
 `field`, `operator`, `value`, nullable `unit`, and exact `sourceText`. Field/operator
 enums map onto catalog concepts (including equipment, measurements, prices,
@@ -253,6 +257,54 @@ alter meaning. Ambiguity stays in `unresolvedPhrases`; no clarification pause.
 The second prompt treats `originalRequest` as authoritative and the structured
 terms as aids, not instructions. JSON validity and substring checks cannot prove
 semantic completeness or interpretation fidelity.
+
+**Approved 2026-11-01: confirmed-match prompt policy.** Direct selection wording
+such as "with parking sensors and automatic gearbox" is a requirement, not a
+soft preference. Keep powertrain alternatives in one `POWERTRAIN` / `OTHER` term
+with value `OTHER` and the full source phrase; the existing enum-only value
+contract stays unchanged. Preserve unclear hybrid acceptance as unresolved.
+Recommendation instructions follow the normalized vehicles/trims/configurations
+shape and scope equipment, options and technical specifications to each variant.
+Only catalog-confirmed requirements qualify; optional equipment may satisfy a
+requirement unless standard fitment is requested, with applicability and required
+packages/conditions disclosed. UNKNOWN/NOT_AVAILABLE cannot satisfy a positive
+required feature; UNKNOWN remains valid for descriptive or soft-preference facts.
+Electric powertrain or one-pedal driving alone does not establish transmission.
+Keep strict cars-only root validation: `sources` exists only inside options.
+No response-schema change, semantic eligibility validator, retries or fallback. Offline regressions check
+the translator example, transmitted shared prompts and strict response decoding;
+they do not establish live model accuracy.
+
+**Approved 2026-11-01: qualified request terms and reviewable prompts.**
+Term objects additionally export nullable `metric`, `scope`, `fitment` and
+`measurementBasis`. `LlmRequest.kt` owns their enums and qualifier compatibility/
+canonical-unit/numeric-bound validation. Legacy terms without qualifiers remain
+decodable; new translation instructions require all qualifiers, using explicit nulls.
+The response schema and catalog schema remain unchanged.
+
+The translator prompt is the interpretation policy: optional/nice-to-have equipment
+is a soft preference independently of factory fitment; unqualified heated seats
+means front seats; unqualified boot volume means all fitted seats upright.
+Plain over/under thresholds are inclusive, explicit strict comparisons use
+`GREATER_THAN`/`LESS_THAN`. Metric units normalize while exact source text survives.
+Range defaults to WLTP combined electric range; fuel consumption defaults to WLTP
+combined, with separate PHEV weighted and battery-depleted bases.
+Recommendation uses the same policy and requires explicit catalog evidence for
+measurement applicability and seating/test basis. Range endpoints are conservative:
+minimum confirms lower bounds, maximum confirms upper bounds. Unqualified catalog
+fields cannot establish missing basis metadata. PDF extraction instructions retain
+printed basis/seating qualifications in existing `additional` maps.
+
+`prompts/AppPrompts.kt` loads fixed UTF-8 Markdown resources once, explicitly at
+desktop startup; CLI callers initialize the same cache on first access.
+Recommendation instructions live in `resources/prompts/recommendation.md`.
+Extraction system/model/task/text-template resources remain under
+`resources/pdf-extraction/`. Missing/empty resources fail explicitly; no fallback,
+working-directory dependency, disk override or hot reload. Edits require rebuild
+and restart. Dynamic request/catalog/PDF data and generated schema remain code-owned.
+Offline tests decode prompt examples, reject invalid qualifiers, capture both
+remote/local prompt forwarding and exercise text extraction. These checks do not
+prove semantic fidelity or live recommendation accuracy.
 
 **Decision:** user approved automatic stage two and retention of downloadable
 translation after recommendation failure. Stage two receives the generated

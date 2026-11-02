@@ -46,7 +46,8 @@ PriceFact
 - rawText: string - printed price text
 
 Money
-- minorUnits: integer - cents, €26,990 -> 2699000
+- minorUnits: integer >= 0 - cents, €26,990 -> 2699000; VRT_REBATE/SEAI_GRANT store the positive
+  reduction magnitude ("-€3,500" -> 350000)
 - currency: string - ISO 4217, default "EUR"
 
 NumericRange

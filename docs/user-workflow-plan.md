@@ -4,7 +4,7 @@
 
 The desktop application must work on a new computer with no PDFs, extraction JSON files, or generated catalog. Replace the desktop application's dependency on bundled user data with one persistent, user-selected workspace. Guide users through importing and extracting individual PDFs, explicitly building a complete catalog, and searching that catalog using the existing Recommender UI.
 
-This is an implementation plan, not an implementation. The workspace workflow described here is not implemented yet; the current-code baseline below reflects the repository as of 2026-11-01. Changes in this plan affect desktop storage and catalog flow, not the existing CLI or resource-generation workflow.
+This plan tracks implementation of the workspace workflow. Workspace storage, catalog context, managed extraction, catalog building, desktop integration, and onboarding documentation are implemented. Controller regression coverage and an empty-home packaged launch smoke pass; a full interactive packaged workflow smoke remains pending. The current-code baseline below reflects the repository before implementation. Changes affect desktop storage and catalog flow, not the existing CLI or resource-generation workflow.
 
 ## Current-code baseline
 
@@ -46,6 +46,11 @@ This is an implementation plan, not an implementation. The workspace workflow de
     brochure-2.json
   data/
     data-model-catalog.json          # absent until a successful build
+  logs/
+    application.log                 # app-owned INFO/ERROR JSON Lines
+    log_yyyyMMddHHmmss_assistant.log # translation or recommendation attempt
+    log_yyyyMMddHHmmss_extractor.log # PDF extraction attempt
+    log_yyyyMMddHHmmss_builder.log   # catalog build, not an LLM call
 ```
 
 User PDFs downloaded outside the workspace remain untouched. The workspace does not have to be adjacent to the application JAR or the current working directory. A stable home-directory default avoids permissions problems in installation directories and changes caused by how the application is launched.
@@ -64,7 +69,41 @@ Recommended settings locations:
 
 Use existing JSON serialization and Java filesystem APIs; no new dependency is needed. Write settings safely through a temporary sibling file and replacement. Surface read, decode, permission, and save failures explicitly.
 
-The app remains stateless with respect to session/business state: persistent PDFs, JSON, the generated catalog, and the single workspace setting are intentional disk artifacts.
+The app remains stateless with respect to interactive session/business state.
+Persistent PDFs, JSON, the generated catalog, diagnostic logs, and the single
+workspace setting are intentional disk artifacts. Diagnostic logs intentionally
+retain request/output history under the logging decision below; this does not
+enable persistent credentials, UI history restoration or conversation memory.
+
+### Approved diagnostic logging, 2026-11-01
+
+Create `logs/` during setup and add it automatically to existing valid workspaces
+on startup. Failure to create/access logs is explicit workspace recovery/error,
+not silent logging disablement. `logging/WorkspaceLogs.kt` owns JSON Lines
+storage using Java filesystem APIs and existing serialization; no dependency.
+
+One collision-safe file per Assistant inference attempt (translation and
+recommendation separately), per extraction-service attempt, and per catalog build.
+Use local `yyyyMMddHHmmss` with a counter before the component on collisions.
+`application.log` appends app-owned INFO/ERROR summaries and workspace/catalog/
+import lifecycle events, not arbitrary library console output.
+
+Record request prompts, structured request/catalog JSON, exact exposed model text
+plus parsed JSON, schema, available requested/reported models, performance metadata,
+validation/errors and terminal completion/failure/cancellation. Text extraction
+records the actual extracted-text request; native PDF requests record identity/
+hash/size but omit binary/base64 data. Builder logs inventory, source snapshots
+and normalized output. Preflight/model failures belong to the attempted stage;
+reused translation makes no new inference log. A crash may leave an incomplete log.
+
+Redact configured environment/typed keys, bearer tokens and credential-labelled
+JSON fields. Keep other prompt/source content in full: these are sensitive debug
+artifacts, not sanitized metadata exports. Create new POSIX directories/files
+700/600; other filesystems inherit ACLs. Reject log symlinks, never overwrite
+prior operation logs, lock shared appends and flush writes. Propagate log-write
+errors with an explicit warning that publication/inference may have completed.
+No automatic retries, retention cleanup or rotation; the user manages log size.
+CLI defaults and sanitized UI exports remain unchanged.
 
 ### First-run flow
 
@@ -228,13 +267,13 @@ Shared functions should accept explicit inputs for desktop behavior. Keep legacy
 
 | ID | Todo | Prerequisites |
 |---|---|---|
-| workspace-storage | Implementing workspace paths, settings persistence, initialization/recovery model, and mutation guard with temporary-directory tests. | None |
-| catalog-context | Extracting shared artifact/context validation and adding workspace catalog/PDF loading with containment and compatibility tests. | workspace-storage |
-| managed-extraction | Implementing PDF import/deduplication/naming, validated/diagnostic persistence, and retry semantics without changing CLI defaults. | workspace-storage |
-| catalog-build-service | Implementing source inventory, raw exclusion, provenance/legacy linking, complete validation, and strict atomic desktop publication. | workspace-storage, catalog-context |
-| desktop-integration | Wiring startup/recovery UI, fixed extraction destination, Build Catalog tab/table, busy-state coordination, catalog reload and result invalidation. | catalog-context, managed-extraction, catalog-build-service |
-| workflow-validation | Adding/running end-to-end desktop/controller regression coverage and packaging smoke checks for an empty user environment. | desktop-integration |
-| user-documentation | Updating README desktop onboarding/storage/recovery/build/search instructions while retaining accurate CLI/developer documentation. | desktop-integration |
+| workspace-storage | **Implemented:** workspace paths, per-user settings persistence, initialization/recovery states, mutation guard, and temporary-directory tests. | None |
+| catalog-context | **Implemented:** strict workspace catalog loading reuses artifact/context validation; workspace PDF resolution checks normalized and real-path containment while preserving bundled/CLI resolution. | workspace-storage |
+| managed-extraction | **Implemented:** imports captured PDF snapshots with hash deduplication/collision naming, confirmed retries, schema-1 result persistence, JSON diagnostic envelopes, and preservation of earlier successful results. CLI raw-output behavior remains unchanged. | workspace-storage |
+| catalog-build-service | **Implemented:** deterministic inventory, raw exclusion, provenance/hash and legacy PDF linking, source-stability/duplicate validation, and strict atomic catalog publication. | workspace-storage, catalog-context |
+| desktop-integration | **Implemented:** startup/recovery/setup screens, managed extraction destination, Build Catalog inventory/build screen, busy-state coordination, workspace catalog reload, and result invalidation. | catalog-context, managed-extraction, catalog-build-service |
+| workflow-validation | **In progress:** workspace startup/build/restart and managed extraction controller tests pass; an empty-home packaged JAR launches without bundled workspace data. Full interactive packaged workflow smoke remains. | desktop-integration |
+| user-documentation | **Implemented:** README covers workspace onboarding, recovery, extraction, explicit catalog build/search, and packaging without requiring bundled PDFs; CLI/resource instructions remain. | desktop-integration |
 
 ## 7. Acceptance and verification matrix
 
@@ -290,6 +329,6 @@ Perform a desktop smoke test from a packaged matching-platform JAR with isolated
 
 Included: guided first-run storage, persistent data across sessions, individual PDF import/extraction, raw diagnostics, explicit complete rebuild, source inventory UI, workspace-backed recommendation/details/PDF actions, recovery, regression coverage, and user documentation.
 
-Excluded: downloading brochures inside the app, batch extraction, catalog versioning/backups, multiple actively switchable workspaces, automatic migration of bundled fixtures, automatic catalog rebuilds, source-selection checkboxes, semantic merging/deduplication of competing vehicle editions, database storage, persistent credentials/history, background filesystem watching, and changes to provider/model/recommendation semantics.
+Excluded: downloading brochures inside the app, batch extraction, catalog versioning/backups, multiple actively switchable workspaces, automatic migration of bundled fixtures, automatic catalog rebuilds, source-selection checkboxes, semantic merging/deduplication of competing vehicle editions, database storage, persistent credentials or restored conversation history, background filesystem watching, and changes to provider/model/recommendation semantics. On-disk diagnostic request history is explicitly included above.
 
 No automatic system environment-variable installation is needed. The workspace chooser plus per-user settings provides persistence without administrator access or dependence on terminal environment propagation.

@@ -1,10 +1,12 @@
 package com.sps23.aiworkflow.catalog.extraction
 
+import com.sps23.aiworkflow.logging.WorkspaceLogs
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.OpenRouterErrorDiagnostics
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
 import com.sps23.aiworkflow.openrouter.RequestMetrics
 import com.sps23.aiworkflow.openrouter.TokenUsage
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.JsonObject
 import java.nio.file.FileSystems
@@ -91,6 +93,44 @@ class PdfExtractionServiceTest {
     fun cleanup() {
         dir.toFile().deleteRecursively()
     }
+
+    @Test
+    fun `native extraction logs full JSON schema response validation and performance without PDF bytes`() =
+        runBlocking {
+            val paths = WorkspacePaths.at(dir)
+            val logged = PdfExtractionService(FakeClient { result(validJson) }, clock, WorkspaceLogs(paths))
+            assertIs<PdfExtractionOutcome.Written>(logged.extract(pdf, outputDir) { true })
+            val file = paths.logs.listDirectoryEntries("*_extractor.log").single()
+            val log = file.readText()
+            assertTrue("responseSchema" in log)
+            assertTrue("systemPrompt" in log)
+            assertTrue("rawResponse" in log)
+            assertTrue("responseJson" in log)
+            assertTrue("extractionJson" in log)
+            assertTrue("performanceMetadata" in log)
+            assertTrue("gemini-test-001" in log)
+            assertTrue("totalTokens" in log)
+            assertFalse("%PDF-1.7 fake" in log)
+            assertTrue("\"event\":\"COMPLETED\"" in log.lines().filter { it.isNotBlank() }.last())
+        }
+
+    @Test
+    fun `invalid extraction logs FAILED with raw response and rule violations`() =
+        runBlocking {
+            val paths = WorkspacePaths.at(dir)
+            val logged = PdfExtractionService(FakeClient { result("""{"invalid":true}""") }, clock, WorkspaceLogs(paths))
+            assertIs<PdfExtractionOutcome.Failed>(logged.extract(pdf, outputDir) { true })
+            val log =
+                paths.logs
+                    .listDirectoryEntries("*_extractor.log")
+                    .single()
+                    .readText()
+            assertTrue("rawResponse" in log)
+            assertTrue("violations" in log)
+            assertTrue("INVALID_RESPONSE" in log)
+            assertTrue("\"event\":\"FAILED\"" in log.lines().filter { it.isNotBlank() }.last())
+            assertTrue("\"level\":\"ERROR\"" in paths.logs.resolve("application.log").readText())
+        }
 
     @Test
     fun `valid output is written as an envelope with provenance`() =
