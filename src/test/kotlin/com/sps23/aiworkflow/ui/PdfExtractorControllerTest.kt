@@ -3,6 +3,7 @@ package com.sps23.aiworkflow.ui
 import com.sps23.aiworkflow.catalog.extraction.ExtractedVehicle
 import com.sps23.aiworkflow.catalog.extraction.ExtractionProvenance
 import com.sps23.aiworkflow.catalog.extraction.GeminiUsage
+import com.sps23.aiworkflow.catalog.extraction.ManagedPdfExtractionOutcome
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_DEFAULT_OUTPUT_DIR
 import com.sps23.aiworkflow.catalog.extraction.PDF_EXTRACT_OUTPUT_DIR_VARIABLE
 import com.sps23.aiworkflow.catalog.extraction.PdfExtractionFile
@@ -20,6 +21,7 @@ import com.sps23.aiworkflow.openrouter.StageMetrics
 import com.sps23.aiworkflow.openrouter.TokenUsage
 import com.sps23.aiworkflow.openrouter.WorkflowMetadata
 import com.sps23.aiworkflow.openrouter.WorkflowMetadataCodec
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -182,6 +184,49 @@ class PdfExtractorControllerTest {
             assertEquals("gemini-test", call.modelId)
             assertEquals(PdfExtractorFixtures.metadata, controller.metadata)
             assertEquals(WorkflowMetadataCodec.encode(PdfExtractorFixtures.metadata), controller.metadataJson)
+        }
+
+    @Test
+    fun `workspace extraction uses managed destination and reports source mutation`() =
+        runBlocking {
+            val temporary = createTempDirectory("managed-pdf-ui")
+            try {
+                val paths = WorkspacePaths.at(temporary.resolve("workspace"))
+                java.nio.file.Files
+                    .createDirectories(paths.input)
+                java.nio.file.Files
+                    .createDirectories(paths.data)
+                val imported = paths.input.resolve("brand/brochure.pdf")
+                var receivedPaths: WorkspacePaths? = null
+                var changed = false
+                val controller =
+                    PdfExtractorController(
+                        environment = emptyMap(),
+                        resolveKey = { "test-key" },
+                        managedExtractAction = { pdf, workspace, _, _, _, _, _ ->
+                            assertEquals(Path.of("/external/brochure.pdf"), pdf)
+                            receivedPaths = workspace
+                            ManagedPdfExtractionOutcome.Written(
+                                imported,
+                                PdfExtractorFixtures.written(imported.resolveSibling("brochure.json")),
+                            )
+                        },
+                    )
+                controller.configureWorkspace(paths)
+                controller.workspaceChanged = { changed = true }
+                controller.updatePdfPath(" /external/brochure.pdf ")
+
+                assertTrue(controller.canExtract)
+                controller.extract()
+
+                val done = assertIs<PdfExtractorState.Done>(controller.state)
+                assertEquals(paths, receivedPaths)
+                assertEquals(imported, done.importedPdfPath)
+                assertEquals(paths.input.toString(), controller.workspaceInputPath)
+                assertTrue(changed)
+            } finally {
+                temporary.toFile().deleteRecursively()
+            }
         }
 
     @Test

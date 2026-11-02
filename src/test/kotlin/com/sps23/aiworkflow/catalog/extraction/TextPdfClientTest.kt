@@ -1,5 +1,6 @@
 package com.sps23.aiworkflow.catalog.extraction
 
+import com.sps23.aiworkflow.logging.WorkspaceLogs
 import com.sps23.aiworkflow.openrouter.ChatBackend
 import com.sps23.aiworkflow.openrouter.FailureKind
 import com.sps23.aiworkflow.openrouter.FakeOpenRouterServer
@@ -12,6 +13,7 @@ import com.sps23.aiworkflow.openrouter.OpenRouterClient
 import com.sps23.aiworkflow.openrouter.OpenRouterConfig
 import com.sps23.aiworkflow.openrouter.OpenRouterWorkflowException
 import com.sps23.aiworkflow.ui.PdfExtractorFixtures
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
@@ -24,6 +26,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts
 import java.io.ByteArrayOutputStream
 import kotlin.io.path.createTempDirectory
+import kotlin.io.path.listDirectoryEntries
+import kotlin.io.path.readText
 import kotlin.io.path.writeBytes
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -70,7 +74,12 @@ class TextPdfClientTest {
                         val pdf = dir.resolve("brochure.pdf")
                         val bytes = pdfBytes("Published brochure facts EUR 26990")
                         pdf.writeBytes(bytes)
-                        val outcome = PdfExtractionService(TextPdfClient(model, backend)).extract(pdf, dir) { true }
+                        val paths = WorkspacePaths.at(dir)
+                        val outcome =
+                            PdfExtractionService(
+                                TextPdfClient(model, backend),
+                                logs = WorkspaceLogs(paths, listOf("fake-key")),
+                            ).extract(pdf, dir) { true }
                         val written = assertIs<PdfExtractionOutcome.Written>(outcome, "${api.label}: $outcome")
                         assertEquals(PdfExtractorFixtures.vehicle, written.extraction.vehicle)
                         assertEquals(PdfExtractionService.sha256(bytes), written.extraction.provenance.pdfSha256)
@@ -87,6 +96,9 @@ class TextPdfClientTest {
                         assertTrue("Published brochure facts EUR 26990" in message)
                         assertTrue("\"properties\"" in message)
                         assertTrue("<pdf_text>" in message)
+                        assertTrue("{{USER_PROMPT}}" !in message)
+                        assertTrue("{{RESPONSE_SCHEMA}}" !in message)
+                        assertTrue("{{PDF_TEXT}}" !in message)
                         assertTrue("inlineData" !in request.body)
                         assertEquals(
                             if (api == LlmApi.OPENROUTER) "/api/v1/chat/completions" else "/v1/chat/completions",
@@ -96,6 +108,16 @@ class TextPdfClientTest {
                             assertEquals(model, body.getValue("model").jsonPrimitive.content)
                         }
                         assertTrue(written.metadata!!.notes.contains("PDF text only"))
+                        val log =
+                            paths.logs
+                                .listDirectoryEntries("*_extractor.log")
+                                .single()
+                                .readText()
+                        assertTrue("TEXT_REQUEST" in log)
+                        assertTrue("Published brochure facts EUR 26990" in log)
+                        assertTrue("performanceMetadata" in log)
+                        assertTrue("extractionJson" in log)
+                        assertTrue("fake-key" !in log)
                     } finally {
                         dir.toFile().deleteRecursively()
                     }

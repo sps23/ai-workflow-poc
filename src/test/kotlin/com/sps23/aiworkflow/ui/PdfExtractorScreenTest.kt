@@ -56,7 +56,7 @@ class PdfExtractorScreenTest {
                         { _, _ -> PdfExtractionOutcome.Failed(FailureKind.RATE_LIMIT, "Gemini PDF extraction failed (HTTP 429).") },
                     )
                 render(controller { _, _ -> error("unused") })
-                render(controller { _, _ -> error("unused") }, AppTab.RECOMMENDER)
+                render(controller { _, _ -> error("unused") }, AppTab.ASSISTANT)
                 outcomes.forEach { outcome ->
                     val controller = controller(outcome)
                     controller.updatePdfPath("/cars/jogger.pdf")

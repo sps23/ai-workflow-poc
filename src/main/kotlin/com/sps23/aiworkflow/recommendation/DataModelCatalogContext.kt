@@ -7,10 +7,14 @@ import com.sps23.aiworkflow.catalog.datamodel.EquipmentGroup
 import com.sps23.aiworkflow.catalog.datamodel.TechnicalSpecifications
 import com.sps23.aiworkflow.catalog.datamodel.TrimVariant
 import com.sps23.aiworkflow.catalog.datamodel.VehicleOption
+import com.sps23.aiworkflow.workspace.WorkspacePaths
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.LinkOption
+import java.nio.file.Path
 import java.text.Normalizer
 import java.util.Locale
 
@@ -56,6 +60,7 @@ class DataModelCatalogContext private constructor(
     val promptJson: String,
     private val sourcePdfByConfiguration: Map<String, String>,
     private val detailsByConfiguration: Map<String, CatalogConfigurationDetails>,
+    internal val workspaceInput: Path?,
 ) {
     fun sourcePdfPath(configurationId: String): String? = sourcePdfByConfiguration[configurationId]
 
@@ -75,6 +80,13 @@ class DataModelCatalogContext private constructor(
                 explicitNulls = false
             }
 
+        private val workspaceJson =
+            Json {
+                encodeDefaults = false
+                explicitNulls = false
+                ignoreUnknownKeys = false
+            }
+
         fun loadBundled(): DataModelCatalogContext {
             val resource =
                 checkNotNull(DataModelCatalogContext::class.java.getResource(BUNDLED_CATALOG_RESOURCE)) {
@@ -89,7 +101,37 @@ class DataModelCatalogContext private constructor(
             return fromArtifact(artifact)
         }
 
-        fun fromArtifact(artifact: DataModelCatalogArtifact): DataModelCatalogContext {
+        fun loadWorkspace(paths: WorkspacePaths): DataModelCatalogContext {
+            val catalogPath = paths.data.resolve("data-model-catalog.json")
+            if (!Files.isRegularFile(catalogPath, LinkOption.NOFOLLOW_LINKS)) {
+                throw IOException("Workspace catalog is missing or is not a regular file: $catalogPath")
+            }
+            val artifact =
+                try {
+                    workspaceJson.decodeFromString<DataModelCatalogArtifact>(Files.readString(catalogPath))
+                } catch (exception: IOException) {
+                    throw IOException("Cannot read workspace catalog at $catalogPath: ${exception.message}", exception)
+                } catch (exception: SerializationException) {
+                    throw IOException("Workspace catalog is invalid at $catalogPath: ${exception.message}", exception)
+                }
+            return try {
+                fromArtifact(artifact, paths.input)
+            } catch (exception: IllegalArgumentException) {
+                throw IOException("Workspace catalog is invalid at $catalogPath: ${exception.message}", exception)
+            }
+        }
+
+        fun fromArtifact(artifact: DataModelCatalogArtifact): DataModelCatalogContext = fromArtifact(artifact, null)
+
+        fun fromWorkspaceArtifact(
+            artifact: DataModelCatalogArtifact,
+            inputRoot: Path,
+        ): DataModelCatalogContext = fromArtifact(artifact, inputRoot)
+
+        private fun fromArtifact(
+            artifact: DataModelCatalogArtifact,
+            workspaceInput: Path?,
+        ): DataModelCatalogContext {
             require(artifact.schemaVersion == DATA_MODEL_CATALOG_SCHEMA_VERSION) {
                 "Unsupported data-model catalog schema version ${artifact.schemaVersion}."
             }
@@ -137,6 +179,7 @@ class DataModelCatalogContext private constructor(
                     ),
                 sourcePdfByConfiguration = sourcePdfByConfiguration,
                 detailsByConfiguration = detailsByConfiguration,
+                workspaceInput = workspaceInput?.toAbsolutePath()?.normalize(),
             )
         }
 
@@ -178,13 +221,55 @@ class DataModelPdfStore(
     fun read(configurationId: String): Pair<String, ByteArray> {
         val path =
             context.sourcePdfPath(configurationId)
-                ?: throw IOException("The configuration is not registered in the bundled data-model catalog.")
-        val bytes =
-            DataModelPdfStore::class.java.getResourceAsStream("/car-pricelists/$path")?.use { it.readBytes() }
-                ?: throw IOException("The linked source PDF is missing from application resources.")
+                ?: throw IOException("The configuration is not registered in the active data-model catalog.")
+        val bytes = context.workspaceInput?.let { readWorkspacePdf(it, path) } ?: readBundledPdf(path)
         if (!bytes.take(5).toByteArray().contentEquals("%PDF-".toByteArray())) {
-            throw IOException("The linked source is not a PDF. Restore the original PDF with Git LFS and rebuild the app.")
+            throw IOException("The linked source is not a valid PDF: $path")
         }
         return path.substringAfterLast('/') to bytes
+    }
+
+    private fun readBundledPdf(path: String): ByteArray =
+        DataModelPdfStore::class.java.getResourceAsStream("/car-pricelists/$path")?.use { it.readBytes() }
+            ?: throw IOException("The linked source PDF is missing from application resources: $path")
+
+    private fun readWorkspacePdf(
+        inputRoot: Path,
+        relativePath: String,
+    ): ByteArray {
+        val root =
+            try {
+                inputRoot.toRealPath()
+            } catch (exception: IOException) {
+                throw IOException("Workspace input directory is unavailable: $inputRoot", exception)
+            }
+        val relative =
+            try {
+                Path.of(relativePath)
+            } catch (exception: RuntimeException) {
+                throw IOException("Invalid linked PDF path: $relativePath", exception)
+            }
+        if (relative.isAbsolute || relativePath.contains('\\') || relativePath.contains(':')) {
+            throw IOException("Invalid linked PDF path: $relativePath")
+        }
+        val candidate = root.resolve(relative).normalize()
+        if (!candidate.startsWith(root) || !candidate.toString().endsWith(".pdf", ignoreCase = true)) {
+            throw IOException("Linked PDF path escapes the workspace input directory or is not a PDF: $relativePath")
+        }
+        if (!Files.isRegularFile(candidate)) throw IOException("Linked source PDF is missing: $candidate")
+        val resolved =
+            try {
+                candidate.toRealPath()
+            } catch (exception: IOException) {
+                throw IOException("Cannot resolve linked source PDF: $candidate", exception)
+            }
+        if (!resolved.startsWith(root)) {
+            throw IOException("Linked source PDF resolves outside the workspace input directory: $candidate")
+        }
+        return try {
+            Files.readAllBytes(resolved)
+        } catch (exception: IOException) {
+            throw IOException("Cannot read linked source PDF: $resolved", exception)
+        }
     }
 }

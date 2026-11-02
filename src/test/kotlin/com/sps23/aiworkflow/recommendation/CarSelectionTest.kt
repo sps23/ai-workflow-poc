@@ -77,6 +77,25 @@ class CarSelectionTest {
     }
 
     @Test
+    fun `empty option citations are valid but top level sources remain a contract failure`() {
+        val valid = FakeOpenRouterServer.CAR_OUTPUT.replace("""["vw/Golf_MY27.pdf:8"]""", "[]")
+        val selection = CarSelectionCodec.decode(valid)
+        assertEquals(
+            emptyList(),
+            selection.cars
+                .single()
+                .options
+                .single()
+                .sources,
+        )
+
+        val raw = valid.dropLast(1) + ""","sources":[]}"""
+        val error = assertFailsWith<OpenRouterWorkflowException> { CarSelectionCodec.decode(raw) }
+        assertEquals(FailureKind.INVALID_RESPONSE, error.kind)
+        assertEquals(raw, error.rawOutput)
+    }
+
+    @Test
     fun `duplicate configurations and option names are rejected`() {
         val car = """{"configurationId":"car-a","car":"Example","trim":null,"options":[]}"""
         val option = """{"name":"Seats","status":"UNKNOWN","details":"","sources":[]}"""

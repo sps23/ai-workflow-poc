@@ -2,6 +2,7 @@ package com.sps23.aiworkflow.openrouter
 
 import com.sps23.aiworkflow.recommendation.LlmRequest
 import com.sps23.aiworkflow.recommendation.LlmRequestCodec
+import com.sps23.aiworkflow.recommendation.REQUEST_TRANSLATION_INSTRUCTIONS
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
@@ -144,6 +145,39 @@ class OpenRouterCarWorkflowTest {
                         .getValue("content")
                         .jsonPrimitive.content
                 assertEquals(SYSTEM_INSTRUCTIONS, system)
+                val translatorSystem =
+                    Json
+                        .parseToJsonElement(server.chatRequests.first().body)
+                        .jsonObject
+                        .getValue("messages")
+                        .jsonArray
+                        .first()
+                        .jsonObject
+                        .getValue("content")
+                        .jsonPrimitive.content
+                assertEquals(REQUEST_TRANSLATION_INSTRUCTIONS, translatorSystem)
+                assertTrue("Reserve preferences for soft wording" in translatorSystem)
+                assertTrue("keep \"electric or hybrid\" as ONE requirement" in translatorSystem)
+                assertTrue("(electric OR hybrid) AND parking sensors AND automatic gearbox" in system)
+                assertTrue("catalog evidence confirms every required condition" in system)
+                assertTrue("UNKNOWN or NOT_AVAILABLE does not satisfy a positive required feature" in system)
+                assertTrue("OPTIONAL must have confirmed applicability" in system)
+                assertTrue("vehicles[] -> trims[] -> configurations[]" in system)
+                assertTrue("variant.powertrainType" in system)
+                assertTrue("isAddition alone does not identify a parent trim" in system)
+                assertTrue("technicalSpecifications.powertrains[]" in system)
+                assertTrue("one-pedal driving alone is insufficient evidence" in system)
+                assertTrue("sources belongs ONLY inside each option" in system)
+                assertTrue("BOOT_ALL_SEATS_UP" in system)
+                assertTrue("behind the third row, not five-seat mode" in system)
+                assertTrue("WLTP_WEIGHTED_COMBINED" in system)
+                assertTrue("WLTP_DEPLETED_BATTERY" in system)
+                assertTrue("minimum meets AT_LEAST" in system)
+                assertTrue("maximum meets AT_MOST" in system)
+                assertTrue("standard, paid-option, unavailable or unknown leather never excludes" in system)
+                assertTrue("FRONT_SEATS" in system)
+                assertTrue("fitment STANDARD_OR_OPTIONAL" in translatorSystem)
+                assertTrue("4.6 meters -> \"4600\"" in translatorSystem)
                 assertTrue("copy its exact catalog option name" in system)
                 assertTrue("list the package only once" in system)
                 assertTrue("up to three distinct make/model combinations" in system)
@@ -151,6 +185,47 @@ class OpenRouterCarWorkflowTest {
                 assertTrue("explicit user result count or request for all matches overrides" in system)
                 assertTrue("if fewer models match, return only" in system)
                 assertFalse("at most three configurations" in system)
+            }
+        }
+    }
+
+    @Test
+    fun `qualified translation is published and sent unchanged to recommendation`() {
+        val original = "7 seats, lenght over 4.6 meters and boot space over 200 leters"
+        val raw =
+            REQUEST_TRANSLATION_INSTRUCTIONS
+                .substringAfter("Example dimensions:\n")
+                .substringBefore("\nEnd example.")
+        val expected = LlmRequestCodec.decode(raw, original)
+        listOf(false, true).forEach { local ->
+            FakeOpenRouterServer().use { server ->
+                server.translationBody = FakeOpenRouterServer.chatResponse(raw)
+                server.chatBody = FakeOpenRouterServer.chatResponse("""{"cars":[]}""")
+                val workflow =
+                    if (local) {
+                        OpenRouterCarWorkflow(
+                            LocalLlmConfig(LlmApi.LM_STUDIO, null, "${server.baseUrl}/v1", 10_000, 512),
+                            catalog,
+                        )
+                    } else {
+                        workflow(server)
+                    }
+                var published: LlmRequest? = null
+                val answer = runBlocking { workflow.answer(original, onTranslated = { published = it }) }
+                assertEquals(expected, published)
+                assertTrue(answer.selection.cars.isEmpty())
+                assertEquals(2, server.chatRequests.size)
+                val user =
+                    Json
+                        .parseToJsonElement(server.chatRequests.last().body)
+                        .jsonObject
+                        .getValue("messages")
+                        .jsonArray
+                        .last()
+                        .jsonObject
+                        .getValue("content")
+                        .jsonPrimitive.content
+                assertEquals(buildUserMessage(LlmRequestCodec.encode(expected), catalog), user)
             }
         }
     }
